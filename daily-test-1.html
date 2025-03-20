@@ -95,13 +95,24 @@
             padding: 10px;
         }
         .nav-question {
+            display: inline-block;
+            padding: 10px;
+            margin: 5px;
             cursor: pointer;
+            font-weight: bold;
+            color: black;
+            background-color: #28A745;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-question:hover {
+            background-color: #218838;
         }
         .nav-question.answered {
-            color: green;
+            background-color: #28A745; /* Green for answered */
         }
         .nav-question.not-answered {
-            color: gray;
+            background-color: #FFC107; /* Yellow for unanswered */
         }
         .result {
             display: none;
@@ -111,7 +122,7 @@
 <body>
 
 <header>
-    <h1>Testro - Free Agriculture Mock Tests</h1>
+    <h1>Testro - Daily Test 1</h1>
 </header>
 
 <div class="container">
@@ -176,98 +187,98 @@
         },
         {
             question: {
-                en: "Which nutrient is most essential for plant growth?",
-                hi: "पौधों की वृद्धि के लिए सबसे आवश्यक पोषक तत्व कौन सा है?"
+                en: "Which nutrient is primarily needed for plant growth?",
+                hi: "पौधों की वृद्धि के लिए मुख्य रूप से कौन सा पोषक तत्व आवश्यक है?"
             },
             options: [
                 { answer: { en: "Nitrogen", hi: "नाइट्रोजन" }, correct: true },
-                { answer: { en: "Phosphorus", hi: "फॉस्फोरस" }, correct: false },
-                { answer: { en: "Potassium", hi: "पोटेशियम" }, correct: false },
+                { answer: { en: "Iron", hi: "आयरन" }, correct: false },
+                { answer: { en: "Potassium", hi: "पोटासियम" }, correct: false },
                 { answer: { en: "Calcium", hi: "कैल्शियम" }, correct: false }
             ]
         },
         {
             question: {
-                en: "Which of the following is a leguminous crop?",
-                hi: "निम्नलिखित में से कौन सी फलियाँ की फसल है?"
+                en: "What is the primary source of Vitamin C?",
+                hi: "विटामिन सी का मुख्य स्रोत क्या है?"
             },
             options: [
-                { answer: { en: "Pulses", hi: "दालें" }, correct: true },
-                { answer: { en: "Rice", hi: "चावल" }, correct: false },
-                { answer: { en: "Barley", hi: "जौ" }, correct: false },
-                { answer: { en: "Wheat", hi: "गेहूँ" }, correct: false }
+                { answer: { en: "Citrus Fruits", hi: "सिट्रस फल" }, correct: true },
+                { answer: { en: "Meat", hi: "मांस" }, correct: false },
+                { answer: { en: "Dairy", hi: "डेयरी" }, correct: false },
+                { answer: { en: "Bread", hi: "ब्रेड" }, correct: false }
             ]
         },
         {
             question: {
-                en: "Which crop is primarily grown for its oil?",
-                hi: "किस फसल को मुख्य रूप से इसके तेल के लिए उगाया जाता है?"
+                en: "Which of the following is a pulse crop?",
+                hi: "निम्नलिखित में से कौन सी फसल एक दाल की फसल है?"
             },
             options: [
-                { answer: { en: "Canola", hi: "कैनोला" }, correct: true },
-                { answer: { en: "Corn", hi: "मक्का" }, correct: false },
-                { answer: { en: "Soybean", hi: "सोयाबीन" }, correct: true },
+                { answer: { en: "Chickpeas", hi: "चने" }, correct: true },
+                { answer: { en: "Wheat", hi: "गेहूँ" }, correct: false },
+                { answer: { en: "Rice", hi: "चावल" }, correct: false },
                 { answer: { en: "Barley", hi: "जौ" }, correct: false }
             ]
         },
         {
             question: {
-                en: "What method is used for soil conservation?",
-                hi: "मिट्टी के संरक्षण के लिए कौन सा तरीका इस्तेमाल किया जाता है?"
+                en: "Which gas do plants primarily absorb during photosynthesis?",
+                hi: "पौधे प्रकाश संश्लेषण के दौरान मुख्य रूप से कौन सा गैस अवशोषित करते हैं?"
             },
             options: [
-                { answer: { en: "Contour plowing", hi: "परिपाटी जुताई" }, correct: true },
-                { answer: { en: "Monocropping", hi: "एक फसल प्रणाली" }, correct: false },
-                { answer: { en: "Burning", hi: "जलाना" }, correct: false },
-                { answer: { en: "Overgrazing", hi: "अधिकता से चराना" }, correct: false }
+                { answer: { en: "Oxygen", hi: "ऑक्सीजन" }, correct: false },
+                { answer: { en: "Carbon Dioxide", hi: "कार्बन डाइऑक्साइड" }, correct: true },
+                { answer: { en: "Nitrogen", hi: "नाइट्रोजन" }, correct: false },
+                { answer: { en: "Hydrogen", hi: "हाइड्रोजन" }, correct: false }
             ]
         },
         {
             question: {
-                en: "Which plant is used as a green manure crop?",
-                hi: "कौन सा पौधा हरित खाद फसल के रूप में उपयोग किया जाता है?"
+                en: "Which type of soil is best for agriculture?",
+                hi: "कौण सी प्रकार की मिट्टी कृषि के लिए सबसे अच्छी होती है?"
             },
             options: [
-                { answer: { en: "Mustard", hi: "सरसो" }, correct: false },
-                { answer: { en: "Lentil", hi: "मसूर" }, correct: false },
-                { answer: { en: "Clover", hi: "तीर" }, correct: true },
-                { answer: { en: "Rice", hi: "चावल" }, correct: false }
+                { answer: { en: "Clay Soil", hi: "क्ले मिट्टी" }, correct: false },
+                { answer: { en: "Sandy Soil", hi: "रेतीली मिट्टी" }, correct: false },
+                { answer: { en: "Loamy Soil", hi: "लोमी मिट्टी" }, correct: true },
+                { answer: { en: "Saline Soil", hi: "खारी मिट्टी" }, correct: false }
             ]
         },
         {
             question: {
-                en: "Which pest is commonly known as the 'cotton bollworm'?",
-                hi: "कौन सा कीट सामान्यतः 'कपास का बॉलवर्म' के रूप में जाना जाता है?"
+                en: "Which crop is known as the 'king of grains'?",
+                hi: "कौन सी फसल 'अनाजों का राजा' के रूप में जानी जाती है?"
             },
             options: [
-                { answer: { en: "Helicoverpa armigera", hi: "हेलिकोज़ार्मा आर्मिज़ेरा" }, correct: true },
-                { answer: { en: "Locust", hi: "टिड्डी" }, correct: false },
-                { answer: { en: "Termite", hi: "दीमक" }, correct: false },
-                { answer: { en: "Fruit Fly", hi: "फलों की मक्खी" }, correct: false }
+                { answer: { en: "Rice", hi: "चावल" }, correct: false },
+                { answer: { en: "Wheat", hi: "गेहूँ" }, correct: true },
+                { answer: { en: "Maize", hi: "मक्का" }, correct: false },
+                { answer: { en: "Barley", hi: "जौ" }, correct: false }
             ]
         },
         {
             question: {
-                en: "What is the main cause of soil erosion?",
-                hi: "मिट्टी के कटाव का मुख्य कारण क्या है?"
+                en: "What is the primary purpose of crop rotation?",
+                hi: "फसल चक्रीकरण का मुख्य उद्देश्य क्या है?"
             },
             options: [
-                { answer: { en: "Water runoff", hi: "पानी का बहाव" }, correct: true },
-                { answer: { en: "Heavy rainfall", hi: "तेज बारिश" }, correct: false },
-                { answer: { en: "Overgrazing", hi: "अधिकता से चराना" }, correct: false },
-                { answer: { en: "Lack of vegetation", hi: "पौधों की कमी" }, correct: false }
+                { answer: { en: "Improve Soil Fertility", hi: "मिट्टी की उर्वरता में सुधार करना" }, correct: true },
+                { answer: { en: "Increase Pests", hi: "कीट बढ़ाना" }, correct: false },
+                { answer: { en: "Maximize Water Usage", hi: "पानी का उपयोग अधिकतम करना" }, correct: false },
+                { answer: { en: "Reduce Crop Diversity", hi: "फसल विविधता कम करना" }, correct: false }
             ]
         },
         {
             question: {
-                en: "Which practice helps in the preservation of biodiversity?",
-                hi: "कौन सा अभ्यास जैव विविधता के संरक्षण में मदद करता है?"
+                en: "What is hydroponics?",
+                hi: "हाइड्रोपोनिक्स क्या है?"
             },
             options: [
-                { answer: { en: "Crop rotation", hi: "फसल रोपण" }, correct: true },
-                { answer: { en: "Monoculture", hi: "एकल फसल" }, correct: false },
-                { answer: { en: "Use of pesticides", hi: "कीटनाशकों का उपयोग" }, correct: false },
-                { answer: { en: "Deforestation", hi: "वनों की कटाई" }, correct: false }
+                { answer: { en: "Growing plants in soil", hi: "मिट्टी में पौधे उगाना" }, correct: false },
+                { answer: { en: "Growing plants in water", hi: "पानी में पौधे उगाना" }, correct: true },
+                { answer: { en: "Fertilizing soil", hi: "मिट्टी में उर्वरक डालना" }, correct: false },
+                { answer: { en: "Planting seeds", hi: "बीज बोना" }, correct: false }
             ]
         }
     ];
@@ -293,13 +304,14 @@
     function loadQuestion() {
         const questionObj = questions[currentQuestionIndex];
         document.getElementById('questionText').innerText = questionObj.question.en + " / " + questionObj.question.hi;
-        
+
         const optionsHTML = questionObj.options.map((option, index) => 
             `<li onclick="selectOption(${index})">${option.answer.en} / ${option.answer.hi}</li>`
         ).join('');
         
         document.getElementById('options').innerHTML = optionsHTML;
         document.getElementById('currentQuestion').innerText = currentQuestionIndex + 1;
+        
         updateNavigation();
         resetOptionStyles();
     }
@@ -341,7 +353,8 @@
         const navQuestions = document.getElementById('navQuestions');
         navQuestions.innerHTML = '';
         answers.forEach((ans, index) => {
-            navQuestions.innerHTML += `<div class="nav-question ${ans !== null ? 'answered' : 'not-answered'}" onclick="goToQuestion(${index})">Question ${index + 1}</div>`;
+            const className = ans !== null ? 'answered' : 'not-answered';
+            navQuestions.innerHTML += `<div class="nav-question ${className}" onclick="goToQuestion(${index})">Q${index + 1}</div>`;
         });
     }
 
@@ -371,18 +384,14 @@
         questions.forEach((item, index) => {
             const userOption = answers[index];
             const correctOption = item.options.findIndex(option => option.correct);
-            const userAnswer = userOption !== null ? item.options[userOption].answer.en : 'No Answer';
-
+            
             resultContent += `<li>
-                ${item.question.en} / ${item.question.hi}: Your Answer - ${userAnswer} 
-                <br> Correct Answer: ${item.options[correctOption].answer.en}`;
-                
-            if (userOption === correctOption) {
-                resultContent += ' (Correct)';
-            } else if (userOption !== null) {
-                resultContent += ' (Wrong)';
-            }
-            resultContent += `</li>`;
+                ${item.question.en} / ${item.question.hi}:
+                <br> Your Answer: 
+                <span style="color:${userOption === correctOption ? 'green' : 'red'};">${userOption !== null ? item.options[userOption].answer.en : 'No Answer'}</span>
+                <br> Correct Answer: 
+                <span style="color:green;">${item.options[correctOption].answer.en}</span>
+            </li>`;
 
             // Highlight answers
             if (userOption !== null) {
