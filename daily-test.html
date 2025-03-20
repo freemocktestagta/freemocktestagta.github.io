@@ -5,38 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Test - Testro</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1>Daily Test - Testro</h1>
-        <nav>
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Free Test</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Free Notes</a></li>
-            </ul>
-        </nav>
+        <div class="header-container">
+            <h1>Testro</h1>
+            <nav>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="daily-test.html">Free Test</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="free-notes.html">Free Notes</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    
+
+    <!-- Hero Section -->
     <section class="hero">
-        <h2>Daily Test</h2>
-        <p>Practice new questions every day to improve your skills and stay prepared.</p>
-    </section>
-    
-    <section class="test-list">
-        <h2>Available Daily Tests</h2>
-        <div class="tests">
-            <a href="daily-test-1.html" class="test-item">Daily Test 1</a>
-            <a href="daily-test-2.html" class="test-item">Daily Test 2</a>
-            <a href="daily-test-3.html" class="test-item">Daily Test 3</a>
-            <a href="daily-test-4.html" class="test-item">Daily Test 4</a>
+        <div class="hero-content">
+            <h2>Daily Test</h2>
+            <p>Practice new questions every day to improve your skills and stay prepared.</p>
         </div>
     </section>
 
+    <!-- Test List Section -->
+    <section class="test-list">
+        <h2>Available Daily Tests</h2>
+        <div class="tests">
+            <a href="daily-test-1.html" class="test-item">
+                <i class="fas fa-calendar-day"></i>
+                <span>Daily Test 1</span>
+            </a>
+            <a href="daily-test-2.html" class="test-item">
+                <i class="fas fa-calendar-day"></i>
+                <span>Daily Test 2</span>
+            </a>
+            <a href="daily-test-3.html" class="test-item">
+                <i class="fas fa-calendar-day"></i>
+                <span>Daily Test 3</span>
+            </a>
+            <a href="daily-test-4.html" class="test-item">
+                <i class="fas fa-calendar-day"></i>
+                <span>Daily Test 4</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Testro</h3>
+                <p>Your one-stop destination for free agriculture mock tests.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="daily-test.html">Free Test</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="free-notes.html">Free Notes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+        </div>
     </footer>
 
     <script>
@@ -46,69 +93,160 @@
     </script>
 
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
             background: #f4f4f4;
+            color: #333;
         }
+
+        /* Header */
         header {
             background: #004080;
             color: white;
             padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
         }
         .menu-toggle {
             display: none;
             font-size: 24px;
             cursor: pointer;
         }
-        nav ul {
+        .nav-links {
             list-style: none;
+            margin: 0;
             padding: 0;
+            display: flex;
         }
-        nav ul li {
-            display: inline;
+        .nav-links li {
             margin: 0 15px;
         }
-        nav ul li a {
+        .nav-links a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
+            transition: color 0.3s;
         }
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 20px;
-            background: #ffffff;
+            padding: 100px 20px;
+            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
+            color: #004080;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
         }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #004080;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #004080;
+        }
+
+        /* Test List Section */
         .test-list {
-            padding: 20px;
+            padding: 40px 20px;
+            background: white;
         }
         .tests {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .test-item {
             background: #004080;
             color: white;
-            font-weight: bold;
-            padding: 10px 20px;
+            padding: 20px;
+            border-radius: 10px;
             text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .test-item i {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        .test-item span {
+            font-size: 16px;
+            text-align: center;
         }
         .test-item:hover {
-            background: #002b5e;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+
+        /* Footer */
+        footer {
+            background: #004080;
+            color: white;
+            padding: 40px 20px;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-section {
+            text-align: left;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #ffcc00;
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
-                position: absolute;
-                right: 20px;
-                top: 15px;
-                color: white;
             }
             .nav-links {
                 display: none;
@@ -116,18 +254,17 @@
                 background: #004080;
                 position: absolute;
                 width: 100%;
-                top: 50px;
+                top: 60px;
                 left: 0;
             }
             .nav-links.active {
                 display: flex;
             }
             .nav-links li {
-                display: block;
                 margin: 10px 0;
             }
             .tests {
-                flex-direction: column;
+                grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
             }
         }
     </style>
