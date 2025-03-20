@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Test 1 - Testro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Daily Test 1 - Testro</h1>
+        <nav>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="daily-test.html">Back to Daily Tests</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <h2>Daily Test 1</h2>
+        <p>Answer the following 10 questions and test your knowledge.</p>
+    </section>
+    <section class="test-container">
+        <div class="question">
+            <p>1. What is the main component of plant cell walls?</p>
+            <input type="radio" name="q1" value="A"> A) Cellulose<br>
+            <input type="radio" name="q1" value="B"> B) Starch<br>
+            <input type="radio" name="q1" value="C"> C) Protein<br>
+            <input type="radio" name="q1" value="D"> D) Lipids<br>
+        </div>
+        <div class="question">
+            <p>2. Which nutrient is most important for root development?</p>
+            <input type="radio" name="q2" value="A"> A) Nitrogen<br>
+            <input type="radio" name="q2" value="B"> B) Phosphorus<br>
+            <input type="radio" name="q2" value="C"> C) Potassium<br>
+            <input type="radio" name="q2" value="D"> D) Calcium<br>
+        </div>
+        <button onclick="submitTest()">Submit</button>
+        <div id="result"></div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+        function submitTest() {
+            document.getElementById("result").innerHTML = "Test submitted! Answers will be reviewed.";
+        }
+    </script>
+</body>
+</html>
