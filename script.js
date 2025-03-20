@@ -1,24 +1,45 @@
 const questions = [
-    { q: "What is the main component of plant cell walls?", options: ["Cellulose", "Starch", "Protein", "Lipids"], answer: "Cellulose" },
-    { q: "Which nutrient is most important for root development?", options: ["Nitrogen", "Phosphorus", "Potassium", "Calcium"], answer: "Phosphorus" },
-    { q: "Which is the most widely grown cereal crop in the world?", options: ["Rice", "Wheat", "Corn", "Barley"], answer: "Corn" },
-    { q: "What is the process by which plants make their food?", options: ["Respiration", "Photosynthesis", "Germination", "Fermentation"], answer: "Photosynthesis" },
-    { q: "Which type of soil is best for growing crops?", options: ["Clay", "Sandy", "Loamy", "Rocky"], answer: "Loamy" },
-    { q: "Which gas do plants absorb during photosynthesis?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], answer: "Carbon Dioxide" },
-    { q: "Which element is essential for chlorophyll production?", options: ["Nitrogen", "Magnesium", "Iron", "Calcium"], answer: "Magnesium" },
-    { q: "What is the scientific name of wheat?", options: ["Oryza sativa", "Zea mays", "Triticum aestivum", "Solanum tuberosum"], answer: "Triticum aestivum" },
-    { q: "Which pest affects cotton crops the most?", options: ["Bollworm", "Aphids", "Grasshoppers", "Armyworms"], answer: "Bollworm" },
-    { q: "What is the main function of root nodules in leguminous plants?", options: ["Water absorption", "Nitrogen fixation", "Photosynthesis", "Pollination"], answer: "Nitrogen fixation" }
+    {
+        question: "What is the primary nutrient required for plant growth?",
+        options: ["Nitrogen", "Iron", "Zinc", "Copper"],
+        correct: 0
+    },
+    {
+        question: "Which crop is known as the ‘Golden Fiber’?",
+        options: ["Cotton", "Jute", "Silk", "Wool"],
+        correct: 1
+    },
+    {
+        question: "Which soil type is best for growing wheat?",
+        options: ["Clay", "Sandy", "Loamy", "Rocky"],
+        correct: 2
+    }
 ];
 
 let currentQuestion = 0;
+let score = 0;
+let selectedAnswers = [];
 
 function loadQuestion() {
-    document.getElementById("question-text").innerHTML = questions[currentQuestion].q;
-    const optionsDiv = document.getElementById("options");
-    optionsDiv.innerHTML = "";
-    questions[currentQuestion].options.forEach(option => {
-        optionsDiv.innerHTML += `<input type='radio' name='q${currentQuestion}' value='${option}'> ${option}<br>`;
+    const questionElement = document.getElementById("question");
+    const optionsElement = document.getElementById("options");
+
+    questionElement.textContent = (currentQuestion + 1) + ". " + questions[currentQuestion].question;
+    optionsElement.innerHTML = "";
+
+    questions[currentQuestion].options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.classList.add("option-btn");
+        button.onclick = () => selectAnswer(index);
+        optionsElement.appendChild(button);
+    });
+}
+
+function selectAnswer(index) {
+    selectedAnswers[currentQuestion] = index;
+    document.querySelectorAll(".option-btn").forEach((btn, i) => {
+        btn.style.backgroundColor = i === index ? "#008000" : "#004080";
     });
 }
 
@@ -36,19 +57,27 @@ function prevQuestion() {
     }
 }
 
-function skipQuestion() {
-    nextQuestion();
-}
-
 function submitTest() {
-    let score = 0;
-    questions.forEach((question, index) => {
-        const selected = document.querySelector(`input[name='q${index}']:checked`);
-        if (selected && selected.value === question.answer) {
-            score++;
+    let correctCount = 0;
+    let resultHTML = "";
+
+    for (let i = 0; i < questions.length; i++) {
+        let isCorrect = selectedAnswers[i] === questions[i].correct;
+        resultHTML += `<p>Q${i + 1}: ${questions[i].question} <br> 
+            <strong>Your Answer:</strong> ${questions[i].options[selectedAnswers[i]] || "Not Answered"} 
+            ${isCorrect ? "✅" : "❌"} <br> 
+            <strong>Correct Answer:</strong> ${questions[i].options[questions[i].correct]}</p><hr>`;
+
+        if (isCorrect) {
+            correctCount++;
         }
-    });
-    document.getElementById("result").innerHTML = `You scored ${score} out of ${questions.length}`;
+    }
+
+    document.getElementById("score").textContent = correctCount;
+    document.getElementById("test").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    document.getElementById("answer-review").innerHTML = resultHTML;
 }
 
-loadQuestion();
+// Load first question on page load
+window.onload = loadQuestion;
