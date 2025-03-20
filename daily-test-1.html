@@ -3,100 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Daily Test 1</title>
+    <title>Daily Test - Testro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            text-align: center;
-            padding: 20px;
             margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
         }
-        /* Navigation Bar */
-        .nav-bar {
-            background: #007BFF;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .nav-bar button {
-            padding: 10px 20px;
-            background: #0056b3;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .nav-bar button:hover {
-            background: #004080;
-        }
+
+        /* Header */
         header {
-            background: #007BFF;
+            background: #004080;
             color: white;
             padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Test Container */
         .test-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 20px auto;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        button {
-            margin: 5px;
-            padding: 10px 15px;
-            background: #007BFF;
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .progress {
+            height: 10px;
+            background: #004080;
+            width: 0;
+            transition: width 0.3s;
+        }
+
+        /* Timer */
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            color: #004080;
+            margin-bottom: 20px;
+        }
+
+        /* Question and Options */
+        .question-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-button {
+            background: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+            text-align: left;
+        }
+        .option-button:hover {
+            background: #e0e0e0;
+        }
+        .option-button.selected {
+            background: #004080;
+            color: white;
+            border-color: #004080;
+        }
+
+        /* Navigation Buttons */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .navigation-buttons button {
+            padding: 10px 20px;
+            background: #004080;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
         }
-        button:hover {
-            background: #0056b3;
+        .navigation-buttons button:hover {
+            background: #002b5e;
         }
-        button:disabled {
+        .navigation-buttons button:disabled {
             background: #cccccc;
             cursor: not-allowed;
         }
-        .option-button {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-        }
-        .selected {
-            background: #28a745; /* Green for selected answer */
-        }
-        .wrong {
-            background: #dc3545; /* Red for wrong answer */
-        }
-        .correct {
-            background: #28a745; /* Green for correct answer */
-        }
-        footer {
-            margin-top: 20px;
-            color: gray;
-        }
-        #score {
-            margin-top: 10px;
-            font-weight: bold;
-        }
+
+        /* Result Container */
         .result-container {
-            display: none; /* Hidden by default */
-            max-width: 600px;
+            display: none;
+            max-width: 800px;
             margin: 20px auto;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: left;
         }
         .result-container h2 {
             text-align: center;
+            margin-bottom: 20px;
         }
         .result-item {
             margin-bottom: 20px;
@@ -104,26 +133,51 @@
         .result-item p {
             margin: 5px 0;
         }
+        .correct {
+            color: #28a745;
+        }
+        .wrong {
+            color: #dc3545;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #004080;
+            color: white;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <!-- Header with Title and Buttons -->
+    <!-- Header -->
     <header>
-        <h1>My Daily Test 1</h1>
-        <div class="nav-bar">
-            <button onclick="goToHomePage()">Home Page</button>
-            <button onclick="goToDailyTestPage()">Daily Page</button>
-        </div>
+        <h1>Daily Test - Testro</h1>
     </header>
-    
+
     <!-- Test Container -->
     <div class="test-container">
-        <div id="questionText"></div>
-        <div id="options"></div>
-        <div id="score">Score: 0 / 0</div>
-        <button id="prevBtn" onclick="prevQuestion()">Previous</button>
-        <button id="nextBtn" onclick="nextQuestion()">Next</button>
-        <button id="submitBtn" onclick="submitTest()">Submit</button>
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer" id="timer">Time Left: 10:00</div>
+
+        <!-- Question -->
+        <div class="question-text" id="questionText"></div>
+
+        <!-- Options -->
+        <div class="options" id="options"></div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()">Next</button>
+            <button id="submitBtn" onclick="submitTest()">Submit</button>
+        </div>
     </div>
 
     <!-- Result Container -->
@@ -131,95 +185,201 @@
         <h2>Test Results</h2>
         <div id="resultDetails"></div>
     </div>
-    
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 My Daily Test</p>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
     </footer>
 
     <script>
         const questions = [
             {
-                question: "What is the capital of Japan?",
-                options: ["Beijing", "Seoul", "Tokyo", "Bangkok"],
-                answer: "Tokyo"
+                question: {
+                    hindi: "निम्नलिखित में से कौन सी फलियां वाली फसल है?",
+                    english: "Which of the following is a leguminous crop?"
+                },
+                options: [
+                    { hindi: "गेहूं", english: "Wheat" },
+                    { hindi: "चावल", english: "Rice" },
+                    { hindi: "सोयाबीन", english: "Soybean" },
+                    { hindi: "मक्का", english: "Maize" }
+                ],
+                answer: { hindi: "सोयाबीन", english: "Soybean" }
             },
             {
-                question: "Which planet is known for its rings?",
-                options: ["Earth", "Mars", "Saturn", "Jupiter"],
-                answer: "Saturn"
+                question: {
+                    hindi: "कृषि में नाइट्रोजन-स्थिरीकरण बैक्टीरिया का प्राथमिक कार्य क्या है?",
+                    english: "What is the primary function of nitrogen-fixing bacteria in agriculture?"
+                },
+                options: [
+                    { hindi: "मिट्टी की अम्लता बढ़ाना", english: "Increase soil acidity" },
+                    { hindi: "वायुमंडलीय नाइट्रोजन को नाइट्रेट में बदलना", english: "Convert atmospheric nitrogen into nitrates" },
+                    { hindi: "कार्बनिक पदार्थों को विघटित करना", english: "Decompose organic matter" },
+                    { hindi: "कीटों को नियंत्रित करना", english: "Control pests" }
+                ],
+                answer: { hindi: "वायुमंडलीय नाइट्रोजन को नाइट्रेट में बदलना", english: "Convert atmospheric nitrogen into nitrates" }
             },
             {
-                question: "What is the smallest prime number?",
-                options: ["0", "1", "2", "3"],
-                answer: "2"
+                question: {
+                    hindi: "कपास की खेती के लिए कौन सी मिट्टी सबसे उपयुक्त है?",
+                    english: "Which soil type is best suited for growing cotton?"
+                },
+                options: [
+                    { hindi: "रेतली मिट्टी", english: "Sandy soil" },
+                    { hindi: "चिकनी मिट्टी", english: "Clay soil" },
+                    { hindi: "दोमट मिट्टी", english: "Loamy soil" },
+                    { hindi: "पीट मिट्टी", english: "Peaty soil" }
+                ],
+                answer: { hindi: "दोमट मिट्टी", english: "Loamy soil" }
             },
             {
-                question: "What is the largest ocean on Earth?",
-                options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-                answer: "Pacific Ocean"
+                question: {
+                    hindi: "अधिकांश फसलों के लिए आदर्श pH सीमा क्या है?",
+                    english: "What is the ideal pH range for most crops?"
+                },
+                options: [
+                    { hindi: "4.0 - 5.0", english: "4.0 - 5.0" },
+                    { hindi: "5.5 - 7.0", english: "5.5 - 7.0" },
+                    { hindi: "7.5 - 8.5", english: "7.5 - 8.5" },
+                    { hindi: "9.0 - 10.0", english: "9.0 - 10.0" }
+                ],
+                answer: { hindi: "5.5 - 7.0", english: "5.5 - 7.0" }
             },
             {
-                question: "Who wrote 'Romeo and Juliet'?",
-                options: ["Charles Dickens", "William Shakespeare", "Mark Twain", "Ernest Hemingway"],
-                answer: "William Shakespeare"
+                question: {
+                    hindi: "निम्नलिखित में से कौन सा पौधों के लिए आवश्यक सूक्ष्म पोषक तत्व है?",
+                    english: "Which of the following is a micronutrient required by plants?"
+                },
+                options: [
+                    { hindi: "नाइट्रोजन", english: "Nitrogen" },
+                    { hindi: "फॉस्फोरस", english: "Phosphorus" },
+                    { hindi: "जिंक", english: "Zinc" },
+                    { hindi: "पोटेशियम", english: "Potassium" }
+                ],
+                answer: { hindi: "जिंक", english: "Zinc" }
+            },
+            {
+                question: {
+                    hindi: "फसल के खेत से खरपतवार हटाने की प्रक्रिया को क्या कहते हैं?",
+                    english: "What is the process of removing weeds from a crop field called?"
+                },
+                options: [
+                    { hindi: "सिंचाई", english: "Irrigation" },
+                    { hindi: "कटाई", english: "Harvesting" },
+                    { hindi: "निराई", english: "Weeding" },
+                    { hindi: "जुताई", english: "Ploughing" }
+                ],
+                answer: { hindi: "निराई", english: "Weeding" }
+            },
+            {
+                question: {
+                    hindi: "किस फसल को 'सुनहरा रेशा' कहा जाता है?",
+                    english: "Which crop is known as the 'Golden Fiber'?"
+                },
+                options: [
+                    { hindi: "कपास", english: "Cotton" },
+                    { hindi: "जूट", english: "Jute" },
+                    { hindi: "रेशम", english: "Silk" },
+                    { hindi: "ऊन", english: "Wool" }
+                ],
+                answer: { hindi: "जूट", english: "Jute" }
+            },
+            {
+                question: {
+                    hindi: "फसल चक्र का प्राथमिक उद्देश्य क्या है?",
+                    english: "What is the primary purpose of crop rotation?"
+                },
+                options: [
+                    { hindi: "मिट्टी की उर्वरता बढ़ाना", english: "Increase soil fertility" },
+                    { hindi: "पानी की खपत कम करना", english: "Reduce water usage" },
+                    { hindi: "कीटों को नियंत्रित करना", english: "Control pests" },
+                    { hindi: "उपरोक्त सभी", english: "All of the above" }
+                ],
+                answer: { hindi: "उपरोक्त सभी", english: "All of the above" }
+            },
+            {
+                question: {
+                    hindi: "निम्नलिखित में से कौन सी खरीफ फसल है?",
+                    english: "Which of the following is a Kharif crop?"
+                },
+                options: [
+                    { hindi: "गेहूं", english: "Wheat" },
+                    { hindi: "जौ", english: "Barley" },
+                    { hindi: "चावल", english: "Rice" },
+                    { hindi: "सरसों", english: "Mustard" }
+                ],
+                answer: { hindi: "चावल", english: "Rice" }
+            },
+            {
+                question: {
+                    hindi: "जैविक खेती का मुख्य घटक क्या है?",
+                    english: "What is the main component of organic farming?"
+                },
+                options: [
+                    { hindi: "रासायनिक उर्वरक", english: "Chemical fertilizers" },
+                    { hindi: "कीटनाशक", english: "Pesticides" },
+                    { hindi: "कम्पोस्ट और खाद", english: "Compost and manure" },
+                    { hindi: "जेनेटिक रूप से संशोधित बीज", english: "Genetically modified seeds" }
+                ],
+                answer: { hindi: "कम्पोस्ट और खाद", english: "Compost and manure" }
             }
         ];
 
         let currentQuestionIndex = 0;
         let score = 0;
-        let userAnswers = new Array(questions.length).fill(null); // Track user answers
+        let userAnswers = new Array(questions.length).fill(null);
+        let timeLeft = 600; // 10 minutes in seconds
 
+        // Load question
         function loadQuestion() {
             const questionText = document.getElementById("questionText");
             const optionsDiv = document.getElementById("options");
-            const prevBtn = document.getElementById("prevBtn");
-            const nextBtn = document.getElementById("nextBtn");
-            const scoreDiv = document.getElementById("score");
+            const progress = document.getElementById("progress");
 
-            // Update question text
-            questionText.innerText = `Question ${currentQuestionIndex + 1}: ${questions[currentQuestionIndex].question}`;
+            // Update question text (bilingual)
+            const question = questions[currentQuestionIndex].question;
+            questionText.innerHTML = `
+                <div>${question.hindi}</div>
+                <div>${question.english}</div>
+            `;
 
-            // Reset options
+            // Update options (bilingual)
             optionsDiv.innerHTML = "";
-
-            // Load options
             questions[currentQuestionIndex].options.forEach((option, index) => {
-                const optionButton = document.createElement("button");
-                optionButton.innerText = option;
+                const optionButton = document.createElement("div");
                 optionButton.classList.add("option-button");
-                if (userAnswers[currentQuestionIndex] === option) {
-                    optionButton.classList.add("selected"); // Highlight selected answer
-                }
+                optionButton.innerHTML = `
+                    <div>${option.hindi}</div>
+                    <div>${option.english}</div>
+                `;
                 optionButton.onclick = () => selectAnswer(option);
+                if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].hindi === option.hindi) {
+                    optionButton.classList.add("selected");
+                }
                 optionsDiv.appendChild(optionButton);
             });
 
-            // Update button states
-            prevBtn.disabled = currentQuestionIndex === 0;
-            nextBtn.disabled = currentQuestionIndex === questions.length - 1;
-
-            // Update score
-            scoreDiv.innerText = `Score: ${score} / ${questions.length}`;
+            // Update progress bar
+            progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
         }
 
+        // Select answer
         function selectAnswer(selectedOption) {
-            // Deselect all options
             const optionButtons = document.querySelectorAll(".option-button");
             optionButtons.forEach(button => button.classList.remove("selected"));
 
-            // Select the clicked option
-            const selectedButton = Array.from(optionButtons).find(button => button.innerText === selectedOption);
+            const selectedButton = Array.from(optionButtons).find(button => 
+                button.innerText.includes(selectedOption.hindi) || button.innerText.includes(selectedOption.english)
+            );
             selectedButton.classList.add("selected");
 
-            // Update user's answer and score
             userAnswers[currentQuestionIndex] = selectedOption;
-            if (selectedOption === questions[currentQuestionIndex].answer) {
+            if (selectedOption.hindi === questions[currentQuestionIndex].answer.hindi) {
                 score++;
             }
-            document.getElementById("score").innerText = `Score: ${score} / ${questions.length}`;
         }
 
+        // Navigation functions
         function nextQuestion() {
             if (currentQuestionIndex < questions.length - 1) {
                 currentQuestionIndex++;
@@ -234,46 +394,58 @@
             }
         }
 
+        // Submit test
         function submitTest() {
             const testContainer = document.querySelector(".test-container");
             const resultContainer = document.getElementById("resultContainer");
             const resultDetails = document.getElementById("resultDetails");
 
-            // Hide test container and show result container
             testContainer.style.display = "none";
             resultContainer.style.display = "block";
 
             // Display total score
-            resultDetails.innerHTML = `<p><strong>Your Score: ${score} / ${questions.length}</strong></p>`;
+            resultDetails.innerHTML = `
+                <p><strong>Your Score: ${score} / ${questions.length}</strong></p>
+                <p><strong>आपका स्कोर: ${score} / ${questions.length}</strong></p>
+            `;
 
-            // Display detailed results for each question
+            // Display detailed results (bilingual)
             questions.forEach((question, index) => {
                 const userAnswer = userAnswers[index];
-                const isCorrect = userAnswer === question.answer;
+                const isCorrect = userAnswer && userAnswer.hindi === question.answer.hindi;
 
                 resultDetails.innerHTML += `
                     <div class="result-item">
-                        <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
-                        <p><strong>Your Answer:</strong> <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer || "Not answered"}</span></p>
-                        <p><strong>Correct Answer:</strong> <span class="correct">${question.answer}</span></p>
+                        <p><strong>Question ${index + 1}:</strong></p>
+                        <p>${question.question.hindi}</p>
+                        <p>${question.question.english}</p>
+                        <p><strong>Your Answer:</strong> <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer ? userAnswer.hindi + " / " + userAnswer.english : "Not answered"}</span></p>
+                        <p><strong>Correct Answer:</strong> <span class="correct">${question.answer.hindi} / ${question.answer.english}</span></p>
                     </div>
                 `;
             });
         }
 
-        // Navigation functions
-        function goToHomePage() {
-            // Redirect to home page without pop-up
-            window.location.href = "index.html"; // Replace with your home page URL
+        // Timer
+        function updateTimer() {
+            const timer = document.getElementById("timer");
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timer.innerText = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (timeLeft === 0) {
+                submitTest();
+            } else {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            }
         }
 
-        function goToDailyTestPage() {
-            // Redirect to daily test page without pop-up
-            window.location.href = "test.html"; // Replace with your daily test page URL
-        }
-
-        // Load the first question when the page loads
-        document.addEventListener("DOMContentLoaded", loadQuestion);
+        // Load the first question and start the timer
+        document.addEventListener("DOMContentLoaded", () => {
+            loadQuestion();
+            updateTimer();
+        });
     </script>
 </body>
 </html>
