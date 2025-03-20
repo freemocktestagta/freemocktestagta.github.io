@@ -107,16 +107,16 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <div class="nav-bar">
-        <button onclick="goToHomePage()">Go to Home Page</button>
-        <button onclick="goToDailyTestPage()">Go to Daily Test Page</button>
-    </div>
-
+    <!-- Header with Title and Buttons -->
     <header>
         <h1>My Daily Test 1</h1>
+        <div class="nav-bar">
+            <button onclick="goToHomePage()">Home Page</button>
+            <button onclick="goToDailyTestPage()">Daily Page</button>
+        </div>
     </header>
     
+    <!-- Test Container -->
     <div class="test-container">
         <div id="questionText"></div>
         <div id="options"></div>
@@ -126,11 +126,13 @@
         <button id="submitBtn" onclick="submitTest()">Submit</button>
     </div>
 
+    <!-- Result Container -->
     <div class="result-container" id="resultContainer">
         <h2>Test Results</h2>
         <div id="resultDetails"></div>
     </div>
     
+    <!-- Footer -->
     <footer>
         <p>&copy; 2023 My Daily Test</p>
     </footer>
@@ -261,15 +263,13 @@
 
         // Navigation functions
         function goToHomePage() {
-            alert("Redirecting to Home Page...");
-            // Replace with actual home page URL or logic
-            window.location.href = "index.html"; // Example home page URL
+            // Redirect to home page without pop-up
+            window.location.href = "index.html"; // Replace with your home page URL
         }
 
         function goToDailyTestPage() {
-            alert("Redirecting to Daily Test Page...");
-            // Replace with actual test page URL or logic
-            window.location.href = "test.html"; // Example test page URL
+            // Redirect to daily test page without pop-up
+            window.location.href = "test.html"; // Replace with your daily test page URL
         }
 
         // Load the first question when the page loads
