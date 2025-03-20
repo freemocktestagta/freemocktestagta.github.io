@@ -3,448 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Test 1 - Testro</title>
+    <title>My Daily Test 1</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #F8F9FA;
-            margin: 0;
-            padding: 0;
-        }
-        header, footer {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
             text-align: center;
-        }
-        .container {
             padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            position: relative;
+            margin: 0;
         }
-        .timer {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 20px;
+        /* Navigation Bar */
+        .nav-bar {
+            background: #007BFF;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
-        .question-number {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 20px;
-        }
-        .question {
-            margin: 40px 0;
-        }
-        .options {
-            list-style-type: none;
-            padding: 0;
-        }
-        .options li {
-            margin: 10px 0;
-            cursor: pointer;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .options li:hover {
-            background-color: #f0f0f0;
-        }
-        .options li.selected {
-            background-color: #28A745; /* Green for selected option */
-            color: white;
-        }
-        .options li.correct {
-            background-color: #28A745; /* Green for correct answer */
-            color: white;
-        }
-        .options li.wrong {
-            background-color: #DC3545; /* Red for wrong answer */
-            color: white;
-        }
-        button {
-            background-color: #28A745;
+        .nav-bar button {
+            padding: 10px 20px;
+            background: #0056b3;
             color: white;
             border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
-        }
-        .skip {
-            background-color: #FFC107;
-        }
-        .navigation-button {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 100;
-        }
-        .navigation-panel {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 200px;
-            height: 100%;
-            background-color: #007BFF;
-            color: white;
-            padding: 10px;
-        }
-        .nav-question {
-            display: inline-block;
-            padding: 10px;
-            margin: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            color: black;
-            background-color: #28A745;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            cursor: pointer;
+            transition: background 0.3s;
         }
-        .nav-question:hover {
-            background-color: #218838;
+        .nav-bar button:hover {
+            background: #004080;
         }
-        .nav-question.answered {
-            background-color: #28A745; /* Green for answered */
+        header {
+            background: #007BFF;
+            color: white;
+            padding: 15px 0;
         }
-        .nav-question.not-answered {
-            background-color: #FFC107; /* Yellow for unanswered */
+        .test-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .result {
-            display: none;
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
         }
-        .result h2 {
-            margin: 20px 0;
+        button:hover {
+            background: #0056b3;
         }
-        .result .navigation {
-            margin: 20px 0;
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
         }
-        .result .score {
-            font-size: 1.5em;
-            color: #28A745; /* Highlight score in green */
-            margin-bottom: 20px; /* Space below score */
+        .option-button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        .selected {
+            background: #28a745; /* Green for selected answer */
+        }
+        .wrong {
+            background: #dc3545; /* Red for wrong answer */
+        }
+        .correct {
+            background: #28a745; /* Green for correct answer */
+        }
+        footer {
+            margin-top: 20px;
+            color: gray;
+        }
+        #score {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .result-container {
+            display: none; /* Hidden by default */
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .result-container h2 {
+            text-align: center;
+        }
+        .result-item {
+            margin-bottom: 20px;
+        }
+        .result-item p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <button onclick="goToHomePage()">Go to Home Page</button>
+        <button onclick="goToDailyTestPage()">Go to Daily Test Page</button>
+    </div>
 
-<header>
-    <h1>Testro - Daily Test 1</h1>
-</header>
-
-<div class="container">
-    <div class="timer">Time Left: <span id="time">600</span> seconds</div>
-    <div class="question-number">Question <span id="currentQuestion">1</span>/10</div>
+    <header>
+        <h1>My Daily Test 1</h1>
+    </header>
     
-    <div class="question">
+    <div class="test-container">
         <div id="questionText"></div>
-        <ul id="options" class="options"></ul>
+        <div id="options"></div>
+        <div id="score">Score: 0 / 0</div>
+        <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+        <button id="nextBtn" onclick="nextQuestion()">Next</button>
+        <button id="submitBtn" onclick="submitTest()">Submit</button>
     </div>
 
-    <button id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
-    <button id="nextBtn" onclick="nextQuestion()">Next</button>
-    <button id="skipBtn" class="skip" onclick="skipQuestion()">Skip</button>
-    <button id="submitBtn" onclick="submitTest()">Submit</button>
+    <div class="result-container" id="resultContainer">
+        <h2>Test Results</h2>
+        <div id="resultDetails"></div>
+    </div>
     
-    <div class="navigation-button">
-        <button onclick="toggleNav()">&#9776; Menu</button>
-    </div>
-    
-    <div class="navigation-panel" id="navPanel">
-        <h2>Questions</h2>
-        <div id="navQuestions"></div>
-    </div>
-</div>
+    <footer>
+        <p>&copy; 2023 My Daily Test</p>
+    </footer>
 
-<footer>
-    <p>&copy; 2023 Testro</p>
-</footer>
-
-<div class="result" id="resultPage">
-    <h2>Your Result</h2>
-    <div class="navigation">
-        <a href="index.html" style="text-decoration: none; background-color: #007BFF; color: white; padding: 10px; border-radius: 5px;">Home</a>
-        <a href="daily-test.html" style="margin-left: 10px; text-decoration: none; background-color: #FFD700; color: black; padding: 10px; border-radius: 5px;">Daily Test</a>
-    </div>
-    <div id="resultContent"></div>
-    <button onclick="restartTest()">Restart Test</button>
-</div>
-
-<script>
-    const questions = [
-        {
-            question: {
-                en: "What is the capital of India?",
-                hi: "भारत की राजधानी क्या है?"
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of Japan?",
+                options: ["Beijing", "Seoul", "Tokyo", "Bangkok"],
+                answer: "Tokyo"
             },
-            options: [
-                { answer: { en: "New Delhi", hi: "नई दिल्ली" }, correct: true },
-                { answer: { en: "Mumbai", hi: "मुंबई" }, correct: false },
-                { answer: { en: "Kolkata", hi: "कोलकाता" }, correct: false },
-                { answer: { en: "Chennai", hi: "चेन्नई" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "What is the main staple crop of India?",
-                hi: "भारत की मुख्य खाद्य फसल क्या है?"
+            {
+                question: "Which planet is known for its rings?",
+                options: ["Earth", "Mars", "Saturn", "Jupiter"],
+                answer: "Saturn"
             },
-            options: [
-                { answer: { en: "Wheat", hi: "गेहूँ" }, correct: false },
-                { answer: { en: "Rice", hi: "चावल" }, correct: true },
-                { answer: { en: "Maize", hi: "मक्का" }, correct: false },
-                { answer: { en: "Barley", hi: "जौ" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "Which nutrient is primarily needed for plant growth?",
-                hi: "पौधों की वृद्धि के लिए मुख्य रूप से कौन सा पोषक तत्व आवश्यक है?"
+            {
+                question: "What is the smallest prime number?",
+                options: ["0", "1", "2", "3"],
+                answer: "2"
             },
-            options: [
-                { answer: { en: "Nitrogen", hi: "नाइट्रोजन" }, correct: true },
-                { answer: { en: "Iron", hi: "आयरन" }, correct: false },
-                { answer: { en: "Potassium", hi: "पोटासियम" }, correct: false },
-                { answer: { en: "Calcium", hi: "कैल्शियम" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "What is the primary source of Vitamin C?",
-                hi: "विटामिन सी का मुख्य स्रोत क्या है?"
+            {
+                question: "What is the largest ocean on Earth?",
+                options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+                answer: "Pacific Ocean"
             },
-            options: [
-                { answer: { en: "Citrus Fruits", hi: "सिट्रस फल" }, correct: true },
-                { answer: { en: "Meat", hi: "मांस" }, correct: false },
-                { answer: { en: "Dairy", hi: "डेयरी" }, correct: false },
-                { answer: { en: "Bread", hi: "ब्रेड" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "Which of the following is a pulse crop?",
-                hi: "निम्नलिखित में से कौन सी फसल एक दाल की फसल है?"
-            },
-            options: [
-                { answer: { en: "Chickpeas", hi: "चने" }, correct: true },
-                { answer: { en: "Wheat", hi: "गेहूँ" }, correct: false },
-                { answer: { en: "Rice", hi: "चावल" }, correct: false },
-                { answer: { en: "Barley", hi: "जौ" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "Which gas do plants primarily absorb during photosynthesis?",
-                hi: "पौधे प्रकाश संश्लेषण के दौरान मुख्य रूप से कौन सा गैस अवशोषित करते हैं?"
-            },
-            options: [
-                { answer: { en: "Oxygen", hi: "ऑक्सीजन" }, correct: false },
-                { answer: { en: "Carbon Dioxide", hi: "कार्बन डाइऑक्साइड" }, correct: true },
-                { answer: { en: "Nitrogen", hi: "नाइट्रोजन" }, correct: false },
-                { answer: { en: "Hydrogen", hi: "हाइड्रोजन" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "Which type of soil is best for agriculture?",
-                hi: "कौण सी प्रकार की मिट्टी कृषि के लिए सबसे अच्छी होती है?"
-            },
-            options: [
-                { answer: { en: "Clay Soil", hi: "क्ले मिट्टी" }, correct: false },
-                { answer: { en: "Sandy Soil", hi: "रेतीली मिट्टी" }, correct: false },
-                { answer: { en: "Loamy Soil", hi: "लोमी मिट्टी" }, correct: true },
-                { answer: { en: "Saline Soil", hi: "खारी मिट्टी" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "Which crop is known as the 'king of grains'?",
-                hi: "कौन सी फसल 'अनाजों का राजा' के रूप में जानी जाती है?"
-            },
-            options: [
-                { answer: { en: "Rice", hi: "चावल" }, correct: false },
-                { answer: { en: "Wheat", hi: "गेहूँ" }, correct: true },
-                { answer: { en: "Maize", hi: "मक्का" }, correct: false },
-                { answer: { en: "Barley", hi: "जौ" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "What is the primary purpose of crop rotation?",
-                hi: "फसल चक्रीकरण का मुख्य उद्देश्य क्या है?"
-            },
-            options: [
-                { answer: { en: "Improve Soil Fertility", hi: "मिट्टी की उर्वरता में सुधार करना" }, correct: true },
-                { answer: { en: "Increase Pests", hi: "कीट बढ़ाना" }, correct: false },
-                { answer: { en: "Maximize Water Usage", hi: "पानी का उपयोग अधिकतम करना" }, correct: false },
-                { answer: { en: "Reduce Crop Diversity", hi: "फसल विविधता कम करना" }, correct: false }
-            ]
-        },
-        {
-            question: {
-                en: "What is hydroponics?",
-                hi: "हाइड्रोपोनिक्स क्या है?"
-            },
-            options: [
-                { answer: { en: "Growing plants in soil", hi: "मिट्टी में पौधे उगाना" }, correct: false },
-                { answer: { en: "Growing plants in water", hi: "पानी में पौधे उगाना" }, correct: true },
-                { answer: { en: "Fertilizing soil", hi: "मिट्टी में उर्वरक डालना" }, correct: false },
-                { answer: { en: "Planting seeds", hi: "बीज बोना" }, correct: false }
-            ]
-        }
-    ];
-
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let timer;
-    const totalQuestions = questions.length;
-    let answers = Array(totalQuestions).fill(null); // Stores user answers
-
-    function startTimer(duration) {
-        let time = duration;
-        timer = setInterval(function() {
-            let seconds = parseInt(time, 10);
-            document.getElementById('time').textContent = seconds;
-            if (--time < 0) {
-                clearInterval(timer);
-                submitTest();
+            {
+                question: "Who wrote 'Romeo and Juliet'?",
+                options: ["Charles Dickens", "William Shakespeare", "Mark Twain", "Ernest Hemingway"],
+                answer: "William Shakespeare"
             }
-        }, 1000);
-    }
+        ];
 
-    function loadQuestion() {
-        const questionObj = questions[currentQuestionIndex];
-        document.getElementById('questionText').innerText = questionObj.question.en + " / " + questionObj.question.hi;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(questions.length).fill(null); // Track user answers
 
-        const optionsHTML = questionObj.options.map((option, index) => 
-            `<li onclick="selectOption(${index})">${option.answer.en} / ${option.answer.hi}</li>`
-        ).join('');
-        
-        document.getElementById('options').innerHTML = optionsHTML;
-        document.getElementById('currentQuestion').innerText = currentQuestionIndex + 1;
-        
-        updateNavigation();
-        resetOptionStyles();
-    }
+        function loadQuestion() {
+            const questionText = document.getElementById("questionText");
+            const optionsDiv = document.getElementById("options");
+            const prevBtn = document.getElementById("prevBtn");
+            const nextBtn = document.getElementById("nextBtn");
+            const scoreDiv = document.getElementById("score");
 
-    function selectOption(index) {
-        if (answers[currentQuestionIndex] !== null) return; // Prevent re-selection
-        answers[currentQuestionIndex] = index; // Store user answer
-        const selectedOption = document.querySelectorAll('.options li')[index];
-        selectedOption.classList.add('selected'); // Highlight the selected option
-        
-        // Check if the selected option is correct
-        if (questions[currentQuestionIndex].options[index].correct) {
-            score++; // Increment score for the correct answer
-        }
-    }
+            // Update question text
+            questionText.innerText = `Question ${currentQuestionIndex + 1}: ${questions[currentQuestionIndex].question}`;
 
-    function prevQuestion() {
-        if (currentQuestionIndex > 0) {
-            currentQuestionIndex--;
-            loadQuestion();
-        }
-    }
+            // Reset options
+            optionsDiv.innerHTML = "";
 
-    function nextQuestion() {
-        if (currentQuestionIndex < totalQuestions - 1) {
-            currentQuestionIndex++;
-            loadQuestion();
-        }
-    }
-
-    function skipQuestion() {
-        if (currentQuestionIndex < totalQuestions - 1) {
-            currentQuestionIndex++;
-            loadQuestion();
-        }
-    }
-
-    function updateNavigation() {
-        const navQuestions = document.getElementById('navQuestions');
-        navQuestions.innerHTML = '';
-        answers.forEach((ans, index) => {
-            const className = ans !== null ? 'answered' : 'not-answered';
-            navQuestions.innerHTML += `<div class="nav-question ${className}" onclick="goToQuestion(${index})">Q${index + 1}</div>`;
-        });
-    }
-
-    function goToQuestion(index) {
-        currentQuestionIndex = index;
-        loadQuestion();
-    }
-
-    function toggleNav() {
-        const panel = document.getElementById('navPanel');
-        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function resetOptionStyles() {
-        const optionElems = document.querySelectorAll('.options li');
-        optionElems.forEach(elem => {
-            elem.classList.remove('selected', 'correct', 'wrong'); // Reset styles
-        });
-    }
-
-    function submitTest() {
-        clearInterval(timer);
-        document.querySelector('.container').style.display = 'none';
-        document.getElementById('resultPage').style.display = 'block';
-
-        let resultContent = ''; // Change from list to structured questions and options
-
-        // Display total score at the top
-        resultContent += `<div class="score">Total Score: ${score} / ${totalQuestions}</div>`;
-
-        questions.forEach((item, index) => {
-            const userOption = answers[index];
-            const correctOption = item.options.findIndex(option => option.correct);
-            
-            resultContent += `<div class="question">
-                <h3>${item.question.en} / ${item.question.hi}</h3>
-                <div class="options">`;
-                
-            item.options.forEach((option, optIndex) => {
-                let optionClass = '';
-                if (optIndex === correctOption) {
-                    optionClass = 'correct'; // Highlight the actual correct answer
-                } 
-                if (optIndex === userOption) {
-                    if (userOption !== correctOption) {
-                        optionClass = 'wrong'; // Highlight user's wrong answer
-                    } else {
-                        optionClass = 'correct'; // Highlight user's correct answer
-                    }
+            // Load options
+            questions[currentQuestionIndex].options.forEach((option, index) => {
+                const optionButton = document.createElement("button");
+                optionButton.innerText = option;
+                optionButton.classList.add("option-button");
+                if (userAnswers[currentQuestionIndex] === option) {
+                    optionButton.classList.add("selected"); // Highlight selected answer
                 }
-                resultContent += `<div class="${optionClass}" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin: 10px 0;">
-                    ${option.answer.en} / ${option.answer.hi}
-                </div>`;
+                optionButton.onclick = () => selectAnswer(option);
+                optionsDiv.appendChild(optionButton);
             });
-            resultContent += `</div></div>`;
-        });
-        
-        document.getElementById('resultContent').innerHTML = resultContent;
-    }
 
-    function restartTest() {
-        currentQuestionIndex = 0;
-        score = 0;
-        answers.fill(null); // Reset answers
-        document.querySelector('.container').style.display = 'block';
-        document.getElementById('resultPage').style.display = 'none';
-        startTimer(600);
-        loadQuestion();
-    }
+            // Update button states
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = currentQuestionIndex === questions.length - 1;
 
-    document.addEventListener('DOMContentLoaded', (event) => {
-        loadQuestion();
-        startTimer(600);
-    });
-</script>
+            // Update score
+            scoreDiv.innerText = `Score: ${score} / ${questions.length}`;
+        }
 
+        function selectAnswer(selectedOption) {
+            // Deselect all options
+            const optionButtons = document.querySelectorAll(".option-button");
+            optionButtons.forEach(button => button.classList.remove("selected"));
+
+            // Select the clicked option
+            const selectedButton = Array.from(optionButtons).find(button => button.innerText === selectedOption);
+            selectedButton.classList.add("selected");
+
+            // Update user's answer and score
+            userAnswers[currentQuestionIndex] = selectedOption;
+            if (selectedOption === questions[currentQuestionIndex].answer) {
+                score++;
+            }
+            document.getElementById("score").innerText = `Score: ${score} / ${questions.length}`;
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function submitTest() {
+            const testContainer = document.querySelector(".test-container");
+            const resultContainer = document.getElementById("resultContainer");
+            const resultDetails = document.getElementById("resultDetails");
+
+            // Hide test container and show result container
+            testContainer.style.display = "none";
+            resultContainer.style.display = "block";
+
+            // Display total score
+            resultDetails.innerHTML = `<p><strong>Your Score: ${score} / ${questions.length}</strong></p>`;
+
+            // Display detailed results for each question
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === question.answer;
+
+                resultDetails.innerHTML += `
+                    <div class="result-item">
+                        <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
+                        <p><strong>Your Answer:</strong> <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer || "Not answered"}</span></p>
+                        <p><strong>Correct Answer:</strong> <span class="correct">${question.answer}</span></p>
+                    </div>
+                `;
+            });
+        }
+
+        // Navigation functions
+        function goToHomePage() {
+            alert("Redirecting to Home Page...");
+            // Replace with actual home page URL or logic
+            window.location.href = "index.html"; // Example home page URL
+        }
+
+        function goToDailyTestPage() {
+            alert("Redirecting to Daily Test Page...");
+            // Replace with actual test page URL or logic
+            window.location.href = "test.html"; // Example test page URL
+        }
+
+        // Load the first question when the page loads
+        document.addEventListener("DOMContentLoaded", loadQuestion);
+    </script>
 </body>
 </html>
