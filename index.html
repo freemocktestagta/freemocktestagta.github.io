@@ -13,7 +13,7 @@
         <nav>
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#">Free Test</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Free Notes</a></li>
@@ -27,12 +27,12 @@
     <section class="test-categories">
         <h2>Choose a Test Category:</h2>
         <div class="categories">
-            <button class="category">Daily Test</button>
-            <button class="category">Mini Tests</button>
-            <button class="category">Full Test</button>
-            <button class="category">UP GK Test</button>
-            <button class="category">Agriculture Test</button>
-            <button class="category">Computer Test</button>
+            <a href="daily-test.html" class="category">Daily Test</a>
+            <a href="mini-tests.html" class="category">Mini Tests</a>
+            <a href="full-test.html" class="category">Full Test</a>
+            <a href="up-gk-test.html" class="category">UP GK Test</a>
+            <a href="agriculture-test.html" class="category">Agriculture Test</a>
+            <a href="computer-test.html" class="category">Computer Test</a>
         </div>
     </section>
     <footer>
@@ -98,6 +98,8 @@
             cursor: pointer;
             transition: 0.3s;
             border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
         }
         .category:hover {
             background: #002b5e;
