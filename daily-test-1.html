@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Test 1 - Testro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Daily Test 1 - Testro</h1>
+        <nav>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="daily-test.html">Daily Tests</a></li>
+                <li><a href="#">Free Test</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Free Notes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="test-container">
+        <h2>Daily Test 1</h2>
+        <div id="test">
+            <p id="question"></p>
+            <div id="options"></div>
+            <button onclick="prevQuestion()">Previous</button>
+            <button onclick="nextQuestion()">Next</button>
+            <button onclick="submitTest()">Submit</button>
+        </div>
+        <div id="result" style="display: none;">
+            <h3>Your Score: <span id="score"></span>/10</h3>
+            <div id="answer-review"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px 0;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .test-container {
+            padding: 20px;
+            background: white;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            border: none;
+            background: #004080;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #002b5e;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                color: white;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #004080;
+                position: absolute;
+                width: 100%;
+                top: 50px;
+                left: 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+
+</body>
+</html>
