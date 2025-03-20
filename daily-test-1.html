@@ -10,72 +10,36 @@
     <header>
         <h1>Daily Test 1 - Testro</h1>
         <nav>
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="daily-test.html">Back to Daily Tests</a></li>
             </ul>
         </nav>
     </header>
-    <section class="hero">
+
+    <section class="test-container">
         <h2>Daily Test 1</h2>
         <p>Answer the following 10 questions and test your knowledge.</p>
-    </section>
-    <section class="test-container">
+        
         <div id="question-container">
             <p id="question-text"></p>
             <div id="options"></div>
         </div>
+
         <div class="buttons">
             <button onclick="prevQuestion()">Previous</button>
             <button onclick="nextQuestion()">Next</button>
             <button onclick="skipQuestion()">Skip</button>
         </div>
+
         <button onclick="submitTest()">Submit</button>
         <div id="result"></div>
     </section>
+
     <footer>
         <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
     </footer>
-    <script>
-        const questions = [
-            { q: "What is the main component of plant cell walls? (पौधों की कोशिका भित्ति का मुख्य घटक क्या है?)", options: ["Cellulose", "Starch", "Protein", "Lipids"], answer: "Cellulose" },
-            { q: "Which nutrient is most important for root development? (मूल विकास के लिए सबसे महत्वपूर्ण पोषक तत्व कौन सा है?)", options: ["Nitrogen", "Phosphorus", "Potassium", "Calcium"], answer: "Phosphorus" }
-        ];
-        let currentQuestion = 0;
 
-        function loadQuestion() {
-            document.getElementById("question-text").innerHTML = questions[currentQuestion].q;
-            const optionsDiv = document.getElementById("options");
-            optionsDiv.innerHTML = "";
-            questions[currentQuestion].options.forEach(option => {
-                optionsDiv.innerHTML += `<input type='radio' name='q${currentQuestion}' value='${option}'> ${option}<br>`;
-            });
-        }
-
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                loadQuestion();
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                loadQuestion();
-            }
-        }
-
-        function skipQuestion() {
-            nextQuestion();
-        }
-
-        function submitTest() {
-            document.getElementById("result").innerHTML = "Test submitted! Answers will be reviewed.";
-        }
-
-        loadQuestion();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
