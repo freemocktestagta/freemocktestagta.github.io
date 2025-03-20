@@ -53,6 +53,18 @@
         .options li:hover {
             background-color: #f0f0f0;
         }
+        .options li.selected {
+            background-color: #28A745; /* Green for selected option */
+            color: white;
+        }
+        .options li.correct {
+            background-color: #28A745; /* Green for correct answer */
+            color: white;
+        }
+        .options li.wrong {
+            background-color: #DC3545; /* Red for wrong answer */
+            color: white;
+        }
         button {
             background-color: #28A745;
             color: white;
@@ -64,6 +76,12 @@
         }
         .skip {
             background-color: #FFC107;
+        }
+        .navigation-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
         }
         .navigation-panel {
             display: none;
@@ -110,8 +128,8 @@
     <button id="skipBtn" class="skip" onclick="skipQuestion()">Skip</button>
     <button id="submitBtn" onclick="submitTest()">Submit</button>
     
-    <div id="navigationButton" style="display:none;">
-        <button onclick="toggleNav()">&#9776;</button>
+    <div class="navigation-button">
+        <button onclick="toggleNav()">&#9776; Menu</button>
     </div>
     
     <div class="navigation-panel" id="navPanel">
@@ -253,12 +271,12 @@
             ]
         }
     ];
-    
+
     let currentQuestionIndex = 0;
     let score = 0;
     let timer;
     const totalQuestions = questions.length;
-    let answered = Array(totalQuestions).fill(false);
+    let answers = Array(totalQuestions).fill(null); // Stores user answers
 
     function startTimer(duration) {
         let time = duration;
@@ -275,22 +293,27 @@
     function loadQuestion() {
         const questionObj = questions[currentQuestionIndex];
         document.getElementById('questionText').innerText = questionObj.question.en + " / " + questionObj.question.hi;
-        const optionsHTML = questionObj.options.map((option, index) =>
+        
+        const optionsHTML = questionObj.options.map((option, index) => 
             `<li onclick="selectOption(${index})">${option.answer.en} / ${option.answer.hi}</li>`
         ).join('');
+        
         document.getElementById('options').innerHTML = optionsHTML;
         document.getElementById('currentQuestion').innerText = currentQuestionIndex + 1;
-
         updateNavigation();
+        resetOptionStyles();
     }
 
     function selectOption(index) {
-        if (answered[currentQuestionIndex]) return;
-        answered[currentQuestionIndex] = true;
+        if (answers[currentQuestionIndex] !== null) return; // Prevent re-selection
+        answers[currentQuestionIndex] = index; // Store user answer
+        const selectedOption = document.querySelectorAll('.options li')[index];
+        selectedOption.classList.add('selected'); // Highlight the selected option
+        
+        // Check if the selected option is correct
         if (questions[currentQuestionIndex].options[index].correct) {
-            score++;
+            score++; // Increment score for the correct answer
         }
-        loadQuestion();
     }
 
     function prevQuestion() {
@@ -317,8 +340,8 @@
     function updateNavigation() {
         const navQuestions = document.getElementById('navQuestions');
         navQuestions.innerHTML = '';
-        answered.forEach((ans, index) => {
-            navQuestions.innerHTML += `<div class="nav-question ${ans ? 'answered' : 'not-answered'}" onclick="goToQuestion(${index})">Question ${index + 1}</div>`;
+        answers.forEach((ans, index) => {
+            navQuestions.innerHTML += `<div class="nav-question ${ans !== null ? 'answered' : 'not-answered'}" onclick="goToQuestion(${index})">Question ${index + 1}</div>`;
         });
     }
 
@@ -332,6 +355,13 @@
         panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
     }
 
+    function resetOptionStyles() {
+        const optionElems = document.querySelectorAll('.options li');
+        optionElems.forEach(elem => {
+            elem.classList.remove('selected', 'correct', 'wrong'); // Reset styles
+        });
+    }
+
     function submitTest() {
         clearInterval(timer);
         document.querySelector('.container').style.display = 'none';
@@ -339,10 +369,28 @@
 
         let resultContent = '<ul>';
         questions.forEach((item, index) => {
-            const userSelectedAnswer = answered[index] ? item.options.find(opt => opt.correct) : null;
-            const isCorrect = userSelectedAnswer && answered[index] ? 'Correct' : 'Incorrect';
-            resultContent += `<li>${item.question.en} / ${item.question.hi}: Your Answer - ${answered[index] ? item.options.find(opt => opt.correct).answer.en : 'No Answer'} (${isCorrect})</li>`;
+            const userOption = answers[index];
+            const correctOption = item.options.findIndex(option => option.correct);
+            const userAnswer = userOption !== null ? item.options[userOption].answer.en : 'No Answer';
+
+            resultContent += `<li>
+                ${item.question.en} / ${item.question.hi}: Your Answer - ${userAnswer} 
+                <br> Correct Answer: ${item.options[correctOption].answer.en}`;
+                
+            if (userOption === correctOption) {
+                resultContent += ' (Correct)';
+            } else if (userOption !== null) {
+                resultContent += ' (Wrong)';
+            }
+            resultContent += `</li>`;
+
+            // Highlight answers
+            if (userOption !== null) {
+                const userSelectedElem = document.querySelectorAll('.options li')[userOption];
+                userSelectedElem.classList.add(userOption === correctOption ? 'correct' : 'wrong');
+            }
         });
+        
         resultContent += `</ul><strong>Total Score: ${score} / ${totalQuestions}</strong>`;
         document.getElementById('resultContent').innerHTML = resultContent;
     }
@@ -350,7 +398,7 @@
     function restartTest() {
         currentQuestionIndex = 0;
         score = 0;
-        answered = Array(totalQuestions).fill(false);
+        answers.fill(null); // Reset answers
         document.querySelector('.container').style.display = 'block';
         document.getElementById('resultPage').style.display = 'none';
         startTimer(600);
