@@ -117,6 +117,12 @@
         .result {
             display: none;
         }
+        .result h2 {
+            margin: 20px 0;
+        }
+        .result .navigation {
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -155,6 +161,10 @@
 
 <div class="result" id="resultPage">
     <h2>Your Result</h2>
+    <div class="navigation">
+        <a href="index.html" style="text-decoration: none; background-color: #007BFF; color: white; padding: 10px; border-radius: 5px;">Home</a>
+        <a href="daily-test.html" style="margin-left: 10px; text-decoration: none; background-color: #FFD700; color: black; padding: 10px; border-radius: 5px;">Daily Test</a>
+    </div>
     <div id="resultContent"></div>
     <button onclick="restartTest()">Restart Test</button>
 </div>
@@ -380,27 +390,30 @@
         document.querySelector('.container').style.display = 'none';
         document.getElementById('resultPage').style.display = 'block';
 
-        let resultContent = '<ul>';
+        let resultContent = ''; // Change from list to structured questions and options
         questions.forEach((item, index) => {
             const userOption = answers[index];
             const correctOption = item.options.findIndex(option => option.correct);
             
-            resultContent += `<li>
-                ${item.question.en} / ${item.question.hi}:
-                <br> Your Answer: 
-                <span style="color:${userOption === correctOption ? 'green' : 'red'};">${userOption !== null ? item.options[userOption].answer.en : 'No Answer'}</span>
-                <br> Correct Answer: 
-                <span style="color:green;">${item.options[correctOption].answer.en}</span>
-            </li>`;
-
-            // Highlight answers
-            if (userOption !== null) {
-                const userSelectedElem = document.querySelectorAll('.options li')[userOption];
-                userSelectedElem.classList.add(userOption === correctOption ? 'correct' : 'wrong');
-            }
+            resultContent += `<div class="question">
+                <h3>${item.question.en} / ${item.question.hi}</h3>
+                <div class="options">`;
+                
+            item.options.forEach((option, optIndex) => {
+                let optionClass = '';
+                if (optIndex === correctOption) {
+                    optionClass = 'correct'; // Mark correct answer
+                } else if (optIndex === userOption) {
+                    optionClass = 'wrong'; // Mark wrong answer
+                }
+                resultContent += `<div class="${optionClass}" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin: 10px 0;">
+                    ${option.answer.en} / ${option.answer.hi}
+                </div>`;
+            });
+            resultContent += `</div></div>`;
         });
         
-        resultContent += `</ul><strong>Total Score: ${score} / ${totalQuestions}</strong>`;
+        resultContent += `<strong>Total Score: ${score} / ${totalQuestions}</strong>`;
         document.getElementById('resultContent').innerHTML = resultContent;
     }
 
