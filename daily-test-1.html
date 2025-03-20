@@ -123,6 +123,11 @@
         .result .navigation {
             margin: 20px 0;
         }
+        .result .score {
+            font-size: 1.5em;
+            color: #28A745; /* Highlight score in green */
+            margin-bottom: 20px; /* Space below score */
+        }
     </style>
 </head>
 <body>
@@ -391,6 +396,10 @@
         document.getElementById('resultPage').style.display = 'block';
 
         let resultContent = ''; // Change from list to structured questions and options
+
+        // Display total score at the top
+        resultContent += `<div class="score">Total Score: ${score} / ${totalQuestions}</div>`;
+
         questions.forEach((item, index) => {
             const userOption = answers[index];
             const correctOption = item.options.findIndex(option => option.correct);
@@ -402,9 +411,14 @@
             item.options.forEach((option, optIndex) => {
                 let optionClass = '';
                 if (optIndex === correctOption) {
-                    optionClass = 'correct'; // Mark correct answer
-                } else if (optIndex === userOption) {
-                    optionClass = 'wrong'; // Mark wrong answer
+                    optionClass = 'correct'; // Highlight the actual correct answer
+                } 
+                if (optIndex === userOption) {
+                    if (userOption !== correctOption) {
+                        optionClass = 'wrong'; // Highlight user's wrong answer
+                    } else {
+                        optionClass = 'correct'; // Highlight user's correct answer
+                    }
                 }
                 resultContent += `<div class="${optionClass}" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin: 10px 0;">
                     ${option.answer.en} / ${option.answer.hi}
@@ -413,7 +427,6 @@
             resultContent += `</div></div>`;
         });
         
-        resultContent += `<strong>Total Score: ${score} / ${totalQuestions}</strong>`;
         document.getElementById('resultContent').innerHTML = resultContent;
     }
 
