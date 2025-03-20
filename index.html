@@ -3,83 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testro - Home</title>
-    <link rel="stylesheet" href="styles.css"> <!-- External CSS for styles -->
+    <title>Testro - Free Agriculture Mock Tests</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Testro - Free Agriculture Mock Tests</h1>
+        <nav>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="daily-test.html">Free Test</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="free-notes.html">Free Notes</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h2>Welcome to Testro!</h2>
+        <p>Your one-stop destination for free agriculture mock tests. Enhance your knowledge and boost your preparation with our structured and insightful tests. <br>
+        <strong>आपका टेस्टरो में स्वागत है! यह कृषि के लिए मुफ्त मॉक परीक्षणों का आपका वन-स्टॉप गंतव्य है।</strong></p>
+    </section>
+
+    <section class="test-categories">
+        <h2>Choose a Test Category:</h2>
+        <div class="categories">
+            <a href="daily-test.html" class="category">Daily Test</a>
+            <a href="mini-tests.html" class="category">Mini Tests</a>
+            <a href="full-test.html" class="category">Full Test</a>
+            <a href="up-gk-test.html" class="category">UP GK Test</a>
+            <a href="agriculture-test.html" class="category">Agriculture Test</a>
+            <a href="computer-test.html" class="category">Computer Test</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+    </footer>
+    
+    <script>
+        gsap.from("h1", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
+        gsap.from(".hero h2, .hero p", { duration: 1, opacity: 0, delay: 0.5, stagger: 0.2 });
+        gsap.to(".category", { duration: 1, opacity: 1, scale: 1, stagger: 0.2, delay: 1 });
+
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+    </script>
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F8F9FA;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            text-align: center;
+            background: #f4f4f4;
         }
         header {
-            background-color: #007BFF;
+            background: #004080;
             color: white;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: relative;
         }
-        h1 {
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .hero {
+            padding: 50px 20px;
+            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
+            color: #fff;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .hero h2 {
+            font-size: 2.5em;
             margin: 0;
         }
-        .button-container {
+        .hero p {
+            font-size: 1.2em;
+        }
+        .test-categories {
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .categories {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 50px;
+            gap: 15px;
+            padding: 20px;
         }
-        .button {
-            background-color: #28A745;
-            color: white;
-            padding: 15px 30px;
-            margin: 10px;
+        .category {
+            background: #004080;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 15px 20px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: 0.3s;
+            border-radius: 10px;
             text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
-        .button:hover {
-            background-color: #218838;
+        .category:hover {
+            background: #002b5e;
             transform: scale(1.05);
         }
         footer {
-            margin-top: auto;
-            padding: 20px;
-            width: 100%;
-            text-align: center;
-            background-color: #007BFF;
+            background: #004080;
             color: white;
-            position: relative;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #004080;
+                position: absolute;
+                width: 100%;
+                top: 50px;
+                left: 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                display: block;
+                margin: 10px 0;
+            }
+            .categories {
+                flex-direction: column;
+            }
         }
     </style>
-</head>
-<body>
-
-<header>
-    <h1>Welcome to Testro</h1>
-    <p>Your one-stop platform for test preparation</p>
-</header>
-
-<div class="button-container">
-    <a href="daily-test.html" class="button">Daily Tests</a>
-    <a href="mock-tests.html" class="button">Mock Tests</a>
-    <a href="courses.html" class="button">Courses</a>
-    <a href="rankings.html" class="button">Rankings</a>
-    <a href="resources.html" class="button">Study Resources</a>
-    <a href="about.html" class="button">About Us</a>
-</div>
-
-<footer>
-    <p>&copy; 2023 Testro. All rights reserved.</p>
-</footer>
-
 </body>
 </html>
