@@ -40,7 +40,7 @@
     <script>
         gsap.from("h1", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
         gsap.from(".hero h2, .hero p", { duration: 1, opacity: 0, delay: 0.5, stagger: 0.2 });
-        gsap.from(".category", { duration: 1, opacity: 0, scale: 0.8, stagger: 0.2, delay: 1 });
+        gsap.to(".category", { duration: 1, opacity: 1, scale: 1, stagger: 0.2, delay: 1 });
     </script>
     <style>
         .category {
