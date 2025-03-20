@@ -6,152 +6,6 @@
     <title>Testro - Free Agriculture Mock Tests</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background: #f4f4f4;
-        }
-        header {
-            background: #004080;
-            color: white;
-            padding: 15px 0;
-            position: relative;
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 15px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #FFD700; /* Gold color on hover */
-        }
-        .hero {
-            padding: 50px 20px;
-            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
-            color: #fff;
-            position: relative;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            overflow: hidden;
-        }
-        .hero h2 {
-            font-size: 2.5em;
-            margin: 0;
-            opacity: 0;
-            transform: translateY(-50px);
-        }
-        .hero p {
-            font-size: 1.2em;
-            opacity: 0;
-            transform: translateY(-50px);
-        }
-        .test-categories {
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            max-width: 800px;
-            animation: fadeIn 1s ease forwards;
-            opacity: 0;
-        }
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-        }
-        .category {
-            background: #004080;
-            color: #ffffff;
-            font-weight: bold;
-            padding: 15px 20px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 10px;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            transform: translateY(10px);
-            opacity: 0;
-        }
-        .category:hover {
-            background: #002b5e;
-            transform: scale(1.05) translateY(0); /* Slight scale up */
-        }
-        footer {
-            background: #004080;
-            color: white;
-            padding: 20px;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #FFD700;
-            color: #004080;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: none; /* Initially hidden */
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background: #004080;
-                position: absolute;
-                width: 100%;
-                top: 50px;
-                left: 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links li {
-                display: block;
-                margin: 10px 0;
-            }
-            .categories {
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -188,31 +42,128 @@
     <footer>
         <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
     </footer>
-
-    <a href="#top" class="back-to-top" id="backToTop()">Back to Top</a>
     
     <script>
         gsap.from("h1", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
-        gsap.from(".hero h2", { duration: 1, opacity: 0, delay: 0.5, y: -50 });
-        gsap.from(".hero p", { duration: 1, opacity: 0, delay: 0.7, y: -50 });
-        const categories = document.querySelectorAll(".category");
-        categories.forEach((category, index) => {
-            gsap.from(category, { duration: 1, opacity: 0, delay: 1 + index * 0.2, y: 10 });
-        });
+        gsap.from(".hero h2, .hero p", { duration: 1, opacity: 0, delay: 0.5, stagger: 0.2 });
+        gsap.to(".category", { duration: 1, opacity: 1, scale: 1, stagger: 0.2, delay: 1 });
 
         function toggleMenu() {
             document.querySelector(".nav-links").classList.toggle("active");
         }
-
-        // Back to Top button functionality
-        const backToTopButton = document.getElementById("backToTop");
-        window.onscroll = function() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                backToTopButton.style.display = "block";
-            } else {
-                backToTopButton.style.display = "none";
-            }
-        };
     </script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px 0;
+            position: relative;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .hero {
+            padding: 50px 20px;
+            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
+            color: #fff;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        .test-categories {
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        .category {
+            background: #004080;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .category:hover {
+            background: #002b5e;
+            transform: scale(1.05);
+        }
+        footer {
+            background: #004080;
+            color: white;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #004080;
+                position: absolute;
+                width: 100%;
+                top: 50px;
+                left: 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                display: block;
+                margin: 10px 0;
+            }
+            .categories {
+                flex-direction: column;
+            }
+        }
+    </style>
 </body>
 </html>
