@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1 class="fade-in">Testro - Free Agriculture Mock Tests</h1>
+        <h1>Testro - Free Agriculture Mock Tests</h1>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -19,31 +19,28 @@
             </ul>
         </nav>
     </header>
-    
-    <section class="intro">
+    <section class="hero">
         <h2>Welcome to Testro!</h2>
         <p>Your one-stop destination for free agriculture mock tests. Enhance your knowledge and boost your preparation with our structured and insightful tests.</p>
     </section>
-    
     <section class="test-categories">
         <h2>Choose a Test Category:</h2>
         <div class="categories">
-            <div class="category-card">Daily Test</div>
-            <div class="category-card">Mini Tests</div>
-            <div class="category-card">Full Test</div>
-            <div class="category-card">UP GK Test</div>
-            <div class="category-card">Agriculture Test</div>
-            <div class="category-card">Computer Test</div>
+            <button class="category">Daily Test</button>
+            <button class="category">Mini Tests</button>
+            <button class="category">Full Test</button>
+            <button class="category">UP GK Test</button>
+            <button class="category">Agriculture Test</button>
+            <button class="category">Computer Test</button>
         </div>
     </section>
-
     <footer>
         <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
     </footer>
-
     <script>
-        gsap.from(".fade-in", { opacity: 0, duration: 1.5, y: -20, ease: "power2.out" });
-        gsap.from(".category-card", { opacity: 0, y: 30, duration: 1, stagger: 0.2 });
+        gsap.from("h1", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
+        gsap.from(".hero h2, .hero p", { duration: 1, opacity: 0, delay: 0.5, stagger: 0.2 });
+        gsap.from(".category", { duration: 1, opacity: 0, scale: 0.8, stagger: 0.2, delay: 1 });
     </script>
 </body>
 </html>
