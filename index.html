@@ -4,77 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testro - Free Agriculture Mock Tests</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-color: #28a745;
-            padding: 15px;
-            color: white;
-            font-size: 24px;
-        }
-        .menu {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 10px;
-        }
-        .menu a {
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .menu a:hover {
-            background-color: #555;
-        }
-        .container {
-            padding: 20px;
-        }
-        .test-btn {
-            display: block;
-            width: 80%;
-            max-width: 300px;
-            margin: 10px auto;
-            padding: 15px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-        .test-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-
-    <div class="header">Testro - Free Agriculture Mock Tests</div>
-
-    <div class="menu">
-        <a href="#">Home</a>
-        <a href="#">Free Test</a>
-        <a href="#">About</a>
-        <a href="#">Free Notes</a>
-    </div>
-
-    <div class="container">
+    <header>
+        <h1 class="fade-in">Testro - Free Agriculture Mock Tests</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Free Test</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Free Notes</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="intro">
         <h2>Welcome to Testro!</h2>
-        <p>Choose a test category below and start practicing:</p>
+        <p>Your one-stop destination for free agriculture mock tests. Enhance your knowledge and boost your preparation with our structured and insightful tests.</p>
+    </section>
+    
+    <section class="test-categories">
+        <h2>Choose a Test Category:</h2>
+        <div class="categories">
+            <div class="category-card">Daily Test</div>
+            <div class="category-card">Mini Tests</div>
+            <div class="category-card">Full Test</div>
+            <div class="category-card">UP GK Test</div>
+            <div class="category-card">Agriculture Test</div>
+            <div class="category-card">Computer Test</div>
+        </div>
+    </section>
 
-        <a class="test-btn" href="#">Daily Test</a>
-        <a class="test-btn" href="#">Mini Tests</a>
-        <a class="test-btn" href="#">Full Test</a>
-        <a class="test-btn" href="#">UP GK Test</a>
-        <a class="test-btn" href="#">Agriculture Test</a>
-        <a class="test-btn" href="#">Computer Test</a>
-    </div>
+    <footer>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+    </footer>
 
+    <script>
+        gsap.from(".fade-in", { opacity: 0, duration: 1.5, y: -20, ease: "power2.out" });
+        gsap.from(".category-card", { opacity: 0, y: 30, duration: 1, stagger: 0.2 });
+    </script>
 </body>
 </html>
