@@ -13,39 +13,107 @@
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="daily-test.html">Daily Tests</a></li>
-                <li><a href="#">Free Test</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Free Notes</a></li>
+                <li><a href="daily-test.html">Back to Daily Tests</a></li>
             </ul>
         </nav>
     </header>
+    
+    <section class="hero">
+        <h2>Daily Test 1</h2>
+        <p>Answer the following questions to test your knowledge.</p>
+    </section>
 
     <section class="test-container">
-        <h2>Daily Test 1</h2>
-        <div id="test">
-            <p id="question"></p>
+        <div id="question-container">
+            <p id="question-text"></p>
             <div id="options"></div>
+        </div>
+        <div class="buttons">
             <button onclick="prevQuestion()">Previous</button>
             <button onclick="nextQuestion()">Next</button>
             <button onclick="submitTest()">Submit</button>
         </div>
-        <div id="result" style="display: none;">
-            <h3>Your Score: <span id="score"></span>/10</h3>
-            <div id="answer-review"></div>
-        </div>
+        <div id="result"></div>
     </section>
 
     <footer>
         <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
     </footer>
 
-    <script src="script.js"></script>
-    
     <script>
-        function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
+        const questions = [
+            { 
+                q: "What is the main component of plant cell walls?", 
+                options: ["Cellulose", "Starch", "Protein", "Lipids"], 
+                answer: "Cellulose" 
+            },
+            { 
+                q: "Which nutrient is most important for root development?", 
+                options: ["Nitrogen", "Phosphorus", "Potassium", "Calcium"], 
+                answer: "Phosphorus" 
+            },
+            { 
+                q: "Which gas is essential for photosynthesis?", 
+                options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], 
+                answer: "Carbon Dioxide" 
+            }
+        ];
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+        function loadQuestion() {
+            const questionText = document.getElementById("question-text");
+            const optionsDiv = document.getElementById("options");
+
+            questionText.innerHTML = questions[currentQuestion].q;
+            optionsDiv.innerHTML = "";
+
+            questions[currentQuestion].options.forEach(option => {
+                optionsDiv.innerHTML += `<label>
+                    <input type="radio" name="q" value="${option}" onclick="selectAnswer('${option}')"> ${option}
+                </label><br>`;
+            });
         }
+
+        function selectAnswer(answer) {
+            userAnswers[currentQuestion] = answer;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        function submitTest() {
+            let score = 0;
+            let resultHTML = "<h3>Test Results:</h3>";
+
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index] || "No Answer";
+                const correct = userAnswer === question.answer;
+                resultHTML += `<p>
+                    <strong>Q${index + 1}: ${question.q}</strong><br>
+                    Your Answer: <span style="color: ${correct ? 'green' : 'red'}">${userAnswer}</span><br>
+                    Correct Answer: <span style="color: green">${question.answer}</span>
+                </p>`;
+                if (correct) score++;
+            });
+
+            resultHTML += `<h3>Your Score: ${score}/${questions.length}</h3>`;
+            document.getElementById("result").innerHTML = resultHTML;
+        }
+
+        loadQuestion();
     </script>
 
     <style>
@@ -79,32 +147,39 @@
             text-decoration: none;
             font-size: 18px;
         }
+        .hero {
+            padding: 20px;
+            background: #ffffff;
+        }
         .test-container {
             padding: 20px;
             background: white;
             margin: 20px auto;
             width: 80%;
             max-width: 600px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
         }
-        #options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .buttons {
+            margin-top: 20px;
         }
         button {
-            margin-top: 15px;
-            padding: 10px;
-            border: none;
             background: #004080;
             color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
             cursor: pointer;
             border-radius: 5px;
-            font-size: 16px;
         }
         button:hover {
             background: #002b5e;
+        }
+        #result {
+            margin-top: 20px;
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
         }
         @media (max-width: 768px) {
             .menu-toggle {
@@ -132,6 +207,5 @@
             }
         }
     </style>
-
 </body>
 </html>
