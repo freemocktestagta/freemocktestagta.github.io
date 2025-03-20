@@ -11,7 +11,8 @@
     <header>
         <h1>Testro - Free Agriculture Mock Tests</h1>
         <nav>
-            <ul>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Free Test</a></li>
                 <li><a href="#">About</a></li>
@@ -41,12 +42,93 @@
         gsap.from("h1", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
         gsap.from(".hero h2, .hero p", { duration: 1, opacity: 0, delay: 0.5, stagger: 0.2 });
         gsap.to(".category", { duration: 1, opacity: 1, scale: 1, stagger: 0.2, delay: 1 });
+        
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
     </script>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px 0;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .hero {
+            padding: 20px;
+            background: #ffffff;
+        }
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
         .category {
-            background: #004080; /* Darker shade for contrast */
-            color: #ffffff; /* White text for readability */
+            background: #004080;
+            color: #ffffff;
             font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+        .category:hover {
+            background: #002b5e;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                color: white;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #004080;
+                position: absolute;
+                width: 100%;
+                top: 50px;
+                left: 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                display: block;
+                margin: 10px 0;
+            }
+            .categories {
+                flex-direction: column;
+            }
         }
     </style>
 </body>
