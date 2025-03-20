@@ -4,111 +4,364 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Test 1 - Testro</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
     <style>
-        .test-container { text-align: center; margin: 20px; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        #question-container { font-size: 18px; margin-bottom: 15px; }
-        .option { display: block; margin: 10px 0; padding: 10px; background: #004080; color: white; border-radius: 5px; cursor: pointer; transition: 0.3s; }
-        .option:hover { background: #002b5e; }
-        .buttons button { margin: 10px; padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 5px; }
-        .buttons button:hover { background: #218838; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F8F9FA;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+        }
+        .timer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+        }
+        .question-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 20px;
+        }
+        .question {
+            margin: 40px 0;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+            cursor: pointer;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .options li:hover {
+            background-color: #f0f0f0;
+        }
+        button {
+            background-color: #28A745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .skip {
+            background-color: #FFC107;
+        }
+        .navigation-panel {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+        }
+        .nav-question {
+            cursor: pointer;
+        }
+        .nav-question.answered {
+            color: green;
+        }
+        .nav-question.not-answered {
+            color: gray;
+        }
+        .result {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Daily Test 1 - Testro</h1>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="daily-test.html">Back to Daily Tests</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="test-container">
-        <div id="timer">Time Left: <span id="time">10:00</span></div>
-        <div id="question-container">
-            <p id="question-number"></p>
-            <p id="question-text"></p>
-            <div id="options"></div>
-        </div>
-        <div class="buttons">
-            <button onclick="prevQuestion()">Previous</button>
-            <button onclick="nextQuestion()">Next</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="submitTest()">Submit</button>
-        </div>
-        <div id="result"></div>
-    </section>
-    <footer>
-        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
-    </footer>
-    <script>
-        const questions = [
-            { q: "What is the main component of plant cell walls? (पौधों की कोशिका भित्ति का मुख्य घटक क्या है?)", options: ["Cellulose", "Starch", "Protein", "Lipids"], answer: "Cellulose" },
-            { q: "Which nutrient is most important for root development? (मूल विकास के लिए सबसे महत्वपूर्ण पोषक तत्व कौन सा है?)", options: ["Nitrogen", "Phosphorus", "Potassium", "Calcium"], answer: "Phosphorus" }
-        ];
-        let currentQuestion = 0;
-        let timeLeft = 600;
-        
-        function loadQuestion() {
-            document.getElementById("question-number").innerHTML = `Question ${currentQuestion + 1} of ${questions.length}`;
-            document.getElementById("question-text").innerHTML = questions[currentQuestion].q;
-            const optionsDiv = document.getElementById("options");
-            optionsDiv.innerHTML = "";
-            questions[currentQuestion].options.forEach(option => {
-                optionsDiv.innerHTML += `<div class='option' onclick='selectOption(this)'>${option}</div>`;
-            });
+
+<header>
+    <h1>Testro - Free Agriculture Mock Tests</h1>
+</header>
+
+<div class="container">
+    <div class="timer">Time Left: <span id="time">600</span> seconds</div>
+    <div class="question-number">Question <span id="currentQuestion">1</span>/10</div>
+    
+    <div class="question">
+        <div id="questionText"></div>
+        <ul id="options" class="options"></ul>
+    </div>
+
+    <button id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+    <button id="skipBtn" class="skip" onclick="skipQuestion()">Skip</button>
+    <button id="submitBtn" onclick="submitTest()">Submit</button>
+    
+    <div id="navigationButton" style="display:none;">
+        <button onclick="toggleNav()">&#9776;</button>
+    </div>
+    
+    <div class="navigation-panel" id="navPanel">
+        <h2>Questions</h2>
+        <div id="navQuestions"></div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Testro</p>
+</footer>
+
+<div class="result" id="resultPage">
+    <h2>Your Result</h2>
+    <div id="resultContent"></div>
+    <button onclick="restartTest()">Restart Test</button>
+</div>
+
+<script>
+    const questions = [
+        {
+            question: {
+                en: "What is the capital of India?",
+                hi: "भारत की राजधानी क्या है?"
+            },
+            options: [
+                { answer: { en: "New Delhi", hi: "नई दिल्ली" }, correct: true },
+                { answer: { en: "Mumbai", hi: "मुंबई" }, correct: false },
+                { answer: { en: "Kolkata", hi: "कोलकाता" }, correct: false },
+                { answer: { en: "Chennai", hi: "चेन्नई" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "What is the main staple crop of India?",
+                hi: "भारत की मुख्य खाद्य फसल क्या है?"
+            },
+            options: [
+                { answer: { en: "Wheat", hi: "गेहूँ" }, correct: false },
+                { answer: { en: "Rice", hi: "चावल" }, correct: true },
+                { answer: { en: "Maize", hi: "मक्का" }, correct: false },
+                { answer: { en: "Barley", hi: "जौ" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "Which nutrient is most essential for plant growth?",
+                hi: "पौधों की वृद्धि के लिए सबसे आवश्यक पोषक तत्व कौन सा है?"
+            },
+            options: [
+                { answer: { en: "Nitrogen", hi: "नाइट्रोजन" }, correct: true },
+                { answer: { en: "Phosphorus", hi: "फॉस्फोरस" }, correct: false },
+                { answer: { en: "Potassium", hi: "पोटेशियम" }, correct: false },
+                { answer: { en: "Calcium", hi: "कैल्शियम" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "Which of the following is a leguminous crop?",
+                hi: "निम्नलिखित में से कौन सी फलियाँ की फसल है?"
+            },
+            options: [
+                { answer: { en: "Pulses", hi: "दालें" }, correct: true },
+                { answer: { en: "Rice", hi: "चावल" }, correct: false },
+                { answer: { en: "Barley", hi: "जौ" }, correct: false },
+                { answer: { en: "Wheat", hi: "गेहूँ" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "Which crop is primarily grown for its oil?",
+                hi: "किस फसल को मुख्य रूप से इसके तेल के लिए उगाया जाता है?"
+            },
+            options: [
+                { answer: { en: "Canola", hi: "कैनोला" }, correct: true },
+                { answer: { en: "Corn", hi: "मक्का" }, correct: false },
+                { answer: { en: "Soybean", hi: "सोयाबीन" }, correct: true },
+                { answer: { en: "Barley", hi: "जौ" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "What method is used for soil conservation?",
+                hi: "मिट्टी के संरक्षण के लिए कौन सा तरीका इस्तेमाल किया जाता है?"
+            },
+            options: [
+                { answer: { en: "Contour plowing", hi: "परिपाटी जुताई" }, correct: true },
+                { answer: { en: "Monocropping", hi: "एक फसल प्रणाली" }, correct: false },
+                { answer: { en: "Burning", hi: "जलाना" }, correct: false },
+                { answer: { en: "Overgrazing", hi: "अधिकता से चराना" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "Which plant is used as a green manure crop?",
+                hi: "कौन सा पौधा हरित खाद फसल के रूप में उपयोग किया जाता है?"
+            },
+            options: [
+                { answer: { en: "Mustard", hi: "सरसो" }, correct: false },
+                { answer: { en: "Lentil", hi: "मसूर" }, correct: false },
+                { answer: { en: "Clover", hi: "तीर" }, correct: true },
+                { answer: { en: "Rice", hi: "चावल" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "Which pest is commonly known as the 'cotton bollworm'?",
+                hi: "कौन सा कीट सामान्यतः 'कपास का बॉलवर्म' के रूप में जाना जाता है?"
+            },
+            options: [
+                { answer: { en: "Helicoverpa armigera", hi: "हेलिकोज़ार्मा आर्मिज़ेरा" }, correct: true },
+                { answer: { en: "Locust", hi: "टिड्डी" }, correct: false },
+                { answer: { en: "Termite", hi: "दीमक" }, correct: false },
+                { answer: { en: "Fruit Fly", hi: "फलों की मक्खी" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "What is the main cause of soil erosion?",
+                hi: "मिट्टी के कटाव का मुख्य कारण क्या है?"
+            },
+            options: [
+                { answer: { en: "Water runoff", hi: "पानी का बहाव" }, correct: true },
+                { answer: { en: "Heavy rainfall", hi: "तेज बारिश" }, correct: false },
+                { answer: { en: "Overgrazing", hi: "अधिकता से चराना" }, correct: false },
+                { answer: { en: "Lack of vegetation", hi: "पौधों की कमी" }, correct: false }
+            ]
+        },
+        {
+            question: {
+                en: "Which practice helps in the preservation of biodiversity?",
+                hi: "कौन सा अभ्यास जैव विविधता के संरक्षण में मदद करता है?"
+            },
+            options: [
+                { answer: { en: "Crop rotation", hi: "फसल रोपण" }, correct: true },
+                { answer: { en: "Monoculture", hi: "एकल फसल" }, correct: false },
+                { answer: { en: "Use of pesticides", hi: "कीटनाशकों का उपयोग" }, correct: false },
+                { answer: { en: "Deforestation", hi: "वनों की कटाई" }, correct: false }
+            ]
         }
-        
-        function selectOption(option) {
-            document.querySelectorAll(".option").forEach(opt => opt.style.background = "#004080");
-            option.style.background = "#218838";
-        }
-        
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                loadQuestion();
+    ];
+    
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let timer;
+    const totalQuestions = questions.length;
+    let answered = Array(totalQuestions).fill(false);
+
+    function startTimer(duration) {
+        let time = duration;
+        timer = setInterval(function() {
+            let seconds = parseInt(time, 10);
+            document.getElementById('time').textContent = seconds;
+            if (--time < 0) {
+                clearInterval(timer);
+                submitTest();
             }
+        }, 1000);
+    }
+
+    function loadQuestion() {
+        const questionObj = questions[currentQuestionIndex];
+        document.getElementById('questionText').innerText = questionObj.question.en + " / " + questionObj.question.hi;
+        const optionsHTML = questionObj.options.map((option, index) =>
+            `<li onclick="selectOption(${index})">${option.answer.en} / ${option.answer.hi}</li>`
+        ).join('');
+        document.getElementById('options').innerHTML = optionsHTML;
+        document.getElementById('currentQuestion').innerText = currentQuestionIndex + 1;
+
+        updateNavigation();
+    }
+
+    function selectOption(index) {
+        if (answered[currentQuestionIndex]) return;
+        answered[currentQuestionIndex] = true;
+        if (questions[currentQuestionIndex].options[index].correct) {
+            score++;
         }
-        
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                loadQuestion();
-            }
-        }
-        
-        function skipQuestion() {
-            nextQuestion();
-        }
-        
-        function submitTest() {
-            let correct = 0;
-            questions.forEach((q, index) => {
-                const selected = document.querySelectorAll(".option.selected")[index]?.innerText;
-                if (selected === q.answer) correct++;
-            });
-            document.getElementById("result").innerHTML = `<h3>Test Completed</h3><p>Score: ${correct} / ${questions.length}</p>`;
-        }
-        
-        function startTimer() {
-            const timerElement = document.getElementById("time");
-            const timerInterval = setInterval(() => {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                timerElement.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    submitTest();
-                }
-                timeLeft--;
-            }, 1000);
-        }
-        
         loadQuestion();
-        startTimer();
-    </script>
+    }
+
+    function prevQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+    }
+
+    function nextQuestion() {
+        if (currentQuestionIndex < totalQuestions - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+    }
+
+    function skipQuestion() {
+        if (currentQuestionIndex < totalQuestions - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+    }
+
+    function updateNavigation() {
+        const navQuestions = document.getElementById('navQuestions');
+        navQuestions.innerHTML = '';
+        answered.forEach((ans, index) => {
+            navQuestions.innerHTML += `<div class="nav-question ${ans ? 'answered' : 'not-answered'}" onclick="goToQuestion(${index})">Question ${index + 1}</div>`;
+        });
+    }
+
+    function goToQuestion(index) {
+        currentQuestionIndex = index;
+        loadQuestion();
+    }
+
+    function toggleNav() {
+        const panel = document.getElementById('navPanel');
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function submitTest() {
+        clearInterval(timer);
+        document.querySelector('.container').style.display = 'none';
+        document.getElementById('resultPage').style.display = 'block';
+
+        let resultContent = '<ul>';
+        questions.forEach((item, index) => {
+            const userSelectedAnswer = answered[index] ? item.options.find(opt => opt.correct) : null;
+            const isCorrect = userSelectedAnswer && answered[index] ? 'Correct' : 'Incorrect';
+            resultContent += `<li>${item.question.en} / ${item.question.hi}: Your Answer - ${answered[index] ? item.options.find(opt => opt.correct).answer.en : 'No Answer'} (${isCorrect})</li>`;
+        });
+        resultContent += `</ul><strong>Total Score: ${score} / ${totalQuestions}</strong>`;
+        document.getElementById('resultContent').innerHTML = resultContent;
+    }
+
+    function restartTest() {
+        currentQuestionIndex = 0;
+        score = 0;
+        answered = Array(totalQuestions).fill(false);
+        document.querySelector('.container').style.display = 'block';
+        document.getElementById('resultPage').style.display = 'none';
+        startTimer(600);
+        loadQuestion();
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        loadQuestion();
+        startTimer(600);
+    });
+</script>
+
 </body>
 </html>
