@@ -19,11 +19,18 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="daily-test.html">Daily Test</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="doubt.html">Doubt</a></li> <!-- Changed to Doubt -->
+                    <li><a href="doubt.html">Doubt</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+        <div class="notification-content">
+            <span class="highlight">हर रविवार को नया टेस्ट जोड़ा जाता है! (Every Sunday, new tests are added!)</span>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -63,8 +70,8 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="daily-test.html">Daily Test</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li> <!-- Privacy Policy in footer -->
-                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li> <!-- Added Terms and Conditions -->
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -86,6 +93,15 @@
         function toggleMenu() {
             document.querySelector(".nav-links").classList.toggle("active");
         }
+
+        // GSAP Animation for Notification Bar
+        gsap.to(".notification-content", {
+            x: 50, // Move 50px to the right
+            duration: 2,
+            repeat: -1, // Infinite loop
+            yoyo: true, // Move back and forth
+            ease: "power1.inOut"
+        });
     </script>
 
     <style>
@@ -129,12 +145,37 @@
         }
         .nav-links a {
             text-decoration: none;
-            color: white; /* Changed to white */
-            font-weight: bold; /* Added bold */
+            color: white;
+            font-weight: bold;
             transition: color 0.3s;
         }
         .nav-links a:hover {
-            color: #ffcc00; /* Yellow on hover */
+            color: #ffcc00;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background: #ffcc00; /* Bright yellow background */
+            color: #004080; /* Dark blue text */
+            padding: 15px 0;
+            font-weight: bold;
+            font-size: 18px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .notification-content {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #004080; /* Dark blue background */
+            color: #ffcc00; /* Bright yellow text */
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Added shadow for highlight */
+        }
+        .notification-bar .highlight {
+            font-size: 20px; /* Larger font size */
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Text shadow for better visibility */
         }
 
         /* Hero Section */
@@ -159,17 +200,17 @@
             color: #004080;
         }
         .cta-button {
-            background: #ffcc00; /* Yellow background */
+            background: #ffcc00;
             color: #004080;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             transition: background 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Added shadow for highlight */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
         .cta-button:hover {
-            background: #e6b800; /* Darker yellow on hover */
+            background: #e6b800;
         }
 
         /* Exams Section */
@@ -196,30 +237,30 @@
             border-radius: 10px;
             text-decoration: none;
             transition: transform 0.3s, box-shadow 0.3s;
-            width: 150px; /* Smaller width */
+            width: 150px;
         }
         .exam-tile:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         .exam-logo {
-            width: 50px; /* Smaller logo */
+            width: 50px;
             height: 50px;
             margin-bottom: 10px;
         }
         .exam-tile span {
-            font-size: 16px; /* Smaller font */
+            font-size: 16px;
             font-weight: bold;
         }
 
         /* Specific Style for UPSSSC AG TA Tile */
         .upsssc-tile {
-            background: white; /* Change background to white */
-            color: #004080; /* Change text color to match the theme */
-            border: 1px solid #004080; /* Add a border to make it stand out */
+            background: white;
+            color: #004080;
+            border: 1px solid #004080;
         }
         .upsssc-tile:hover {
-            background: #f0f0f0; /* Light gray background on hover */
+            background: #f0f0f0;
         }
 
         /* Footer */
@@ -265,7 +306,7 @@
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
-            font-size: 24px;
+                font-size: 24px;
                 cursor: pointer;
             }
             .nav-links {
