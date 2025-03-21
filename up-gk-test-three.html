@@ -363,4 +363,148 @@
                 answer: "(d) सरसई झील - आगरा"
             },
             {
-                question: "20. निम्नलिख
+                question: "20. निम्नलिखित में से कौन सही सुमेलित नहीं है?",
+                options: ["(a) गंगा - वाराणसी", "(b) गोमती - सुल्तानपुर", "(c) कोसी - गोरखपुर", "(d) सरयू - अयोध्या"],
+                answer: "(c) कोसी - गोरखपुर"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        let timeLeft = 1200; // 20 minutes in seconds
+
+        // Show notification modal
+        const notificationModal = document.getElementById("notificationModal");
+        const testContainer = document.getElementById("testContainer");
+
+        function startTest() {
+            notificationModal.style.display = "none";
+            testContainer.style.display = "block";
+            loadQuestion();
+            updateTimer();
+        }
+
+        // Load question
+        function loadQuestion() {
+            const questionText = document.getElementById("questionText");
+            const optionsDiv = document.getElementById("options");
+            const progress = document.getElementById("progress");
+
+            // Update question text
+            questionText.innerText = questions[currentQuestionIndex].question;
+
+            // Update options
+            optionsDiv.innerHTML = "";
+            questions[currentQuestionIndex].options.forEach((option, index) => {
+                const optionButton = document.createElement("div");
+                optionButton.classList.add("option-button");
+                optionButton.innerText = option;
+                optionButton.onclick = () => selectAnswer(option);
+                if (userAnswers[currentQuestionIndex] === option) {
+                    optionButton.classList.add("selected");
+                }
+                optionsDiv.appendChild(optionButton);
+            });
+
+            // Update progress bar
+            progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+        }
+
+        // Select answer
+        function selectAnswer(selectedOption) {
+            const optionButtons = document.querySelectorAll(".option-button");
+            optionButtons.forEach(button => button.classList.remove("selected"));
+
+            const selectedButton = Array.from(optionButtons).find(button => button.innerText === selectedOption);
+            selectedButton.classList.add("selected");
+
+            userAnswers[currentQuestionIndex] = selectedOption;
+            if (selectedOption === questions[currentQuestionIndex].answer) {
+                score++;
+            }
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Submit test
+        function submitTest() {
+            const testContainer = document.querySelector(".test-container");
+            const resultContainer = document.getElementById("resultContainer");
+            const resultDetails = document.getElementById("resultDetails");
+
+            testContainer.style.display = "none";
+            resultContainer.style.display = "block";
+
+            // Display total score
+            resultDetails.innerHTML = `
+                <p><strong>Your Score: ${score} / ${questions.length}</strong></p>
+            `;
+
+            // Display detailed results
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === question.answer;
+
+                resultDetails.innerHTML += `
+                    <div class="result-item">
+                        <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
+                        <p><strong>Your Answer:</strong> <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer || "Not answered"}</span></p>
+                        <p><strong>Correct Answer:</strong> <span class="correct">${question.answer}</span></p>
+                    </div>
+                `;
+            });
+        }
+
+        // Restart Test
+        function restartTest() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            timeLeft = 1200;
+
+            const testContainer = document.querySelector(".test-container");
+            const resultContainer = document.getElementById("resultContainer");
+
+            testContainer.style.display = "block";
+            resultContainer.style.display = "none";
+
+            loadQuestion();
+            updateTimer();
+        }
+
+        // Go to Home Page
+        function goToHomePage() {
+            window.location.href = "index.html"; // Replace with your home page URL
+        }
+
+        // Timer
+        function updateTimer() {
+            const timer = document.getElementById("timer");
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timer.innerText = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (timeLeft === 0) {
+                submitTest();
+            } else {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
