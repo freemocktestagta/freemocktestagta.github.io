@@ -5,8 +5,210 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Test - Testro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #004080; /* Main page color */
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffcc00; /* Main page hover color */
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 20px;
+            background: #004080; /* Main page color */
+            color: white;
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .hero p {
+            font-size: 1.2em; /* Smaller font size for Hindi intro */
+            margin: 20px 0;
+            font-style: italic;
+            color: white; /* White color for Hindi text */
+        }
+
+        /* Daily Test Section */
+        .daily-test-section {
+            padding: 40px 20px;
+            background: white;
+            text-align: center;
+        }
+        .daily-test-section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #004080; /* Dark blue text */
+        }
+        .test-tiles {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-tile {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .test-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .test-tile h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #004080; /* Dark blue text */
+        }
+        .test-tile p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .test-tile a {
+            display: inline-block;
+            background: #004080; /* Dark blue background */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .test-tile a:hover {
+            background: #003366; /* Darker shade for hover */
+        }
+
+        /* Footer */
+        footer {
+            background: #004080; /* Main page color */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-section {
+            text-align: left;
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+        }
+        .footer-section a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+        .footer-section a:hover {
+            color: #ffcc00; /* Main page hover color */
+        }
+        .social-links a {
+            margin: 0 10px;
+            font-size: 20px;
+            color: white;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #ffcc00; /* Main page hover color */
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #004080; /* Main page color */
+                position: absolute;
+                width: 100%;
+                top: 60px;
+                left: 0;
+                padding: 10px 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+            .test-tile {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header with Navigation -->
@@ -19,7 +221,6 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="daily-test.html">Daily Test</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="doubt.html">Doubt</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,30 +230,38 @@
     <section class="hero">
         <div class="hero-content">
             <h2>Daily Test</h2>
-            <p>Practice new questions every day to improve your skills and stay prepared.</p>
+            <p>"रोजाना नए प्रश्नों का अभ्यास करें और अपनी तैयारी को मजबूत बनाएं!"</p>
         </div>
     </section>
 
-    <!-- Test List Section -->
-    <section class="exams-section">
+    <!-- Daily Test Section -->
+    <section class="daily-test-section">
         <h2>Available Daily Tests</h2>
-        <div class="exams-container">
-            <a href="daily-test-1.html" class="exam-tile">
-                <i class="fas fa-calendar-day"></i>
-                <span>Daily Test 1</span>
-            </a>
-            <a href="daily-test-2.html" class="exam-tile">
-                <i class="fas fa-calendar-day"></i>
-                <span>Daily Test 2</span>
-            </a>
-            <a href="daily-test-3.html" class="exam-tile">
-                <i class="fas fa-calendar-day"></i>
-                <span>Daily Test 3</span>
-            </a>
-            <a href="daily-test-4.html" class="exam-tile">
-                <i class="fas fa-calendar-day"></i>
-                <span>Daily Test 4</span>
-            </a>
+        <div class="test-tiles">
+            <!-- Test Tile 1 -->
+            <div class="test-tile">
+                <h3>Daily Test 1</h3>
+                <p>Practice new questions to improve your skills.</p>
+                <a href="daily-test-1.html">Start Test</a>
+            </div>
+            <!-- Test Tile 2 -->
+            <div class="test-tile">
+                <h3>Daily Test 2</h3>
+                <p>Enhance your knowledge with daily practice.</p>
+                <a href="daily-test-2.html">Start Test</a>
+            </div>
+            <!-- Test Tile 3 -->
+            <div class="test-tile">
+                <h3>Daily Test 3</h3>
+                <p>Stay prepared with new questions every day.</p>
+                <a href="daily-test-3.html">Start Test</a>
+            </div>
+            <!-- Test Tile 4 -->
+            <div class="test-tile">
+                <h3>Daily Test 4</h3>
+                <p>Boost your preparation with daily tests.</p>
+                <a href="daily-test-4.html">Start Test</a>
+            </div>
         </div>
     </section>
 
@@ -76,10 +285,10 @@
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://facebook.com/testro" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/testro" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/testro" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/testro" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
@@ -93,182 +302,5 @@
             document.querySelector(".nav-links").classList.toggle("active");
         }
     </script>
-
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background: #f4f4f4;
-            color: #333;
-        }
-
-        /* Header */
-        header {
-            background: #004080;
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 24px;
-            color: white;
-        }
-
-        /* Navigation Menu */
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #ffcc00;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 100px 20px;
-            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
-            color: #004080;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
-        }
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero h2 {
-            font-size: 2.5em;
-            margin: 0;
-            color: #004080;
-        }
-        .hero p {
-            font-size: 1.2em;
-            margin: 20px 0;
-            color: #004080;
-        }
-
-        /* Exams Section */
-        .exams-section {
-            padding: 40px 20px;
-            background: white;
-        }
-        .exams-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .exam-tile {
-            background: #004080;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .exam-tile i {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-        .exam-tile span {
-            font-size: 16px;
-            text-align: center;
-        }
-        .exam-tile:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background: #004080;
-            color: white;
-            padding: 40px 20px;
-        }
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer-section {
-            text-align: left;
-        }
-        .footer-section h3 {
-            margin-bottom: 20px;
-        }
-        .footer-section a {
-            text-decoration: none;
-            transition: color 0.3s;
-            color: white;
-        }
-        .footer-section a:hover {
-            color: #ffcc00;
-        }
-        .social-links a {
-            margin: 0 10px;
-            font-size: 20px;
-            transition: color 0.3s;
-            color: white;
-        }
-        .social-links a:hover {
-            color: #ffcc00;
-        }
-        .footer-bottom {
-            margin-top: 20px;
-            border-top: 1px solid #555;
-            padding-top: 20px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background: #004080;
-                position: absolute;
-                width: 100%;
-                top: 60px;
-                left: 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links li {
-                margin: 10px 0;
-            }
-            .exams-container {
-                grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
-            }
-        }
-    </style>
 </body>
 </html>
