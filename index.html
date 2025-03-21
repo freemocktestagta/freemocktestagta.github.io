@@ -43,6 +43,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Uttar_Pradesh.svg/1200px-Logo_of_Uttar_Pradesh.svg.png" alt="UPSSSC Logo" class="exam-logo">
                 <span>Upsssc Ag Ta</span>
             </a>
+            <!-- Add more exam tiles here -->
         </div>
     </section>
 
@@ -180,7 +181,11 @@
             background: white;
         }
         .exams-container {
-            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         .exam-tile {
@@ -190,22 +195,23 @@
             justify-content: center;
             background: #004080;
             color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             text-decoration: none;
             transition: transform 0.3s, box-shadow 0.3s;
+            width: 150px; /* Smaller width */
         }
         .exam-tile:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         .exam-logo {
-            width: 80px;
-            height: 80px;
+            width: 50px; /* Smaller logo */
+            height: 50px;
             margin-bottom: 10px;
         }
         .exam-tile span {
-            font-size: 20px;
+            font-size: 16px; /* Smaller font */
             font-weight: bold;
         }
 
@@ -213,6 +219,7 @@
         footer {
             background: #004080;
             padding: 40px 20px;
+            color: white; /* Footer font color changed to white */
         }
         .footer-container {
             display: flex;
@@ -226,10 +233,10 @@
         }
         .footer-section h3 {
             margin-bottom: 20px;
-            color: black; /* Changed to black */
+            color: white; /* Changed to white */
         }
         .footer-section p, .footer-section ul, .footer-section a {
-            color: black; /* Changed to black */
+            color: white; /* Changed to white */
         }
         .footer-section a {
             text-decoration: none;
@@ -239,7 +246,7 @@
             color: #ffcc00;
         }
         .social-links a {
-            color: black; /* Changed to black */
+            color: white; /* Changed to white */
             margin: 0 10px;
             font-size: 20px;
             transition: color 0.3s;
@@ -251,7 +258,7 @@
             margin-top: 20px;
             border-top: 1px solid #555;
             padding-top: 20px;
-            color: black; /* Changed to black */
+            color: white; /* Changed to white */
         }
 
         /* Responsive Design */
