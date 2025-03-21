@@ -40,7 +40,7 @@
         <h2>Exams</h2>
         <div class="exams-container">
             <!-- UPSSSC AG TA Tile -->
-            <a href="UpssscAGTA.html" class="exam-tile">
+            <a href="UpssscAGTA.html" class="exam-tile upsssc-tile">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Seal_of_Uttar_Pradesh.png" 
                      alt="UP Government Seal" class="exam-logo" 
                      style="width: 50px; height: 50px; margin-bottom: 5px;">
@@ -159,6 +159,16 @@
         .exam-tile span {
             font-size: 16px; /* Smaller font */
             font-weight: bold;
+        }
+
+        /* Specific Style for UPSSSC AG TA Tile */
+        .upsssc-tile {
+            background: white; /* Change background to white */
+            color: #004080; /* Change text color to match the theme */
+            border: 1px solid #004080; /* Add a border to make it stand out */
+        }
+        .upsssc-tile:hover {
+            background: #f0f0f0; /* Light gray background on hover */
         }
 
         /* Footer */
