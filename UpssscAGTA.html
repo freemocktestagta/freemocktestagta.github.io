@@ -3,10 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upsssc Ag Ta - Testro</title>
+    <title>UPSSSC AGTA Mock Tests - Testro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #007bff, #00bcd4);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #007bff, #00bcd4); /* Original gradient */
+            color: white;
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Test Series Section */
+        .test-series {
+            padding: 40px 20px;
+            background: white;
+            text-align: center;
+        }
+        .test-series h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .test-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .test-card h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #007bff;
+        }
+        .test-card p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .test-card a {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .test-card a:hover {
+            background: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #007bff, #00bcd4);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-section {
+            text-align: left;
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+        }
+        .footer-section a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+        .footer-section a:hover {
+            color: #ffcc00;
+        }
+        .social-links a {
+            margin: 0 10px;
+            font-size: 20px;
+            color: white;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #ffcc00;
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #007bff;
+                position: absolute;
+                width: 100%;
+                top: 60px;
+                left: 0;
+                padding: 10px 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+            .test-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header with Navigation -->
@@ -28,39 +228,40 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Upsssc Ag Ta</h2>
-            <p>Prepare for the <strong>Upsssc Ag Ta</strong> exam with our comprehensive mock tests and study materials. This section is dedicated to helping you excel in the Uttar Pradesh Subordinate Services Selection Commission (UPSSSC) Agriculture Technical Assistant (Ag TA) exam.</p>
+            <h2>UPSSSC AGTA Mock Tests</h2>
+            <p>"सफलता की ओर बढ़ते कदम, हमारे मॉक टेस्ट्स के साथ!"</p>
         </div>
     </section>
 
-    <!-- Test Categories Section -->
-    <section class="test-categories">
-        <h2>Choose a Test Category:</h2>
-        <div class="categories">
-            <a href="daily-test.html" class="category">
-                <i class="fas fa-calendar-day"></i>
-                <span>Daily Test</span>
-            </a>
-            <a href="mini-tests.html" class="category">
-                <i class="fas fa-clipboard-list"></i>
-                <span>Mini Tests</span>
-            </a>
-            <a href="full-test.html" class="category">
-                <i class="fas fa-file-alt"></i>
-                <span>Full Test</span>
-            </a>
-            <a href="up-gk-test.html" class="category">
-                <i class="fas fa-landmark"></i>
-                <span>UP GK Test</span>
-            </a>
-            <a href="agriculture-test.html" class="category">
-                <i class="fas fa-tractor"></i>
-                <span>Agriculture Test</span>
-            </a>
-            <a href="computer-test.html" class="category">
-                <i class="fas fa-laptop"></i>
-                <span>Computer Test</span>
-            </a>
+    <!-- Test Series Section -->
+    <section class="test-series">
+        <h2>Choose a Test Series:</h2>
+        <div class="test-cards">
+            <div class="test-card">
+                <h3>Daily Test Series</h3>
+                <p>Practice daily tests to improve your speed and accuracy.</p>
+                <a href="daily-test.html">Start Now</a>
+            </div>
+            <div class="test-card">
+                <h3>Full Mock Tests</h3>
+                <p>Simulate the actual exam with full-length mock tests.</p>
+                <a href="full-test.html">Start Now</a>
+            </div>
+            <div class="test-card">
+                <h3>Subject-Wise Tests</h3>
+                <p>Focus on subjects like Agronomy, Horticulture, Pathology, and more.</p>
+                <a href="subject-test.html">Start Now</a>
+            </div>
+            <div class="test-card">
+                <h3>UP GK Test</h3>
+                <p>Test your knowledge of Uttar Pradesh General Knowledge.</p>
+                <a href="up-gk-test.html">Start Now</a>
+            </div>
+            <div class="test-card">
+                <h3>Computer Test</h3>
+                <p>Prepare for computer-related questions in the exam.</p>
+                <a href="computer-test.html">Start Now</a>
+            </div>
         </div>
     </section>
 
@@ -101,182 +302,5 @@
             document.querySelector(".nav-links").classList.toggle("active");
         }
     </script>
-
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background: #f4f4f4;
-            color: #333;
-        }
-
-        /* Header */
-        header {
-            background: #004080;
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 24px;
-            color: white;
-        }
-
-        /* Navigation Menu */
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #ffcc00;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 100px 20px;
-            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
-            color: #004080;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
-        }
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero h2 {
-            font-size: 2.5em;
-            margin: 0;
-            color: #004080;
-        }
-        .hero p {
-            font-size: 1.2em;
-            margin: 20px 0;
-            color: #004080;
-        }
-
-        /* Test Categories Section */
-        .test-categories {
-            padding: 40px 20px;
-            background: white;
-        }
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .category {
-            background: #004080;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .category i {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-        .category span {
-            font-size: 16px;
-            text-align: center;
-        }
-        .category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background: #004080;
-            color: white;
-            padding: 40px 20px;
-        }
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer-section {
-            text-align: left;
-        }
-        .footer-section h3 {
-            margin-bottom: 20px;
-        }
-        .footer-section a {
-            text-decoration: none;
-            transition: color 0.3s;
-            color: white;
-        }
-        .footer-section a:hover {
-            color: #ffcc00;
-        }
-        .social-links a {
-            margin: 0 10px;
-            font-size: 20px;
-            transition: color 0.3s;
-            color: white;
-        }
-        .social-links a:hover {
-            color: #ffcc00;
-        }
-        .footer-bottom {
-            margin-top: 20px;
-            border-top: 1px solid #555;
-            padding-top: 20px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background: #004080;
-                position: absolute;
-                width: 100%;
-                top: 60px;
-                left: 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links li {
-                margin: 10px 0;
-            }
-            .categories {
-                grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
-            }
-        }
-    </style>
 </body>
 </html>
