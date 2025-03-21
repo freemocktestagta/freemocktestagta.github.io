@@ -6,6 +6,7 @@
     <title>Upsssc Ag Ta - Testro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
     <!-- Header with Navigation -->
@@ -16,14 +17,21 @@
                 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="daily-test.html">Free Test</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="free-notes.html">Free Notes</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="daily-test.html">Daily Test</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="doubt.html">Doubt</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Upsssc Ag Ta</h2>
+            <p>Prepare for the <strong>Upsssc Ag Ta</strong> exam with our comprehensive mock tests and study materials. This section is dedicated to helping you excel in the Uttar Pradesh Subordinate Services Selection Commission (UPSSSC) Agriculture Technical Assistant (Ag TA) exam.</p>
+        </div>
+    </section>
 
     <!-- Test Categories Section -->
     <section class="test-categories">
@@ -67,10 +75,10 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="daily-test.html">Free Test</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="free-notes.html">Free Notes</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="daily-test.html">Daily Test</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -127,31 +135,45 @@
             font-size: 24px;
             color: white;
         }
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
+
+        /* Navigation Menu */
         .nav-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
             display: flex;
-        }
-        .nav-links li {
-            margin: 0 15px;
+            gap: 20px;
         }
         .nav-links a {
-            color: white;
             text-decoration: none;
-            font-size: 16px;
+            color: white;
+            font-weight: bold;
             transition: color 0.3s;
         }
         .nav-links a:hover {
             color: #ffcc00;
         }
 
-        /* Test Categories */
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
+            color: #004080;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #004080;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #004080;
+        }
+
+        /* Test Categories Section */
         .test-categories {
             padding: 40px 20px;
             background: white;
@@ -208,21 +230,19 @@
         .footer-section h3 {
             margin-bottom: 20px;
         }
-        .footer-section p, .footer-section ul, .footer-section a {
-            color: white;
-        }
         .footer-section a {
             text-decoration: none;
             transition: color 0.3s;
+            color: white;
         }
         .footer-section a:hover {
             color: #ffcc00;
         }
         .social-links a {
-            color: white;
             margin: 0 10px;
             font-size: 20px;
             transition: color 0.3s;
+            color: white;
         }
         .social-links a:hover {
             color: #ffcc00;
