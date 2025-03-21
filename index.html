@@ -4,73 +4,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testro - Free Agriculture Mock Tests</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <h1>Testro</h1>
+            <nav>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="daily-test.html">Daily Test</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Testro!</h2>
+            <p>Your one-stop destination for free agriculture mock tests. Enhance your knowledge and boost your preparation with our structured and insightful tests.</p>
+            <p><strong>आपका टेस्टरो में स्वागत है! यह कृषि के लिए मुफ्त मॉक परीक्षणों का आपका वन-स्टॉप गंतव्य है।</strong></p>
+            <a href="daily-test.html" class="cta-button">Start Free Test</a>
+        </div>
+    </section>
+
+    <!-- Exams Section -->
+    <section class="exams-section">
+        <h2>Exams</h2>
+        <div class="exams-container">
+            <a href="https://github.com/yourusername/your-repo/blob/main/UpssscAGTA.html" class="exam-tile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Uttar_Pradesh.svg/1200px-Logo_of_Uttar_Pradesh.svg.png" alt="UPSSSC Logo" class="exam-logo">
+                <span>Upsssc Ag Ta</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Testro</h3>
+                <p>Your one-stop destination for free agriculture mock tests.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="daily-test.html">Daily Test</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+    </script>
+
     <style>
-        .exam-container {
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
             display: flex;
             justify-content: space-between;
-            align-items: start;
-            padding: 20px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .exam-list {
-            width: 60%;
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
         }
-        .search-box {
-            width: 35%;
-            text-align: right;
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
         }
-        .search-box input {
-            padding: 10px;
-            width: 80%;
-            border: 1px solid #ccc;
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
+            color: #004080;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #004080;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #004080;
+        }
+        .cta-button {
+            background: #ffcc00;
+            color: #004080;
+            padding: 10px 20px;
             border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #e6b800;
+        }
+
+        /* Exams Section */
+        .exams-section {
+            padding: 40px 20px;
+            background: white;
+        }
+        .exams-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         .exam-tile {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #fff;
-            padding: 15px;
+            justify-content: center;
+            background: #004080;
+            color: white;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 150px;
-            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .exam-tile img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
+        .exam-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .exam-logo {
+            width: 80px;
+            height: 80px;
             margin-bottom: 10px;
         }
-        .exam-tile a {
-            text-decoration: none;
+        .exam-tile span {
+            font-size: 20px;
             font-weight: bold;
-            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #004080;
+            padding: 40px 20px;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-section {
+            text-align: left;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: black; /* Changed to black */
+        }
+        .footer-section p, .footer-section ul, .footer-section a {
+            color: black; /* Changed to black */
+        }
+        .footer-section a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-section a:hover {
+            color: #ffcc00;
+        }
+        .social-links a {
+            color: black; /* Changed to black */
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #ffcc00;
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            color: black; /* Changed to black */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #004080;
+                position: absolute;
+                width: 100%;
+                top: 60px;
+                left: 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
         }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Testro - Free Agriculture Mock Tests</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="daily-test.html">Daily Test</a></li>
-            <li><a href="daily-test-1.html">Daily Test 1</a></li>
-        </ul>
-    </nav>
-    <div class="exam-container">
-        <div class="exam-list">
-            <h2>Exams</h2>
-            <div class="exam-tile">
-                <img src="logo.png" alt="UPSSSC AG TA Logo">
-                <a href="UPSSSCAGTA.html">UPSSSC AG TA</a>
-            </div>
-        </div>
-        <div class="search-box">
-            <input type="text" placeholder="Search Exams...">
-        </div>
-    </div>
 </body>
 </html>
