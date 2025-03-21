@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Test 2 - Testro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Test Container */
+        .test-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .progress {
+            height: 10px;
+            background: #004080;
+            width: 0;
+            transition: width 0.3s;
+        }
+
+        /* Timer */
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            color: #004080;
+            margin-bottom: 20px;
+        }
+
+        /* Question and Options */
+        .question-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-button {
+            background: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+            text-align: left;
+        }
+        .option-button:hover {
+            background: #e0e0e0;
+        }
+        .option-button.selected {
+            background: #004080;
+            color: white;
+            border-color: #004080;
+        }
+
+        /* Navigation Buttons */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .navigation-buttons button {
+            padding: 10px 20px;
+            background: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navigation-buttons button:hover {
+            background: #002b5e;
+        }
+        .navigation-buttons button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Result Container */
+        .result-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .result-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .result-item {
+            margin-bottom: 20px;
+        }
+        .result-item p {
+            margin: 5px 0;
+        }
+        .correct {
+            color: #28a745;
+        }
+        .wrong {
+            color: #dc3545;
+        }
+        .result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .result-buttons button {
+            padding: 10px 20px;
+            background: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .result-buttons button:hover {
+            background: #002b5e;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #004080;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Daily Test 2 - Testro</h1>
+    </header>
+
+    <!-- Test Container -->
+    <div class="test-container">
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer" id="timer">Time Left: 10:00</div>
+
+        <!-- Question -->
+        <div class="question-text" id="questionText"></div>
+
+        <!-- Options -->
+        <div class="options" id="options"></div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()">Next</button>
+            <button id="submitBtn" onclick="submitTest()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Result Container -->
+    <div class="result-container" id="resultContainer">
+        <h2>Test Results</h2>
+        <div id="resultDetails"></div>
+        <!-- Result Buttons -->
+        <div class="result-buttons">
+            <button onclick="restartTest()">Restart Test</button>
+            <button onclick="goToHomePage()">Back to Home Page</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "1. यूनाइटेड प्रॉविंस कब उत्तर प्रदेश बना?",
+                options: ["(a) 1937", "(b) 1950", "(c) 1947", "(d) 1952"],
+                answer: "(b) 1950"
+            },
+            {
+                question: "2. 'गोकुल ग्राम' योजना का सम्बन्ध है-",
+                options: ["(a) उत्तर प्रदेश में", "(b) गुजरात में", "(c) आंध्र प्रदेश में", "(d) राजस्थान में"],
+                answer: "(a) उत्तर प्रदेश में"
+            },
+            {
+                question: "3. उ.प्र. सरकार द्वारा प्रारम्भ की गई 'कन्या विद्या धन योजना' उन लड़कियों के लिए है जिन्होंने उत्तीर्ण की है।",
+                options: ["(a) कक्षा V", "(b) कक्षा VIII", "(c) कक्षा X", "(d) कक्षा XII"],
+                answer: "(c) कक्षा X"
+            },
+            {
+                question: "4. निम्न में से किसने उत्तर प्रदेश राज्य के राज्यपाल का पदभार कभी नहीं संभाला?",
+                options: ["(a) श्री चन्द्र भानु गुप्ता", "(b) श्री एच.पी. मोदी", "(c) श्री कन्हैयालाल माणिकलाल मुन्शी", "(d) श्री बुर्गुला रामकृष्ण राव"],
+                answer: "(a) श्री चन्द्र भानु गुप्ता"
+            },
+            {
+                question: "5. उत्तर प्रदेश में 'उत्तर प्रदेश कृषि विविधीकरण परियोजना' (यू.पी. डास्प) प्रायोजित की गई-",
+                options: ["(a) उत्तर प्रदेश सरकार द्वारा", "(b) केन्द्र सरकार द्वारा", "(c) विश्व बैंक द्वारा", "(d) उपर्युक्त में से कोई नहीं"],
+                answer: "(c) विश्व बैंक द्वारा"
+            },
+            {
+                question: "6. निम्नलिखित में से कौन उत्तर प्रदेश में स्थित नहीं है?",
+                options: ["(a) दुधवा राष्ट्रीय उद्यान", "(b) भीमराव अम्बेडकर पक्षी वन्यजीव", "(c) हस्तिनापुर वन्यजीव अभयारण्य", "(d) कान्हा राष्ट्रीय उद्यान"],
+                answer: "(d) कान्हा राष्ट्रीय उद्यान"
+            },
+            {
+                question: "7. उत्तर प्रदेश के निम्नलिखित शहरों में से, सबसे छोटा वन अभयारण्य कहाँ स्थित है?",
+                options: ["(a) राष्ट्रीय चंबल अभयारण्य, इटावा", "(b) पटना वन्यजीव अभयारण्य, एटा", "(c) सुहेलवा वन्यजीव अभयारण्य, बलरामपुर", "(d) सुर सरोवर अभयारण्य, आगरा"],
+                answer: "(d) सुर सरोवर अभयारण्य, आगरा"
+            },
+            {
+                question: "8. गंगा डॉल्फिन को कहा जाता है-",
+                options: ["(a) सेल", "(b) सेम", "(c) सिल", "(d) सुसु"],
+                answer: "(d) सुसु"
+            },
+            {
+                question: "9. 'किशनपुर वन्यजीव अभयारण्य' का एक हिस्सा है।",
+                options: ["(a) कॉर्बेट नेशनल पार्क", "(b) नन्दादेवी बायोस्फीयर रिज़र्व", "(c) दुधवा नेशनल पार्क", "(d) नीलगिरि बायोस्फीयर रिजर्व"],
+                answer: "(c) दुधवा नेशनल पार्क"
+            },
+            {
+                question: "10. निम्नलिखित में से कौन-सा उत्तर प्रदेश के उष्णकटिबंधीय शुष्क पर्णपाती वनों में पाया जाता है?",
+                options: ["(a) झिंगल", "(b) पलास", "(c) महुआ", "(d) कोके"],
+                answer: "(c) महुआ"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        let timeLeft = 600; // 10 minutes in seconds
+
+        // Load question
+        function loadQuestion() {
+            const questionText = document.getElementById("questionText");
+            const optionsDiv = document.getElementById("options");
+            const progress = document.getElementById("progress");
+
+            // Update question text
+            questionText.innerText = questions[currentQuestionIndex].question;
+
+            // Update options
+            optionsDiv.innerHTML = "";
+            questions[currentQuestionIndex].options.forEach((option, index) => {
+                const optionButton = document.createElement("div");
+                optionButton.classList.add("option-button");
+                optionButton.innerText = option;
+                optionButton.onclick = () => selectAnswer(option);
+                if (userAnswers[currentQuestionIndex] === option) {
+                    optionButton.classList.add("selected");
+                }
+                optionsDiv.appendChild(optionButton);
+            });
+
+            // Update progress bar
+            progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+        }
+
+        // Select answer
+        function selectAnswer(selectedOption) {
+            const optionButtons = document.querySelectorAll(".option-button");
+            optionButtons.forEach(button => button.classList.remove("selected"));
+
+            const selectedButton = Array.from(optionButtons).find(button => button.innerText === selectedOption);
+            selectedButton.classList.add("selected");
+
+            userAnswers[currentQuestionIndex] = selectedOption;
+            if (selectedOption === questions[currentQuestionIndex].answer) {
+                score++;
+            }
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Submit test
+        function submitTest() {
+            const testContainer = document.querySelector(".test-container");
+            const resultContainer = document.getElementById("resultContainer");
+            const resultDetails = document.getElementById("resultDetails");
+
+            testContainer.style.display = "none";
+            resultContainer.style.display = "block";
+
+            // Display total score
+            resultDetails.innerHTML = `
+                <p><strong>Your Score: ${score} / ${questions.length}</strong></p>
+            `;
+
+            // Display detailed results
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === question.answer;
+
+                resultDetails.innerHTML += `
+                    <div class="result-item">
+                        <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
+                        <p><strong>Your Answer:</strong> <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer || "Not answered"}</span></p>
+                        <p><strong>Correct Answer:</strong> <span class="correct">${question.answer}</span></p>
+                    </div>
+                `;
+            });
+        }
+
+        // Restart Test
+        function restartTest() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            timeLeft = 600;
+
+            const testContainer = document.querySelector(".test-container");
+            const resultContainer = document.getElementById("resultContainer");
+
+            testContainer.style.display = "block";
+            resultContainer.style.display = "none";
+
+            loadQuestion();
+            updateTimer();
+        }
+
+        // Go to Home Page
+        function goToHomePage() {
+            window.location.href = "index.html"; // Replace with your home page URL
+        }
+
+        // Timer
+        function updateTimer() {
+            const timer = document.getElementById("timer");
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timer.innerText = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (timeLeft === 0) {
+                submitTest();
+            } else {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        // Load the first question and start the timer
+        document.addEventListener("DOMContentLoaded", () => {
+            loadQuestion();
+            updateTimer();
+        });
+    </script>
+</body>
+</html>
