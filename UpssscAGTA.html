@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSSSC AGTA Full Mock Tests - Testro</title>
+    <title>UPSSSC AGTA Mock Tests - Testro</title>
 
-    <!-- Google AdSense Auto Ads Code (Added Here) -->
+    <!-- Google AdSense Auto Ads Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
      crossorigin="anonymous"></script>
 
@@ -22,7 +22,7 @@
 
         /* Header */
         header {
-            background: #004080; /* Main page color */
+            background: #004080; /* Updated to match main page */
             color: white;
             padding: 15px 0;
             position: sticky;
@@ -54,7 +54,7 @@
             transition: color 0.3s;
         }
         .nav-links a:hover {
-            color: #ffcc00; /* Main page hover color */
+            color: #ffcc00; /* Updated to match main page */
         }
         .menu-toggle {
             display: none;
@@ -64,8 +64,8 @@
 
         /* Hero Section */
         .hero {
-            padding: 60px 20px;
-            background: #004080; /* Main page color */
+            padding: 100px 20px;
+            background: #004080; /* Updated to match main page */
             color: white;
             text-align: center;
         }
@@ -84,17 +84,17 @@
             font-style: italic;
         }
 
-        /* Full Test Section */
-        .full-test-section {
+        /* Test Series Section */
+        .test-series {
             padding: 40px 20px;
             background: white;
             text-align: center;
         }
-        .full-test-section h2 {
+        .test-series h2 {
             margin-bottom: 20px;
             font-size: 24px;
         }
-        .test-tiles {
+        .test-cards {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -102,41 +102,46 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        .test-tile {
+        .test-card {
             background: white;
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 20px;
-            width: 200px; /* Adjusted tile width */
-            text-align: center;
+            width: 300px;
+            text-align: left;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .test-tile:hover {
+        .test-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        .test-tile h3 {
-            margin: 0 0 15px; /* Adjusted margin */
+        .test-card h3 {
+            margin: 0 0 10px;
             font-size: 20px;
-            color: #004080; /* Dark blue text */
+            color: #004080; /* Updated to match main page */
         }
-        .test-tile a {
+        .test-card p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .test-card a {
             display: inline-block;
-            background: #004080; /* Dark blue background */
+            background: #004080; /* Updated to match main page */
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             transition: background 0.3s;
         }
-        .test-tile a:hover {
+        .test-card a:hover {
             background: #003366; /* Darker shade for hover */
         }
 
         /* Footer */
         footer {
-            background: #004080; /* Main page color */
+            background: #004080; /* Updated to match main page */
             color: white;
             padding: 40px 20px;
             text-align: center;
@@ -164,7 +169,7 @@
             transition: color 0.3s;
         }
         .footer-section a:hover {
-            color: #ffcc00; /* Main page hover color */
+            color: #ffcc00; /* Updated to match main page */
         }
         .social-links a {
             margin: 0 10px;
@@ -173,7 +178,7 @@
             transition: color 0.3s;
         }
         .social-links a:hover {
-            color: #ffcc00; /* Main page hover color */
+            color: #ffcc00; /* Updated to match main page */
         }
         .footer-bottom {
             margin-top: 20px;
@@ -189,7 +194,7 @@
             .nav-links {
                 display: none;
                 flex-direction: column;
-                background: #004080; /* Main page color */
+                background: #004080; /* Updated to match main page */
                 position: absolute;
                 width: 100%;
                 top: 60px;
@@ -202,8 +207,8 @@
             .nav-links li {
                 margin: 10px 0;
             }
-            .test-tile {
-                width: 100%;
+            .test-cards {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -217,8 +222,9 @@
                 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="UpssscAGTA.html">UPSSSC AG TA</a></li>
+                    <li><a href="daily-test.html">Daily Test</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="doubt.html">Doubt</a></li>
                 </ul>
             </nav>
         </div>
@@ -227,39 +233,39 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h2>UPSSSC AGTA Full Mock Tests</h2>
-            <p>"Practice makes perfect! Take full-length mock tests to ace your UPSSSC AGTA exam."</p>
+            <h2>UPSSSC AGTA Mock Tests</h2>
+            <p>"सफलता की ओर बढ़ते कदम, हमारे मॉक टेस्ट्स के साथ!"</p>
         </div>
     </section>
 
-    <!-- Full Test Section -->
-    <section class="full-test-section">
-        <h2>Choose a Full Mock Test:</h2>
-        <div class="test-tiles">
-            <!-- Test Tile 1 -->
-            <div class="test-tile">
-                <h3>Full Test 1</h3>
-                <a href="#">Start Test</a>
+    <!-- Test Series Section -->
+    <section class="test-series">
+        <h2>Choose a Test Series:</h2>
+        <div class="test-cards">
+            <div class="test-card">
+                <h3>Daily Test Series</h3>
+                <p>Practice daily tests to improve your speed and accuracy.</p>
+                <a href="daily-test.html">Start Now</a>
             </div>
-            <!-- Test Tile 2 -->
-            <div class="test-tile">
-                <h3>Full Test 2</h3>
-                <a href="#">Start Test</a>
+            <div class="test-card">
+                <h3>Full Mock Tests</h3>
+                <p>Simulate the actual exam with full-length mock tests.</p>
+                <a href="full-test.html">Start Now</a>
             </div>
-            <!-- Test Tile 3 -->
-            <div class="test-tile">
-                <h3>Full Test 3</h3>
-                <a href="#">Start Test</a>
+            <div class="test-card">
+                <h3>Subject-Wise Tests</h3>
+                <p>Focus on subjects like Agronomy, Horticulture, Pathology, and more.</p>
+                <a href="subject-test.html">Start Now</a>
             </div>
-            <!-- Test Tile 4 -->
-            <div class="test-tile">
-                <h3>Full Test 4</h3>
-                <a href="#">Start Test</a>
+            <div class="test-card">
+                <h3>UP GK Test</h3>
+                <p>Test your knowledge of Uttar Pradesh General Knowledge.</p>
+                <a href="up-gk-test.html">Start Now</a>
             </div>
-            <!-- Test Tile 5 -->
-            <div class="test-tile">
-                <h3>Full Test 5</h3>
-                <a href="#">Start Test</a>
+            <div class="test-card">
+                <h3>Computer Test</h3>
+                <p>Prepare for computer-related questions in the exam.</p>
+                <a href="computer-test.html">Start Now</a>
             </div>
         </div>
     </section>
@@ -275,7 +281,7 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="UpssscAGTA.html">UPSSSC AG TA</a></li>
+                    <li><a href="daily-test.html">Daily Test</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
                     <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
@@ -284,10 +290,10 @@
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <div class="social-links">
-                    <a href="https://facebook.com/testro" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://twitter.com/testro" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com/testro" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com/testro" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
