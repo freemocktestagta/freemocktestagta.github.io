@@ -98,9 +98,9 @@
             <nav>
                 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="UpssscAGTA.html">UPSSSC AG TA</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+                    <li><a href="UpssscAGTA.html" onclick="closeMenu()">UPSSSC AG TA</a></li>
+                    <li><a href="contact.html" onclick="closeMenu()">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -170,18 +170,35 @@
     </footer>
 
     <script>
+        // Function to toggle the mobile menu
         function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("active");
+
+            // Close menu when clicking outside
+            if (navLinks.classList.contains("active")) {
+                document.addEventListener("click", closeMenuOnClickOutside);
+            } else {
+                document.removeEventListener("click", closeMenuOnClickOutside);
+            }
         }
 
-        // GSAP Animation for Notification Bar
-        gsap.to(".notification-content", {
-            x: 50, // Move 50px to the right
-            duration: 2,
-            repeat: -1, // Infinite loop
-            yoyo: true, // Move back and forth
-            ease: "power1.inOut"
-        });
+        // Function to close the mobile menu when clicking outside
+        function closeMenuOnClickOutside(event) {
+            const navLinks = document.querySelector(".nav-links");
+            const menuToggle = document.querySelector(".menu-toggle");
+
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+                navLinks.classList.remove("active");
+                document.removeEventListener("click", closeMenuOnClickOutside);
+            }
+        }
+
+        // Function to close the mobile menu when a link is clicked
+        function closeMenu() {
+            document.querySelector(".nav-links").classList.remove("active");
+            document.removeEventListener("click", closeMenuOnClickOutside);
+        }
     </script>
 
     <style>
@@ -193,6 +210,7 @@
             text-align: center;
             background: #f4f4f4;
             color: #333;
+            scroll-behavior: smooth; /* Enable smooth scrolling */
         }
 
         /* Header */
@@ -261,7 +279,7 @@
         /* Hero Section */
         .hero {
             padding: 100px 20px;
-            background: url('https://www.example.com/path_to_agriculture_image.jpg') center/cover no-repeat;
+            background: #f4f4f4; /* Removed background image */
             color: #004080;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
         }
@@ -352,7 +370,7 @@
         .footer-container {
             display: flex;
             justify-content: space-between;
-            max-width: 1200px;
+            max-width: 800px; /* Reduced from 1200px to 800px */
             margin: 0 auto;
             padding: 0 20px;
         }
