@@ -1,0 +1,17 @@
+<!-- Include Header -->
+<div id="header"></div>
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('header').innerHTML = data);
+</script>
+
+<!-- Your Page Content Here -->
+
+<!-- Include Footer -->
+<div id="footer"></div>
+<script>
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footer').innerHTML = data);
+</script>
