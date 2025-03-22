@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSSSC AGTA Mock Tests - Testro</title>
+    <title>RPF Constable Mock Test Series 2024</title>
 
     <!-- Google AdSense Auto Ads Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
@@ -20,70 +20,6 @@
             color: #333;
         }
 
-        /* Header */
-        header {
-            background: #004080; /* Updated to match main page */
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 24px;
-            color: white;
-        }
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #ffcc00; /* Updated to match main page */
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 100px 20px;
-            background: #004080; /* Updated to match main page */
-            color: white;
-            text-align: center;
-        }
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero h2 {
-            font-size: 2.5em;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        .hero p {
-            font-size: 1.2em;
-            margin: 20px 0;
-            font-style: italic;
-        }
-
         /* Test Series Section */
         .test-series {
             padding: 40px 20px;
@@ -93,24 +29,41 @@
         .test-series h2 {
             margin-bottom: 20px;
             font-size: 24px;
+            color: #004080;
         }
-        .test-cards {
+
+        /* Slider Container */
+        .slider-container {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            overflow-x: auto;
             gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
         }
+        .slider-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .slider-container::-webkit-scrollbar-thumb {
+            background: #004080;
+            border-radius: 4px;
+        }
+        .slider-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Test Card */
         .test-card {
-            background: white;
+            flex: 0 0 auto;
+            width: 200px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* Gradient background */
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 20px;
-            width: 300px;
-            text-align: left;
+            text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            scroll-snap-align: start;
+            cursor: pointer;
         }
         .test-card:hover {
             transform: translateY(-5px);
@@ -118,193 +71,307 @@
         }
         .test-card h3 {
             margin: 0 0 10px;
-            font-size: 20px;
-            color: #004080; /* Updated to match main page */
+            font-size: 18px;
+            color: #004080;
         }
         .test-card p {
             margin: 10px 0;
             font-size: 14px;
             color: #666;
         }
-        .test-card a {
-            display: inline-block;
-            background: #004080; /* Updated to match main page */
+
+        /* Subject Slider */
+        .subject-slider {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+        }
+        .subject-slider h3 {
+            font-size: 20px;
+            color: #004080;
+            margin-bottom: 20px;
+        }
+
+        /* Subject Card */
+        .subject-card {
+            flex: 0 0 auto;
+            width: 200px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* Gradient background */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            scroll-snap-align: start;
+            cursor: pointer;
+        }
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .subject-card h4 {
+            margin: 0 0 10px;
+            font-size: 16px;
+            color: #004080;
+        }
+
+        /* Test List */
+        .test-list {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .test-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .test-list li {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .test-list li a {
+            background: #004080;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 10px;
             border-radius: 5px;
             text-decoration: none;
             transition: background 0.3s;
         }
-        .test-card a:hover {
-            background: #003366; /* Darker shade for hover */
-        }
-
-        /* Footer */
-        footer {
-            background: #004080; /* Updated to match main page */
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .footer-section {
-            text-align: left;
-            flex: 1;
-            min-width: 200px;
-        }
-        .footer-section h3 {
-            margin-bottom: 20px;
-        }
-        .footer-section a {
-            text-decoration: none;
-            color: white;
-            transition: color 0.3s;
-        }
-        .footer-section a:hover {
-            color: #ffcc00; /* Updated to match main page */
-        }
-        .social-links a {
-            margin: 0 10px;
-            font-size: 20px;
-            color: white;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: #ffcc00; /* Updated to match main page */
-        }
-        .footer-bottom {
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 20px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background: #004080; /* Updated to match main page */
-                position: absolute;
-                width: 100%;
-                top: 60px;
-                left: 0;
-                padding: 10px 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links li {
-                margin: 10px 0;
-            }
-            .test-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .test-list li a:hover {
+            background: #003366;
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
-    <header>
-        <div class="header-container">
-            <h1>Testro</h1>
-            <nav>
-                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="daily-test.html">Daily Test</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="doubt.html">Doubt</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>UPSSSC AGTA Mock Tests</h2>
-            <p>"सफलता की ओर बढ़ते कदम, हमारे मॉक टेस्ट्स के साथ!"</p>
-        </div>
-    </section>
+    <!-- Include Header -->
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
 
     <!-- Test Series Section -->
     <section class="test-series">
         <h2>Choose a Test Series:</h2>
-        <div class="test-cards">
-            <div class="test-card">
+        <div class="slider-container">
+            <div class="test-card" onclick="showTestList('daily')">
                 <h3>Daily Test Series</h3>
                 <p>Practice daily tests to improve your speed and accuracy.</p>
-                <a href="daily-test.html">Start Now</a>
             </div>
-            <div class="test-card">
+            <div class="test-card" onclick="showTestList('full')">
                 <h3>Full Mock Tests</h3>
                 <p>Simulate the actual exam with full-length mock tests.</p>
-                <a href="full-test.html">Start Now</a>
             </div>
-            <div class="test-card">
+            <div class="test-card" onclick="showSubjectSlider()">
                 <h3>Subject-Wise Tests</h3>
                 <p>Focus on subjects like Agronomy, Horticulture, Pathology, and more.</p>
-                <a href="subject-test.html">Start Now</a>
             </div>
-            <div class="test-card">
+            <div class="test-card" onclick="showTestList('up-gk')">
                 <h3>UP GK Test</h3>
                 <p>Test your knowledge of Uttar Pradesh General Knowledge.</p>
-                <a href="up-gk-test.html">Start Now</a>
             </div>
-            <div class="test-card">
+            <div class="test-card" onclick="showTestList('computer')">
                 <h3>Computer Test</h3>
                 <p>Prepare for computer-related questions in the exam.</p>
-                <a href="computer-test.html">Start Now</a>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Testro</h3>
-                <p>Your one-stop destination for free agriculture mock tests.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="daily-test.html">Daily Test</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+        <!-- Subject Slider -->
+        <div class="subject-slider" id="subject-slider">
+            <h3>Choose a Subject:</h3>
+            <div class="slider-container">
+                <div class="subject-card" onclick="showTestList('agronomy')">
+                    <h4>Agronomy</h4>
+                </div>
+                <div class="subject-card" onclick="showTestList('horticulture')">
+                    <h4>Horticulture</h4>
+                </div>
+                <div class="subject-card" onclick="showTestList('pathology')">
+                    <h4>Pathology</h4>
+                </div>
+                <div class="subject-card" onclick="showTestList('entomology')">
+                    <h4>Entomology</h4>
+                </div>
+                <div class="subject-card" onclick="showTestList('genetics')">
+                    <h4>Genetics & Plant Breeding</h4>
+                </div>
+                <div class="subject-card" onclick="showTestList('animal-husbandry')">
+                    <h4>Animal Husbandry</h4>
+                </div>
+                <div class="subject-card" onclick="showTestList('statistics')">
+                    <h4>Statistics</h4>
+                </div>
+                <div class="subject-card" onclick="showTestList('physiology')">
+                    <h4>Physiology</h4>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+
+        <!-- Test Lists -->
+        <div id="daily-list" class="test-list">
+            <h3>Daily Test Series</h3>
+            <ul>
+                <li>Daily Test 1 <a href="daily-test-1.html">Start Now</a></li>
+                <li>Daily Test 2 <a href="daily-test-2.html">Start Now</a></li>
+                <li>Daily Test 3 <a href="daily-test-3.html">Start Now</a></li>
+                <li>Daily Test 4 <a href="daily-test-4.html">Start Now</a></li>
+                <li>Daily Test 5 <a href="daily-test-5.html">Start Now</a></li>
+            </ul>
         </div>
-    </footer>
+        <div id="full-list" class="test-list">
+            <h3>Full Mock Tests</h3>
+            <ul>
+                <li>Full Mock Test 1 <a href="full-test-1.html">Start Now</a></li>
+                <li>Full Mock Test 2 <a href="full-test-2.html">Start Now</a></li>
+                <li>Full Mock Test 3 <a href="full-test-3.html">Start Now</a></li>
+                <li>Full Mock Test 4 <a href="full-test-4.html">Start Now</a></li>
+                <li>Full Mock Test 5 <a href="full-test-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="up-gk-list" class="test-list">
+            <h3>UP GK Test</h3>
+            <ul>
+                <li>UP GK Test 1 <a href="up-gk-test-1.html">Start Now</a></li>
+                <li>UP GK Test 2 <a href="up-gk-test-2.html">Start Now</a></li>
+                <li>UP GK Test 3 <a href="up-gk-test-3.html">Start Now</a></li>
+                <li>UP GK Test 4 <a href="up-gk-test-4.html">Start Now</a></li>
+                <li>UP GK Test 5 <a href="up-gk-test-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="computer-list" class="test-list">
+            <h3>Computer Test</h3>
+            <ul>
+                <li>Computer Test 1 <a href="computer-test-1.html">Start Now</a></li>
+                <li>Computer Test 2 <a href="computer-test-2.html">Start Now</a></li>
+                <li>Computer Test 3 <a href="computer-test-3.html">Start Now</a></li>
+                <li>Computer Test 4 <a href="computer-test-4.html">Start Now</a></li>
+                <li>Computer Test 5 <a href="computer-test-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="agronomy-list" class="test-list">
+            <h3>Agronomy Tests</h3>
+            <ul>
+                <li>Agronomy Test 1 <a href="agronomy-1.html">Start Now</a></li>
+                <li>Agronomy Test 2 <a href="agronomy-2.html">Start Now</a></li>
+                <li>Agronomy Test 3 <a href="agronomy-3.html">Start Now</a></li>
+                <li>Agronomy Test 4 <a href="agronomy-4.html">Start Now</a></li>
+                <li>Agronomy Test 5 <a href="agronomy-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="horticulture-list" class="test-list">
+            <h3>Horticulture Tests</h3>
+            <ul>
+                <li>Horticulture Test 1 <a href="horticulture-1.html">Start Now</a></li>
+                <li>Horticulture Test 2 <a href="horticulture-2.html">Start Now</a></li>
+                <li>Horticulture Test 3 <a href="horticulture-3.html">Start Now</a></li>
+                <li>Horticulture Test 4 <a href="horticulture-4.html">Start Now</a></li>
+                <li>Horticulture Test 5 <a href="horticulture-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="pathology-list" class="test-list">
+            <h3>Pathology Tests</h3>
+            <ul>
+                <li>Pathology Test 1 <a href="pathology-1.html">Start Now</a></li>
+                <li>Pathology Test 2 <a href="pathology-2.html">Start Now</a></li>
+                <li>Pathology Test 3 <a href="pathology-3.html">Start Now</a></li>
+                <li>Pathology Test 4 <a href="pathology-4.html">Start Now</a></li>
+                <li>Pathology Test 5 <a href="pathology-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="entomology-list" class="test-list">
+            <h3>Entomology Tests</h3>
+            <ul>
+                <li>Entomology Test 1 <a href="entomology-1.html">Start Now</a></li>
+                <li>Entomology Test 2 <a href="entomology-2.html">Start Now</a></li>
+                <li>Entomology Test 3 <a href="entomology-3.html">Start Now</a></li>
+                <li>Entomology Test 4 <a href="entomology-4.html">Start Now</a></li>
+                <li>Entomology Test 5 <a href="entomology-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="genetics-list" class="test-list">
+            <h3>Genetics & Plant Breeding Tests</h3>
+            <ul>
+                <li>Genetics Test 1 <a href="genetics-1.html">Start Now</a></li>
+                <li>Genetics Test 2 <a href="genetics-2.html">Start Now</a></li>
+                <li>Genetics Test 3 <a href="genetics-3.html">Start Now</a></li>
+                <li>Genetics Test 4 <a href="genetics-4.html">Start Now</a></li>
+                <li>Genetics Test 5 <a href="genetics-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="animal-husbandry-list" class="test-list">
+            <h3>Animal Husbandry Tests</h3>
+            <ul>
+                <li>Animal Husbandry Test 1 <a href="animal-husbandry-1.html">Start Now</a></li>
+                <li>Animal Husbandry Test 2 <a href="animal-husbandry-2.html">Start Now</a></li>
+                <li>Animal Husbandry Test 3 <a href="animal-husbandry-3.html">Start Now</a></li>
+                <li>Animal Husbandry Test 4 <a href="animal-husbandry-4.html">Start Now</a></li>
+                <li>Animal Husbandry Test 5 <a href="animal-husbandry-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="statistics-list" class="test-list">
+            <h3>Statistics Tests</h3>
+            <ul>
+                <li>Statistics Test 1 <a href="statistics-1.html">Start Now</a></li>
+                <li>Statistics Test 2 <a href="statistics-2.html">Start Now</a></li>
+                <li>Statistics Test 3 <a href="statistics-3.html">Start Now</a></li>
+                <li>Statistics Test 4 <a href="statistics-4.html">Start Now</a></li>
+                <li>Statistics Test 5 <a href="statistics-5.html">Start Now</a></li>
+            </ul>
+        </div>
+        <div id="physiology-list" class="test-list">
+            <h3>Physiology Tests</h3>
+            <ul>
+                <li>Physiology Test 1 <a href="physiology-1.html">Start Now</a></li>
+                <li>Physiology Test 2 <a href="physiology-2.html">Start Now</a></li>
+                <li>Physiology Test 3 <a href="physiology-3.html">Start Now</a></li>
+                <li>Physiology Test 4 <a href="physiology-4.html">Start Now</a></li>
+                <li>Physiology Test 5 <a href="physiology-5.html">Start Now</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
 
     <script>
-        function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
+        // Function to show the selected test list
+        function showTestList(type) {
+            // Hide all test lists and subject slider
+            const testLists = document.querySelectorAll('.test-list, .subject-slider');
+            testLists.forEach(list => list.style.display = 'none');
+
+            // Show the selected test list
+            const selectedList = document.getElementById(`${type}-list`);
+            if (selectedList) {
+                selectedList.style.display = 'block';
+            }
+        }
+
+        // Function to show the subject slider
+        function showSubjectSlider() {
+            // Hide all test lists
+            const testLists = document.querySelectorAll('.test-list');
+            testLists.forEach(list => list.style.display = 'none');
+
+            // Show the subject slider
+            const subjectSlider = document.getElementById('subject-slider');
+            if (subjectSlider) {
+                subjectSlider.style.display = 'block';
+            }
         }
     </script>
 </body>
