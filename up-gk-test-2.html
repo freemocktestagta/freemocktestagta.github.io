@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uttar Pradesh GK Test Three - Testro</title>
+    <title>Uttar Pradesh GK Test Two - Testro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* General Styles */
@@ -162,22 +162,10 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         .result-container h2 {
-            text-align: center;
             margin-bottom: 20px;
-        }
-        .result-item {
-            margin-bottom: 20px;
-        }
-        .result-item p {
-            margin: 5px 0;
-        }
-        .correct {
-            color: #28a745;
-        }
-        .wrong {
-            color: #dc3545;
         }
         .result-buttons {
             display: flex;
@@ -198,26 +186,55 @@
             background: #002b5e;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
+        /* Review Answers Container */
+        .review-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
             padding: 20px;
-            background: #004080;
-            color: white;
-            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .review-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .review-item {
+            margin-bottom: 20px;
+        }
+        .review-item p {
+            margin: 5px 0;
+        }
+        .correct {
+            color: #28a745;
+        }
+        .wrong {
+            color: #dc3545;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <h1>Uttar Pradesh GK Test Three - Testro</h1>
+        <h1>Uttar Pradesh GK Test Two - Testro</h1>
     </header>
 
     <!-- Notification Modal -->
     <div class="notification-modal" id="notificationModal">
         <div class="notification-content">
-            <h2>Welcome to Uttar Pradesh GK Test Three</h2>
+            <h2>Welcome to Uttar Pradesh GK Test Two</h2>
             <p><strong>Total Questions:</strong> 20</p>
             <p><strong>Subject:</strong> Uttar Pradesh General Knowledge</p>
             <p><strong>Total Time:</strong> 20 minutes</p>
@@ -227,6 +244,9 @@
 
     <!-- Test Container -->
     <div class="test-container" id="testContainer">
+        <!-- Progress Tracker -->
+        <p id="progressText">Question 1 of 20</p>
+
         <!-- Progress Bar -->
         <div class="progress-bar">
             <div class="progress" id="progress"></div>
@@ -243,20 +263,30 @@
 
         <!-- Navigation Buttons -->
         <div class="navigation-buttons">
-            <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+            <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
             <button id="nextBtn" onclick="nextQuestion()">Next</button>
-            <button id="submitBtn" onclick="submitTest()">Submit</button>
+            <button id="submitBtn" onclick="submitTest()" style="display: none;">Submit</button>
         </div>
     </div>
 
     <!-- Result Container -->
     <div class="result-container" id="resultContainer">
         <h2>Test Results</h2>
-        <div id="resultDetails"></div>
-        <!-- Result Buttons -->
+        <p><strong>Your Score: <span id="finalScore"></span></strong></p>
         <div class="result-buttons">
             <button onclick="restartTest()">Restart Test</button>
-            <button onclick="goToHomePage()">Back to Home Page</button>
+            <button onclick="goToHomePage()">Home</button>
+            <button onclick="showReview()">Review Your Answers</button>
+        </div>
+    </div>
+
+    <!-- Review Answers Container -->
+    <div class="review-container" id="reviewContainer">
+        <h2>Review Your Answers</h2>
+        <div id="reviewDetails"></div>
+        <div class="result-buttons">
+            <button onclick="goToResultPage()">Back to Results</button>
+            <button onclick="goToHomePage()">Home</button>
         </div>
     </div>
 
@@ -268,115 +298,45 @@
     <script>
         const questions = [
             {
-                question: "1. निम्नलिखित जनपदों में कौन सर्वाधिक वनाच्छादित है?",
-                options: ["(a) लखीमपुर खीरी", "(b) पीलीभीत", "(c) सोनभद्र", "(d) चित्रकूट"],
-                answer: "(c) सोनभद्र"
+                question: {
+                    hindi: "1. देवदरी एवं राजदरी जल प्रपात निम्नलिखित में से किस स्थान पर स्थित है?",
+                    english: "1. Where are Devdari and Rajdari waterfalls located?"
+                },
+                options: [
+                    { hindi: "(a) मिर्जापुर", english: "(a) Mirzapur" },
+                    { hindi: "(b) चंदौली", english: "(b) Chandauli" },
+                    { hindi: "(c) सोनभद्र", english: "(c) Sonbhadra" },
+                    { hindi: "(d) कासगंज", english: "(d) Kasganj" }
+                ],
+                answer: { hindi: "(c) सोनभद्र", english: "(c) Sonbhadra" }
             },
             {
-                question: "2. सुरहा ताल पक्षी विहार अवस्थित है:",
-                options: ["(a) आजमगढ़ में", "(b) हरदोई में", "(c) प्रतापगढ़ में", "(d) बलिया में"],
-                answer: "(d) बलिया में"
+                question: {
+                    hindi: "2. निम्नलिखित में से किस नदी का जल ग्रहण क्षेत्र सर्वाधिक है?",
+                    english: "2. Which river has the largest catchment area?"
+                },
+                options: [
+                    { hindi: "(a) महानन्दा", english: "(a) Mahananda" },
+                    { hindi: "(b) रामगंगा", english: "(b) Ramganga" },
+                    { hindi: "(c) सोन", english: "(c) Son" },
+                    { hindi: "(d) गंडक", english: "(d) Gandak" }
+                ],
+                answer: { hindi: "(c) सोन", english: "(c) Son" }
             },
-            {
-                question: "3. निम्नलिखित में से कौन-सा पक्षी अभयारण्य उत्तर प्रदेश में स्थित है?",
-                options: ["(a) समसपुर पक्षी अभयारण्य", "(b) वेदान्यंगल पक्षी अभयारण्य", "(c) घाटप्रभा पक्षी अभयारण्य", "(d) जायकवाड़ी पक्षी अभयारण्य"],
-                answer: "(a) समसपुर पक्षी अभयारण्य"
-            },
-            {
-                question: "4. उत्तर प्रदेश वन निगम कब स्थापित किया गया?",
-                options: ["(a) 25 नवम्बर, 1974", "(b) 25 नवम्बर, 1975", "(c) 25 नवम्बर, 1976", "(d) 25 नवम्बर, 1977"],
-                answer: "(a) 25 नवम्बर, 1974"
-            },
-            {
-                question: "5. निम्नलिखित में से वाघों के संरक्षण से संबंधित कौन सा स्थल उत्तर प्रदेश में स्थित है?",
-                options: ["(a) सरिस्का", "(b) जिम कॉर्बेट", "(c) अमनगढ़", "(d) पन्ना"],
-                answer: "(c) अमनगढ़"
-            },
-            {
-                question: "6. निम्न युग्मों में से कौन-सा युग्म (शहर-नदियाँ) सही सुमेलित नहीं है?",
-                options: ["(a) सुल्तानपुर - गोमती", "(b) गोरखपुर - राप्ती", "(c) मथुरा - बेतवा", "(d) कानपुर - गंगा"],
-                answer: "(c) मथुरा - बेतवा"
-            },
-            {
-                question: "7. काशी, जो भारत के सबसे पवित्र शहरों में से एक है, किस नदी के किनारे पर बसा हुआ है?",
-                options: ["(a) यमुना", "(b) गंगा", "(c) कावेरी", "(d) ब्रह्मपुत्र"],
-                answer: "(b) गंगा"
-            },
-            {
-                question: "8. बुंदेलखंड की अर्थव्यवस्था में सबसे बड़ा योगदान किस नदी का है?",
-                options: ["(a) सिंध", "(b) यमुना", "(c) बेतवा", "(d) नर्मदा"],
-                answer: "(c) बेतवा"
-            },
-            {
-                question: "9. निम्नलिखित में से कौन-सी नदी उत्तर प्रदेश से नहीं बहती?",
-                options: ["(a) गंगा", "(b) यमुना", "(c) रामगंगा", "(d) झेलम"],
-                answer: "(d) झेलम"
-            },
-            {
-                question: "10. फुल्हर झील भारत के निम्नलिखित में से किस राज्य में स्थित है?",
-                options: ["(a) हरियाणा", "(b) उत्तर प्रदेश", "(c) छत्तीसगढ़", "(d) गुजरात"],
-                answer: "(b) उत्तर प्रदेश"
-            },
-            {
-                question: "11. सुरहा ताल एक झील है-",
-                options: ["(a) कृत्रिम", "(b) विवर्तनिक", "(c) चाप", "(d) ज्वालामुखीय"],
-                answer: "(b) विवर्तनिक"
-            },
-            {
-                question: "12. सारनाथ, जो 'अशोक स्तंभ' के लिए प्रसिद्ध है, वाराणसी से 10 किलोमीटर उत्तर-पूर्व में किन नदियों के संगम के पास स्थित है?",
-                options: ["(a) बेतवा और चंचल", "(b) गंगा और वरुणा", "(c) गंगा और सोन", "(d) यमुना और काली"],
-                answer: "(b) गंगा और वरुणा"
-            },
-            {
-                question: "13. निम्नलिखित कथनों में से कौन सा सही है? 1. रामगंगा नदी कन्नौज के पास गंगा नदी में मिलती है। 2. वेतवा नदी प्रयागराज के पास यमुना नदी में मिलती है।",
-                options: ["(a) केवल 1", "(b) केवल 2", "(c) न तो 1 और न ही 2", "(d) 1 और 2 दोनों"],
-                answer: "(a) केवल 1"
-            },
-            {
-                question: "14. 'शेखा झील' के नाम से एक नया राष्ट्रीय पक्षी विहार का विकास किया जा रहा है-",
-                options: ["(a) लखनऊ में", "(b) अलीगढ़ में", "(c) वृंदावन में", "(d) कानपुर में"],
-                answer: "(b) अलीगढ़ में"
-            },
-            {
-                question: "15. सूर सरोवर रामसर स्थल के संदर्भ में निम्नलिखित में से कौन सा/से कथन सत्य है/हैं? 1. यह उत्तर प्रदेश के लखीमपुर खीरी जिले में स्थित है। 2. यह एक मानव-निर्मित जलाशय है।",
-                options: ["(a) केवल 1", "(b) केवल 2", "(c) 1 और 2 दोनों", "(d) न तो 1 और न ही 2"],
-                answer: "(b) केवल 2"
-            },
-            {
-                question: "16. गंगा नदी, उत्तर प्रदेश में किस जनपद से प्रवेश करती है?",
-                options: ["(a) बिजनौर", "(b) सहारनपुर", "(c) मेरठ", "(d) जे.पी. नगर"],
-                answer: "(a) बिजनौर"
-            },
-            {
-                question: "17. निम्नलिखित में से कौन-सा रामसर स्थल उत्तर प्रदेश में स्थित नहीं है?",
-                options: ["(a) सूर सरोवर", "(b) समसपुर पक्षी अभयारण्य", "(c) सरसई नवार झील", "(d) सुरिसर-मानसर झीलें"],
-                answer: "(d) सुरिसर-मानसर झीलें"
-            },
-            {
-                question: "18. निम्नलिखित में से कौन सी नदी उत्तर प्रदेश राज्य से प्रवाहित नहीं होती है?",
-                options: ["(a) सोन नदी", "(b) महानदी नदी", "(c) हिण्डन नदी", "(d) शारदा नदी"],
-                answer: "(b) महानदी नदी"
-            },
-            {
-                question: "19. निम्नलिखित में से कौन-सा एक सही सुमेलित नहीं है?",
-                options: ["(a) सौज झील - मैनपुरी", "(b) शेखा झील - अलीगढ़", "(c) बखीरा झील - संत कबीर नगर", "(d) सरसई झील - आगरा"],
-                answer: "(d) सरसई झील - आगरा"
-            },
-            {
-                question: "20. निम्नलिखित में से कौन सही सुमेलित नहीं है?",
-                options: ["(a) गंगा - वाराणसी", "(b) गोमती - सुल्तानपुर", "(c) कोसी - गोरखपुर", "(d) सरयू - अयोध्या"],
-                answer: "(c) कोसी - गोरखपुर"
-            }
+            // Add remaining questions here...
         ];
 
         let currentQuestionIndex = 0;
         let score = 0;
         let userAnswers = new Array(questions.length).fill(null);
         let timeLeft = 1200; // 20 minutes in seconds
+        let timerId;
 
         // Show notification modal
         const notificationModal = document.getElementById("notificationModal");
         const testContainer = document.getElementById("testContainer");
+        const resultContainer = document.getElementById("resultContainer");
+        const reviewContainer = document.getElementById("reviewContainer");
 
         function startTest() {
             notificationModal.style.display = "none";
@@ -390,18 +350,26 @@
             const questionText = document.getElementById("questionText");
             const optionsDiv = document.getElementById("options");
             const progress = document.getElementById("progress");
+            const progressText = document.getElementById("progressText");
 
-            // Update question text
-            questionText.innerText = questions[currentQuestionIndex].question;
+            // Update question text (bilingual)
+            const question = questions[currentQuestionIndex].question;
+            questionText.innerHTML = `
+                <div>${question.hindi}</div>
+                <div>${question.english}</div>
+            `;
 
-            // Update options
+            // Update options (bilingual)
             optionsDiv.innerHTML = "";
             questions[currentQuestionIndex].options.forEach((option, index) => {
                 const optionButton = document.createElement("div");
                 optionButton.classList.add("option-button");
-                optionButton.innerText = option;
+                optionButton.innerHTML = `
+                    <div>${option.hindi}</div>
+                    <div>${option.english}</div>
+                `;
                 optionButton.onclick = () => selectAnswer(option);
-                if (userAnswers[currentQuestionIndex] === option) {
+                if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].hindi === option.hindi) {
                     optionButton.classList.add("selected");
                 }
                 optionsDiv.appendChild(optionButton);
@@ -409,6 +377,15 @@
 
             // Update progress bar
             progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            // Update progress text
+            progressText.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            // Disable "Previous" button on the first question
+            document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+
+            // Show "Submit" button on the last question
+            document.getElementById("submitBtn").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
         }
 
         // Select answer
@@ -416,13 +393,12 @@
             const optionButtons = document.querySelectorAll(".option-button");
             optionButtons.forEach(button => button.classList.remove("selected"));
 
-            const selectedButton = Array.from(optionButtons).find(button => button.innerText === selectedOption);
+            const selectedButton = Array.from(optionButtons).find(button => 
+                button.innerText.includes(selectedOption.hindi) || button.innerText.includes(selectedOption.english)
+            );
             selectedButton.classList.add("selected");
 
             userAnswers[currentQuestionIndex] = selectedOption;
-            if (selectedOption === questions[currentQuestionIndex].answer) {
-                score++;
-            }
         }
 
         // Navigation functions
@@ -442,28 +418,58 @@
 
         // Submit test
         function submitTest() {
-            const testContainer = document.querySelector(".test-container");
-            const resultContainer = document.getElementById("resultContainer");
-            const resultDetails = document.getElementById("resultDetails");
+            clearTimeout(timerId); // Stop the timer to prevent unnecessary execution
 
-            testContainer.style.display = "none";
-            resultContainer.style.display = "block";
+            let finalScore = 0;
+            userAnswers.forEach((userAnswer, index) => {
+                if (userAnswer && userAnswer.hindi === questions[index].answer.hindi) {
+                    finalScore++;
+                }
+            });
 
-            // Display total score
-            resultDetails.innerHTML = `
-                <p><strong>Your Score: ${score} / ${questions.length}</strong></p>
-            `;
+            score = finalScore;
 
-            // Display detailed results
+            document.getElementById("testContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+            document.getElementById("reviewContainer").style.display = "none";
+
+            // Display score
+            document.getElementById("finalScore").textContent = `${score} / ${questions.length}`;
+
+            // Show confetti if the user scores 100%
+            if (score === questions.length) {
+                showConfetti();
+            }
+        }
+
+        // Show Review Answers
+        function showReview() {
+            resultContainer.style.display = "none";
+            reviewContainer.style.display = "block";
+
+            const reviewDetails = document.getElementById("reviewDetails");
+            reviewDetails.innerHTML = "";
+
             questions.forEach((question, index) => {
                 const userAnswer = userAnswers[index];
-                const isCorrect = userAnswer === question.answer;
+                const isCorrect = userAnswer && userAnswer.hindi === question.answer.hindi;
 
-                resultDetails.innerHTML += `
-                    <div class="result-item">
-                        <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
-                        <p><strong>Your Answer:</strong> <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer || "Not answered"}</span></p>
-                        <p><strong>Correct Answer:</strong> <span class="correct">${question.answer}</span></p>
+                reviewDetails.innerHTML += `
+                    <div class="review-item">
+                        <p><strong>Question ${index + 1}:</strong></p>
+                        <p>${question.question.hindi}</p>
+                        <p>${question.question.english}</p>
+                        <div class="options">
+                            ${question.options.map(option => `
+                                <div class="option-button ${userAnswer && userAnswer.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
+                                    <div>${option.hindi}</div>
+                                    <div>${option.english}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <p><strong>Correct Answer:</strong> <span class="correct">
+                            ${question.answer.hindi} / ${question.answer.english}
+                        </span></p>
                     </div>
                 `;
             });
@@ -472,18 +478,18 @@
         // Restart Test
         function restartTest() {
             currentQuestionIndex = 0;
-            score = 0;
+            score = 0; // Reset the score
             userAnswers = new Array(questions.length).fill(null);
-            timeLeft = 1200;
+            timeLeft = 1200; // Reset time
 
-            const testContainer = document.querySelector(".test-container");
-            const resultContainer = document.getElementById("resultContainer");
-
-            testContainer.style.display = "block";
-            resultContainer.style.display = "none";
+            document.getElementById("testContainer").style.display = "block";
+            document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "none";
 
             loadQuestion();
-            updateTimer();
+            
+            clearTimeout(timerId); // Stop any previous timer before restarting
+            updateTimer(); // Restart timer
         }
 
         // Go to Home Page
@@ -491,19 +497,35 @@
             window.location.href = "index.html"; // Replace with your home page URL
         }
 
+        // Go to Result Page
+        function goToResultPage() {
+            reviewContainer.style.display = "none";
+            resultContainer.style.display = "block";
+        }
+
         // Timer
         function updateTimer() {
             const timer = document.getElementById("timer");
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            timer.innerText = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            const secondsFormatted = seconds < 10 ? `0${seconds}` : seconds;
+            timer.innerText = `Time Left: ${minutes}:${secondsFormatted}`;
 
             if (timeLeft === 0) {
                 submitTest();
             } else {
                 timeLeft--;
-                setTimeout(updateTimer, 1000);
+                timerId = setTimeout(updateTimer, 1000);
             }
+        }
+
+        // Confetti Animation
+        function showConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti");
+            document.body.appendChild(confettiContainer);
+
+            setTimeout(() => confettiContainer.remove(), 5000); // Remove after 5 sec
         }
     </script>
 </body>
