@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Pathology Test - Testro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Notification Modal */
+        .notification-modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .notification-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .notification-content h2 {
+            margin-bottom: 10px;
+        }
+        .notification-content p {
+            margin: 10px 0;
+        }
+        .notification-content button {
+            padding: 10px 20px;
+            background: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .notification-content button:hover {
+            background: #002b5e;
+        }
+
+        /* Test Container */
+        .test-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden until user starts the test */
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .progress {
+            height: 10px;
+            background: #004080;
+            width: 0;
+            transition: width 0.3s;
+        }
+
+        /* Timer */
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            color: #004080;
+            margin-bottom: 20px;
+        }
+
+        /* Question and Options */
+        .question-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-button {
+            background: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+            text-align: left;
+        }
+        .option-button:hover {
+            background: #e0e0e0;
+        }
+        .option-button.selected {
+            background: #004080;
+            color: white;
+            border-color: #004080;
+        }
+
+        /* Navigation Buttons */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .navigation-buttons button {
+            padding: 10px 20px;
+            background: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navigation-buttons button:hover {
+            background: #002b5e;
+        }
+        .navigation-buttons button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Result Container */
+        .result-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .result-container h2 {
+            margin-bottom: 20px;
+        }
+        .result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .result-buttons button {
+            padding: 10px 20px;
+            background: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .result-buttons button:hover {
+            background: #002b5e;
+        }
+
+        /* Review Answers Container */
+        .review-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .review-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .review-item {
+            margin-bottom: 20px;
+        }
+        .review-item p {
+            margin: 5px 0;
+        }
+        .correct {
+            color: #28a745;
+        }
+        .wrong {
+            color: #dc3545;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Plant Pathology Test - Testro</h1>
+    </header>
+
+    <!-- Notification Modal -->
+    <div class="notification-modal" id="notificationModal">
+        <div class="notification-content">
+            <h2>Welcome to Plant Pathology Test</h2>
+            <p><strong>Total Questions:</strong> 10</p>
+            <p><strong>Subject:</strong> Plant Pathology</p>
+            <p><strong>Total Time:</strong> 10 minutes</p>
+            <button onclick="startTest()">OK, Let's Start</button>
+        </div>
+    </div>
+
+    <!-- Test Container -->
+    <div class="test-container" id="testContainer">
+        <!-- Progress Tracker -->
+        <p id="progressText">Question 1 of 10</p>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer" id="timer">Time Left: 10:00</div>
+
+        <!-- Question -->
+        <div class="question-text" id="questionText"></div>
+
+        <!-- Options -->
+        <div class="options" id="options"></div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()">Next</button>
+            <button id="submitBtn" onclick="submitTest()" style="display: none;">Submit</button>
+        </div>
+    </div>
+
+    <!-- Result Container -->
+    <div class="result-container" id="resultContainer">
+        <h2>Test Results</h2>
+        <p><strong>Your Score: <span id="finalScore"></span></strong></p>
+        <div class="result-buttons">
+            <button onclick="restartTest()">Restart Test</button>
+            <button onclick="goToHomePage()">Home</button>
+            <button onclick="showReview()">Review Your Answers</button>
+        </div>
+    </div>
+
+    <!-- Review Answers Container -->
+    <div class="review-container" id="reviewContainer">
+        <h2>Review Your Answers</h2>
+        <div id="reviewDetails"></div>
+        <div class="result-buttons">
+            <button onclick="goToResultPage()">Back to Results</button>
+            <button onclick="goToHomePage()">Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: {
+                    hindi: "पौधों में रोग का कारण क्या है?",
+                    english: "What causes diseases in plants?"
+                },
+                options: [
+                    { hindi: "कीट (Insects)", english: "Insects" },
+                    { hindi: "फफूंद (Fungi)", english: "Fungi" },
+                    { hindi: "बैक्टीरिया (Bacteria)", english: "Bacteria" },
+                    { hindi: "सभी (All of the above)", english: "All of the above" }
+                ],
+                answer: { hindi: "सभी (All of the above)", english: "All of the above" }
+            },
+            {
+                question: {
+                    hindi: "निम्नलिखित में से कौन सा पौध रोग का उदाहरण है?",
+                    english: "Which of the following is an example of a plant disease?"
+                },
+                options: [
+                    { hindi: "मोज़ेक वायरस (Mosaic Virus)", english: "Mosaic Virus" },
+                    { hindi: "पाउडरी मिल्ड्यू (Powdery Mildew)", english: "Powdery Mildew" },
+                    { hindi: "लेट ब्लाइट (Late Blight)", english: "Late Blight" },
+                    { hindi: "सभी (All of the above)", english: "All of the above" }
+                ],
+                answer: { hindi: "सभी (All of the above)", english: "All of the above" }
+            },
+            {
+                question: {
+                    hindi: "पौधों में बैक्टीरियल ब्लाइट किसके कारण होता है?",
+                    english: "What causes bacterial blight in plants?"
+                },
+                options: [
+                    { hindi: "वायरस (Virus)", english: "Virus" },
+                    { hindi: "बैक्टीरिया (Bacteria)", english: "Bacteria" },
+                    { hindi: "फफूंद (Fungi)", english: "Fungi" },
+                    { hindi: "कीट (Insects)", english: "Insects" }
+                ],
+                answer: { hindi: "बैक्टीरिया (Bacteria)", english: "Bacteria" }
+            },
+            {
+                question: {
+                    hindi: "पौधों में नाइट्रोजन की कमी से कौन सा रोग होता है?",
+                    english: "Which disease is caused by nitrogen deficiency in plants?"
+                },
+                options: [
+                    { hindi: "क्लोरोसिस (Chlorosis)", english: "Chlorosis" },
+                    { hindi: "नेक्रोसिस (Necrosis)", english: "Necrosis" },
+                    { hindi: "मोज़ेक (Mosaic)", english: "Mosaic" },
+                    { hindi: "पाउडरी मिल्ड्यू (Powdery Mildew)", english: "Powdery Mildew" }
+                ],
+                answer: { hindi: "क्लोरोसिस (Chlorosis)", english: "Chlorosis" }
+            },
+            {
+                question: {
+                    hindi: "पौधों में फफूंदी रोगों को नियंत्रित करने के लिए क्या उपयोग किया जाता है?",
+                    english: "What is used to control fungal diseases in plants?"
+                },
+                options: [
+                    { hindi: "कीटनाशक (Pesticides)", english: "Pesticides" },
+                    { hindi: "फंगीसाइड (Fungicides)", english: "Fungicides" },
+                    { hindi: "हर्बीसाइड (Herbicides)", english: "Herbicides" },
+                    { hindi: "उर्वरक (Fertilizers)", english: "Fertilizers" }
+                ],
+                answer: { hindi: "फंगीसाइड (Fungicides)", english: "Fungicides" }
+            },
+            {
+                question: {
+                    hindi: "पौधों में वायरल रोगों का संचरण कैसे होता है?",
+                    english: "How are viral diseases transmitted in plants?"
+                },
+                options: [
+                    { hindi: "हवा (Air)", english: "Air" },
+                    { hindi: "पानी (Water)", english: "Water" },
+                    { hindi: "कीट (Insects)", english: "Insects" },
+                    { hindi: "सभी (All of the above)", english: "All of the above" }
+                ],
+                answer: { hindi: "सभी (All of the above)", english: "All of the above" }
+            },
+            {
+                question: {
+                    hindi: "पौधों में लेट ब्लाइट रोग किसके कारण होता है?",
+                    english: "What causes late blight disease in plants?"
+                },
+                options: [
+                    { hindi: "फफूंद (Fungi)", english: "Fungi" },
+                    { hindi: "बैक्टीरिया (Bacteria)", english: "Bacteria" },
+                    { hindi: "वायरस (Virus)", english: "Virus" },
+                    { hindi: "निमेटोड (Nematodes)", english: "Nematodes" }
+                ],
+                answer: { hindi: "फफूंद (Fungi)", english: "Fungi" }
+            },
+            {
+                question: {
+                    hindi: "पौधों में रोग प्रतिरोधक क्षमता बढ़ाने के लिए क्या उपयोग किया जाता है?",
+                    english: "What is used to enhance disease resistance in plants?"
+                },
+                options: [
+                    { hindi: "उर्वरक (Fertilizers)", english: "Fertilizers" },
+                    { hindi: "जैविक खाद (Organic Manure)", english: "Organic Manure" },
+                    { hindi: "रोग प्रतिरोधक किस्में (Resistant Varieties)", english: "Resistant Varieties" },
+                    { hindi: "कीटनाशक (Pesticides)", english: "Pesticides" }
+                ],
+                answer: { hindi: "रोग प्रतिरोधक किस्में (Resistant Varieties)", english: "Resistant Varieties" }
+            },
+            {
+                question: {
+                    hindi: "पौधों में रूट रॉट रोग किसके कारण होता है?",
+                    english: "What causes root rot disease in plants?"
+                },
+                options: [
+                    { hindi: "फफूंद (Fungi)", english: "Fungi" },
+                    { hindi: "बैक्टीरिया (Bacteria)", english: "Bacteria" },
+                    { hindi: "वायरस (Virus)", english: "Virus" },
+                    { hindi: "निमेटोड (Nematodes)", english: "Nematodes" }
+                ],
+                answer: { hindi: "फफूंद (Fungi)", english: "Fungi" }
+            },
+            {
+                question: {
+                    hindi: "पौधों में रोग नियंत्रण के लिए कौन सा तरीका सबसे प्रभावी है?",
+                    english: "Which method is most effective for controlling plant diseases?"
+                },
+                options: [
+                    { hindi: "रासायनिक उपचार (Chemical Treatment)", english: "Chemical Treatment" },
+                    { hindi: "जैविक नियंत्रण (Biological Control)", english: "Biological Control" },
+                    { hindi: "सांस्कृतिक प्रथाएं (Cultural Practices)", english: "Cultural Practices" },
+                    { hindi: "सभी (All of the above)", english: "All of the above" }
+                ],
+                answer: { hindi: "सभी (All of the above)", english: "All of the above" }
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        let timeLeft = 600; // 10 minutes in seconds
+        let timerId;
+
+        // Show notification modal
+        const notificationModal = document.getElementById("notificationModal");
+        const testContainer = document.getElementById("testContainer");
+        const resultContainer = document.getElementById("resultContainer");
+        const reviewContainer = document.getElementById("reviewContainer");
+
+        function startTest() {
+            notificationModal.style.display = "none";
+            testContainer.style.display = "block";
+            loadQuestion();
+            updateTimer();
+        }
+
+        // Load question
+        function loadQuestion() {
+            const questionText = document.getElementById("questionText");
+            const optionsDiv = document.getElementById("options");
+            const progress = document.getElementById("progress");
+            const progressText = document.getElementById("progressText");
+
+            // Update question text (bilingual)
+            const question = questions[currentQuestionIndex].question;
+            questionText.innerHTML = `
+                <div>${question.hindi}</div>
+                <div>${question.english}</div>
+            `;
+
+            // Update options (bilingual)
+            optionsDiv.innerHTML = "";
+            questions[currentQuestionIndex].options.forEach((option, index) => {
+                const optionButton = document.createElement("div");
+                optionButton.classList.add("option-button");
+                optionButton.innerHTML = `
+                    <div>${option.hindi}</div>
+                    <div>${option.english}</div>
+                `;
+                optionButton.onclick = () => selectAnswer(option);
+                if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].hindi === option.hindi) {
+                    optionButton.classList.add("selected");
+                }
+                optionsDiv.appendChild(optionButton);
+            });
+
+            // Update progress bar
+            progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            // Update progress text
+            progressText.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            // Disable "Previous" button on the first question
+            document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+
+            // Show "Submit" button on the last question
+            document.getElementById("submitBtn").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        // Select answer
+        function selectAnswer(selectedOption) {
+            const optionButtons = document.querySelectorAll(".option-button");
+            optionButtons.forEach(button => button.classList.remove("selected"));
+
+            const selectedButton = Array.from(optionButtons).find(button => 
+                button.innerText.includes(selectedOption.hindi) || button.innerText.includes(selectedOption.english)
+            );
+            selectedButton.classList.add("selected");
+
+            userAnswers[currentQuestionIndex] = selectedOption;
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Submit test
+        function submitTest() {
+            clearTimeout(timerId); // Stop the timer to prevent unnecessary execution
+
+            let finalScore = 0;
+            userAnswers.forEach((userAnswer, index) => {
+                if (userAnswer && userAnswer.hindi === questions[index].answer.hindi) {
+                    finalScore++;
+                }
+            });
+
+            score = finalScore;
+
+            document.getElementById("testContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+            document.getElementById("reviewContainer").style.display = "none";
+
+            // Display score
+            document.getElementById("finalScore").textContent = `${score} / ${questions.length}`;
+
+            // Show confetti if the user scores 100%
+            if (score === questions.length) {
+                showConfetti();
+            }
+        }
+
+        // Show Review Answers
+        function showReview() {
+            resultContainer.style.display = "none";
+            reviewContainer.style.display = "block";
+
+            const reviewDetails = document.getElementById("reviewDetails");
+            reviewDetails.innerHTML = "";
+
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer && userAnswer.hindi === question.answer.hindi;
+
+                reviewDetails.innerHTML += `
+                    <div class="review-item">
+                        <p><strong>Question ${index + 1}:</strong></p>
+                        <p>${question.question.hindi}</p>
+                        <p>${question.question.english}</p>
+                        <div class="options">
+                            ${question.options.map(option => `
+                                <div class="option-button ${userAnswer && userAnswer.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
+                                    <div>${option.hindi}</div>
+                                    <div>${option.english}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <p><strong>Correct Answer:</strong> <span class="correct">
+                            ${question.answer.hindi} / ${question.answer.english}
+                        </span></p>
+                    </div>
+                `;
+            });
+        }
+
+        // Restart Test
+        function restartTest() {
+            currentQuestionIndex = 0;
+            score = 0; // Reset the score
+            userAnswers = new Array(questions.length).fill(null);
+            timeLeft = 600; // Reset time
+
+            document.getElementById("testContainer").style.display = "block";
+            document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "none";
+
+            loadQuestion();
+            
+            clearTimeout(timerId); // Stop any previous timer before restarting
+            updateTimer(); // Restart timer
+        }
+
+        // Go to Home Page
+        function goToHomePage() {
+            window.location.href = "index.html"; // Replace with your home page URL
+        }
+
+        // Go to Result Page
+        function goToResultPage() {
+            reviewContainer.style.display = "none";
+            resultContainer.style.display = "block";
+        }
+
+        // Timer
+        function updateTimer() {
+            const timer = document.getElementById("timer");
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            const secondsFormatted = seconds < 10 ? `0${seconds}` : seconds;
+            timer.innerText = `Time Left: ${minutes}:${secondsFormatted}`;
+
+            if (timeLeft === 0) {
+                submitTest();
+            } else {
+                timeLeft--;
+                timerId = setTimeout(updateTimer, 1000);
+            }
+        }
+
+        // Confetti Animation
+        function showConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti");
+            document.body.appendChild(confettiContainer);
+
+            setTimeout(() => confettiContainer.remove(), 5000); // Remove after 5 sec
+        }
+    </script>
+</body>
+</html>
