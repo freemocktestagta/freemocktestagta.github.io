@@ -1,7 +1,73 @@
 <head>
-    <!-- Google AdSense Script (Should be placed in <head>) -->
+    <!-- ✅ Google AdSense Script (Correctly Placed in <head>) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
      crossorigin="anonymous"></script>
+
+    <style>
+        /* Header Styles */
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #004080;
+                position: absolute;
+                width: 100%;
+                top: 60px;
+                left: 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,18 +83,11 @@
                 </ul>
             </nav>
         </div>
-        
-        <!-- Google AdSense Ad Unit -->
-        <div style="text-align: center; margin-top: 10px;">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4416573585075652"
-                data-ad-slot="1234567890"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
     </header>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+    </script>
 </body>
