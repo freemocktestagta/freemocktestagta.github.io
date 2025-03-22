@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uttar Pradesh GK Test Two - Testro</title>
+    <title>Uttar Pradesh GK Test Three - Testro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* General Styles */
@@ -162,22 +162,10 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         .result-container h2 {
-            text-align: center;
             margin-bottom: 20px;
-        }
-        .result-item {
-            margin-bottom: 20px;
-        }
-        .result-item p {
-            margin: 5px 0;
-        }
-        .correct {
-            color: #28a745;
-        }
-        .wrong {
-            color: #dc3545;
         }
         .result-buttons {
             display: flex;
@@ -198,26 +186,55 @@
             background: #002b5e;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
+        /* Review Answers Container */
+        .review-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
             padding: 20px;
-            background: #004080;
-            color: white;
-            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .review-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .review-item {
+            margin-bottom: 20px;
+        }
+        .review-item p {
+            margin: 5px 0;
+        }
+        .correct {
+            color: #28a745;
+        }
+        .wrong {
+            color: #dc3545;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <h1>Uttar Pradesh GK Test Two - Testro</h1>
+        <h1>Uttar Pradesh GK Test Three - Testro</h1>
     </header>
 
     <!-- Notification Modal -->
     <div class="notification-modal" id="notificationModal">
         <div class="notification-content">
-            <h2>Welcome to Uttar Pradesh GK Test Two</h2>
+            <h2>Welcome to Uttar Pradesh GK Test Three</h2>
             <p><strong>Total Questions:</strong> 20</p>
             <p><strong>Subject:</strong> Uttar Pradesh General Knowledge</p>
             <p><strong>Total Time:</strong> 20 minutes</p>
@@ -227,6 +244,9 @@
 
     <!-- Test Container -->
     <div class="test-container" id="testContainer">
+        <!-- Progress Tracker -->
+        <p id="progressText">Question 1 of 20</p>
+
         <!-- Progress Bar -->
         <div class="progress-bar">
             <div class="progress" id="progress"></div>
@@ -243,20 +263,30 @@
 
         <!-- Navigation Buttons -->
         <div class="navigation-buttons">
-            <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+            <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
             <button id="nextBtn" onclick="nextQuestion()">Next</button>
-            <button id="submitBtn" onclick="submitTest()">Submit</button>
+            <button id="submitBtn" onclick="submitTest()" style="display: none;">Submit</button>
         </div>
     </div>
 
     <!-- Result Container -->
     <div class="result-container" id="resultContainer">
         <h2>Test Results</h2>
-        <div id="resultDetails"></div>
-        <!-- Result Buttons -->
+        <p><strong>Your Score: <span id="finalScore"></span></strong></p>
         <div class="result-buttons">
             <button onclick="restartTest()">Restart Test</button>
-            <button onclick="goToHomePage()">Back to Home Page</button>
+            <button onclick="goToHomePage()">Home</button>
+            <button onclick="showReview()">Review Your Answers</button>
+        </div>
+    </div>
+
+    <!-- Review Answers Container -->
+    <div class="review-container" id="reviewContainer">
+        <h2>Review Your Answers</h2>
+        <div id="reviewDetails"></div>
+        <div class="result-buttons">
+            <button onclick="goToResultPage()">Back to Results</button>
+            <button onclick="goToHomePage()">Home</button>
         </div>
     </div>
 
@@ -268,104 +298,264 @@
     <script>
         const questions = [
             {
-                question: "1. देवदरी एवं राजदरी जल प्रपात निम्नलिखित में से किस स्थान पर स्थित है?",
-                options: ["(a) मिर्जापुर", "(b) चंदौली", "(c) सोनभद्र", "(d) कासगंज"],
-                answer: "(c) सोनभद्र"
+                question: {
+                    hindi: "1. निम्नलिखित जनपदों में कौन सर्वाधिक वनाच्छादित है?",
+                    english: "1. Which of the following districts has the highest forest cover?"
+                },
+                options: [
+                    { hindi: "(a) लखीमपुर खीरी", english: "(a) Lakhimpur Kheri" },
+                    { hindi: "(b) पीलीभीत", english: "(b) Pilibhit" },
+                    { hindi: "(c) सोनभद्र", english: "(c) Sonbhadra" },
+                    { hindi: "(d) चित्रकूट", english: "(d) Chitrakoot" }
+                ],
+                answer: { hindi: "(c) सोनभद्र", english: "(c) Sonbhadra" }
             },
             {
-                question: "2. निम्नलिखित में से किस नदी का जल ग्रहण क्षेत्र सर्वाधिक है?",
-                options: ["(a) महानन्दा", "(b) रामगंगा", "(c) सोन", "(d) गंडक"],
-                answer: "(c) सोन"
+                question: {
+                    hindi: "2. सुरहा ताल पक्षी विहार अवस्थित है:",
+                    english: "2. Surha Tal Bird Sanctuary is located in:"
+                },
+                options: [
+                    { hindi: "(a) आजमगढ़ में", english: "(a) Azamgarh" },
+                    { hindi: "(b) हरदोई में", english: "(b) Hardoi" },
+                    { hindi: "(c) प्रतापगढ़ में", english: "(c) Pratapgarh" },
+                    { hindi: "(d) बलिया में", english: "(d) Ballia" }
+                ],
+                answer: { hindi: "(d) बलिया में", english: "(d) Ballia" }
             },
             {
-                question: "3. निम्नलिखित में से कौन सा युग्म सुमेलित नहीं है?",
-                options: ["(a) विटूर - गंगा", "(b) गोरखपुर - राप्ती", "(c) जौनपुर - सई", "(d) कौशाम्बी - यमुना"],
-                answer: "(a) विटूर - गंगा"
+                question: {
+                    hindi: "3. निम्नलिखित में से कौन-सा पक्षी अभयारण्य उत्तर प्रदेश में स्थित है?",
+                    english: "3. Which of the following bird sanctuaries is located in Uttar Pradesh?"
+                },
+                options: [
+                    { hindi: "(a) समसपुर पक्षी अभयारण्य", english: "(a) Samaspur Bird Sanctuary" },
+                    { hindi: "(b) वेदान्यंगल पक्षी अभयारण्य", english: "(b) Vedanthangal Bird Sanctuary" },
+                    { hindi: "(c) घाटप्रभा पक्षी अभयारण्य", english: "(c) Ghataprabha Bird Sanctuary" },
+                    { hindi: "(d) जायकवाड़ी पक्षी अभयारण्य", english: "(d) Jayakwadi Bird Sanctuary" }
+                ],
+                answer: { hindi: "(a) समसपुर पक्षी अभयारण्य", english: "(a) Samaspur Bird Sanctuary" }
             },
             {
-                question: "4. उत्तर प्रदेश के निम्न में से कौन सा क्षेत्र सर्वाधिक बाढ़ प्रभावित है?",
-                options: ["(a) पश्चिमी क्षेत्र", "(b) पूर्वी क्षेत्र", "(c) मध्य क्षेत्र", "(d) उत्तरी क्षेत्र"],
-                answer: "(b) पूर्वी क्षेत्र"
+                question: {
+                    hindi: "4. उत्तर प्रदेश वन निगम कब स्थापित किया गया?",
+                    english: "4. When was the Uttar Pradesh Forest Corporation established?"
+                },
+                options: [
+                    { hindi: "(a) 25 नवम्बर, 1974", english: "(a) 25 November 1974" },
+                    { hindi: "(b) 25 नवम्बर, 1975", english: "(b) 25 November 1975" },
+                    { hindi: "(c) 25 नवम्बर, 1976", english: "(c) 25 November 1976" },
+                    { hindi: "(d) 25 नवम्बर, 1977", english: "(d) 25 November 1977" }
+                ],
+                answer: { hindi: "(a) 25 नवम्बर, 1974", english: "(a) 25 November 1974" }
             },
             {
-                question: "5. सूची-1 को सूची-II से सुमेलित कीजिए तथा नीचे दिए गये कूट से सही उत्तर चुनिये-<br>सूची-1 (नगर) सूची-II (नदी)<br>A. चित्रकूट - 1. यमुना<br>B. जौनपुर - 2. गोमती<br>C. मथुरा - 3. सरयू<br>D. अयोध्या - 4. मंदाकिनी",
-                options: ["(a) 1234", "(b) 4213", "(c) 4123", "(d) 3214"],
-                answer: "(b) 4213"
+                question: {
+                    hindi: "5. निम्नलिखित में से वाघों के संरक्षण से संबंधित कौन सा स्थल उत्तर प्रदेश में स्थित है?",
+                    english: "5. Which of the following sites related to tiger conservation is located in Uttar Pradesh?"
+                },
+                options: [
+                    { hindi: "(a) सरिस्का", english: "(a) Sariska" },
+                    { hindi: "(b) जिम कॉर्बेट", english: "(b) Jim Corbett" },
+                    { hindi: "(c) अमनगढ़", english: "(c) Aman Garh" },
+                    { hindi: "(d) पन्ना", english: "(d) Panna" }
+                ],
+                answer: { hindi: "(c) अमनगढ़", english: "(c) Aman Garh" }
             },
             {
-                question: "6. उत्तर प्रदेश में, किस स्थल को रामसर स्थल के रूप में नामित किया गया है?",
-                options: ["(a) पार्वती आरगा", "(b) सुरहा ताल", "(c) सूर सरोवर", "(d) ऊपरी गंगा नदी"],
-                answer: "(d) ऊपरी गंगा नदी"
+                question: {
+                    hindi: "6. निम्न युग्मों में से कौन-सा युग्म (शहर-नदियाँ) सही सुमेलित नहीं है?",
+                    english: "6. Which of the following pairs (City-River) is not correctly matched?"
+                },
+                options: [
+                    { hindi: "(a) सुल्तानपुर - गोमती", english: "(a) Sultanpur - Gomti" },
+                    { hindi: "(b) गोरखपुर - राप्ती", english: "(b) Gorakhpur - Rapti" },
+                    { hindi: "(c) मथुरा - बेतवा", english: "(c) Mathura - Betwa" },
+                    { hindi: "(d) कानपुर - गंगा", english: "(d) Kanpur - Ganga" }
+                ],
+                answer: { hindi: "(c) मथुरा - बेतवा", english: "(c) Mathura - Betwa" }
             },
             {
-                question: "7. सुरहा ताल प्रसिद्ध अभयारण्य है जिसमें साइबेरिया और अन्य ठंडे क्षेत्रों से कई प्रवासी पक्षी भी आते हैं, यह उत्तर प्रदेश के निम्नलिखित में से किस जिले में स्थित है?",
-                options: ["(a) संत कबीर नगर", "(b) एटा", "(c) गोण्डा", "(d) बलिया"],
-                answer: "(d) बलिया"
+                question: {
+                    hindi: "7. काशी, जो भारत के सबसे पवित्र शहरों में से एक है, किस नदी के किनारे पर बसा हुआ है?",
+                    english: "7. Kashi, one of the holiest cities in India, is situated on the banks of which river?"
+                },
+                options: [
+                    { hindi: "(a) यमुना", english: "(a) Yamuna" },
+                    { hindi: "(b) गंगा", english: "(b) Ganga" },
+                    { hindi: "(c) कावेरी", english: "(c) Kaveri" },
+                    { hindi: "(d) ब्रह्मपुत्र", english: "(d) Brahmaputra" }
+                ],
+                answer: { hindi: "(b) गंगा", english: "(b) Ganga" }
             },
             {
-                question: "8. 'बीर अब्दुल हमीद फॉरेस्ट, वन्य जीवन एवं पर्यावरण संरक्षण पुरस्कार' योजना किस वर्ष शुरु की गई थी?",
-                options: ["(a) 2022-23", "(b) 2021-22", "(c) 2012-13", "(d) 2014-15"],
-                answer: "(c) 2012-13"
+                question: {
+                    hindi: "8. बुंदेलखंड की अर्थव्यवस्था में सबसे बड़ा योगदान किस नदी का है?",
+                    english: "8. Which river contributes the most to the economy of Bundelkhand?"
+                },
+                options: [
+                    { hindi: "(a) सिंध", english: "(a) Sindh" },
+                    { hindi: "(b) यमुना", english: "(b) Yamuna" },
+                    { hindi: "(c) बेतवा", english: "(c) Betwa" },
+                    { hindi: "(d) नर्मदा", english: "(d) Narmada" }
+                ],
+                answer: { hindi: "(c) बेतवा", english: "(c) Betwa" }
             },
             {
-                question: "9. निम्नलिखित में से किस जानवर की रक्षा के लिए हस्तिनापुर वन्यजीव अभयारण्य की स्थापना वर्ष 1986 में की गई थी?",
-                options: ["(a) जंगली भैंस", "(b) दलदल हिरण", "(c) लाल पांडा", "(d) बाघ"],
-                answer: "(b) दलदल हिरण"
+                question: {
+                    hindi: "9. निम्नलिखित में से कौन-सी नदी उत्तर प्रदेश से नहीं बहती?",
+                    english: "9. Which of the following rivers does not flow through Uttar Pradesh?"
+                },
+                options: [
+                    { hindi: "(a) गंगा", english: "(a) Ganga" },
+                    { hindi: "(b) यमुना", english: "(b) Yamuna" },
+                    { hindi: "(c) रामगंगा", english: "(c) Ramganga" },
+                    { hindi: "(d) झेलम", english: "(d) Jhelum" }
+                ],
+                answer: { hindi: "(d) झेलम", english: "(d) Jhelum" }
             },
             {
-                question: "10. उत्तर प्रदेश के निम्नलिखित में से कौन-सा वन्यजीव अभयारण्य 1975 में स्थापित किया गया था?",
-                options: ["(a) किशनपुर", "(b) रायपुर", "(c) कतरनियाघाट", "(d) बम्बल"],
-                answer: "(a) किशनपुर"
+                question: {
+                    hindi: "10. फुल्हर झील भारत के निम्नलिखित में से किस राज्य में स्थित है?",
+                    english: "10. In which state of India is the Fulhar Lake located?"
+                },
+                options: [
+                    { hindi: "(a) हरियाणा", english: "(a) Haryana" },
+                    { hindi: "(b) उत्तर प्रदेश", english: "(b) Uttar Pradesh" },
+                    { hindi: "(c) छत्तीसगढ़", english: "(c) Chhattisgarh" },
+                    { hindi: "(d) गुजरात", english: "(d) Gujarat" }
+                ],
+                answer: { hindi: "(b) उत्तर प्रदेश", english: "(b) Uttar Pradesh" }
             },
             {
-                question: "11. 'चंद्रप्रभा वन्य जीव अभयारण्य' उत्तर प्रदेश का एक प्रमुख वन्यजीव अभयारण्य है, यह निम्नलिखित में से कहाँ पर अवस्थित है?",
-                options: ["(a) जनपद पीलीभीत", "(b) जनपद चंदौली", "(c) जनपद उन्नाव", "(d) जनपद महाराजगंज"],
-                answer: "(b) जनपद चंदौली"
+                question: {
+                    hindi: "11. सुरहा ताल एक झील है-",
+                    english: "11. Surha Tal is a lake of-"
+                },
+                options: [
+                    { hindi: "(a) कृत्रिम", english: "(a) Artificial" },
+                    { hindi: "(b) विवर्तनिक", english: "(b) Tectonic" },
+                    { hindi: "(c) चाप", english: "(c) Oxbow" },
+                    { hindi: "(d) ज्वालामुखीय", english: "(d) Volcanic" }
+                ],
+                answer: { hindi: "(b) विवर्तनिक", english: "(b) Tectonic" }
             },
             {
-                question: "12. विजय सागर पक्षी विहार उत्तर प्रदेश के किस स्थान पर स्थित है?",
-                options: ["(a) महोबा", "(b) मुरादाबाद", "(c) मेरठ", "(d) महाराजगंज"],
-                answer: "(a) महोबा"
+                question: {
+                    hindi: "12. सारनाथ, जो 'अशोक स्तंभ' के लिए प्रसिद्ध है, वाराणसी से 10 किलोमीटर उत्तर-पूर्व में किन नदियों के संगम के पास स्थित है?",
+                    english: "12. Sarnath, famous for the 'Ashoka Pillar', is located near the confluence of which rivers, 10 km northeast of Varanasi?"
+                },
+                options: [
+                    { hindi: "(a) बेतवा और चंचल", english: "(a) Betwa and Chambal" },
+                    { hindi: "(b) गंगा और वरुणा", english: "(b) Ganga and Varuna" },
+                    { hindi: "(c) गंगा और सोन", english: "(c) Ganga and Son" },
+                    { hindi: "(d) यमुना और काली", english: "(d) Yamuna and Kali" }
+                ],
+                answer: { hindi: "(b) गंगा और वरुणा", english: "(b) Ganga and Varuna" }
             },
             {
-                question: "13. उत्तर प्रदेश में अमनगढ़ टाइगर रिजर्व निम्नलिखित में से किस टाइगर रिजर्व का हिस्सा है?",
-                options: ["(a) दुधवा", "(b) कॉर्बेट", "(c) पीलीभीत", "(d) राजाजी"],
-                answer: "(c) पीलीभीत"
+                question: {
+                    hindi: "13. निम्नलिखित कथनों में से कौन सा सही है? 1. रामगंगा नदी कन्नौज के पास गंगा नदी में मिलती है। 2. वेतवा नदी प्रयागराज के पास यमुना नदी में मिलती है।",
+                    english: "13. Which of the following statements is correct? 1. The Ramganga River meets the Ganga River near Kannauj. 2. The Betwa River meets the Yamuna River near Prayagraj."
+                },
+                options: [
+                    { hindi: "(a) केवल 1", english: "(a) Only 1" },
+                    { hindi: "(b) केवल 2", english: "(b) Only 2" },
+                    { hindi: "(c) न तो 1 और न ही 2", english: "(c) Neither 1 nor 2" },
+                    { hindi: "(d) 1 और 2 दोनों", english: "(d) Both 1 and 2" }
+                ],
+                answer: { hindi: "(a) केवल 1", english: "(a) Only 1" }
             },
             {
-                question: "14. उत्तर प्रदेश में 'मयूर संरक्षण केन्द्र' निम्नलिखित में से किस स्थान / जनपद में स्थित है?",
-                options: ["(a) महोबा", "(b) मैनपुरी", "(c) मथुरा", "(d) महाराजगंज"],
-                answer: "(b) मैनपुरी"
+                question: {
+                    hindi: "14. 'शेखा झील' के नाम से एक नया राष्ट्रीय पक्षी विहार का विकास किया जा रहा है-",
+                    english: "14. A new national bird sanctuary is being developed under the name 'Shekha Lake' in-"
+                },
+                options: [
+                    { hindi: "(a) लखनऊ में", english: "(a) Lucknow" },
+                    { hindi: "(b) अलीगढ़ में", english: "(b) Aligarh" },
+                    { hindi: "(c) वृंदावन में", english: "(c) Vrindavan" },
+                    { hindi: "(d) कानपुर में", english: "(d) Kanpur" }
+                ],
+                answer: { hindi: "(b) अलीगढ़ में", english: "(b) Aligarh" }
             },
             {
-                question: "15. निम्नलिखित में से कौन-सा युग्म सही सुमेलित नहीं है?",
-                options: ["(a) महावीर स्वामी अभयारण्य - जनपद ललितपुर", "(b) लाख बहोभी अभयारण्य - जनपद कन्नौज", "(c) किशनपुर वन्य जीव अभयारण्य - जनपद बलरामपुर", "(d) कैमूर अभयारण्य - मिर्जापुर एवं सोनभद्र"],
-                answer: "(c) किशनपुर वन्य जीव अभयारण्य - जनपद बलरामपुर"
+                question: {
+                    hindi: "15. सूर सरोवर रामसर स्थल के संदर्भ में निम्नलिखित में से कौन सा/से कथन सत्य है/हैं? 1. यह उत्तर प्रदेश के लखीमपुर खीरी जिले में स्थित है। 2. यह एक मानव-निर्मित जलाशय है।",
+                    english: "15. Which of the following statements is/are true regarding the Sur Sarovar Ramsar site? 1. It is located in Lakhimpur Kheri district of Uttar Pradesh. 2. It is a man-made reservoir."
+                },
+                options: [
+                    { hindi: "(a) केवल 1", english: "(a) Only 1" },
+                    { hindi: "(b) केवल 2", english: "(b) Only 2" },
+                    { hindi: "(c) 1 और 2 दोनों", english: "(c) Both 1 and 2" },
+                    { hindi: "(d) न तो 1 और न ही 2", english: "(d) Neither 1 nor 2" }
+                ],
+                answer: { hindi: "(b) केवल 2", english: "(b) Only 2" }
             },
             {
-                question: "16. उत्तर प्रदेश में राज्य पोषण मिशन सम्बन्धित है-",
-                options: ["(a) विकलांग कल्याण से", "(b) कुपोषण से", "(c) शहरी विकास से", "(d) कौशल विकास से"],
-                answer: "(b) कुपोषण से"
+                question: {
+                    hindi: "16. गंगा नदी, उत्तर प्रदेश में किस जनपद से प्रवेश करती है?",
+                    english: "16. Through which district does the Ganga River enter Uttar Pradesh?"
+                },
+                options: [
+                    { hindi: "(a) बिजनौर", english: "(a) Bijnor" },
+                    { hindi: "(b) सहारनपुर", english: "(b) Saharanpur" },
+                    { hindi: "(c) मेरठ", english: "(c) Meerut" },
+                    { hindi: "(d) जे.पी. नगर", english: "(d) J.P. Nagar" }
+                ],
+                answer: { hindi: "(a) बिजनौर", english: "(a) Bijnor" }
             },
             {
-                question: "17. गोमती कार्य योजना के अन्तर्गत निम्नलिखित में से किस जनपद में प्रदूषण न्यूनीकरण कायों पर समुचित बल नहीं दिया गया है?",
-                options: ["(a) जौनपुर", "(b) सीतापुर", "(c) लखनऊ", "(d) सुल्तानपुर"],
-                answer: "(a) जौनपुर"
+                question: {
+                    hindi: "17. निम्नलिखित में से कौन-सा रामसर स्थल उत्तर प्रदेश में स्थित नहीं है?",
+                    english: "17. Which of the following Ramsar sites is not located in Uttar Pradesh?"
+                },
+                options: [
+                    { hindi: "(a) सूर सरोवर", english: "(a) Sur Sarovar" },
+                    { hindi: "(b) समसपुर पक्षी अभयारण्य", english: "(b) Samaspur Bird Sanctuary" },
+                    { hindi: "(c) सरसई नवार झील", english: "(c) Sarsai Nawar Lake" },
+                    { hindi: "(d) सुरिसर-मानसर झीलें", english: "(d) Surinsar-Mansar Lakes" }
+                ],
+                answer: { hindi: "(d) सुरिसर-मानसर झीलें", english: "(d) Surinsar-Mansar Lakes" }
             },
             {
-                question: "18. शारज्ञ सहायक समादेश विकास परियोजना के मुख्य लक्ष्य निम्नलिखित में से क्या हैं?<br>1. कृषि उत्पादन बढ़ाना।<br>2. वहु फसली खेती द्वारा भूमि उपयोग के प्रारूप में सुधार करना।<br>3. भू-प्रबन्धन का सुधार करना।",
-                options: ["(a) केवल 1", "(b) केवल 1 और 2", "(c) केवल 2 और 3", "(d) उपर्युक्त सभी तीनों"],
-                answer: "(d) उपर्युक्त सभी तीनों"
+                question: {
+                    hindi: "18. निम्नलिखित में से कौन सी नदी उत्तर प्रदेश राज्य से प्रवाहित नहीं होती है?",
+                    english: "18. Which of the following rivers does not flow through Uttar Pradesh?"
+                },
+                options: [
+                    { hindi: "(a) सोन नदी", english: "(a) Son River" },
+                    { hindi: "(b) महानदी नदी", english: "(b) Mahanadi River" },
+                    { hindi: "(c) हिण्डन नदी", english: "(c) Hindon River" },
+                    { hindi: "(d) शारदा नदी", english: "(d) Sharda River" }
+                ],
+                answer: { hindi: "(b) महानदी नदी", english: "(b) Mahanadi River" }
             },
             {
-                question: "19. उत्तर प्रदेश में 'गंगा एक्शन प्लान' कब शुरू किया गया था?",
-                options: ["(a) 1985", "(b) 1986", "(c) 1987", "(d) 1988"],
-                answer: "(b) 1986"
+                question: {
+                    hindi: "19. निम्नलिखित में से कौन-सा एक सही सुमेलित नहीं है?",
+                    english: "19. Which of the following is not correctly matched?"
+                },
+                options: [
+                    { hindi: "(a) सौज झील - मैनपुरी", english: "(a) Sauj Lake - Mainpuri" },
+                    { hindi: "(b) शेखा झील - अलीगढ़", english: "(b) Shekha Lake - Aligarh" },
+                    { hindi: "(c) बखीरा झील - संत कबीर नगर", english: "(c) Bakhira Lake - Sant Kabir Nagar" },
+                    { hindi: "(d) सरसई झील - आगरा", english: "(d) Sarsai Lake - Agra" }
+                ],
+                answer: { hindi: "(d) सरसई झील - आगरा", english: "(d) Sarsai Lake - Agra" }
             },
             {
-                question: "20. उत्तर प्रदेश में 'गंगा महोत्सव' कहाँ आयोजित किया जाता है?",
-                options: ["(a) वाराणसी", "(b) प्रयागराज", "(c) कानपुर", "(d) लखनऊ"],
-                answer: "(a) वाराणसी"
+                question: {
+                    hindi: "20. निम्नलिखित में से कौन सही सुमेलित नहीं है?",
+                    english: "20. Which of the following is not correctly matched?"
+                },
+                options: [
+                    { hindi: "(a) गंगा - वाराणसी", english: "(a) Ganga - Varanasi" },
+                    { hindi: "(b) गोमती - सुल्तानपुर", english: "(b) Gomti - Sultanpur" },
+                    { hindi: "(c) कोसी - गोरखपुर", english: "(c) Kosi - Gorakhpur" },
+                    { hindi: "(d) सरयू - अयोध्या", english: "(d) Sarayu - Ayodhya" }
+                ],
+                answer: { hindi: "(c) कोसी - गोरखपुर", english: "(c) Kosi - Gorakhpur" }
             }
         ];
 
@@ -373,10 +563,13 @@
         let score = 0;
         let userAnswers = new Array(questions.length).fill(null);
         let timeLeft = 1200; // 20 minutes in seconds
+        let timerId;
 
         // Show notification modal
         const notificationModal = document.getElementById("notificationModal");
         const testContainer = document.getElementById("testContainer");
+        const resultContainer = document.getElementById("resultContainer");
+        const reviewContainer = document.getElementById("reviewContainer");
 
         function startTest() {
             notificationModal.style.display = "none";
@@ -390,18 +583,26 @@
             const questionText = document.getElementById("questionText");
             const optionsDiv = document.getElementById("options");
             const progress = document.getElementById("progress");
+            const progressText = document.getElementById("progressText");
 
-            // Update question text
-            questionText.innerHTML = questions[currentQuestionIndex].question;
+            // Update question text (bilingual)
+            const question = questions[currentQuestionIndex].question;
+            questionText.innerHTML = `
+                <div>${question.hindi}</div>
+                <div>${question.english}</div>
+            `;
 
-            // Update options
+            // Update options (bilingual)
             optionsDiv.innerHTML = "";
             questions[currentQuestionIndex].options.forEach((option, index) => {
                 const optionButton = document.createElement("div");
                 optionButton.classList.add("option-button");
-                optionButton.innerText = option;
+                optionButton.innerHTML = `
+                    <div>${option.hindi}</div>
+                    <div>${option.english}</div>
+                `;
                 optionButton.onclick = () => selectAnswer(option);
-                if (userAnswers[currentQuestionIndex] === option) {
+                if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].hindi === option.hindi) {
                     optionButton.classList.add("selected");
                 }
                 optionsDiv.appendChild(optionButton);
@@ -409,6 +610,15 @@
 
             // Update progress bar
             progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            // Update progress text
+            progressText.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            // Disable "Previous" button on the first question
+            document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+
+            // Show "Submit" button on the last question
+            document.getElementById("submitBtn").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
         }
 
         // Select answer
@@ -416,13 +626,12 @@
             const optionButtons = document.querySelectorAll(".option-button");
             optionButtons.forEach(button => button.classList.remove("selected"));
 
-            const selectedButton = Array.from(optionButtons).find(button => button.innerText === selectedOption);
+            const selectedButton = Array.from(optionButtons).find(button => 
+                button.innerText.includes(selectedOption.hindi) || button.innerText.includes(selectedOption.english)
+            );
             selectedButton.classList.add("selected");
 
             userAnswers[currentQuestionIndex] = selectedOption;
-            if (selectedOption === questions[currentQuestionIndex].answer) {
-                score++;
-            }
         }
 
         // Navigation functions
@@ -442,28 +651,58 @@
 
         // Submit test
         function submitTest() {
-            const testContainer = document.querySelector(".test-container");
-            const resultContainer = document.getElementById("resultContainer");
-            const resultDetails = document.getElementById("resultDetails");
+            clearTimeout(timerId); // Stop the timer to prevent unnecessary execution
 
-            testContainer.style.display = "none";
-            resultContainer.style.display = "block";
+            let finalScore = 0;
+            userAnswers.forEach((userAnswer, index) => {
+                if (userAnswer && userAnswer.hindi === questions[index].answer.hindi) {
+                    finalScore++;
+                }
+            });
 
-            // Display total score
-            resultDetails.innerHTML = `
-                <p><strong>Your Score: ${score} / ${questions.length}</strong></p>
-            `;
+            score = finalScore;
 
-            // Display detailed results
+            document.getElementById("testContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+            document.getElementById("reviewContainer").style.display = "none";
+
+            // Display score
+            document.getElementById("finalScore").textContent = `${score} / ${questions.length}`;
+
+            // Show confetti if the user scores 100%
+            if (score === questions.length) {
+                showConfetti();
+            }
+        }
+
+        // Show Review Answers
+        function showReview() {
+            resultContainer.style.display = "none";
+            reviewContainer.style.display = "block";
+
+            const reviewDetails = document.getElementById("reviewDetails");
+            reviewDetails.innerHTML = "";
+
             questions.forEach((question, index) => {
                 const userAnswer = userAnswers[index];
-                const isCorrect = userAnswer === question.answer;
+                const isCorrect = userAnswer && userAnswer.hindi === question.answer.hindi;
 
-                resultDetails.innerHTML += `
-                    <div class="result-item">
-                        <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
-                        <p><strong>Your Answer:</strong> <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer || "Not answered"}</span></p>
-                        <p><strong>Correct Answer:</strong> <span class="correct">${question.answer}</span></p>
+                reviewDetails.innerHTML += `
+                    <div class="review-item">
+                        <p><strong>Question ${index + 1}:</strong></p>
+                        <p>${question.question.hindi}</p>
+                        <p>${question.question.english}</p>
+                        <div class="options">
+                            ${question.options.map(option => `
+                                <div class="option-button ${userAnswer && userAnswer.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
+                                    <div>${option.hindi}</div>
+                                    <div>${option.english}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <p><strong>Correct Answer:</strong> <span class="correct">
+                            ${question.answer.hindi} / ${question.answer.english}
+                        </span></p>
                     </div>
                 `;
             });
@@ -472,18 +711,18 @@
         // Restart Test
         function restartTest() {
             currentQuestionIndex = 0;
-            score = 0;
+            score = 0; // Reset the score
             userAnswers = new Array(questions.length).fill(null);
-            timeLeft = 1200;
+            timeLeft = 1200; // Reset time
 
-            const testContainer = document.querySelector(".test-container");
-            const resultContainer = document.getElementById("resultContainer");
-
-            testContainer.style.display = "block";
-            resultContainer.style.display = "none";
+            document.getElementById("testContainer").style.display = "block";
+            document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "none";
 
             loadQuestion();
-            updateTimer();
+            
+            clearTimeout(timerId); // Stop any previous timer before restarting
+            updateTimer(); // Restart timer
         }
 
         // Go to Home Page
@@ -491,19 +730,35 @@
             window.location.href = "index.html"; // Replace with your home page URL
         }
 
+        // Go to Result Page
+        function goToResultPage() {
+            reviewContainer.style.display = "none";
+            resultContainer.style.display = "block";
+        }
+
         // Timer
         function updateTimer() {
             const timer = document.getElementById("timer");
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            timer.innerText = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            const secondsFormatted = seconds < 10 ? `0${seconds}` : seconds;
+            timer.innerText = `Time Left: ${minutes}:${secondsFormatted}`;
 
             if (timeLeft === 0) {
                 submitTest();
             } else {
                 timeLeft--;
-                setTimeout(updateTimer, 1000);
+                timerId = setTimeout(updateTimer, 1000);
             }
+        }
+
+        // Confetti Animation
+        function showConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti");
+            document.body.appendChild(confettiContainer);
+
+            setTimeout(() => confettiContainer.remove(), 5000); // Remove after 5 sec
         }
     </script>
 </body>
