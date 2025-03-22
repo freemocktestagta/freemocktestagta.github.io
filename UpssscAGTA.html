@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UpssscAGTA Mock Test Series 2024</title>
+    <title>RPF Constable Mock Test Series 2024</title>
 
     <!-- Google AdSense Auto Ads Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
@@ -18,6 +18,34 @@
             padding: 0;
             background-color: #f5f5f5;
             color: #333;
+        }
+
+        /* Loading Animation */
+        #loading {
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+            color: #004080;
+        }
+
+        /* Introduction Section */
+        .introduction {
+            padding: 20px;
+            background: linear-gradient(135deg, #004080, #0066cc); /* Gradient background */
+            color: white;
+            border-radius: 10px;
+            margin: 20px auto 30px; /* Added margin-bottom */
+            max-width: 1200px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .introduction h2 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+        .introduction p {
+            margin: 5px 0;
+            font-size: 16px;
         }
 
         /* Test Series Section */
@@ -69,15 +97,19 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+        .test-card.active {
+            background: linear-gradient(135deg, #004080, #003366); /* Active tile color */
+            color: white;
+        }
         .test-card h3 {
             margin: 0 0 10px;
             font-size: 18px;
-            color: #004080;
+            color: inherit;
         }
         .test-card p {
             margin: 10px 0;
             font-size: 14px;
-            color: #666;
+            color: inherit;
         }
 
         /* Subject Slider */
@@ -86,19 +118,22 @@
             margin-top: 20px;
         }
         .subject-slider h3 {
-            font-size: 20px;
+            font-size: 18px; /* Smaller font size */
             color: #004080;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+        }
+        .subject-slider .slider-container {
+            gap: 10px; /* Smaller gap */
         }
 
         /* Subject Card */
         .subject-card {
             flex: 0 0 auto;
-            width: 200px;
-            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* Gradient background */
+            width: 120px; /* Reduced width for mobile */
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Gradient background */
             border: 1px solid #ddd;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -111,7 +146,7 @@
         }
         .subject-card h4 {
             margin: 0 0 10px;
-            font-size: 16px;
+            font-size: 14px; /* Smaller font size */
             color: #004080;
         }
 
@@ -126,6 +161,7 @@
         .test-list ul {
             list-style: none;
             padding: 0;
+            display: block; /* Always show the list */
         }
         .test-list li {
             background: white;
@@ -151,19 +187,25 @@
     </style>
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div id="loading">Loading...</div>
+
     <!-- Include Header -->
     <div id="header"></div>
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header').innerHTML = data);
-    </script>
+
+    <!-- Introduction Section -->
+    <div class="introduction">
+        <h2>UPSSSC AGTA Mock Test Series 2024</h2>
+        <p>Total Tests: <span id="total-tests">60</span></p>
+        <p>Free Tests: 10</p>
+        <p>Exam Pattern: 100 Questions | 2 Hours</p>
+    </div>
 
     <!-- Test Series Section -->
     <section class="test-series">
         <h2>Choose a Test Series:</h2>
         <div class="slider-container">
-            <div class="test-card" onclick="showTestList('daily')">
+            <div class="test-card active" onclick="showTestList('daily')">
                 <h3>Daily Test Series</h3>
                 <p>Practice daily tests to improve your speed and accuracy.</p>
             </div>
@@ -341,17 +383,12 @@
 
     <!-- Include Footer -->
     <div id="footer"></div>
-    <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
-    </script>
 
     <script>
         // Function to show the selected test list
         function showTestList(type) {
-            // Hide all test lists and subject slider
-            const testLists = document.querySelectorAll('.test-list, .subject-slider');
+            // Hide all test lists
+            const testLists = document.querySelectorAll('.test-list');
             testLists.forEach(list => list.style.display = 'none');
 
             // Show the selected test list
@@ -359,20 +396,69 @@
             if (selectedList) {
                 selectedList.style.display = 'block';
             }
+
+            // Highlight the active tile
+            const testCards = document.querySelectorAll('.test-card');
+            testCards.forEach(card => card.classList.remove('active'));
+            const activeCard = document.querySelector(`.test-card[onclick="showTestList('${type}')"]`);
+            if (activeCard) {
+                activeCard.classList.add('active');
+            }
+
+            // Show subject slider if a subject is selected
+            if (type === 'agronomy' || type === 'horticulture' || type === 'pathology' || 
+                type === 'entomology' || type === 'genetics' || type === 'animal-husbandry' || 
+                type === 'statistics' || type === 'physiology') {
+                const subjectSlider = document.getElementById('subject-slider');
+                if (subjectSlider) {
+                    subjectSlider.style.display = 'block';
+                }
+            }
         }
 
         // Function to show the subject slider
         function showSubjectSlider() {
-            // Hide all test lists
-            const testLists = document.querySelectorAll('.test-list');
-            testLists.forEach(list => list.style.display = 'none');
-
-            // Show the subject slider
             const subjectSlider = document.getElementById('subject-slider');
             if (subjectSlider) {
                 subjectSlider.style.display = 'block';
             }
+            showTestList('subject');
         }
+
+        // Automatically open the first tile (Daily Test Series)
+        document.addEventListener('DOMContentLoaded', () => {
+            showTestList('daily');
+        });
+
+        // Update total tests dynamically
+        const totalTests = document.querySelectorAll('.test-list ul li').length;
+        document.getElementById('total-tests').textContent = totalTests;
+
+        // Load header and footer
+        Promise.all([
+            fetch('header.html').then(response => response.text()),
+            fetch('footer.html').then(response => response.text())
+        ]).then(([headerData, footerData]) => {
+            document.getElementById('header').innerHTML = headerData;
+            document.getElementById('footer').innerHTML = footerData;
+        }).catch(() => {
+            console.error("Error loading header or footer!");
+        }).finally(() => {
+            document.getElementById('loading').style.display = 'none'; // Always remove loading text
+        });
+
+        // Mobile menu auto-close
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMenu();
+            });
+        });
     </script>
 </body>
 </html>
