@@ -162,22 +162,10 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         .result-container h2 {
-            text-align: center;
             margin-bottom: 20px;
-        }
-        .result-item {
-            margin-bottom: 20px;
-        }
-        .result-item p {
-            margin: 5px 0;
-        }
-        .correct {
-            color: #28a745;
-        }
-        .wrong {
-            color: #dc3545;
         }
         .result-buttons {
             display: flex;
@@ -198,13 +186,42 @@
             background: #002b5e;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
+        /* Review Answers Container */
+        .review-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
             padding: 20px;
-            background: #004080;
-            color: white;
-            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .review-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .review-item {
+            margin-bottom: 20px;
+        }
+        .review-item p {
+            margin: 5px 0;
+        }
+        .correct {
+            color: #28a745;
+        }
+        .wrong {
+            color: #dc3545;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
         }
     </style>
 </head>
@@ -227,6 +244,9 @@
 
     <!-- Test Container -->
     <div class="test-container" id="testContainer">
+        <!-- Progress Tracker -->
+        <p id="progressText">Question 1 of 10</p>
+
         <!-- Progress Bar -->
         <div class="progress-bar">
             <div class="progress" id="progress"></div>
@@ -243,20 +263,30 @@
 
         <!-- Navigation Buttons -->
         <div class="navigation-buttons">
-            <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+            <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
             <button id="nextBtn" onclick="nextQuestion()">Next</button>
-            <button id="submitBtn" onclick="submitTest()">Submit</button>
+            <button id="submitBtn" onclick="submitTest()" style="display: none;">Submit</button>
         </div>
     </div>
 
     <!-- Result Container -->
     <div class="result-container" id="resultContainer">
         <h2>Test Results</h2>
-        <div id="resultDetails"></div>
-        <!-- Result Buttons -->
+        <p><strong>Your Score: <span id="finalScore"></span></strong></p>
         <div class="result-buttons">
             <button onclick="restartTest()">Restart Test</button>
-            <button onclick="goToHomePage()">Back to Home Page</button>
+            <button onclick="goToHomePage()">Home</button>
+            <button onclick="showReview()">Review Your Answers</button>
+        </div>
+    </div>
+
+    <!-- Review Answers Container -->
+    <div class="review-container" id="reviewContainer">
+        <h2>Review Your Answers</h2>
+        <div id="reviewDetails"></div>
+        <div class="result-buttons">
+            <button onclick="goToResultPage()">Back to Results</button>
+            <button onclick="goToHomePage()">Home</button>
         </div>
     </div>
 
@@ -268,54 +298,134 @@
     <script>
         const questions = [
             {
-                question: "1. पौधों में भोजन संश्लेषण की प्रक्रिया क्या कहलाती है?",
-                options: ["A) श्वसन (Respiration)", "B) प्रकाशसंश्लेषण (Photosynthesis)", "C) वाष्पोत्सर्जन (Transpiration)", "D) परागण (Pollination)"],
-                answer: "B) प्रकाशसंश्लेषण (Photosynthesis)"
+                question: {
+                    hindi: "1. पौधों में भोजन संश्लेषण की प्रक्रिया क्या कहलाती है?",
+                    english: "1. What is the process of food synthesis in plants called?"
+                },
+                options: [
+                    { hindi: "A) श्वसन (Respiration)", english: "A) Respiration" },
+                    { hindi: "B) प्रकाशसंश्लेषण (Photosynthesis)", english: "B) Photosynthesis" },
+                    { hindi: "C) वाष्पोत्सर्जन (Transpiration)", english: "C) Transpiration" },
+                    { hindi: "D) परागण (Pollination)", english: "D) Pollination" }
+                ],
+                answer: { hindi: "B) प्रकाशसंश्लेषण (Photosynthesis)", english: "B) Photosynthesis" }
             },
             {
-                question: "2. प्रकाश संश्लेषण में किस गैस की आवश्यकता होती है?",
-                options: ["A) ऑक्सीजन (Oxygen)", "B) हाइड्रोजन (Hydrogen)", "C) कार्बन डाइऑक्साइड (Carbon dioxide)", "D) नाइट्रोजन (Nitrogen)"],
-                answer: "C) कार्बन डाइऑक्साइड (Carbon dioxide)"
+                question: {
+                    hindi: "2. प्रकाश संश्लेषण में किस गैस की आवश्यकता होती है?",
+                    english: "2. Which gas is required for photosynthesis?"
+                },
+                options: [
+                    { hindi: "A) ऑक्सीजन (Oxygen)", english: "A) Oxygen" },
+                    { hindi: "B) हाइड्रोजन (Hydrogen)", english: "B) Hydrogen" },
+                    { hindi: "C) कार्बन डाइऑक्साइड (Carbon dioxide)", english: "C) Carbon dioxide" },
+                    { hindi: "D) नाइट्रोजन (Nitrogen)", english: "D) Nitrogen" }
+                ],
+                answer: { hindi: "C) कार्बन डाइऑक्साइड (Carbon dioxide)", english: "C) Carbon dioxide" }
             },
             {
-                question: "3. पौधों में जल का परिवहन कौन करता है?",
-                options: ["A) फ्लोएम (Phloem)", "B) जाइलम (Xylem)", "C) पत्तियां (Leaves)", "D) मूलावरण (Cortex)"],
-                answer: "B) जाइलम (Xylem)"
+                question: {
+                    hindi: "3. पौधों में जल का परिवहन कौन करता है?",
+                    english: "3. What transports water in plants?"
+                },
+                options: [
+                    { hindi: "A) फ्लोएम (Phloem)", english: "A) Phloem" },
+                    { hindi: "B) जाइलम (Xylem)", english: "B) Xylem" },
+                    { hindi: "C) पत्तियां (Leaves)", english: "C) Leaves" },
+                    { hindi: "D) मूलावरण (Cortex)", english: "D) Cortex" }
+                ],
+                answer: { hindi: "B) जाइलम (Xylem)", english: "B) Xylem" }
             },
             {
-                question: "4. पौधों में भोजन का परिवहन किसके द्वारा होता है?",
-                options: ["A) जाइलम (Xylem)", "B) फ्लोएम (Phloem)", "C) मूल (Root)", "D) रंध्र (Stomata)"],
-                answer: "B) फ्लोएम (Phloem)"
+                question: {
+                    hindi: "4. पौधों में भोजन का परिवहन किसके द्वारा होता है?",
+                    english: "4. What transports food in plants?"
+                },
+                options: [
+                    { hindi: "A) जाइलम (Xylem)", english: "A) Xylem" },
+                    { hindi: "B) फ्लोएम (Phloem)", english: "B) Phloem" },
+                    { hindi: "C) मूल (Root)", english: "C) Root" },
+                    { hindi: "D) रंध्र (Stomata)", english: "D) Stomata" }
+                ],
+                answer: { hindi: "B) फ्लोएम (Phloem)", english: "B) Phloem" }
             },
             {
-                question: "5. प्रकाश संश्लेषण के दौरान कौन सी गैस उत्सर्जित होती है?",
-                options: ["A) कार्बन डाइऑक्साइड (Carbon dioxide)", "B) नाइट्रोजन (Nitrogen)", "C) ऑक्सीजन (Oxygen)", "D) मीथेन (Methane)"],
-                answer: "C) ऑक्सीजन (Oxygen)"
+                question: {
+                    hindi: "5. प्रकाश संश्लेषण के दौरान कौन सी गैस उत्सर्जित होती है?",
+                    english: "5. Which gas is released during photosynthesis?"
+                },
+                options: [
+                    { hindi: "A) कार्बन डाइऑक्साइड (Carbon dioxide)", english: "A) Carbon dioxide" },
+                    { hindi: "B) नाइट्रोजन (Nitrogen)", english: "B) Nitrogen" },
+                    { hindi: "C) ऑक्सीजन (Oxygen)", english: "C) Oxygen" },
+                    { hindi: "D) मीथेन (Methane)", english: "D) Methane" }
+                ],
+                answer: { hindi: "C) ऑक्सीजन (Oxygen)", english: "C) Oxygen" }
             },
             {
-                question: "6. पौधों में जल के वाष्पीकरण की प्रक्रिया को क्या कहा जाता है?",
-                options: ["A) प्रकाशसंश्लेषण (Photosynthesis)", "B) श्वसन (Respiration)", "C) वाष्पोत्सर्जन (Transpiration)", "D) निषेचन (Fertilization)"],
-                answer: "C) वाष्पोत्सर्जन (Transpiration)"
+                question: {
+                    hindi: "6. पौधों में जल के वाष्पीकरण की प्रक्रिया को क्या कहा जाता है?",
+                    english: "6. What is the process of water evaporation in plants called?"
+                },
+                options: [
+                    { hindi: "A) प्रकाशसंश्लेषण (Photosynthesis)", english: "A) Photosynthesis" },
+                    { hindi: "B) श्वसन (Respiration)", english: "B) Respiration" },
+                    { hindi: "C) वाष्पोत्सर्जन (Transpiration)", english: "C) Transpiration" },
+                    { hindi: "D) निषेचन (Fertilization)", english: "D) Fertilization" }
+                ],
+                answer: { hindi: "C) वाष्पोत्सर्जन (Transpiration)", english: "C) Transpiration" }
             },
             {
-                question: "7. पत्तियों के नीचे छोटे छिद्र क्या कहलाते हैं?",
-                options: ["A) रंध्र (Stomata)", "B) ट्राइकोम (Trichome)", "C) जाइलम (Xylem)", "D) फ्लोएम (Phloem)"],
-                answer: "A) रंध्र (Stomata)"
+                question: {
+                    hindi: "7. पत्तियों के नीचे छोटे छिद्र क्या कहलाते हैं?",
+                    english: "7. What are the small pores under leaves called?"
+                },
+                options: [
+                    { hindi: "A) रंध्र (Stomata)", english: "A) Stomata" },
+                    { hindi: "B) ट्राइकोम (Trichome)", english: "B) Trichome" },
+                    { hindi: "C) जाइलम (Xylem)", english: "C) Xylem" },
+                    { hindi: "D) फ्लोएम (Phloem)", english: "D) Phloem" }
+                ],
+                answer: { hindi: "A) रंध्र (Stomata)", english: "A) Stomata" }
             },
             {
-                question: "8. पौधों में रंध्र (Stomata) का मुख्य कार्य क्या है?",
-                options: ["A) भोजन परिवहन (Transport of food)", "B) जल परिवहन (Transport of water)", "C) गैसों का विनिमय (Exchange of gases)", "D) फूल बनाना (Flower production)"],
-                answer: "C) गैसों का विनिमय (Exchange of gases)"
+                question: {
+                    hindi: "8. पौधों में रंध्र (Stomata) का मुख्य कार्य क्या है?",
+                    english: "8. What is the main function of stomata in plants?"
+                },
+                options: [
+                    { hindi: "A) भोजन परिवहन (Transport of food)", english: "A) Transport of food" },
+                    { hindi: "B) जल परिवहन (Transport of water)", english: "B) Transport of water" },
+                    { hindi: "C) गैसों का विनिमय (Exchange of gases)", english: "C) Exchange of gases" },
+                    { hindi: "D) फूल बनाना (Flower production)", english: "D) Flower production" }
+                ],
+                answer: { hindi: "C) गैसों का विनिमय (Exchange of gases)", english: "C) Exchange of gases" }
             },
             {
-                question: "9. पौधों में वृद्धि के लिए कौन सा हार्मोन उत्तरदायी होता है?",
-                options: ["A) साइटोकाइनिन (Cytokinin)", "B) ऑक्सिन (Auxin)", "C) एथिलीन (Ethylene)", "D) एब्सिसिक एसिड (Abscisic Acid)"],
-                answer: "B) ऑक्सिन (Auxin)"
+                question: {
+                    hindi: "9. पौधों में वृद्धि के लिए कौन सा हार्मोन उत्तरदायी होता है?",
+                    english: "9. Which hormone is responsible for growth in plants?"
+                },
+                options: [
+                    { hindi: "A) साइटोकाइनिन (Cytokinin)", english: "A) Cytokinin" },
+                    { hindi: "B) ऑक्सिन (Auxin)", english: "B) Auxin" },
+                    { hindi: "C) एथिलीन (Ethylene)", english: "C) Ethylene" },
+                    { hindi: "D) एब्सिसिक एसिड (Abscisic Acid)", english: "D) Abscisic Acid" }
+                ],
+                answer: { hindi: "B) ऑक्सिन (Auxin)", english: "B) Auxin" }
             },
             {
-                question: "10. पौधों में कौन सा तत्व क्लोरोफिल निर्माण के लिए आवश्यक है?",
-                options: ["A) नाइट्रोजन (Nitrogen)", "B) पोटेशियम (Potassium)", "C) कैल्शियम (Calcium)", "D) मैग्नीशियम (Magnesium)"],
-                answer: "D) मैग्नीशियम (Magnesium)"
+                question: {
+                    hindi: "10. पौधों में कौन सा तत्व क्लोरोफिल निर्माण के लिए आवश्यक है?",
+                    english: "10. Which element is essential for chlorophyll formation in plants?"
+                },
+                options: [
+                    { hindi: "A) नाइट्रोजन (Nitrogen)", english: "A) Nitrogen" },
+                    { hindi: "B) पोटेशियम (Potassium)", english: "B) Potassium" },
+                    { hindi: "C) कैल्शियम (Calcium)", english: "C) Calcium" },
+                    { hindi: "D) मैग्नीशियम (Magnesium)", english: "D) Magnesium" }
+                ],
+                answer: { hindi: "D) मैग्नीशियम (Magnesium)", english: "D) Magnesium" }
             }
         ];
 
@@ -323,10 +433,13 @@
         let score = 0;
         let userAnswers = new Array(questions.length).fill(null);
         let timeLeft = 600; // 10 minutes in seconds
+        let timerId;
 
         // Show notification modal
         const notificationModal = document.getElementById("notificationModal");
         const testContainer = document.getElementById("testContainer");
+        const resultContainer = document.getElementById("resultContainer");
+        const reviewContainer = document.getElementById("reviewContainer");
 
         function startTest() {
             notificationModal.style.display = "none";
@@ -340,18 +453,26 @@
             const questionText = document.getElementById("questionText");
             const optionsDiv = document.getElementById("options");
             const progress = document.getElementById("progress");
+            const progressText = document.getElementById("progressText");
 
-            // Update question text
-            questionText.innerText = questions[currentQuestionIndex].question;
+            // Update question text (bilingual)
+            const question = questions[currentQuestionIndex].question;
+            questionText.innerHTML = `
+                <div>${question.hindi}</div>
+                <div>${question.english}</div>
+            `;
 
-            // Update options
+            // Update options (bilingual)
             optionsDiv.innerHTML = "";
             questions[currentQuestionIndex].options.forEach((option, index) => {
                 const optionButton = document.createElement("div");
                 optionButton.classList.add("option-button");
-                optionButton.innerText = option;
+                optionButton.innerHTML = `
+                    <div>${option.hindi}</div>
+                    <div>${option.english}</div>
+                `;
                 optionButton.onclick = () => selectAnswer(option);
-                if (userAnswers[currentQuestionIndex] === option) {
+                if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].hindi === option.hindi) {
                     optionButton.classList.add("selected");
                 }
                 optionsDiv.appendChild(optionButton);
@@ -359,6 +480,15 @@
 
             // Update progress bar
             progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            // Update progress text
+            progressText.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            // Disable "Previous" button on the first question
+            document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+
+            // Show "Submit" button on the last question
+            document.getElementById("submitBtn").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
         }
 
         // Select answer
@@ -366,13 +496,12 @@
             const optionButtons = document.querySelectorAll(".option-button");
             optionButtons.forEach(button => button.classList.remove("selected"));
 
-            const selectedButton = Array.from(optionButtons).find(button => button.innerText === selectedOption);
+            const selectedButton = Array.from(optionButtons).find(button => 
+                button.innerText.includes(selectedOption.hindi) || button.innerText.includes(selectedOption.english)
+            );
             selectedButton.classList.add("selected");
 
             userAnswers[currentQuestionIndex] = selectedOption;
-            if (selectedOption === questions[currentQuestionIndex].answer) {
-                score++;
-            }
         }
 
         // Navigation functions
@@ -392,28 +521,58 @@
 
         // Submit test
         function submitTest() {
-            const testContainer = document.querySelector(".test-container");
-            const resultContainer = document.getElementById("resultContainer");
-            const resultDetails = document.getElementById("resultDetails");
+            clearTimeout(timerId); // Stop the timer to prevent unnecessary execution
 
-            testContainer.style.display = "none";
-            resultContainer.style.display = "block";
+            let finalScore = 0;
+            userAnswers.forEach((userAnswer, index) => {
+                if (userAnswer && userAnswer.hindi === questions[index].answer.hindi) {
+                    finalScore++;
+                }
+            });
 
-            // Display total score
-            resultDetails.innerHTML = `
-                <p><strong>Your Score: ${score} / ${questions.length}</strong></p>
-            `;
+            score = finalScore;
 
-            // Display detailed results
+            document.getElementById("testContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+            document.getElementById("reviewContainer").style.display = "none";
+
+            // Display score
+            document.getElementById("finalScore").textContent = `${score} / ${questions.length}`;
+
+            // Show confetti if the user scores 100%
+            if (score === questions.length) {
+                showConfetti();
+            }
+        }
+
+        // Show Review Answers
+        function showReview() {
+            resultContainer.style.display = "none";
+            reviewContainer.style.display = "block";
+
+            const reviewDetails = document.getElementById("reviewDetails");
+            reviewDetails.innerHTML = "";
+
             questions.forEach((question, index) => {
                 const userAnswer = userAnswers[index];
-                const isCorrect = userAnswer === question.answer;
+                const isCorrect = userAnswer && userAnswer.hindi === question.answer.hindi;
 
-                resultDetails.innerHTML += `
-                    <div class="result-item">
-                        <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
-                        <p><strong>Your Answer:</strong> <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer || "Not answered"}</span></p>
-                        <p><strong>Correct Answer:</strong> <span class="correct">${question.answer}</span></p>
+                reviewDetails.innerHTML += `
+                    <div class="review-item">
+                        <p><strong>Question ${index + 1}:</strong></p>
+                        <p>${question.question.hindi}</p>
+                        <p>${question.question.english}</p>
+                        <div class="options">
+                            ${question.options.map(option => `
+                                <div class="option-button ${userAnswer && userAnswer.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
+                                    <div>${option.hindi}</div>
+                                    <div>${option.english}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <p><strong>Correct Answer:</strong> <span class="correct">
+                            ${question.answer.hindi} / ${question.answer.english}
+                        </span></p>
                     </div>
                 `;
             });
@@ -422,18 +581,18 @@
         // Restart Test
         function restartTest() {
             currentQuestionIndex = 0;
-            score = 0;
+            score = 0; // Reset the score
             userAnswers = new Array(questions.length).fill(null);
-            timeLeft = 600;
+            timeLeft = 600; // Reset time
 
-            const testContainer = document.querySelector(".test-container");
-            const resultContainer = document.getElementById("resultContainer");
-
-            testContainer.style.display = "block";
-            resultContainer.style.display = "none";
+            document.getElementById("testContainer").style.display = "block";
+            document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "none";
 
             loadQuestion();
-            updateTimer();
+            
+            clearTimeout(timerId); // Stop any previous timer before restarting
+            updateTimer(); // Restart timer
         }
 
         // Go to Home Page
@@ -441,19 +600,35 @@
             window.location.href = "index.html"; // Replace with your home page URL
         }
 
+        // Go to Result Page
+        function goToResultPage() {
+            reviewContainer.style.display = "none";
+            resultContainer.style.display = "block";
+        }
+
         // Timer
         function updateTimer() {
             const timer = document.getElementById("timer");
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            timer.innerText = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            const secondsFormatted = seconds < 10 ? `0${seconds}` : seconds;
+            timer.innerText = `Time Left: ${minutes}:${secondsFormatted}`;
 
             if (timeLeft === 0) {
                 submitTest();
             } else {
                 timeLeft--;
-                setTimeout(updateTimer, 1000);
+                timerId = setTimeout(updateTimer, 1000);
             }
+        }
+
+        // Confetti Animation
+        function showConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti");
+            document.body.appendChild(confettiContainer);
+
+            setTimeout(() => confettiContainer.remove(), 5000); // Remove after 5 sec
         }
     </script>
 </body>
