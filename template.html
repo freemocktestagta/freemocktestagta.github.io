@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Template</title>
+    <title>Full Test Template</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* General Styles */
@@ -15,12 +15,17 @@
             color: #333;
         }
 
+        /* Header */
         header {
             background: #004080;
             color: white;
             padding: 15px 0;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
         }
 
         /* Notification Modal */
@@ -33,44 +38,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1000;
         }
-
         .notification-content {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-            width: 90%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-
         .notification-content h2 {
-            font-size: 24px;
-            color: #004080;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
-
         .notification-content p {
-            font-size: 16px;
-            color: #555;
             margin: 10px 0;
         }
-
         .notification-content button {
+            padding: 10px 20px;
             background: #004080;
             color: white;
             border: none;
-            padding: 10px 20px;
             border-radius: 5px;
-            font-size: 16px;
             cursor: pointer;
-            margin-top: 20px;
             transition: background 0.3s;
         }
-
         .notification-content button:hover {
             background: #002b5e;
         }
@@ -83,9 +75,10 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: none;
+            display: none; /* Hidden until user starts the test */
         }
 
+        /* Progress Bar */
         .progress-bar {
             width: 100%;
             background: #e0e0e0;
@@ -93,7 +86,6 @@
             overflow: hidden;
             margin-bottom: 20px;
         }
-
         .progress {
             height: 10px;
             background: #004080;
@@ -101,6 +93,7 @@
             transition: width 0.3s;
         }
 
+        /* Timer */
         .timer {
             font-size: 18px;
             font-weight: bold;
@@ -108,18 +101,17 @@
             margin-bottom: 20px;
         }
 
+        /* Question and Options */
         .question-text {
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 20px;
         }
-
         .options {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-
         .option-button {
             background: #f9f9f9;
             padding: 15px;
@@ -129,23 +121,21 @@
             transition: background 0.3s, border-color 0.3s;
             text-align: left;
         }
-
         .option-button:hover {
             background: #e0e0e0;
         }
-
         .option-button.selected {
             background: #004080;
             color: white;
             border-color: #004080;
         }
 
+        /* Navigation Buttons */
         .navigation-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
         }
-
         .navigation-buttons button {
             padding: 10px 20px;
             background: #004080;
@@ -155,11 +145,9 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-
         .navigation-buttons button:hover {
             background: #002b5e;
         }
-
         .navigation-buttons button:disabled {
             background: #cccccc;
             cursor: not-allowed;
@@ -176,13 +164,16 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-
         .result-container h2 {
-            color: #004080;
+            margin-bottom: 20px;
         }
-
+        .result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
         .result-buttons button {
-            margin: 10px;
             padding: 10px 20px;
             background: #004080;
             color: white;
@@ -191,12 +182,11 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-
         .result-buttons button:hover {
             background: #002b5e;
         }
 
-        /* Review Container */
+        /* Review Answers Container */
         .review-container {
             display: none;
             max-width: 800px;
@@ -206,63 +196,48 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
         .review-container h2 {
-            color: #004080;
+            text-align: center;
+            margin-bottom: 20px;
         }
-
         .review-item {
             margin-bottom: 20px;
         }
-
         .review-item p {
-            margin: 10px 0;
+            margin: 5px 0;
         }
-
         .correct {
-            color: green;
-            font-weight: bold;
+            color: #28a745;
         }
-
         .wrong {
-            color: red;
-            font-weight: bold;
+            color: #dc3545;
         }
 
-        /* Footer */
-        footer {
-            background: #004080;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            .notification-content, .test-container, .result-container {
-                padding: 15px;
-            }
-            .question-text {
-                font-size: 18px;
-            }
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <h1 id="testTitle">Test Title</h1>
+        <h1>Full Test Template</h1>
     </header>
 
     <!-- Notification Modal -->
     <div class="notification-modal" id="notificationModal">
         <div class="notification-content">
-            <h2 id="welcomeMessage">Welcome to the Test</h2>
-            <p><strong>Section:</strong> <span id="testSection"></span></p>
-            <p><strong>Subject:</strong> <span id="testSubject"></span></p>
-            <p><strong>Total Questions:</strong> <span id="totalQuestions"></span></p>
-            <p><strong>Total Time:</strong> <span id="testTime"></span></p>
+            <h2>Welcome to Full Test Template</h2>
+            <p><strong>Total Questions:</strong> 100</p>
+            <p><strong>Subject:</strong> General Knowledge</p>
+            <p><strong>Total Time:</strong> 100 minutes</p>
             <button onclick="startTest()">OK, Let's Start</button>
         </div>
     </div>
@@ -270,7 +245,7 @@
     <!-- Test Container -->
     <div class="test-container" id="testContainer">
         <!-- Progress Tracker -->
-        <p id="progressText">Question 1 of <span id="totalQuestionsDisplay"></span></p>
+        <p id="progressText">Question 1 of 100</p>
 
         <!-- Progress Bar -->
         <div class="progress-bar">
@@ -278,7 +253,7 @@
         </div>
 
         <!-- Timer -->
-        <div class="timer" id="timer">Time Left: 20:00</div>
+        <div class="timer" id="timer">Time Left: 100:00</div>
 
         <!-- Question -->
         <div class="question-text" id="questionText"></div>
@@ -321,48 +296,25 @@
     </footer>
 
     <script>
-        // Global variables
+        const questions = [
+            // Add your 100 questions here (as provided in the test)
+        ];
+
         let currentQuestionIndex = 0;
         let score = 0;
-        let userAnswers = [];
-        let timeLeft;
+        let userAnswers = new Array(questions.length).fill(null);
+        let timeLeft = 6000; // 100 minutes in seconds
         let timerId;
-        let questions = [];
-        let testData;
 
-        // Load test data dynamically
-        async function loadTestData() {
-            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1";
-            try {
-                const response = await fetch(`${testId}.json`);
-                if (!response.ok) throw new Error("Failed to load test data");
-                testData = await response.json();
-                questions = testData.questions;
-                timeLeft = testData.time;
-                return testData;
-            } catch (error) {
-                console.error("Error loading test data:", error);
-                alert("Test data not found. Redirecting to home.");
-                window.location.href = "index.html";
-                return null;
-            }
-        }
+        // Show notification modal
+        const notificationModal = document.getElementById("notificationModal");
+        const testContainer = document.getElementById("testContainer");
+        const resultContainer = document.getElementById("resultContainer");
+        const reviewContainer = document.getElementById("reviewContainer");
 
-        // Start test
-        async function startTest() {
-            if (!testData) return;
-
-            document.getElementById("testTitle").textContent = testData.title;
-            document.getElementById("welcomeMessage").textContent = `Welcome to ${testData.title}`;
-            document.getElementById("testSection").textContent = testData.section;
-            document.getElementById("testSubject").textContent = testData.subject;
-            document.getElementById("totalQuestions").textContent = testData.questions.length;
-            document.getElementById("testTime").textContent = `${Math.floor(testData.time / 60)} minutes`;
-            document.getElementById("totalQuestionsDisplay").textContent = testData.questions.length;
-
-            document.getElementById("notificationModal").style.display = "none";
-            document.getElementById("testContainer").style.display = "block";
-
+        function startTest() {
+            notificationModal.style.display = "none";
+            testContainer.style.display = "block";
             loadQuestion();
             updateTimer();
         }
@@ -374,38 +326,52 @@
             const progress = document.getElementById("progress");
             const progressText = document.getElementById("progressText");
 
-            const question = questions[currentQuestionIndex];
+            // Update question text (bilingual)
+            const question = questions[currentQuestionIndex].question;
             questionText.innerHTML = `
-                <div>${question.question.hindi}</div>
-                <div>${question.question.english}</div>
+                <div>${question.hindi}</div>
+                <div>${question.english}</div>
             `;
 
+            // Update options (bilingual)
             optionsDiv.innerHTML = "";
-            question.options.forEach((option) => {
+            questions[currentQuestionIndex].options.forEach((option, index) => {
                 const optionButton = document.createElement("div");
                 optionButton.classList.add("option-button");
                 optionButton.innerHTML = `
                     <div>${option.hindi}</div>
                     <div>${option.english}</div>
                 `;
-                optionButton.onclick = () => selectAnswer(option, optionButton);
-                if (userAnswers[currentQuestionIndex]?.hindi === option.hindi) {
+                optionButton.onclick = () => selectAnswer(option);
+                if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].hindi === option.hindi) {
                     optionButton.classList.add("selected");
                 }
                 optionsDiv.appendChild(optionButton);
             });
 
+            // Update progress bar
             progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            // Update progress text
             progressText.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
 
+            // Disable "Previous" button on the first question
             document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+
+            // Show "Submit" button on the last question
             document.getElementById("submitBtn").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
         }
 
         // Select answer
-        function selectAnswer(selectedOption, button) {
-            document.querySelectorAll(".option-button").forEach(btn => btn.classList.remove("selected"));
-            button.classList.add("selected");
+        function selectAnswer(selectedOption) {
+            const optionButtons = document.querySelectorAll(".option-button");
+            optionButtons.forEach(button => button.classList.remove("selected"));
+
+            const selectedButton = Array.from(optionButtons).find(button => 
+                button.innerText.includes(selectedOption.hindi) || button.innerText.includes(selectedOption.english)
+            );
+            selectedButton.classList.add("selected");
+
             userAnswers[currentQuestionIndex] = selectedOption;
         }
 
@@ -425,12 +391,12 @@
         }
 
         // Submit test
-        async function submitTest() {
-            clearTimeout(timerId);
+        function submitTest() {
+            clearTimeout(timerId); // Stop the timer to prevent unnecessary execution
 
             let finalScore = 0;
             userAnswers.forEach((userAnswer, index) => {
-                if (userAnswer?.hindi === testData.questions[index].answer.hindi) {
+                if (userAnswer && userAnswer.hindi === questions[index].answer.hindi) {
                     finalScore++;
                 }
             });
@@ -439,44 +405,28 @@
 
             document.getElementById("testContainer").style.display = "none";
             document.getElementById("resultContainer").style.display = "block";
-            document.getElementById("finalScore").textContent = `${score} / ${testData.questions.length}`;
-
-            document.querySelectorAll("button").forEach(btn => btn.disabled = true);
-            sessionStorage.removeItem("remainingTime");
-        }
-
-        // Restart Test
-        function restartTest() {
-            currentQuestionIndex = 0;
-            score = 0;
-            userAnswers = [];
-            timeLeft = testData.time;
-
-            document.getElementById("testContainer").style.display = "block";
-            document.getElementById("resultContainer").style.display = "none";
             document.getElementById("reviewContainer").style.display = "none";
 
-            loadQuestion();
-            clearTimeout(timerId);
-            updateTimer();
-        }
+            // Display score
+            document.getElementById("finalScore").textContent = `${score} / ${questions.length}`;
 
-        // Go to Home Page
-        function goToHomePage() {
-            window.location.href = "index.html";
+            // Show confetti if the user scores 100%
+            if (score === questions.length) {
+                showConfetti();
+            }
         }
 
         // Show Review Answers
         function showReview() {
-            document.getElementById("resultContainer").style.display = "none";
-            document.getElementById("reviewContainer").style.display = "block";
+            resultContainer.style.display = "none";
+            reviewContainer.style.display = "block";
 
             const reviewDetails = document.getElementById("reviewDetails");
             reviewDetails.innerHTML = "";
 
             questions.forEach((question, index) => {
                 const userAnswer = userAnswers[index];
-                const isCorrect = userAnswer?.hindi === question.answer.hindi;
+                const isCorrect = userAnswer && userAnswer.hindi === question.answer.hindi;
 
                 reviewDetails.innerHTML += `
                     <div class="review-item">
@@ -485,7 +435,7 @@
                         <p>${question.question.english}</p>
                         <div class="options">
                             ${question.options.map(option => `
-                                <div class="option-button ${userAnswer?.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
+                                <div class="option-button ${userAnswer && userAnswer.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
                                     <div>${option.hindi}</div>
                                     <div>${option.english}</div>
                                 </div>
@@ -499,41 +449,58 @@
             });
         }
 
-        // Go to Result Page
-        function goToResultPage() {
+        // Restart Test
+        function restartTest() {
+            currentQuestionIndex = 0;
+            score = 0; // Reset the score
+            userAnswers = new Array(questions.length).fill(null);
+            timeLeft = 6000; // Reset time
+
+            document.getElementById("testContainer").style.display = "block";
+            document.getElementById("resultContainer").style.display = "none";
             document.getElementById("reviewContainer").style.display = "none";
-            document.getElementById("resultContainer").style.display = "block";
+
+            loadQuestion();
+            
+            clearTimeout(timerId); // Stop any previous timer before restarting
+            updateTimer(); // Restart timer
         }
 
-        // Timer with sessionStorage persistence
+        // Go to Home Page
+        function goToHomePage() {
+            window.location.href = "index.html"; // Replace with your home page URL
+        }
+
+        // Go to Result Page
+        function goToResultPage() {
+            reviewContainer.style.display = "none";
+            resultContainer.style.display = "block";
+        }
+
+        // Timer
         function updateTimer() {
             const timer = document.getElementById("timer");
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            timer.innerText = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+            const secondsFormatted = seconds < 10 ? `0${seconds}` : seconds;
+            timer.innerText = `Time Left: ${minutes}:${secondsFormatted}`;
 
-            sessionStorage.setItem("remainingTime", timeLeft);
-
-            if (timeLeft <= 0) {
+            if (timeLeft === 0) {
                 submitTest();
-                return;
+            } else {
+                timeLeft--;
+                timerId = setTimeout(updateTimer, 1000);
             }
-            timeLeft--;
-            timerId = setTimeout(updateTimer, 1000);
         }
 
-        // Initialize the test data when the page loads
-        window.onload = async () => {
-            await loadTestData();
-            if (testData) {
-                document.getElementById("testTitle").textContent = testData.title;
-                document.getElementById("welcomeMessage").textContent = `Welcome to ${testData.title}`;
-                document.getElementById("testSection").textContent = testData.section;
-                document.getElementById("testSubject").textContent = testData.subject;
-                document.getElementById("totalQuestions").textContent = testData.questions.length;
-                document.getElementById("testTime").textContent = `${Math.floor(testData.time / 60)} minutes`;
-            }
-        };
+        // Confetti Animation
+        function showConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti");
+            document.body.appendChild(confettiContainer);
+
+            setTimeout(() => confettiContainer.remove(), 5000); // Remove after 5 sec
+        }
     </script>
 </body>
 </html>
