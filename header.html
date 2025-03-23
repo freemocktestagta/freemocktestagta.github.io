@@ -5,20 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testro</title>
 
-    <!-- ✅ Google AdSense Script (Correctly Placed in <head>) -->
+    <!-- Google AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
      crossorigin="anonymous"></script>
 
     <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
         /* Header Styles */
         header {
-            background: #004080;
+            background: linear-gradient(135deg, #004080, #002040);
             color: white;
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .header-container {
             display: flex;
@@ -28,10 +40,20 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
         h1 {
             margin: 0;
             font-size: 24px;
             color: white;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         .nav-links {
             display: flex;
@@ -43,10 +65,21 @@
         .nav-links a {
             text-decoration: none;
             color: white;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
         }
         .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffcc00;
+        }
+        .nav-links a:focus {
+            outline: 2px solid #ffcc00;
+            outline-offset: 2px;
+        }
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
             color: #ffcc00;
         }
         .menu-toggle {
@@ -56,6 +89,15 @@
             background: none;
             border: none;
             color: white;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .menu-toggle:focus {
+            outline: 2px solid #ffcc00;
+            outline-offset: 2px;
         }
 
         /* Responsive Design */
@@ -65,30 +107,37 @@
             }
             .nav-links {
                 flex-direction: column;
-                background: #004080;
+                background: linear-gradient(135deg, #004080, #002040);
                 position: absolute;
                 width: 100%;
                 top: 60px;
                 left: 0;
                 z-index: 1001;
-                transform: translateY(-100%); /* Start off-screen */
-                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth sliding animation */
-                opacity: 0; /* Hide without breaking transitions */
-                pointer-events: none; /* Disable interactions when hidden */
-                visibility: hidden; /* Prevent flashing on load */
-                height: 0; /* Prevent layout shifts */
-                overflow: hidden; /* Hide overflow */
+                transform: translateY(-150%); /* Start off-screen */
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                height: 0;
+                overflow: hidden;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             }
             .nav-links.active {
-                transform: translateY(0); /* Slide into view */
-                opacity: 1; /* Show when active */
-                pointer-events: auto; /* Enable interactions when visible */
-                visibility: visible; /* Ensure it's visible */
-                height: auto; /* Allow height to adjust */
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+                visibility: visible;
+                height: auto;
+                padding: 10px 0;
             }
             .nav-links li {
-                margin: 10px 0;
-                padding: 0 20px;
+                margin: 0;
+                width: 100%;
+            }
+            .nav-links a {
+                display: block;
+                padding: 12px 20px;
+                border-radius: 0;
             }
         }
     </style>
@@ -96,11 +145,14 @@
 <body>
     <header>
         <div class="header-container">
-            <h1>Testro</h1>
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <h1>Testro</h1>
+            </div>
             <nav>
-                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
-                <ul class="nav-links" role="menu">
-                    <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+                <ul class="nav-links" id="nav-menu" role="menu">
+                    <li role="none"><a href="index.html" role="menuitem" class="active">Home</a></li>
                     <li role="none"><a href="UpssscAGTA.html" role="menuitem">UPSSSC AG TA</a></li>
                     <li role="none"><a href="contact.html" role="menuitem">Contact Us</a></li>
                 </ul>
@@ -110,40 +162,57 @@
 
     <script>
         // Function to toggle the mobile menu
-        function toggleMenu() {
-            const navLinks = document.querySelector(".nav-links");
+        function toggleMenu(event) {
+            event.stopPropagation(); // Prevent the event from bubbling up
+            const navLinks = document.getElementById("nav-menu");
             const menuToggle = document.querySelector(".menu-toggle");
             const isOpen = navLinks.classList.toggle("active");
 
-            // Update aria-expanded, aria-label, and button text
+            // Update aria-expanded and button text
             menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-            menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
             menuToggle.textContent = isOpen ? "✖" : "☰";
         }
+
+        // Attach event listener to menu toggle button
+        document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
 
         // Close the mobile menu when a link is clicked
         document.querySelectorAll(".nav-links a").forEach(link => {
             link.addEventListener("click", () => {
-                const navLinks = document.querySelector(".nav-links");
+                const navLinks = document.getElementById("nav-menu");
                 const menuToggle = document.querySelector(".menu-toggle");
                 navLinks.classList.remove("active");
                 menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute("aria-label", "Open menu");
                 menuToggle.textContent = "☰";
             });
         });
 
         // Close the mobile menu when clicking outside
         document.addEventListener("click", (event) => {
-            const navLinks = document.querySelector(".nav-links");
+            const navLinks = document.getElementById("nav-menu");
             const menuToggle = document.querySelector(".menu-toggle");
 
-            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target) && navLinks.classList.contains("active")) {
+            if (navLinks.classList.contains("active") && 
+                !navLinks.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
                 navLinks.classList.remove("active");
                 menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute("aria-label", "Open menu");
                 menuToggle.textContent = "☰";
             }
+        });
+
+        // Set active nav link based on current page
+        document.addEventListener("DOMContentLoaded", () => {
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                } else if (currentPage === "" && link.getAttribute("href") === "index.html") {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
         });
     </script>
 </body>
