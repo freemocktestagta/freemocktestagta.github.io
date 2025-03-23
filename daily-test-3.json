@@ -1,0 +1,138 @@
+{
+    "title": "Entomology Test - Testro",
+    "section": "Entomology",
+    "subject": "Entomology",
+    "time": 600,
+    "questions": [
+        {
+            "question": {
+                "hindi": "1. कीटविज्ञान (Entomology) किसका अध्ययन है?",
+                "english": "1. What is Entomology the study of?"
+            },
+            "options": [
+                { "hindi": "A) जलीय जीव (Aquatic Animals)", "english": "A) Aquatic Animals" },
+                { "hindi": "B) कीड़े-मकोड़े (Insects)", "english": "B) Insects" },
+                { "hindi": "C) पक्षी (Birds)", "english": "C) Birds" },
+                { "hindi": "D) स्तनधारी (Mammals)", "english": "D) Mammals" }
+            ],
+            "answer": { "hindi": "B) कीड़े-मकोड़े (Insects)", "english": "B) Insects" }
+        },
+        {
+            "question": {
+                "hindi": "2. किसी कीट का शरीर मुख्य रूप से कितने भागों में बंटा होता है?",
+                "english": "2. How many main parts is an insect's body divided into?"
+            },
+            "options": [
+                { "hindi": "A) एक (One)", "english": "A) One" },
+                { "hindi": "B) दो (Two)", "english": "B) Two" },
+                { "hindi": "C) तीन (Three)", "english": "C) Three" },
+                { "hindi": "D) चार (Four)", "english": "D) Four" }
+            ],
+            "answer": { "hindi": "C) तीन (Three)", "english": "C) Three" }
+        },
+        {
+            "question": {
+                "hindi": "3. कीटों में श्वसन किसके द्वारा होता है?",
+                "english": "3. How do insects breathe?"
+            },
+            "options": [
+                { "hindi": "A) फेफड़े (Lungs)", "english": "A) Lungs" },
+                { "hindi": "B) ट्रैकिआ (Trachea)", "english": "B) Trachea" },
+                { "hindi": "C) गिल्स (Gills)", "english": "C) Gills" },
+                { "hindi": "D) त्वचा (Skin)", "english": "D) Skin" }
+            ],
+            "answer": { "hindi": "B) ट्रैकिआ (Trachea)", "english": "B) Trachea" }
+        },
+        {
+            "question": {
+                "hindi": "4. निम्नलिखित में से कौन सा एक सामाजिक कीट (Social Insect) है?",
+                "english": "4. Which of the following is a social insect?"
+            },
+            "options": [
+                { "hindi": "A) तितली (Butterfly)", "english": "A) Butterfly" },
+                { "hindi": "B) मधुमक्खी (Honeybee)", "english": "B) Honeybee" },
+                { "hindi": "C) टिड्डा (Grasshopper)", "english": "C) Grasshopper" },
+                { "hindi": "D) जूं (Louse)", "english": "D) Louse" }
+            ],
+            "answer": { "hindi": "B) मधुमक्खी (Honeybee)", "english": "B) Honeybee" }
+        },
+        {
+            "question": {
+                "hindi": "5. सबसे बड़ा कीट कौन सा है?",
+                "english": "5. Which is the largest insect?"
+            },
+            "options": [
+                { "hindi": "A) गैंडा बीटल (Giant Beetle)", "english": "A) Giant Beetle" },
+                { "hindi": "B) ड्रैगनफ्लाई (Dragonfly)", "english": "B) Dragonfly" },
+                { "hindi": "C) टारेंटयुला हॉक ततैया (Tarantula Hawk Wasp)", "english": "C) Tarantula Hawk Wasp" },
+                { "hindi": "D) मॉर्फो तितली (Morpho Butterfly)", "english": "D) Morpho Butterfly" }
+            ],
+            "answer": { "hindi": "A) गैंडा बीटल (Giant Beetle)", "english": "A) Giant Beetle" }
+        },
+        {
+            "question": {
+                "hindi": "6. सिल्क (रेशम) का उत्पादन कौन सा कीट करता है?",
+                "english": "6. Which insect produces silk?"
+            },
+            "options": [
+                { "hindi": "A) टिड्डा (Grasshopper)", "english": "A) Grasshopper" },
+                { "hindi": "B) सिल्क वर्म (Silkworm)", "english": "B) Silkworm" },
+                { "hindi": "C) मधुमक्खी (Honeybee)", "english": "C) Honeybee" },
+                { "hindi": "D) दीमक (Termite)", "english": "D) Termite" }
+            ],
+            "answer": { "hindi": "B) सिल्क वर्म (Silkworm)", "english": "B) Silkworm" }
+        },
+        {
+            "question": {
+                "hindi": "7. टिड्डों के झुंड को क्या कहा जाता है?",
+                "english": "7. What is a group of locusts called?"
+            },
+            "options": [
+                { "hindi": "A) झुंड (Swarm)", "english": "A) Swarm" },
+                { "hindi": "B) गुट (Colony)", "english": "B) Colony" },
+                { "hindi": "C) झोपड़ी (Nest)", "english": "C) Nest" },
+                { "hindi": "D) टीम (Team)", "english": "D) Team" }
+            ],
+            "answer": { "hindi": "A) झुंड (Swarm)", "english": "A) Swarm" }
+        },
+        {
+            "question": {
+                "hindi": "8. निम्नलिखित में से कौन सा कीट पौधों के परागण (Pollination) में मदद करता है?",
+                "english": "8. Which insect helps in pollination of plants?"
+            },
+            "options": [
+                { "hindi": "A) टिड्डा (Grasshopper)", "english": "A) Grasshopper" },
+                { "hindi": "B) मधुमक्खी (Honeybee)", "english": "B) Honeybee" },
+                { "hindi": "C) पिस्सू (Flea)", "english": "C) Flea" },
+                { "hindi": "D) दीमक (Termite)", "english": "D) Termite" }
+            ],
+            "answer": { "hindi": "B) मधुमक्खी (Honeybee)", "english": "B) Honeybee" }
+        },
+        {
+            "question": {
+                "hindi": "9. निम्नलिखित में से कौन सा कीट मनुष्यों के खून पर निर्भर करता है?",
+                "english": "9. Which insect depends on human blood?"
+            },
+            "options": [
+                { "hindi": "A) तितली (Butterfly)", "english": "A) Butterfly" },
+                { "hindi": "B) मच्छर (Mosquito)", "english": "B) Mosquito" },
+                { "hindi": "C) मधुमक्खी (Honeybee)", "english": "C) Honeybee" },
+                { "hindi": "D) फायरफ्लाई (Firefly)", "english": "D) Firefly" }
+            ],
+            "answer": { "hindi": "B) मच्छर (Mosquito)", "english": "B) Mosquito" }
+        },
+        {
+            "question": {
+                "hindi": "10. कौन सा कीट अपनी रोशनी खुद उत्पन्न कर सकता है?",
+                "english": "10. Which insect can produce its own light?"
+            },
+            "options": [
+                { "hindi": "A) ड्रैगनफ्लाई (Dragonfly)", "english": "A) Dragonfly" },
+                { "hindi": "B) फायरफ्लाई (Firefly)", "english": "B) Firefly" },
+                { "hindi": "C) टिड्डा (Grasshopper)", "english": "C) Grasshopper" },
+                { "hindi": "D) मकड़ी (Spider)", "english": "D) Spider" }
+            ],
+            "answer": { "hindi": "B) फायरफ्लाई (Firefly)", "english": "B) Firefly" }
+        }
+    ]
+}
