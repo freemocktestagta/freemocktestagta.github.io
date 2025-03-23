@@ -437,13 +437,20 @@
 
             score = finalScore;
 
+            // Save the result in localStorage
+            const testResult = {
+                testId: new URLSearchParams(window.location.search).get('testId') || "genetics-1",
+                score: score,
+                totalQuestions: testData.questions.length,
+                timestamp: new Date().toISOString()
+            };
+
+            // Save the result with a unique key (testId)
+            localStorage.setItem(testResult.testId, JSON.stringify(testResult));
+
             document.getElementById("testContainer").style.display = "none";
             document.getElementById("resultContainer").style.display = "block";
             document.getElementById("finalScore").textContent = `${score} / ${testData.questions.length}`;
-
-            // Remove this line to prevent disabling result buttons
-            // document.querySelectorAll("button").forEach(btn => btn.disabled = true);
-            sessionStorage.removeItem("remainingTime");
         }
 
         // Restart Test
