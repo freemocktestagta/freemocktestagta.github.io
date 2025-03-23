@@ -1,0 +1,657 @@
+{
+    "title": "Genetics Test One",
+    "section": "Biology",
+    "subject": "Genetics",
+    "time": 1200, // 20 minutes
+    "questions": [
+        {
+            "question": {
+                "hindi": "1. सूत्री विभाजन (Mitosis) की खोज किसने की?",
+                "english": "1. Who discovered mitosis?"
+            },
+            "options": [
+                { "hindi": "(a) वाल्टर फ्लेमिंग", "english": "(a) Walter Flemming" },
+                { "hindi": "(b) फार्मर तथा मूरे", "english": "(b) Farmer and Moore" },
+                { "hindi": "(c) हक्सले", "english": "(c) Huxley" },
+                { "hindi": "(d) परकिंजे", "english": "(d) Purkinje" }
+            ],
+            "answer": { "hindi": "(a) वाल्टर फ्लेमिंग", "english": "(a) Walter Flemming" }
+        },
+        {
+            "question": {
+                "hindi": "2. अर्धसूत्री विभाजन (Meiosis) को सर्वप्रथम किसने देखा?",
+                "english": "2. Who first observed meiosis?"
+            },
+            "options": [
+                { "hindi": "(a) कोलिकर", "english": "(a) Kolliker" },
+                { "hindi": "(b) पोर्टर", "english": "(b) Porter" },
+                { "hindi": "(c) फार्मर तथा मूरे", "english": "(c) Farmer and Moore" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) फार्मर तथा मूरे", "english": "(c) Farmer and Moore" }
+        },
+        {
+            "question": {
+                "hindi": "3. कोशिका विभाजन का नियंत्रण किसके द्वारा होता है?",
+                "english": "3. Cell division is controlled by:"
+            },
+            "options": [
+                { "hindi": "(a) प्रोटो-ओन्कोजीन्स", "english": "(a) Proto-oncogenes" },
+                { "hindi": "(b) ओन्कोजीन्स", "english": "(b) Oncogenes" },
+                { "hindi": "(c) वर्णकों", "english": "(c) Pigments" },
+                { "hindi": "(d) इनमें किसी के द्वारा नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) प्रोटो-ओन्कोजीन्स", "english": "(a) Proto-oncogenes" }
+        },
+        {
+            "question": {
+                "hindi": "4. तर्कु तंतु (Spindle fibres) किसके बने होते हैं?",
+                "english": "4. Spindle fibres are made up of:"
+            },
+            "options": [
+                { "hindi": "(a) कार्बोहाइड्रेट", "english": "(a) Carbohydrates" },
+                { "hindi": "(b) प्रोटीन", "english": "(b) Proteins" },
+                { "hindi": "(c) वसा", "english": "(c) Fats" },
+                { "hindi": "(d) None", "english": "(d) None" }
+            ],
+            "answer": { "hindi": "(b) प्रोटीन", "english": "(b) Proteins" }
+        },
+        {
+            "question": {
+                "hindi": "5. असूत्री विभाजन (Amitosis) होता हैः",
+                "english": "5. Amitosis occurs in:"
+            },
+            "options": [
+                { "hindi": "(a) बीजाणु मातृ कोशा", "english": "(a) Spore mother cell" },
+                { "hindi": "(b) यूकैरियोटिक कोशा", "english": "(b) Eukaryotic cell" },
+                { "hindi": "(c) प्रोकैरियोटिक कोशा", "english": "(c) Prokaryotic cell" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) प्रोकैरियोटिक कोशा", "english": "(c) Prokaryotic cell" }
+        },
+        {
+            "question": {
+                "hindi": "6. अर्धसूत्री विभाजन के द्वितीय अर्धसूत्री विभाजन (Meiosis II) में कौन-सी प्रक्रिया होती है?",
+                "english": "6. Which process occurs in the second meiotic division (Meiosis II)?"
+            },
+            "options": [
+                { "hindi": "(a) समजात गुणसूत्रों का पृथक्करण", "english": "(a) Separation of homologous chromosomes" },
+                { "hindi": "(b) डीएनए श्रृंखलाओं का पृथक्करण", "english": "(b) Separation of DNA strands" },
+                { "hindi": "(c) अर्ध-गुणसूत्रों का पृथक्करण", "english": "(c) Separation of sister chromatids" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) अर्ध-गुणसूत्रों का पृथक्करण", "english": "(c) Separation of sister chromatids" }
+        },
+        {
+            "question": {
+                "hindi": "7. अर्धसूत्री विभाजन में एक कोशा से कितनी कोशिकाएँ बनती हैं?",
+                "english": "7. How many cells are formed from one cell in meiosis?"
+            },
+            "options": [
+                { "hindi": "(a) 8", "english": "(a) 8" },
+                { "hindi": "(b) 16", "english": "(b) 16" },
+                { "hindi": "(c) 4", "english": "(c) 4" },
+                { "hindi": "(d) 2", "english": "(d) 2" }
+            ],
+            "answer": { "hindi": "(c) 4", "english": "(c) 4" }
+        },
+        {
+            "question": {
+                "hindi": "8. G₁ प्रावस्था में संश्लेषित होते हैंः",
+                "english": "8. What is synthesized in the G₁ phase?"
+            },
+            "options": [
+                { "hindi": "(a) डीएनए, आरएनए और प्रोटीन", "english": "(a) DNA, RNA, and protein" },
+                { "hindi": "(b) आरएनए तथा डीएनए", "english": "(b) RNA and DNA" },
+                { "hindi": "(c) डीएनए तथा हिस्टोन", "english": "(c) DNA and histone" }
+            ],
+            "answer": { "hindi": "(a) डीएनए, आरएनए और प्रोटीन", "english": "(a) DNA, RNA, and protein" }
+        },
+        {
+            "question": {
+                "hindi": "9. विनिमय (Crossing over) किस अवस्था में होता है?",
+                "english": "9. In which phase does crossing over occur?"
+            },
+            "options": [
+                { "hindi": "(a) जाइगोटीन", "english": "(a) Zygotene" },
+                { "hindi": "(b) पैकिटीन", "english": "(b) Pachytene" },
+                { "hindi": "(c) डिप्लोटीन", "english": "(c) Diplotene" },
+                { "hindi": "(d) डाइकाइनेसिस", "english": "(d) Diakinesis" }
+            ],
+            "answer": { "hindi": "(b) पैकिटीन", "english": "(b) Pachytene" }
+        },
+        {
+            "question": {
+                "hindi": "10. क्रोमैटिड (Chromatid) है:",
+                "english": "10. What is a chromatid?"
+            },
+            "options": [
+                { "hindi": "(a) अर्ध-गुणसूत्र", "english": "(a) Half chromosome" },
+                { "hindi": "(b) लैम्पब्रश गुणसूत्र", "english": "(b) Lampbrush chromosome" },
+                { "hindi": "(c) पूर्ण गुणसूत्र", "english": "(c) Complete chromosome" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) अर्ध-गुणसूत्र", "english": "(a) Half chromosome" }
+        },
+        {
+            "question": {
+                "hindi": "11. डीएनए (DNA) तथा हिस्टोन प्रोटीन कोशा चक्र की किस प्रावस्था में बनते हैं?",
+                "english": "11. In which phase of the cell cycle are DNA and histone proteins synthesized?"
+            },
+            "options": [
+                { "hindi": "(a) G₁ प्रावस्था", "english": "(a) G₁ phase" },
+                { "hindi": "(b) G₂ प्रावस्था", "english": "(b) G₂ phase" },
+                { "hindi": "(c) S-प्रावस्था", "english": "(c) S-phase" },
+                { "hindi": "(d) M-प्रावस्था", "english": "(d) M-phase" }
+            ],
+            "answer": { "hindi": "(c) S-प्रावस्था", "english": "(c) S-phase" }
+        },
+        {
+            "question": {
+                "hindi": "12. सूत्री विभाजन तथा अर्धसूत्री विभाजन में क्या अंतर है?",
+                "english": "12. What is the difference between mitosis and meiosis?"
+            },
+            "options": [
+                { "hindi": "(a) डीएनए का द्विगुणन", "english": "(a) DNA replication" },
+                { "hindi": "(b) तर्कु तंतु का निर्माण", "english": "(b) Formation of spindle fibres" },
+                { "hindi": "(c) किएज्मेटा का निर्माण", "english": "(c) Formation of chiasmata" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) किएज्मेटा का निर्माण", "english": "(c) Formation of chiasmata" }
+        },
+        {
+            "question": {
+                "hindi": "13. निम्नलिखित में से कैंसर किस कारण से होता है?",
+                "english": "13. Which of the following causes cancer?"
+            },
+            "options": [
+                { "hindi": "(a) कोशा में सूत्री विभाजन के समय डीएनए की कमी के कारण", "english": "(a) Due to lack of DNA during mitosis" },
+                { "hindi": "(b) सूत्री विभाजन को नियंत्रित करने वाली प्रक्रिया के बंद होने पर", "english": "(b) Due to the failure of processes that control mitosis" },
+                { "hindi": "(c) उपरोक्त दोनों के कारण", "english": "(c) Due to both of the above" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) सूत्री विभाजन को नियंत्रित करने वाली प्रक्रिया के बंद होने पर", "english": "(b) Due to the failure of processes that control mitosis" }
+        },
+        {
+            "question": {
+                "hindi": "14. गुणसूत्र, तर्कु तंतुओं (Spindle fibres) से किसके द्वारा जुड़े होते हैं?",
+                "english": "14. Chromosomes are attached to spindle fibres by:"
+            },
+            "options": [
+                { "hindi": "(a) गुणसूत्र-बिंदु (Centromere)", "english": "(a) Centromere" },
+                { "hindi": "(b) अंत खंड (Telomere)", "english": "(b) Telomere" },
+                { "hindi": "(c) (a) व (b) दोनों", "english": "(c) Both (a) and (b)" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) गुणसूत्र-बिंदु (Centromere)", "english": "(a) Centromere" }
+        },
+        {
+            "question": {
+                "hindi": "15. कोशा चक्र किस क्रम में होता है?",
+                "english": "15. What is the correct sequence of the cell cycle?"
+            },
+            "options": [
+                { "hindi": "(a) G₁, G₂, S तथा M-प्रावस्था", "english": "(a) G₁, G₂, S, and M-phase" },
+                { "hindi": "(b) G₁, S, G₂ तथा M-प्रावस्था", "english": "(b) G₁, S, G₂, and M-phase" },
+                { "hindi": "(c) M, S, G₁ तथा G₂ प्रावस्था", "english": "(c) M, S, G₁, and G₂ phase" },
+                { "hindi": "(d) S, G₁, G₂ तथा M-प्रावस्था", "english": "(d) S, G₁, G₂, and M-phase" }
+            ],
+            "answer": { "hindi": "(b) G₁, S, G₂ तथा M-प्रावस्था", "english": "(b) G₁, S, G₂, and M-phase" }
+        },
+        {
+            "question": {
+                "hindi": "16. सूत्री विभाजन में केन्द्रक के विभाजन की प्रक्रिया किस अवस्था में होती है?",
+                "english": "16. In which phase does centromere division occur in mitosis?"
+            },
+            "options": [
+                { "hindi": "(a) पूर्वावस्था (Prophase)", "english": "(a) Prophase" },
+                { "hindi": "(b) मध्यावस्था (Metaphase)", "english": "(b) Metaphase" },
+                { "hindi": "(c) पश्चावस्था (Anaphase)", "english": "(c) Anaphase" },
+                { "hindi": "(d) अन्त्यावस्था (Telophase)", "english": "(d) Telophase" }
+            ],
+            "answer": { "hindi": "(c) पश्चावस्था (Anaphase)", "english": "(c) Anaphase" }
+        },
+        {
+            "question": {
+                "hindi": "17. कायिक कोशाएँ (Somatic cells) विभाजित होती हैं -",
+                "english": "17. Somatic cells divide by:"
+            },
+            "options": [
+                { "hindi": "(a) मुकुलन", "english": "(a) Budding" },
+                { "hindi": "(b) अर्धसूत्री विभाजन", "english": "(b) Meiosis" },
+                { "hindi": "(c) सूत्री विभाजन", "english": "(c) Mitosis" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) सूत्री विभाजन", "english": "(c) Mitosis" }
+        },
+        {
+            "question": {
+                "hindi": "18. गुणसूत्रों की रचना किस अवस्था में साफ दिखाई देती है?",
+                "english": "18. In which phase are chromosomes clearly visible?"
+            },
+            "options": [
+                { "hindi": "(a) अन्त्यावस्था", "english": "(a) Telophase" },
+                { "hindi": "(b) पूर्वावस्था", "english": "(b) Prophase" },
+                { "hindi": "(c) पश्चावस्था", "english": "(c) Anaphase" },
+                { "hindi": "(d) मध्यावस्था", "english": "(d) Metaphase" }
+            ],
+            "answer": { "hindi": "(b) पूर्वावस्था", "english": "(b) Prophase" }
+        },
+        {
+            "question": {
+                "hindi": "19. निम्नलिखित में से सूत्री विभाजन (Mitosis) कहाँ होता है?",
+                "english": "19. Mitosis occurs in:"
+            },
+            "options": [
+                { "hindi": "(a) यूलोथ्रिक्स के युग्माणु में", "english": "(a) Zygospore of Ulothrix" },
+                { "hindi": "(b) पुष्प के परागकोष में", "english": "(b) Anther of flower" },
+                { "hindi": "(c) फर्न की बीजाणुधानी में", "english": "(c) Sporangium of fern" },
+                { "hindi": "(d) प्याज के मूलाग्र में", "english": "(d) Root apex of onion" }
+            ],
+            "answer": { "hindi": "(d) प्याज के मूलाग्र में", "english": "(d) Root apex of onion" }
+        },
+        {
+            "question": {
+                "hindi": "20. कोशा विभाजन की प्रथम प्रावस्था है",
+                "english": "20. The first phase of cell division is:"
+            },
+            "options": [
+                { "hindi": "(a) पूर्वावस्था", "english": "(a) Prophase" },
+                { "hindi": "(b) मध्यावस्था", "english": "(b) Metaphase" },
+                { "hindi": "(c) अन्त्यावस्था", "english": "(c) Telophase" },
+                { "hindi": "(d) पश्चावस्था", "english": "(d) Anaphase" }
+            ],
+            "answer": { "hindi": "(a) पूर्वावस्था", "english": "(a) Prophase" }
+        },
+        {
+            "question": {
+                "hindi": "21. निम्न में समसूत्री विष (Mitotic poison) कौन है?",
+                "english": "21. Which of the following is a mitotic poison?"
+            },
+            "options": [
+                { "hindi": "(a) सायटोकाइनिन", "english": "(a) Cytokinin" },
+                { "hindi": "(b) कॉल्विसिन", "english": "(b) Colchicine" },
+                { "hindi": "(c) स्टीरायड्स", "english": "(c) Steroids" },
+                { "hindi": "(d) उपरोक्त सभी", "english": "(d) All of the above" }
+            ],
+            "answer": { "hindi": "(b) कॉल्विसिन", "english": "(b) Colchicine" }
+        },
+        {
+            "question": {
+                "hindi": "22. अर्धसूत्री विभाजन में प्रथम पूर्वावस्था (Prophase I) का सही क्रम क्या है?",
+                "english": "22. What is the correct sequence of Prophase I in meiosis?"
+            },
+            "options": [
+                { "hindi": "(a) लेप्टोटीन, जाइगोटीन, पैकिटीन, डाइकाइनेसिस, डिप्लोटीन", "english": "(a) Leptotene, Zygotene, Pachytene, Diakinesis, Diplotene" },
+                { "hindi": "(b) लेप्टोटीन, जाइगोटीन, डिप्लोटीन, पैकिटीन, डाइकाइनेसिस", "english": "(b) Leptotene, Zygotene, Diplotene, Pachytene, Diakinesis" },
+                { "hindi": "(c) लेप्टोटीन, जाइगोटीन, पैकिटीन, डिप्लोटीन, डाइकाइनेसिस", "english": "(c) Leptotene, Zygotene, Pachytene, Diplotene, Diakinesis" },
+                { "hindi": "(d) जाइगोटीन, पैकिटीन, डाइकाइनेसिस, लेप्टोटीन, डिप्लोटीन", "english": "(d) Zygotene, Pachytene, Diakinesis, Leptotene, Diplotene" }
+            ],
+            "answer": { "hindi": "(c) लेप्टोटीन, जाइगोटीन, पैकिटीन, डिप्लोटीन, डाइकाइनेसिस", "english": "(c) Leptotene, Zygotene, Pachytene, Diplotene, Diakinesis" }
+        },
+        {
+            "question": {
+                "hindi": "23. कोशिकाद्रव्य विभाजन (Cytokinesis) क्या है?",
+                "english": "23. What is cytokinesis?"
+            },
+            "options": [
+                { "hindi": "(a) कोशाद्रव्य का विभाजन", "english": "(a) Division of cytoplasm" },
+                { "hindi": "(b) केन्द्रक का विभाजन", "english": "(b) Division of nucleus" },
+                { "hindi": "(c) गुणसूत्र का विभाजन", "english": "(c) Division of chromosomes" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) कोशाद्रव्य का विभाजन", "english": "(a) Division of cytoplasm" }
+        },
+        {
+            "question": {
+                "hindi": "24. अर्धसूत्री विभाजन स्पष्ट रूप से कहाँ दिखाई देता है?",
+                "english": "24. Meiosis is clearly observed in:"
+            },
+            "options": [
+                { "hindi": "(a) जनन कोशिकाओं में", "english": "(a) Germ cells" },
+                { "hindi": "(b) कायिक कोशिकाओं में", "english": "(b) Somatic cells" },
+                { "hindi": "(c) पौधों की जड़ कोशिकाओं में", "english": "(c) Root cells of plants" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) जनन कोशिकाओं में", "english": "(a) Germ cells" }
+        },
+        {
+            "question": {
+                "hindi": "25. गुणसूत्रों की संख्या घटकर आधी किस अवस्था में रह जाती है?",
+                "english": "25. In which phase is the chromosome number reduced to half?"
+            },
+            "options": [
+                { "hindi": "(a) प्रथम मध्यावस्था", "english": "(a) Metaphase I" },
+                { "hindi": "(b) प्रथम अन्त्यावस्था", "english": "(b) Telophase I" },
+                { "hindi": "(c) प्रथम पूर्वावस्था", "english": "(c) Prophase I" },
+                { "hindi": "(d) प्रथम पश्चावस्था", "english": "(d) Anaphase I" }
+            ],
+            "answer": { "hindi": "(d) प्रथम पश्चावस्था", "english": "(d) Anaphase I" }
+        },
+        {
+            "question": {
+                "hindi": "26. पैकिटीन (Pachytene) किससे संबंधित है?",
+                "english": "26. Pachytene is associated with:"
+            },
+            "options": [
+                { "hindi": "(a) सूत्री विभाजन", "english": "(a) Mitosis" },
+                { "hindi": "(b) कोशा की वृद्धि", "english": "(b) Cell growth" },
+                { "hindi": "(c) अर्धसूत्री विभाजन", "english": "(c) Meiosis" },
+                { "hindi": "(d) कोशा के विकास", "english": "(d) Cell development" }
+            ],
+            "answer": { "hindi": "(c) अर्धसूत्री विभाजन", "english": "(c) Meiosis" }
+        },
+        {
+            "question": {
+                "hindi": "27. अर्धसूत्री विभाजन में अर्ध-गुणसूत्र (Chromatids) कब साफ दिखाई देते हैं?",
+                "english": "27. When are chromatids clearly visible in meiosis?"
+            },
+            "options": [
+                { "hindi": "(a) डिप्लोटीन", "english": "(a) Diplotene" },
+                { "hindi": "(b) जाइगोटीन", "english": "(b) Zygotene" },
+                { "hindi": "(c) लेप्टोटीन", "english": "(c) Leptotene" },
+                { "hindi": "(d) पैकिटीन", "english": "(d) Pachytene" }
+            ],
+            "answer": { "hindi": "(a) डिप्लोटीन", "english": "(a) Diplotene" }
+        },
+        {
+            "question": {
+                "hindi": "28. DNA पॉलिमरेस एन्जाइम किसके संश्लेषण में काम आता है?",
+                "english": "28. DNA polymerase enzyme is involved in the synthesis of:"
+            },
+            "options": [
+                { "hindi": "(a) DNA से RNA", "english": "(a) DNA to RNA" },
+                { "hindi": "(b) RNA से DNA", "english": "(b) RNA to DNA" },
+                { "hindi": "(c) न्यूक्लिओटाइड्स से DNA", "english": "(c) DNA from nucleotides" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) न्यूक्लिओटाइड्स से DNA", "english": "(c) DNA from nucleotides" }
+        },
+        {
+            "question": {
+                "hindi": "29. गेहूं के 100 बीज प्राप्त करने के लिए कितने अर्धसूत्री विभाजनों की आवश्यकता होगी?",
+                "english": "29. How many meiotic divisions are required to produce 100 seeds of wheat?"
+            },
+            "options": [
+                { "hindi": "(a) 50", "english": "(a) 50" },
+                { "hindi": "(b) 100", "english": "(b) 100" },
+                { "hindi": "(c) 125", "english": "(c) 125" },
+                { "hindi": "(d) 200", "english": "(d) 200" }
+            ],
+            "answer": { "hindi": "(c) 125", "english": "(c) 125" }
+        },
+        {
+            "question": {
+                "hindi": "30. अर्धसूत्री विभाजन में सबसे लंबी प्रावस्था कौन-सी है?",
+                "english": "30. Which is the longest phase in meiosis?"
+            },
+            "options": [
+                { "hindi": "(a) पूर्वावस्था", "english": "(a) Prophase" },
+                { "hindi": "(b) मध्यावस्था", "english": "(b) Metaphase" },
+                { "hindi": "(c) पश्चावस्था", "english": "(c) Anaphase" },
+                { "hindi": "(d) अन्त्यावस्था", "english": "(d) Telophase" }
+            ],
+            "answer": { "hindi": "(a) पूर्वावस्था", "english": "(a) Prophase" }
+        },
+        {
+            "question": {
+                "hindi": "31. कोशाद्रव्य विभाजन में फ्रेग्मोप्लास्ट आवश्यक है -",
+                "english": "31. Phragmoplast is essential during cytokinesis in:"
+            },
+            "options": [
+                { "hindi": "(a) जन्तु कोशा", "english": "(a) Animal cell" },
+                { "hindi": "(b) पादप कोशा", "english": "(b) Plant cell" },
+                { "hindi": "(c) दोनों में", "english": "(c) Both" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) पादप कोशा", "english": "(b) Plant cell" }
+        },
+        {
+            "question": {
+                "hindi": "32. समसूत्री विभाजन (Mitosis) देखने के लिए कौन-सी सामग्री उपयुक्त है?",
+                "english": "32. Which material is suitable for observing mitosis?"
+            },
+            "options": [
+                { "hindi": "(a) पत्ती", "english": "(a) Leaf" },
+                { "hindi": "(b) प्याज का मूलशीर्ष", "english": "(b) Onion root tip" },
+                { "hindi": "(c) अंडाशय", "english": "(c) Ovary" },
+                { "hindi": "(d) प्याज के पुंकेसर", "english": "(d) Onion stamen" }
+            ],
+            "answer": { "hindi": "(b) प्याज का मूलशीर्ष", "english": "(b) Onion root tip" }
+        },
+        {
+            "question": {
+                "hindi": "33. वनस्पति कोशा में प्रायः विभाजन होता है",
+                "english": "33. In plant cells, division usually occurs by:"
+            },
+            "options": [
+                { "hindi": "(a) तारक प्रकार", "english": "(a) Astral type" },
+                { "hindi": "(b) अतारक प्रकार", "english": "(b) Anastral type" },
+                { "hindi": "(c) (a) तथा (b) दोनों प्रकार का", "english": "(c) Both (a) and (b)" },
+                { "hindi": "(d) उपरोक्त में कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) अतारक प्रकार", "english": "(b) Anastral type" }
+        },
+        {
+            "question": {
+                "hindi": "34. कोशा विभाजन में सबसे सक्रिय अवस्था है -",
+                "english": "34. The most active phase in cell division is:"
+            },
+            "options": [
+                { "hindi": "(a) विभाजनान्तराल अवस्था", "english": "(a) Interphase" },
+                { "hindi": "(b) पूर्वावस्था", "english": "(b) Prophase" },
+                { "hindi": "(c) मध्यावस्था", "english": "(c) Metaphase" },
+                { "hindi": "(d) पश्चावस्था", "english": "(d) Anaphase" }
+            ],
+            "answer": { "hindi": "(a) विभाजनान्तराल अवस्था", "english": "(a) Interphase" }
+        },
+        {
+            "question": {
+                "hindi": "35. उपान्तीकरण (Terminalization) निम्न किस अवस्था में होता है?",
+                "english": "35. Terminalization occurs in which phase?"
+            },
+            "options": [
+                { "hindi": "(a) लेप्टोटीन", "english": "(a) Leptotene" },
+                { "hindi": "(b) जाइगोटीन", "english": "(b) Zygotene" },
+                { "hindi": "(c) डिप्लोटीन", "english": "(c) Diplotene" },
+                { "hindi": "(d) डाइकाइनेसिस", "english": "(d) Diakinesis" }
+            ],
+            "answer": { "hindi": "(d) डाइकाइनेसिस", "english": "(d) Diakinesis" }
+        },
+        {
+            "question": {
+                "hindi": "36. कोशा विभाजन की किस अवस्था में गुणसूत्र चतुर्सयोजक (Tetravalent) हो जाते हैं?",
+                "english": "36. In which phase of cell division do chromosomes become tetravalent?"
+            },
+            "options": [
+                { "hindi": "(a) लेप्टोटीन", "english": "(a) Leptotene" },
+                { "hindi": "(b) जाइगोटीन", "english": "(b) Zygotene" },
+                { "hindi": "(c) पैकिटीन", "english": "(c) Pachytene" },
+                { "hindi": "(d) डिप्लोटीन", "english": "(d) Diplotene" }
+            ],
+            "answer": { "hindi": "(c) पैकिटीन", "english": "(c) Pachytene" }
+        },
+        {
+            "question": {
+                "hindi": "37. कोशा चक्र (Cell cycle) की G₂ अवस्था में क्या होता है?",
+                "english": "37. What happens during the G₂ phase of the cell cycle?"
+            },
+            "options": [
+                { "hindi": "(a) m-RNA संश्लेषण", "english": "(a) m-RNA synthesis" },
+                { "hindi": "(b) r-RNA संश्लेषण", "english": "(b) r-RNA synthesis" },
+                { "hindi": "(c) DNA द्विगुणन", "english": "(c) DNA replication" },
+                { "hindi": "(d) विभाजन की तैयारी", "english": "(d) Preparation for division" }
+            ],
+            "answer": { "hindi": "(d) विभाजन की तैयारी", "english": "(d) Preparation for division" }
+        },
+        {
+            "question": {
+                "hindi": "38. केन्द्रक के विभाजन की क्रिया को कहते हैं -",
+                "english": "38. The process of nuclear division is called:"
+            },
+            "options": [
+                { "hindi": "(a) कोशिकाद्रव्य विभाजन या साइटोकाइनेसिस", "english": "(a) Cytokinesis" },
+                { "hindi": "(b) सूत्री विभाजन या कैरियोकाइनेसिस", "english": "(b) Mitosis or Karyokinesis" },
+                { "hindi": "(c) बीजाणुजनन या स्पोरोजेनेसिस", "english": "(c) Sporogenesis" },
+                { "hindi": "(d) स्परमेटोजेनेसिस", "english": "(d) Spermatogenesis" }
+            ],
+            "answer": { "hindi": "(b) सूत्री विभाजन या कैरियोकाइनेसिस", "english": "(b) Mitosis or Karyokinesis" }
+        },
+        {
+            "question": {
+                "hindi": "39. कोशा विभाजन की किस अवस्था में गुणसूत्र अधिक स्पष्ट होते हैं?",
+                "english": "39. In which phase of cell division are chromosomes most clearly visible?"
+            },
+            "options": [
+                { "hindi": "(a) मध्यावस्था", "english": "(a) Metaphase" },
+                { "hindi": "(b) पश्चावस्था", "english": "(b) Anaphase" },
+                { "hindi": "(c) पूर्वावस्था", "english": "(c) Prophase" },
+                { "hindi": "(d) अन्त्यावस्था", "english": "(d) Telophase" }
+            ],
+            "answer": { "hindi": "(a) मध्यावस्था", "english": "(a) Metaphase" }
+        },
+        {
+            "question": {
+                "hindi": "40. एक कोशा से 128 कोशाएँ बनने में कितने समसूत्री विभाजन होंगे?",
+                "english": "40. How many mitotic divisions are needed to form 128 cells from one cell?"
+            },
+            "options": [
+                { "hindi": "(a) 128", "english": "(a) 128" },
+                { "hindi": "(b) 64", "english": "(b) 64" },
+                { "hindi": "(c) 32", "english": "(c) 32" },
+                { "hindi": "(d) 127", "english": "(d) 127" }
+            ],
+            "answer": { "hindi": "(d) 127", "english": "(d) 127" }
+        },
+        {
+            "question": {
+                "hindi": "41. विनिमय (Crossing over) किस अवस्था में होता है?",
+                "english": "41. In which stage does crossing over occur?"
+            },
+            "options": [
+                { "hindi": "(a) 1-स्ट्रेंड अवस्था", "english": "(a) Single strand stage" },
+                { "hindi": "(b) 2-स्ट्रेंड अवस्था", "english": "(b) Two strand stage" },
+                { "hindi": "(c) 3-स्ट्रेंड अवस्था", "english": "(c) Three strand stage" },
+                { "hindi": "(d) 4-स्ट्रेंड अवस्था", "english": "(d) Four strand stage" }
+            ],
+            "answer": { "hindi": "(d) 4-स्ट्रेंड अवस्था", "english": "(d) Four strand stage" }
+        },
+        {
+            "question": {
+                "hindi": "42. डीएनए द्विगुणन में दोनों कुण्डलिनियों को पृथक करने में सहायक कौन सा एंजाइम है?",
+                "english": "42. Which enzyme helps in separating the two strands during DNA replication?"
+            },
+            "options": [
+                { "hindi": "(a) DNA पॉलिमरेस", "english": "(a) DNA Polymerase" },
+                { "hindi": "(b) DNA लाइगेस", "english": "(b) DNA Ligase" },
+                { "hindi": "(c) DNA गाइरेस", "english": "(c) DNA Gyrase" },
+                { "hindi": "(d) DNA हेलीकेस", "english": "(d) DNA Helicase" }
+            ],
+            "answer": { "hindi": "(d) DNA हेलीकेस", "english": "(d) DNA Helicase" }
+        },
+        {
+            "question": {
+                "hindi": "43. समसूत्री विभाजन (Mitosis) की क्रिया में निम्न में से कौन विलुप्त हो जाता है?",
+                "english": "43. Which of the following disappears during mitosis?"
+            },
+            "options": [
+                { "hindi": "(a) लवक", "english": "(a) Plastid" },
+                { "hindi": "(b) केन्द्रिका", "english": "(b) Nucleolus" },
+                { "hindi": "(c) जीवद्रव्य कला", "english": "(c) Cytoplasmic membrane" },
+                { "hindi": "(d) माइटोकॉण्ड्रिया", "english": "(d) Mitochondria" }
+            ],
+            "answer": { "hindi": "(b) केन्द्रिका", "english": "(b) Nucleolus" }
+        },
+        {
+            "question": {
+                "hindi": "44. यदि एक जीवाणु कोशा एक मिनट में विभाजित होती है और एक कप को भरने में एक घंटे का समय लगता है, तो आधा कप भरने में कितना समय लगेगा?",
+                "english": "44. If a bacterial cell divides every minute and fills a cup in one hour, how long will it take to fill half the cup?"
+            },
+            "options": [
+                { "hindi": "(a) 29 मिनट", "english": "(a) 29 minutes" },
+                { "hindi": "(b) 30 मिनट", "english": "(b) 30 minutes" },
+                { "hindi": "(c) 59 मिनट", "english": "(c) 59 minutes" },
+                { "hindi": "(d) एक घन्टा", "english": "(d) One hour" }
+            ],
+            "answer": { "hindi": "(c) 59 मिनट", "english": "(c) 59 minutes" }
+        },
+        {
+            "question": {
+                "hindi": "45. कोशा विभाजन में तर्कु तन्तुओं का निर्माण करने वाला कोशिकांग है -",
+                "english": "45. Which organelle forms the spindle fibres in cell division?"
+            },
+            "options": [
+                { "hindi": "(a) लाइसोसोम", "english": "(a) Lysosome" },
+                { "hindi": "(b) राइबोसोम", "english": "(b) Ribosome" },
+                { "hindi": "(c) तारककाय (सेन्ट्रोसोम)", "english": "(c) Centrosome" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) तारककाय (सेन्ट्रोसोम)", "english": "(c) Centrosome" }
+        },
+        {
+            "question": {
+                "hindi": "46. कोशा चक्र (Cell cycle) की कौन-सी अवस्था सबसे कम समय की होती है?",
+                "english": "46. Which phase of the cell cycle has the shortest duration?"
+            },
+            "options": [
+                { "hindi": "(a) G₁", "english": "(a) G₁" },
+                { "hindi": "(b) S", "english": "(b) S" },
+                { "hindi": "(c) G₂", "english": "(c) G₂" },
+                { "hindi": "(d) M", "english": "(d) M" }
+            ],
+            "answer": { "hindi": "(d) M", "english": "(d) M" }
+        },
+        {
+            "question": {
+                "hindi": "47. जन्तु कोशा में कोशिकाद्रव्य विभाजन (Cytokinesis) किस प्रकार होता है?",
+                "english": "47. How does cytokinesis occur in animal cells?"
+            },
+            "options": [
+                { "hindi": "(a) कोशा प्लेट से", "english": "(a) By cell plate formation" },
+                { "hindi": "(b) कोशा झिल्ली के अन्तर्वलन से", "english": "(b) By membrane invagination" },
+                { "hindi": "(c) (a) तथा (b) दोनों से", "english": "(c) By both (a) and (b)" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) कोशा झिल्ली के अन्तर्वलन से", "english": "(b) By membrane invagination" }
+        },
+        {
+            "question": {
+                "hindi": "48. केन्द्रक सबसे अधिक फैला होता है",
+                "english": "48. The nucleolus is most prominent during:"
+            },
+            "options": [
+                { "hindi": "(a) पश्चावस्था", "english": "(a) Anaphase" },
+                { "hindi": "(b) अन्त्यावस्था", "english": "(b) Telophase" },
+                { "hindi": "(c) मध्यावस्था", "english": "(c) Metaphase" },
+                { "hindi": "(d) अंतराल अवस्था", "english": "(d) Interphase" }
+            ],
+            "answer": { "hindi": "(d) अंतराल अवस्था", "english": "(d) Interphase" }
+        },
+        {
+            "question": {
+                "hindi": "49. कोशा विभाजन की किस अवस्था में गुणसूत्र अधिक स्पष्ट होते हैं?",
+                "english": "49. In which phase of cell division are chromosomes most clearly visible?"
+            },
+            "options": [
+                { "hindi": "(a) मध्यावस्था", "english": "(a) Metaphase" },
+                { "hindi": "(b) पश्चावस्था", "english": "(b) Anaphase" },
+                { "hindi": "(c) पूर्वावस्था", "english": "(c) Prophase" },
+                { "hindi": "(d) अन्त्यावस्था", "english": "(d) Telophase" }
+            ],
+            "answer": { "hindi": "(a) मध्यावस्था", "english": "(a) Metaphase" }
+        },
+        {
+            "question": {
+                "hindi": "50. एक कोशा से 128 कोशाएँ बनने में कितने समसूत्री विभाजन होंगे?",
+                "english": "50. How many mitotic divisions are needed to form 128 cells from one cell?"
+            },
+            "options": [
+                { "hindi": "(a) 128", "english": "(a) 128" },
+                { "hindi": "(b) 64", "english": "(b) 64" },
+                { "hindi": "(c) 32", "english": "(c) 32" },
+                { "hindi": "(d) 127", "english": "(d) 127" }
+            ],
+            "answer": { "hindi": "(d) 127", "english": "(d) 127" }
+        }
+    ]
+}
