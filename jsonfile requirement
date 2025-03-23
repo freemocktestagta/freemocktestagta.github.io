@@ -1,0 +1,24 @@
+{
+    "title": "Test Title",
+    "section": "Test Section",
+    "subject": "Test Subject",
+    "time": 600, // Total time in seconds
+    "questions": [
+        {
+            "question": {
+                "hindi": "प्रश्न हिंदी में",
+                "english": "Question in English"
+            },
+            "options": [
+                {
+                    "hindi": "विकल्प हिंदी में",
+                    "english": "Option in English"
+                }
+            ],
+            "answer": {
+                "hindi": "सही उत्तर हिंदी में",
+                "english": "Correct Answer in English"
+            }
+        }
+    ]
+}
