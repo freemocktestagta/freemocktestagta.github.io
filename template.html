@@ -332,13 +332,13 @@
 
         // Load test data dynamically
         async function loadTestData() {
-            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1"; // Default to genetics-1.json
+            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1";
             try {
-                const response = await fetch(`${testId}.json`); // Fetch from main directory
+                const response = await fetch(`${testId}.json`);
                 if (!response.ok) throw new Error("Failed to load test data");
                 testData = await response.json();
-                questions = testData.questions; // Store questions globally
-                timeLeft = testData.time; // Set timer based on JSON
+                questions = testData.questions;
+                timeLeft = testData.time;
                 return testData;
             } catch (error) {
                 console.error("Error loading test data:", error);
@@ -354,8 +354,8 @@
 
             document.getElementById("testTitle").textContent = testData.title;
             document.getElementById("welcomeMessage").textContent = `Welcome to ${testData.title}`;
-            document.getElementById("testSection").textContent = testData.section; // Display section
-            document.getElementById("testSubject").textContent = testData.subject; // Display subject
+            document.getElementById("testSection").textContent = testData.section;
+            document.getElementById("testSubject").textContent = testData.subject;
             document.getElementById("totalQuestions").textContent = testData.questions.length;
             document.getElementById("testTime").textContent = `${Math.floor(testData.time / 60)} minutes`;
             document.getElementById("totalQuestionsDisplay").textContent = testData.questions.length;
@@ -441,8 +441,8 @@
             document.getElementById("resultContainer").style.display = "block";
             document.getElementById("finalScore").textContent = `${score} / ${testData.questions.length}`;
 
-            document.querySelectorAll("button").forEach(btn => btn.disabled = true); // Disable buttons
-            sessionStorage.removeItem("remainingTime"); // Clear timer after submission
+            document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+            sessionStorage.removeItem("remainingTime");
         }
 
         // Restart Test
@@ -450,41 +450,20 @@
             currentQuestionIndex = 0;
             score = 0;
             userAnswers = [];
-            timeLeft = testData.time; // Reset timer
+            timeLeft = testData.time;
 
             document.getElementById("testContainer").style.display = "block";
             document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "none";
+
             loadQuestion();
             clearTimeout(timerId);
             updateTimer();
         }
 
-        // Timer with sessionStorage persistence
-        function updateTimer() {
-            const timer = document.getElementById("timer");
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timer.innerText = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
-
-            sessionStorage.setItem("remainingTime", timeLeft); // Store remaining time
-
-            if (timeLeft <= 0) {
-                submitTest();
-                return;
-            }
-            timeLeft--;
-            timerId = setTimeout(updateTimer, 1000);
-        }
-
         // Go to Home Page
         function goToHomePage() {
-            window.location.href = "index.html"; // Replace with your home page URL
-        }
-
-        // Go to Result Page
-        function goToResultPage() {
-            document.getElementById("reviewContainer").style.display = "none";
-            document.getElementById("resultContainer").style.display = "block";
+            window.location.href = "index.html";
         }
 
         // Show Review Answers
@@ -518,6 +497,29 @@
                     </div>
                 `;
             });
+        }
+
+        // Go to Result Page
+        function goToResultPage() {
+            document.getElementById("reviewContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+        }
+
+        // Timer with sessionStorage persistence
+        function updateTimer() {
+            const timer = document.getElementById("timer");
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timer.innerText = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            sessionStorage.setItem("remainingTime", timeLeft);
+
+            if (timeLeft <= 0) {
+                submitTest();
+                return;
+            }
+            timeLeft--;
+            timerId = setTimeout(updateTimer, 1000);
         }
 
         // Initialize the test data when the page loads
