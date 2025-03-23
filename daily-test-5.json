@@ -1,0 +1,138 @@
+{
+    "title": "Plant Pathology Test - Testro",
+    "section": "Plant Pathology",
+    "subject": "Plant Pathology",
+    "time": 600,
+    "questions": [
+        {
+            "question": {
+                "hindi": "1. पौधों में रोग का कारण क्या है?",
+                "english": "1. What causes diseases in plants?"
+            },
+            "options": [
+                { "hindi": "कीट (Insects)", "english": "Insects" },
+                { "hindi": "फफूंद (Fungi)", "english": "Fungi" },
+                { "hindi": "बैक्टीरिया (Bacteria)", "english": "Bacteria" },
+                { "hindi": "सभी (All of the above)", "english": "All of the above" }
+            ],
+            "answer": { "hindi": "सभी (All of the above)", "english": "All of the above" }
+        },
+        {
+            "question": {
+                "hindi": "2. निम्नलिखित में से कौन सा पौध रोग का उदाहरण है?",
+                "english": "2. Which of the following is an example of a plant disease?"
+            },
+            "options": [
+                { "hindi": "मोज़ेक वायरस (Mosaic Virus)", "english": "Mosaic Virus" },
+                { "hindi": "पाउडरी मिल्ड्यू (Powdery Mildew)", "english": "Powdery Mildew" },
+                { "hindi": "लेट ब्लाइट (Late Blight)", "english": "Late Blight" },
+                { "hindi": "सभी (All of the above)", "english": "All of the above" }
+            ],
+            "answer": { "hindi": "सभी (All of the above)", "english": "All of the above" }
+        },
+        {
+            "question": {
+                "hindi": "3. पौधों में बैक्टीरियल ब्लाइट किसके कारण होता है?",
+                "english": "3. What causes bacterial blight in plants?"
+            },
+            "options": [
+                { "hindi": "वायरस (Virus)", "english": "Virus" },
+                { "hindi": "बैक्टीरिया (Bacteria)", "english": "Bacteria" },
+                { "hindi": "फफूंद (Fungi)", "english": "Fungi" },
+                { "hindi": "कीट (Insects)", "english": "Insects" }
+            ],
+            "answer": { "hindi": "बैक्टीरिया (Bacteria)", "english": "Bacteria" }
+        },
+        {
+            "question": {
+                "hindi": "4. पौधों में नाइट्रोजन की कमी से कौन सा रोग होता है?",
+                "english": "4. Which disease is caused by nitrogen deficiency in plants?"
+            },
+            "options": [
+                { "hindi": "क्लोरोसिस (Chlorosis)", "english": "Chlorosis" },
+                { "hindi": "नेक्रोसिस (Necrosis)", "english": "Necrosis" },
+                { "hindi": "मोज़ेक (Mosaic)", "english": "Mosaic" },
+                { "hindi": "पाउडरी मिल्ड्यू (Powdery Mildew)", "english": "Powdery Mildew" }
+            ],
+            "answer": { "hindi": "क्लोरोसिस (Chlorosis)", "english": "Chlorosis" }
+        },
+        {
+            "question": {
+                "hindi": "5. पौधों में फफूंदी रोगों को नियंत्रित करने के लिए क्या उपयोग किया जाता है?",
+                "english": "5. What is used to control fungal diseases in plants?"
+            },
+            "options": [
+                { "hindi": "कीटनाशक (Pesticides)", "english": "Pesticides" },
+                { "hindi": "फंगीसाइड (Fungicides)", "english": "Fungicides" },
+                { "hindi": "हर्बीसाइड (Herbicides)", "english": "Herbicides" },
+                { "hindi": "उर्वरक (Fertilizers)", "english": "Fertilizers" }
+            ],
+            "answer": { "hindi": "फंगीसाइड (Fungicides)", "english": "Fungicides" }
+        },
+        {
+            "question": {
+                "hindi": "6. पौधों में वायरल रोगों का संचरण कैसे होता है?",
+                "english": "6. How are viral diseases transmitted in plants?"
+            },
+            "options": [
+                { "hindi": "हवा (Air)", "english": "Air" },
+                { "hindi": "पानी (Water)", "english": "Water" },
+                { "hindi": "कीट (Insects)", "english": "Insects" },
+                { "hindi": "सभी (All of the above)", "english": "All of the above" }
+            ],
+            "answer": { "hindi": "सभी (All of the above)", "english": "All of the above" }
+        },
+        {
+            "question": {
+                "hindi": "7. पौधों में लेट ब्लाइट रोग किसके कारण होता है?",
+                "english": "7. What causes late blight disease in plants?"
+            },
+            "options": [
+                { "hindi": "फफूंद (Fungi)", "english": "Fungi" },
+                { "hindi": "बैक्टीरिया (Bacteria)", "english": "Bacteria" },
+                { "hindi": "वायरस (Virus)", "english": "Virus" },
+                { "hindi": "निमेटोड (Nematodes)", "english": "Nematodes" }
+            ],
+            "answer": { "hindi": "फफूंद (Fungi)", "english": "Fungi" }
+        },
+        {
+            "question": {
+                "hindi": "8. पौधों में रोग प्रतिरोधक क्षमता बढ़ाने के लिए क्या उपयोग किया जाता है?",
+                "english": "8. What is used to enhance disease resistance in plants?"
+            },
+            "options": [
+                { "hindi": "उर्वरक (Fertilizers)", "english": "Fertilizers" },
+                { "hindi": "जैविक खाद (Organic Manure)", "english": "Organic Manure" },
+                { "hindi": "रोग प्रतिरोधक किस्में (Resistant Varieties)", "english": "Resistant Varieties" },
+                { "hindi": "कीटनाशक (Pesticides)", "english": "Pesticides" }
+            ],
+            "answer": { "hindi": "रोग प्रतिरोधक किस्में (Resistant Varieties)", "english": "Resistant Varieties" }
+        },
+        {
+            "question": {
+                "hindi": "9. पौधों में रूट रॉट रोग किसके कारण होता है?",
+                "english": "9. What causes root rot disease in plants?"
+            },
+            "options": [
+                { "hindi": "फफूंद (Fungi)", "english": "Fungi" },
+                { "hindi": "बैक्टीरिया (Bacteria)", "english": "Bacteria" },
+                { "hindi": "वायरस (Virus)", "english": "Virus" },
+                { "hindi": "निमेटोड (Nematodes)", "english": "Nematodes" }
+            ],
+            "answer": { "hindi": "फफूंद (Fungi)", "english": "Fungi" }
+        },
+        {
+            "question": {
+                "hindi": "10. पौधों में रोग नियंत्रण के लिए कौन सा तरीका सबसे प्रभावी है?",
+                "english": "10. Which method is most effective for controlling plant diseases?"
+            },
+            "options": [
+                { "hindi": "रासायनिक उपचार (Chemical Treatment)", "english": "Chemical Treatment" },
+                { "hindi": "जैविक नियंत्रण (Biological Control)", "english": "Biological Control" },
+                { "hindi": "सांस्कृतिक प्रथाएं (Cultural Practices)", "english": "Cultural Practices" },
+                { "hindi": "सभी (All of the above)", "english": "All of the above" }
+            ],
+            "answer": { "hindi": "सभी (All of the above)", "english": "All of the above" }
+        }
+    ]
+}
