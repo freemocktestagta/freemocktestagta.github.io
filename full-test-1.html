@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Test 1 - Testro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Notification Modal */
+        .notification-modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .notification-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .notification-content h2 {
+            margin-bottom: 10px;
+        }
+        .notification-content p {
+            margin: 10px 0;
+        }
+        .notification-content button {
+            padding: 10px 20px;
+            background: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .notification-content button:hover {
+            background: #002b5e;
+        }
+
+        /* Test Container */
+        .test-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden until user starts the test */
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .progress {
+            height: 10px;
+            background: #004080;
+            width: 0;
+            transition: width 0.3s;
+        }
+
+        /* Timer */
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            color: #004080;
+            margin-bottom: 20px;
+        }
+
+        /* Question and Options */
+        .question-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-button {
+            background: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+            text-align: left;
+        }
+        .option-button:hover {
+            background: #e0e0e0;
+        }
+        .option-button.selected {
+            background: #004080;
+            color: white;
+            border-color: #004080;
+        }
+
+        /* Navigation Buttons */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .navigation-buttons button {
+            padding: 10px 20px;
+            background: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navigation-buttons button:hover {
+            background: #002b5e;
+        }
+        .navigation-buttons button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Result Container */
+        .result-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .result-container h2 {
+            margin-bottom: 20px;
+        }
+        .result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .result-buttons button {
+            padding: 10px 20px;
+            background: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .result-buttons button:hover {
+            background: #002b5e;
+        }
+
+        /* Review Answers Container */
+        .review-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .review-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .review-item {
+            margin-bottom: 20px;
+        }
+        .review-item p {
+            margin: 5px 0;
+        }
+        .correct {
+            color: #28a745;
+        }
+        .wrong {
+            color: #dc3545;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Full Test 1 - Testro</h1>
+    </header>
+
+    <!-- Notification Modal -->
+    <div class="notification-modal" id="notificationModal">
+        <div class="notification-content">
+            <h2>Welcome to Full Test 1</h2>
+            <p><strong>Total Questions:</strong> 100</p>
+            <p><strong>Subject:</strong> General Knowledge</p>
+            <p><strong>Total Time:</strong> 100 minutes</p>
+            <button onclick="startTest()">OK, Let's Start</button>
+        </div>
+    </div>
+
+    <!-- Test Container -->
+    <div class="test-container" id="testContainer">
+        <!-- Progress Tracker -->
+        <p id="progressText">Question 1 of 100</p>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer" id="timer">Time Left: 100:00</div>
+
+        <!-- Question -->
+        <div class="question-text" id="questionText"></div>
+
+        <!-- Options -->
+        <div class="options" id="options"></div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()">Next</button>
+            <button id="submitBtn" onclick="submitTest()" style="display: none;">Submit</button>
+        </div>
+    </div>
+
+    <!-- Result Container -->
+    <div class="result-container" id="resultContainer">
+        <h2>Test Results</h2>
+        <p><strong>Your Score: <span id="finalScore"></span></strong></p>
+        <div class="result-buttons">
+            <button onclick="restartTest()">Restart Test</button>
+            <button onclick="goToHomePage()">Home</button>
+            <button onclick="showReview()">Review Your Answers</button>
+        </div>
+    </div>
+
+    <!-- Review Answers Container -->
+    <div class="review-container" id="reviewContainer">
+        <h2>Review Your Answers</h2>
+        <div id="reviewDetails"></div>
+        <div class="result-buttons">
+            <button onclick="goToResultPage()">Back to Results</button>
+            <button onclick="goToHomePage()">Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: {
+                    hindi: "1. पशु प्रजनन का मुख्य उद्देश्य क्या है?",
+                    english: "1. What is the primary objective of animal breeding?"
+                },
+                options: [
+                    { hindi: "(a) जानवरों का आकार बढ़ाना / To increase the size of animals", english: "(a) To increase the size of animals" },
+                    { hindi: "(b) वांछित लक्षणों के लिए आनुवंशिक गुणवत्ता में सुधार करना / To improve genetic quality for desirable traits", english: "(b) To improve genetic quality for desirable traits" },
+                    { hindi: "(c) जानवरों की चारा आवश्यकताओं को कम करना / To reduce the feed requirements of animals", english: "(c) To reduce the feed requirements of animals" },
+                    { hindi: "(d) जानवरों की उम्र बढ़ाना / To extend the lifespan", english: "(d) To extend the lifespan" }
+                ],
+                answer: { hindi: "(b) वांछित लक्षणों के लिए आनुवंशिक गुणवत्ता में सुधार करना / To improve genetic quality for desirable traits", english: "(b) To improve genetic quality for desirable traits" }
+            },
+            {
+                question: {
+                    hindi: "2. कौन सी भेड़ की नस्ल अपनी उत्तम ऊन के लिए जानी जाती है?",
+                    english: "2. Which breed of sheep is known for its fine wool?"
+                },
+                options: [
+                    { hindi: "(a) डॉर्सेट / Dorset", english: "(a) Dorset" },
+                    { hindi: "(b) मेरिनो / Merino", english: "(b) Merino" },
+                    { hindi: "(c) सफोक / Suffolk", english: "(c) Suffolk" },
+                    { hindi: "(d) हैम्पशायर / Hampshire", english: "(d) Hampshire" }
+                ],
+                answer: { hindi: "(b) मेरिनो / Merino", english: "(b) Merino" }
+            },
+            {
+                question: {
+                    hindi: "3. पौधों के लिए नाइट्रोजन का मुख्य स्रोत क्या है?",
+                    english: "3. What is the main source of nitrogen for plants?"
+                },
+                options: [
+                    { hindi: "(a) पानी / Water", english: "(a) Water" },
+                    { hindi: "(b) मिट्टी / Soil", english: "(b) Soil" },
+                    { hindi: "(c) हवा / Air", english: "(c) Air" },
+                    { hindi: "(d) सूर्यप्रकाश / Sunlight", english: "(d) Sunlight" }
+                ],
+                answer: { hindi: "(c) हवा / Air", english: "(c) Air" }
+            },
+            {
+                question: {
+                    hindi: "4. वह प्रक्रिया क्या कहलाती है जिससे पौधे अपने पत्तों के माध्यम से पानी खो देते हैं?",
+                    english: "4. What is the process by which plants lose water through their leaves?"
+                },
+                options: [
+                    { hindi: "(a) श्वसन / Respiration", english: "(a) Respiration" },
+                    { hindi: "(b) वाष्पीकरण / Evaporation", english: "(b) Evaporation" },
+                    { hindi: "(c) वाष्पोत्सर्जन / Transpiration", english: "(c) Transpiration" },
+                    { hindi: "(d) अवशोषण / Absorption", english: "(d) Absorption" }
+                ],
+                answer: { hindi: "(c) वाष्पोत्सर्जन / Transpiration", english: "(c) Transpiration" }
+            },
+            {
+                question: {
+                    hindi: "5. निम्नलिखित में से कौन सा मिट्टी से फैलने वाला रोग है?",
+                    english: "5. Which of the following is a soil-borne disease?"
+                },
+                options: [
+                    { hindi: "(a) पाउडरी मिल्ड्यू / Powdery mildew", english: "(a) Powdery mildew" },
+                    { hindi: "(b) रूट रॉट / Root rot", english: "(b) Root rot" },
+                    { hindi: "(c) लीफ स्पॉट / Leaf spot", english: "(c) Leaf spot" },
+                    { hindi: "(d) रस्ट / Rust", english: "(d) Rust" }
+                ],
+                answer: { hindi: "(b) रूट रॉट / Root rot", english: "(b) Root rot" }
+            },
+            {
+                question: {
+                    hindi: "6. वायुमंडलीय नाइट्रोजन को पौधों के लिए उपयोगी रूप में बदलने की प्रक्रिया क्या कहलाती है?",
+                    english: "6. What is the process of converting atmospheric nitrogen into a usable form for plants?"
+                },
+                options: [
+                    { hindi: "(a) डी-नाइट्रिफिकेशन / Denitrification", english: "(a) Denitrification" },
+                    { hindi: "(b) नाइट्रोजन फिक्सेशन / Nitrogen fixation", english: "(b) Nitrogen fixation" },
+                    { hindi: "(c) अमोनिफिकेशन / Ammonification", english: "(c) Ammonification" },
+                    { hindi: "(d) नाइट्रिफिकेशन / Nitrification", english: "(d) Nitrification" }
+                ],
+                answer: { hindi: "(b) नाइट्रोजन फिक्सेशन / Nitrogen fixation", english: "(b) Nitrogen fixation" }
+            },
+            {
+                question: {
+                    hindi: "7. निम्नलिखित में से कौन सा मिट्टी के कटाव का प्रकार नहीं है?",
+                    english: "7. Which of the following is not a type of soil erosion?"
+                },
+                options: [
+                    { hindi: "(a) शीट कटाव / Sheet erosion", english: "(a) Sheet erosion" },
+                    { hindi: "(b) रील कटाव / Rill erosion", english: "(b) Rill erosion" },
+                    { hindi: "(c) पवन कटाव / Wind erosion", english: "(c) Wind erosion" },
+                    { hindi: "(d) जल कटाव / Water erosion", english: "(d) Water erosion" }
+                ],
+                answer: { hindi: "(d) जल कटाव / Water erosion", english: "(d) Water erosion" }
+            },
+            {
+                question: {
+                    hindi: "8. अधिकांश फसलों की वृद्धि के लिए आदर्श तापमान सीमा क्या है?",
+                    english: "8. What is the optimal temperature range for the growth of most crops?"
+                },
+                options: [
+                    { hindi: "(a) 10-20°C", english: "(a) 10-20°C" },
+                    { hindi: "(b) 15-25°C", english: "(b) 15-25°C" },
+                    { hindi: "(c) 20-30°C", english: "(c) 20-30°C" },
+                    { hindi: "(d) 25-35°C", english: "(d) 25-35°C" }
+                ],
+                answer: { hindi: "(c) 20-30°C", english: "(c) 20-30°C" }
+            },
+            {
+                question: {
+                    hindi: "9. निम्नलिखित में से कौन सी गर्म मौसम की फसल का उदाहरण है?",
+                    english: "9. Which of the following is an example of a warm-season crop?"
+                },
+                options: [
+                    { hindi: "(a) गेहूं / Wheat", english: "(a) Wheat" },
+                    { hindi: "(b) आलू / Potato", english: "(b) Potato" },
+                    { hindi: "(c) मक्का / Maize", english: "(c) Maize" },
+                    { hindi: "(d) जौ / Barley", english: "(d) Barley" }
+                ],
+                answer: { hindi: "(c) मक्का / Maize", english: "(c) Maize" }
+            },
+            {
+                question: {
+                    hindi: "10. मिट्टी की लवणीयता का मुख्य कारण क्या है?",
+                    english: "10. What is the main cause of soil salinity?"
+                },
+                options: [
+                    { hindi: "(a) पानी का अत्यधिक उपयोग / Overuse of water", english: "(a) Overuse of water" },
+                    { hindi: "(b) अत्यधिक चराई / Overgrazing", english: "(b) Overgrazing" },
+                    { hindi: "(c) उर्वरकों का उपयोग / Use of fertilizers", english: "(c) Use of fertilizers" },
+                    { hindi: "(d) उच्च वाष्पीकरण दर / High evaporation rates", english: "(d) High evaporation rates" }
+                ],
+                answer: { hindi: "(d) उच्च वाष्पीकरण दर / High evaporation rates", english: "(d) High evaporation rates" }
+            },
+                        {
+                question: {
+                    hindi: "11. फसल चक्र का मुख्य उद्देश्य क्या है?",
+                    english: "11. What is the main purpose of crop rotation?"
+                },
+                options: [
+                    { hindi: "(a) फसल उत्पादन बढ़ाना / To increase crop yields", english: "(a) To increase crop yields" },
+                    { hindi: "(b) मिट्टी के कटाव को नियंत्रित करना / To control soil erosion", english: "(b) To control soil erosion" },
+                    { hindi: "(c) मिट्टी की उर्वरता में सुधार करना / To improve soil fertility", english: "(c) To improve soil fertility" },
+                    { hindi: "(d) पानी की खपत कम करना / To reduce water consumption", english: "(d) To reduce water consumption" }
+                ],
+                answer: { hindi: "(c) मिट्टी की उर्वरता में सुधार करना / To improve soil fertility", english: "(c) To improve soil fertility" }
+            },
+            {
+                question: {
+                    hindi: "12. जैविक खेती का मुख्य उद्देश्य क्या है?",
+                    english: "12. What is the primary objective of organic farming?"
+                },
+                options: [
+                    { hindi: "(a) उत्पादन को अधिकतम करना / Maximize production", english: "(a) Maximize production" },
+                    { hindi: "(b) इनपुट लागत को कम करना / Reduce input costs", english: "(b) Reduce input costs" },
+                    { hindi: "(c) पर्यावरणीय स्थिरता को बढ़ावा देना / Promote environmental sustainability", english: "(c) Promote environmental sustainability" },
+                    { hindi: "(d) कीटनाशकों के उपयोग को बढ़ाना / Increase pesticide use", english: "(d) Increase pesticide use" }
+                ],
+                answer: { hindi: "(c) पर्यावरणीय स्थिरता को बढ़ावा देना / Promote environmental sustainability", english: "(c) Promote environmental sustainability" }
+            },
+            {
+                question: {
+                    hindi: "13. गहन खेती से जुड़ी प्रमुख पर्यावरणीय समस्या क्या है?",
+                    english: "13. Which is a major environmental issue associated with intensive farming?"
+                },
+                options: [
+                    { hindi: "(a) मिट्टी का कटाव / Soil erosion", english: "(a) Soil erosion" },
+                    { hindi: "(b) जल प्रदूषण / Water pollution", english: "(b) Water pollution" },
+                    { hindi: "(c) जैव विविधता में कमी / Biodiversity loss", english: "(c) Biodiversity loss" },
+                    { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+                ],
+                answer: { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+            },
+            {
+                question: {
+                    hindi: "14. भारत में हरी क्रांति किससे संबंधित है?",
+                    english: "14. The term 'Green Revolution' is associated with what?"
+                },
+                options: [
+                    { hindi: "(a) फसल उत्पादन में वृद्धि / Increase in crop yield", english: "(a) Increase in crop yield" },
+                    { hindi: "(b) जैव प्रौद्योगिकी की शुरुआत / Introduction of biotechnology", english: "(b) Introduction of biotechnology" },
+                    { hindi: "(c) कृषि का मशीनीकरण / Mechanization of farming", english: "(c) Mechanization of farming" },
+                    { hindi: "(d) मिट्टी की उर्वरता में सुधार / Soil fertility improvement", english: "(d) Soil fertility improvement" }
+                ],
+                answer: { hindi: "(a) फसल उत्पादन में वृद्धि / Increase in crop yield", english: "(a) Increase in crop yield" }
+            },
+            {
+                question: {
+                    hindi: "15. कौन सा बायप्रोडक्ट गन्ने के प्रसंस्करण में उत्पन्न होता है?",
+                    english: "15. Which is a byproduct of sugarcane processing?"
+                },
+                options: [
+                    { hindi: "(a) चावल का भूसा / Rice husk", english: "(a) Rice husk" },
+                    { hindi: "(b) बगास / Bagasse", english: "(b) Bagasse" },
+                    { hindi: "(c) मक्का का डंठल / Maize stalk", english: "(c) Maize stalk" },
+                    { hindi: "(d) गेहूं का चोकर / Wheat bran", english: "(d) Wheat bran" }
+                ],
+                answer: { hindi: "(b) बगास / Bagasse", english: "(b) Bagasse" }
+            },
+            {
+                question: {
+                    hindi: "16. गन्ना लगाने के लिए सही दूरी क्या है?",
+                    english: "16. Which is the correct spacing for planting sugarcane?"
+                },
+                options: [
+                    { hindi: "(a) 15 सेमी × 15 सेमी / 15 cm x 15 cm", english: "(a) 15 cm x 15 cm" },
+                    { hindi: "(b) 60 सेमी × 60 सेमी / 60 cm x 60 cm", english: "(b) 60 cm x 60 cm" },
+                    { hindi: "(c) 90 सेमी × 90 सेमी / 90 cm x 90 cm", english: "(c) 90 cm x 90 cm" },
+                    { hindi: "(d) 120 सेमी × 120 सेमी / 120 cm x 120 cm", english: "(d) 120 cm x 120 cm" }
+                ],
+                answer: { hindi: "(c) 90 सेमी × 90 सेमी / 90 cm x 90 cm", english: "(c) 90 cm x 90 cm" }
+            },
+            {
+                question: {
+                    hindi: "17. जलभराव (Waterlogging) का पौधों पर क्या प्रभाव पड़ता है?",
+                    english: "17. Which of the following is a consequence of waterlogging in soil?"
+                },
+                options: [
+                    { hindi: "(a) जड़ों को ऑक्सीजन की आपूर्ति में सुधार / Improved oxygen supply to roots", english: "(a) Improved oxygen supply to roots" },
+                    { hindi: "(b) फसल उत्पादन में वृद्धि / Increased crop yield", english: "(b) Increased crop yield" },
+                    { hindi: "(c) ऑक्सीजन की कमी के कारण जड़ क्षति / Root damage due to lack of oxygen", english: "(c) Root damage due to lack of oxygen" },
+                    { hindi: "(d) जल निकासी में सुधार / Improved drainage", english: "(d) Improved drainage" }
+                ],
+                answer: { hindi: "(c) ऑक्सीजन की कमी के कारण जड़ क्षति / Root damage due to lack of oxygen", english: "(c) Root damage due to lack of oxygen" }
+            },
+            {
+                question: {
+                    hindi: "18. गहन खेती (Intensive Farming) से जुड़ी प्रमुख पर्यावरणीय समस्या क्या है?",
+                    english: "18. Which of the following is a major environmental issue associated with intensive farming?"
+                },
+                options: [
+                    { hindi: "(a) मिट्टी का कटाव / Soil erosion", english: "(a) Soil erosion" },
+                    { hindi: "(b) जल प्रदूषण / Water pollution", english: "(b) Water pollution" },
+                    { hindi: "(c) जैव विविधता में कमी / Biodiversity loss", english: "(c) Biodiversity loss" },
+                    { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+                ],
+                answer: { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+            },
+            {
+                question: {
+                    hindi: "19. जैविक खेती में कीट नियंत्रण की सामान्य विधि क्या है?",
+                    english: "19. Which of the following is a common method of pest control in organic farming?"
+                },
+                options: [
+                    { hindi: "(a) रासायनिक कीटनाशक / Chemical pesticides", english: "(a) Chemical pesticides" },
+                    { hindi: "(b) जैविक नियंत्रण / Biological control", english: "(b) Biological control" },
+                    { hindi: "(c) GMO / GMOs", english: "(c) GMOs" },
+                    { hindi: "(d) सिंथेटिक उर्वरक / Synthetic fertilizers", english: "(d) Synthetic fertilizers" }
+                ],
+                answer: { hindi: "(b) जैविक नियंत्रण / Biological control", english: "(b) Biological control" }
+            },
+            {
+                question: {
+                    hindi: "20. निम्नलिखित में से कौन सी फसल पर-परागण (Cross-Pollinated) का उदाहरण है?",
+                    english: "20. Which of the following is an example of a cross-pollinated crop?"
+                },
+                options: [
+                    { hindi: "(a) मक्का / Maize", english: "(a) Maize" },
+                    { hindi: "(b) गेहूं / Wheat", english: "(b) Wheat" },
+                    { hindi: "(c) चावल / Rice", english: "(c) Rice" },
+                    { hindi: "(d) जौ / Barley", english: "(d) Barley" }
+                ],
+                answer: { hindi: "(a) मक्का / Maize", english: "(a) Maize" }
+            },
+                {
+        question: {
+            hindi: "21. फसल चक्र का मुख्य उद्देश्य क्या है?",
+            english: "21. What is the main purpose of crop rotation?"
+        },
+        options: [
+            { hindi: "(a) फसल उत्पादन बढ़ाना / To increase crop yields", english: "(a) To increase crop yields" },
+            { hindi: "(b) मिट्टी के कटाव को नियंत्रित करना / To control soil erosion", english: "(b) To control soil erosion" },
+            { hindi: "(c) मिट्टी की उर्वरता में सुधार करना / To improve soil fertility", english: "(c) To improve soil fertility" },
+            { hindi: "(d) पानी की खपत कम करना / To reduce water consumption", english: "(d) To reduce water consumption" }
+        ],
+        answer: { hindi: "(c) मिट्टी की उर्वरता में सुधार करना / To improve soil fertility", english: "(c) To improve soil fertility" }
+    },
+    {
+        question: {
+            hindi: "22. जैविक खेती का मुख्य उद्देश्य क्या है?",
+            english: "22. What is the primary objective of organic farming?"
+        },
+        options: [
+            { hindi: "(a) उत्पादन को अधिकतम करना / Maximize production", english: "(a) Maximize production" },
+            { hindi: "(b) इनपुट लागत को कम करना / Reduce input costs", english: "(b) Reduce input costs" },
+            { hindi: "(c) पर्यावरणीय स्थिरता को बढ़ावा देना / Promote environmental sustainability", english: "(c) Promote environmental sustainability" },
+            { hindi: "(d) कीटनाशकों के उपयोग को बढ़ाना / Increase pesticide use", english: "(d) Increase pesticide use" }
+        ],
+        answer: { hindi: "(c) पर्यावरणीय स्थिरता को बढ़ावा देना / Promote environmental sustainability", english: "(c) Promote environmental sustainability" }
+    },
+    {
+        question: {
+            hindi: "23. गहन खेती से जुड़ी प्रमुख पर्यावरणीय समस्या क्या है?",
+            english: "23. Which is a major environmental issue associated with intensive farming?"
+        },
+        options: [
+            { hindi: "(a) मिट्टी का कटाव / Soil erosion", english: "(a) Soil erosion" },
+            { hindi: "(b) जल प्रदूषण / Water pollution", english: "(b) Water pollution" },
+            { hindi: "(c) जैव विविधता में कमी / Biodiversity loss", english: "(c) Biodiversity loss" },
+            { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+        ],
+        answer: { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+    },
+    {
+        question: {
+            hindi: "24. भारत में हरी क्रांति किससे संबंधित है?",
+            english: "24. The term 'Green Revolution' is associated with what?"
+        },
+        options: [
+            { hindi: "(a) फसल उत्पादन में वृद्धि / Increase in crop yield", english: "(a) Increase in crop yield" },
+            { hindi: "(b) जैव प्रौद्योगिकी की शुरुआत / Introduction of biotechnology", english: "(b) Introduction of biotechnology" },
+            { hindi: "(c) कृषि का मशीनीकरण / Mechanization of farming", english: "(c) Mechanization of farming" },
+            { hindi: "(d) मिट्टी की उर्वरता में सुधार / Soil fertility improvement", english: "(d) Soil fertility improvement" }
+        ],
+        answer: { hindi: "(a) फसल उत्पादन में वृद्धि / Increase in crop yield", english: "(a) Increase in crop yield" }
+    },
+    {
+        question: {
+            hindi: "25. कौन सा बायप्रोडक्ट गन्ने के प्रसंस्करण में उत्पन्न होता है?",
+            english: "25. Which is a byproduct of sugarcane processing?"
+        },
+        options: [
+            { hindi: "(a) चावल का भूसा / Rice husk", english: "(a) Rice husk" },
+            { hindi: "(b) बगास / Bagasse", english: "(b) Bagasse" },
+            { hindi: "(c) मक्का का डंठल / Maize stalk", english: "(c) Maize stalk" },
+            { hindi: "(d) गेहूं का चोकर / Wheat bran", english: "(d) Wheat bran" }
+        ],
+        answer: { hindi: "(b) बगास / Bagasse", english: "(b) Bagasse" }
+    },
+    {
+        question: {
+            hindi: "26. गन्ना लगाने के लिए सही दूरी क्या है?",
+            english: "26. Which is the correct spacing for planting sugarcane?"
+        },
+        options: [
+            { hindi: "(a) 15 सेमी × 15 सेमी / 15 cm x 15 cm", english: "(a) 15 cm x 15 cm" },
+            { hindi: "(b) 60 सेमी × 60 सेमी / 60 cm x 60 cm", english: "(b) 60 cm x 60 cm" },
+            { hindi: "(c) 90 सेमी × 90 सेमी / 90 cm x 90 cm", english: "(c) 90 cm x 90 cm" },
+            { hindi: "(d) 120 सेमी × 120 सेमी / 120 cm x 120 cm", english: "(d) 120 cm x 120 cm" }
+        ],
+        answer: { hindi: "(c) 90 सेमी × 90 सेमी / 90 cm x 90 cm", english: "(c) 90 cm x 90 cm" }
+    },
+    {
+        question: {
+            hindi: "27. जलभराव (Waterlogging) का पौधों पर क्या प्रभाव पड़ता है?",
+            english: "27. Which of the following is a consequence of waterlogging in soil?"
+        },
+        options: [
+            { hindi: "(a) जड़ों को ऑक्सीजन की आपूर्ति में सुधार / Improved oxygen supply to roots", english: "(a) Improved oxygen supply to roots" },
+            { hindi: "(b) फसल उत्पादन में वृद्धि / Increased crop yield", english: "(b) Increased crop yield" },
+            { hindi: "(c) ऑक्सीजन की कमी के कारण जड़ क्षति / Root damage due to lack of oxygen", english: "(c) Root damage due to lack of oxygen" },
+            { hindi: "(d) जल निकासी में सुधार / Improved drainage", english: "(d) Improved drainage" }
+        ],
+        answer: { hindi: "(c) ऑक्सीजन की कमी के कारण जड़ क्षति / Root damage due to lack of oxygen", english: "(c) Root damage due to lack of oxygen" }
+    },
+    {
+        question: {
+            hindi: "28. गहन खेती (Intensive Farming) से जुड़ी प्रमुख पर्यावरणीय समस्या क्या है?",
+            english: "28. Which of the following is a major environmental issue associated with intensive farming?"
+        },
+        options: [
+            { hindi: "(a) मिट्टी का कटाव / Soil erosion", english: "(a) Soil erosion" },
+            { hindi: "(b) जल प्रदूषण / Water pollution", english: "(b) Water pollution" },
+            { hindi: "(c) जैव विविधता में कमी / Biodiversity loss", english: "(c) Biodiversity loss" },
+            { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+        ],
+        answer: { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+    },
+    {
+        question: {
+            hindi: "29. जैविक खेती में कीट नियंत्रण की सामान्य विधि क्या है?",
+            english: "29. Which of the following is a common method of pest control in organic farming?"
+        },
+        options: [
+            { hindi: "(a) रासायनिक कीटनाशक / Chemical pesticides", english: "(a) Chemical pesticides" },
+            { hindi: "(b) जैविक नियंत्रण / Biological control", english: "(b) Biological control" },
+            { hindi: "(c) GMO / GMOs", english: "(c) GMOs" },
+            { hindi: "(d) सिंथेटिक उर्वरक / Synthetic fertilizers", english: "(d) Synthetic fertilizers" }
+        ],
+        answer: { hindi: "(b) जैविक नियंत्रण / Biological control", english: "(b) Biological control" }
+    },
+    {
+        question: {
+            hindi: "30. निम्नलिखित में से कौन सी फसल पर-परागण (Cross-Pollinated) का उदाहरण है?",
+            english: "30. Which of the following is an example of a cross-pollinated crop?"
+        },
+        options: [
+            { hindi: "(a) मक्का / Maize", english: "(a) Maize" },
+            { hindi: "(b) गेहूं / Wheat", english: "(b) Wheat" },
+            { hindi: "(c) चावल / Rice", english: "(c) Rice" },
+            { hindi: "(d) जौ / Barley", english: "(d) Barley" }
+        ],
+        answer: { hindi: "(a) मक्का / Maize", english: "(a) Maize" }
+    },
+        {
+        question: {
+            hindi: "31. मुर्गी पालन (Poultry) में आम बीमारी कौन सी है?",
+            english: "31. Which of the following is a common disease in poultry?"
+        },
+        options: [
+            { hindi: "(a) खुरपका-मुंहपका रोग / Foot-and-mouth disease", english: "(a) Foot-and-mouth disease" },
+            { hindi: "(b) एवियन इन्फ्लुएंजा / Avian influenza", english: "(b) Avian influenza" },
+            { hindi: "(c) तपेदिक / Tuberculosis", english: "(c) Tuberculosis" },
+            { hindi: "(d) ब्रुसेलोसिस / Brucellosis", english: "(d) Brucellosis" }
+        ],
+        answer: { hindi: "(b) एवियन इन्फ्लुएंजा / Avian influenza", english: "(b) Avian influenza" }
+    },
+    {
+        question: {
+            hindi: "32. कृषि में जल प्रदूषण को नियंत्रित करने का कौन सा तरीका अपनाया जाता है?",
+            english: "32. Which of the following is a method to control water pollution in agriculture?"
+        },
+        options: [
+            { hindi: "(a) कीटनाशकों के उपयोग को कम करना / Reducing pesticide use", english: "(a) Reducing pesticide use" },
+            { hindi: "(b) जैविक उर्वरकों का उपयोग / Using organic fertilizers", english: "(b) Using organic fertilizers" },
+            { hindi: "(c) आवरण फसलों को उगाना / Planting cover crops", english: "(c) Planting cover crops" },
+            { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+        ],
+        answer: { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+    },
+    {
+        question: {
+            hindi: "33. कृषि में जोखिम प्रबंधन में कौन सा कारक नहीं माना जाता है?",
+            english: "33. Which factor is NOT considered in risk management in farming?"
+        },
+        options: [
+            { hindi: "(a) बाजार मूल्य में उतार-चढ़ाव / Market price fluctuations", english: "(a) Market price fluctuations" },
+            { hindi: "(b) मौसम की स्थिति / Weather conditions", english: "(b) Weather conditions" },
+            { hindi: "(c) सरकारी सब्सिडी / Government subsidies", english: "(c) Government subsidies" },
+            { hindi: "(d) फसल विफलता का ऐतिहासिक रिकॉर्ड / Historical records of crop failure", english: "(d) Historical records of crop failure" }
+        ],
+        answer: { hindi: "(c) सरकारी सब्सिडी / Government subsidies", english: "(c) Government subsidies" }
+    },
+    {
+        question: {
+            hindi: "34. कृषि प्रबंधन (Farm Management) का प्राथमिक लक्ष्य क्या है?",
+            english: "34. What is the primary goal of farm management?"
+        },
+        options: [
+            { hindi: "(a) कृषि लाभ को अधिकतम करना / Maximizing farm profits", english: "(a) Maximizing farm profits" },
+            { hindi: "(b) मिट्टी के कटाव को बढ़ाना / Increasing soil erosion", english: "(b) Increasing soil erosion" },
+            { hindi: "(c) श्रम उत्पादकता को कम करना / Reducing labor productivity", english: "(c) Reducing labor productivity" },
+            { hindi: "(d) फसल विविधता को घटाना / Decreasing crop diversity", english: "(d) Decreasing crop diversity" }
+        ],
+        answer: { hindi: "(a) कृषि लाभ को अधिकतम करना / Maximizing farm profits", english: "(a) Maximizing farm profits" }
+    },
+    {
+        question: {
+            hindi: "35. मिट्टी की उर्वरता (Soil Fertility) में 'लक्जरी खपत' (Luxury Consumption) क्या दर्शाता है?",
+            english: "35. In soil fertility, what does the term 'luxury consumption' refer to?"
+        },
+        options: [
+            { hindi: "(a) पोषक तत्वों की कमी / Nutrient deficiency", english: "(a) Nutrient deficiency" },
+            { hindi: "(b) उत्पादन में वृद्धि के बिना पोषक तत्वों का अत्यधिक अवशोषण / Excess nutrient uptake without yield increase", english: "(b) Excess nutrient uptake without yield increase" },
+            { hindi: "(c) मिट्टी में पोषक तत्वों की कमी / Soil nutrient depletion", english: "(c) Soil nutrient depletion" },
+            { hindi: "(d) पोषक तत्वों का इष्टतम अवशोषण / Optimum nutrient absorption", english: "(d) Optimum nutrient absorption" }
+        ],
+        answer: { hindi: "(b) उत्पादन में वृद्धि के बिना पोषक तत्वों का अत्यधिक अवशोषण / Excess nutrient uptake without yield increase", english: "(b) Excess nutrient uptake without yield increase" }
+    },
+    {
+        question: {
+            hindi: "36. बीज निष्क्रियता (Seed Dormancy) के लिए कौन सा हार्मोन जिम्मेदार है?",
+            english: "36. Which hormone is responsible for seed dormancy in plants?"
+        },
+        options: [
+            { hindi: "(a) ऑक्सिन / Auxin", english: "(a) Auxin" },
+            { hindi: "(b) जिबरेलिन / Gibberellin", english: "(b) Gibberellin" },
+            { hindi: "(c) एब्सिसिक एसिड / Abscisic acid", english: "(c) Abscisic acid" },
+            { hindi: "(d) साइटोकाइनिन / Cytokinin", english: "(d) Cytokinin" }
+        ],
+        answer: { hindi: "(c) एब्सिसिक एसिड / Abscisic acid", english: "(c) Abscisic acid" }
+    },
+    {
+        question: {
+            hindi: "37. दलहनी पौधों (Leguminous Plants) में नाइट्रोजन स्थिरीकरण के लिए कौन सा एंजाइम जिम्मेदार है?",
+            english: "37. Which enzyme is responsible for nitrogen fixation in leguminous plants?"
+        },
+        options: [
+            { hindi: "(a) नाइट्रेट रिडक्टेस / Nitrate reductase", english: "(a) Nitrate reductase" },
+            { hindi: "(b) नाइट्रोजनेज / Nitrogenase", english: "(b) Nitrogenase" },
+            { hindi: "(c) हाइड्रोजनेज / Hydrogenase", english: "(c) Hydrogenase" },
+            { hindi: "(d) एमाइलेज / Amylase", english: "(d) Amylase" }
+        ],
+        answer: { hindi: "(b) नाइट्रोजनेज / Nitrogenase", english: "(b) Nitrogenase" }
+    },
+    {
+        question: {
+            hindi: "38. नाइट्रोजन स्थिरीकरण में कौन सा जीवाणु शामिल है?",
+            english: "38. Which bacteria is involved in nitrogen fixation?"
+        },
+        options: [
+            { hindi: "(a) एजोटोबैक्टर / Azotobacter", english: "(a) Azotobacter" },
+            { hindi: "(b) राइजोबियम / Rhizobium", english: "(b) Rhizobium" },
+            { hindi: "(c) क्लोस्ट्रीडियम / Clostridium", english: "(c) Clostridium" },
+            { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+        ],
+        answer: { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+    },
+    {
+        question: {
+            hindi: "39. मिट्टी की उर्वरता में सुधार के लिए कौन सा तत्व आवश्यक है?",
+            english: "39. Which element is essential for improving soil fertility?"
+        },
+        options: [
+            { hindi: "(a) सल्फर / Sulfur", english: "(a) Sulfur" },
+            { hindi: "(b) नाइट्रोजन / Nitrogen", english: "(b) Nitrogen" },
+            { hindi: "(c) फास्फोरस / Phosphorus", english: "(c) Phosphorus" },
+            { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+        ],
+        answer: { hindi: "(d) उपरोक्त सभी / All of the above", english: "(d) All of the above" }
+    },
+    {
+        question: {
+            hindi: "40. भारत में चावल उगाने के लिए सबसे अच्छा समय कौन सा है?",
+            english: "40. Which is the best time to grow rice in India?"
+        },
+        options: [
+            { hindi: "(a) शीत ऋतु / Winter season", english: "(a) Winter season" },
+            { hindi: "(b) ग्रीष्म ऋतु / Summer season", english: "(b) Summer season" },
+            { hindi: "(c) मानसून ऋतु / Monsoon season", english: "(c) Monsoon season" },
+            { hindi: "(d) वसंत ऋतु / Spring season", english: "(d) Spring season" }
+        ],
+        answer: { hindi: "(c) मानसून ऋतु / Monsoon season", english: "(c) Monsoon season" }
+    },
+    {
+        question: {
+            hindi: "41. मिट्टी के कटाव को रोकने के लिए कौन सा तरीका सबसे प्रभावी है?",
+            english: "41. Which method is most effective in preventing soil erosion?"
+        },
+        options: [
+            { hindi: "(a) बहु-फसलीकरण / Multi-cropping", english: "(a) Multi-cropping" },
+            { hindi: "(b) खेत जोतना / Plowing", english: "(b) Plowing" },
+            { hindi: "(c) वृक्षारोपण / Afforestation", english: "(c) Afforestation" },
+            { hindi: "(d) सिंचाई बढ़ाना / Increasing irrigation", english: "(d) Increasing irrigation" }
+        ],
+        answer: { hindi: "(c) वृक्षारोपण / Afforestation", english: "(c) Afforestation" }
+    },
+    {
+        question: {
+            hindi: "42. कृषि में उपयोग किए जाने वाले जैव उर्वरक का एक उदाहरण क्या है?",
+            english: "42. Which of the following is an example of a biofertilizer used in agriculture?"
+        },
+        options: [
+            { hindi: "(a) यूरिया / Urea", english: "(a) Urea" },
+            { hindi: "(b) राइजोबियम / Rhizobium", english: "(b) Rhizobium" },
+            { hindi: "(c) डीएपी / DAP", english: "(c) DAP" },
+            { hindi: "(d) सुपरफॉस्फेट / Superphosphate", english: "(d) Superphosphate" }
+        ],
+        answer: { hindi: "(b) राइजोबियम / Rhizobium", english: "(b) Rhizobium" }
+    },
+    {
+        question: {
+            hindi: "43. कौन सा तत्व पौधों में क्लोरोफिल के निर्माण के लिए आवश्यक है?",
+            english: "43. Which element is essential for chlorophyll formation in plants?"
+        },
+        options: [
+            { hindi: "(a) नाइट्रोजन / Nitrogen", english: "(a) Nitrogen" },
+            { hindi: "(b) फास्फोरस / Phosphorus", english: "(b) Phosphorus" },
+            { hindi: "(c) मैग्नीशियम / Magnesium", english: "(c) Magnesium" },
+            { hindi: "(d) सल्फर / Sulfur", english: "(d) Sulfur" }
+        ],
+        answer: { hindi: "(c) मैग्नीशियम / Magnesium", english: "(c) Magnesium" }
+    },
+    {
+        question: {
+            hindi: "44. पौधों में जल अवशोषण की प्रक्रिया को क्या कहा जाता है?",
+            english: "44. What is the process of water absorption in plants called?"
+        },
+        options: [
+            { hindi: "(a) वाष्पोत्सर्जन / Transpiration", english: "(a) Transpiration" },
+            { hindi: "(b) परासरण / Osmosis", english: "(b) Osmosis" },
+            { hindi: "(c) प्रकाश-संश्लेषण / Photosynthesis", english: "(c) Photosynthesis" },
+            { hindi: "(d) अवशोषण / Absorption", english: "(d) Absorption" }
+        ],
+        answer: { hindi: "(b) परासरण / Osmosis", english: "(b) Osmosis" }
+    },
+    {
+        question: {
+            hindi: "45. कृषि में 'हरी खाद' (Green Manure) का उपयोग किस उद्देश्य से किया जाता है?",
+            english: "45. What is the purpose of using green manure in agriculture?"
+        },
+        options: [
+            { hindi: "(a) मिट्टी की उर्वरता बढ़ाने के लिए / To improve soil fertility", english: "(a) To improve soil fertility" },
+            { hindi: "(b) फसल उत्पादन बढ़ाने के लिए / To increase crop yield", english: "(b) To increase crop yield" },
+            { hindi: "(c) जल निकासी में सुधार करने के लिए / To improve drainage", english: "(c) To improve drainage" },
+            { hindi: "(d) खरपतवार नियंत्रण के लिए / To control weeds", english: "(d) To control weeds" }
+        ],
+        answer: { hindi: "(a) मिट्टी की उर्वरता बढ़ाने के लिए / To improve soil fertility", english: "(a) To improve soil fertility" }
+    },
+    {
+        question: {
+            hindi: "46. कौन सा उर्वरक फास्फोरस का एक अच्छा स्रोत है?",
+            english: "46. Which fertilizer is a good source of phosphorus?"
+        },
+        options: [
+            { hindi: "(a) यूरिया / Urea", english: "(a) Urea" },
+            { hindi: "(b) सुपरफॉस्फेट / Superphosphate", english: "(b) Superphosphate" },
+            { hindi: "(c) अमोनियम नाइट्रेट / Ammonium nitrate", english: "(c) Ammonium nitrate" },
+            { hindi: "(d) कैल्शियम सल्फेट / Calcium sulfate", english: "(d) Calcium sulfate" }
+        ],
+        answer: { hindi: "(b) सुपरफॉस्फेट / Superphosphate", english: "(b) Superphosphate" }
+    },
+    {
+        question: {
+            hindi: "47. खेती में जैव कीटनाशकों का मुख्य लाभ क्या है?",
+            english: "47. What is the main advantage of using biopesticides in farming?"
+        },
+        options: [
+            { hindi: "(a) वे पर्यावरण के लिए सुरक्षित होते हैं / They are environmentally safe", english: "(a) They are environmentally safe" },
+            { hindi: "(b) वे अधिक प्रभावी होते हैं / They are more effective", english: "(b) They are more effective" },
+            { hindi: "(c) वे सस्ते होते हैं / They are cheaper", english: "(c) They are cheaper" },
+            { hindi: "(d) वे आसानी से उपलब्ध होते हैं / They are easily available", english: "(d) They are easily available" }
+        ],
+        answer: { hindi: "(a) वे पर्यावरण के लिए सुरक्षित होते हैं / They are environmentally safe", english: "(a) They are environmentally safe" }
+    },
+    {
+        question: {
+            hindi: "48. गेहूं की खेती के लिए सबसे उपयुक्त मिट्टी कौन सी है?",
+            english: "48. Which soil is most suitable for wheat cultivation?"
+        },
+        options: [
+            { hindi: "(a) काली मिट्टी / Black soil", english: "(a) Black soil" },
+            { hindi: "(b) जलोढ़ मिट्टी / Alluvial soil", english: "(b) Alluvial soil" },
+            { hindi: "(c) बलुई मिट्टी / Sandy soil", english: "(c) Sandy soil" },
+            { hindi: "(d) लाल मिट्टी / Red soil", english: "(d) Red soil" }
+        ],
+        answer: { hindi: "(b) जलोढ़ मिट्टी / Alluvial soil", english: "(b) Alluvial soil" }
+    },
+    {
+        question: {
+            hindi: "49. भारत में सबसे अधिक उगाई जाने वाली दलहनी फसल कौन सी है?",
+            english: "49. Which is the most widely grown pulse crop in India?"
+        },
+        options: [
+            { hindi: "(a) चना / Chickpea", english: "(a) Chickpea" },
+            { hindi: "(b) मूंग / Green gram", english: "(b) Green gram" },
+            { hindi: "(c) अरहर / Pigeon pea", english: "(c) Pigeon pea" },
+            { hindi: "(d) मसूर / Lentil", english: "(d) Lentil" }
+        ],
+        answer: { hindi: "(a) चना / Chickpea", english: "(a) Chickpea" }
+    },
+    {
+        question: {
+            hindi: "50. खेत में नमी बनाए रखने के लिए कौन सी विधि सबसे अच्छी मानी जाती है?",
+            english: "50. Which method is best for retaining moisture in the soil?"
+        },
+        options: [
+            { hindi: "(a) अधिक सिंचाई / Over-irrigation", english: "(a) Over-irrigation" },
+            { hindi: "(b) मल्चिंग / Mulching", english: "(b) Mulching" },
+            { hindi: "(c) गहरी जुताई / Deep plowing", english: "(c) Deep plowing" },
+            { hindi: "(d) उर्वरकों का अधिक उपयोग / Excessive use of fertilizers", english: "(d) Excessive use of fertilizers" }
+        ],
+        answer: { hindi: "(b) मल्चिंग / Mulching", english: "(b) Mulching" }
+    },
+    // Add the remaining 50 questions here following the same format
+];
+];
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        let timeLeft = 6000; // 100 minutes in seconds
+        let timerId;
+
+        // Show notification modal
+        const notificationModal = document.getElementById("notificationModal");
+        const testContainer = document.getElementById("testContainer");
+        const resultContainer = document.getElementById("resultContainer");
+        const reviewContainer = document.getElementById("reviewContainer");
+
+        function startTest() {
+            notificationModal.style.display = "none";
+            testContainer.style.display = "block";
+            loadQuestion();
+            updateTimer();
+        }
+
+        // Load question
+        function loadQuestion() {
+            const questionText = document.getElementById("questionText");
+            const optionsDiv = document.getElementById("options");
+            const progress = document.getElementById("progress");
+            const progressText = document.getElementById("progressText");
+
+            // Update question text (bilingual)
+            const question = questions[currentQuestionIndex].question;
+            questionText.innerHTML = `
+                <div>${question.hindi}</div>
+                <div>${question.english}</div>
+            `;
+
+            // Update options (bilingual)
+            optionsDiv.innerHTML = "";
+            questions[currentQuestionIndex].options.forEach((option, index) => {
+                const optionButton = document.createElement("div");
+                optionButton.classList.add("option-button");
+                optionButton.innerHTML = `
+                    <div>${option.hindi}</div>
+                    <div>${option.english}</div>
+                `;
+                optionButton.onclick = () => selectAnswer(option);
+                if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].hindi === option.hindi) {
+                    optionButton.classList.add("selected");
+                }
+                optionsDiv.appendChild(optionButton);
+            });
+
+            // Update progress bar
+            progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            // Update progress text
+            progressText.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            // Disable "Previous" button on the first question
+            document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+
+            // Show "Submit" button on the last question
+            document.getElementById("submitBtn").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        // Select answer
+        function selectAnswer(selectedOption) {
+            const optionButtons = document.querySelectorAll(".option-button");
+            optionButtons.forEach(button => button.classList.remove("selected"));
+
+            const selectedButton = Array.from(optionButtons).find(button => 
+                button.innerText.includes(selectedOption.hindi) || button.innerText.includes(selectedOption.english)
+            );
+            selectedButton.classList.add("selected");
+
+            userAnswers[currentQuestionIndex] = selectedOption;
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Submit test
+        function submitTest() {
+            clearTimeout(timerId); // Stop the timer to prevent unnecessary execution
+
+            let finalScore = 0;
+            userAnswers.forEach((userAnswer, index) => {
+                if (userAnswer && userAnswer.hindi === questions[index].answer.hindi) {
+                    finalScore++;
+                }
+            });
+
+            score = finalScore;
+
+            document.getElementById("testContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+            document.getElementById("reviewContainer").style.display = "none";
+
+            // Display score
+            document.getElementById("finalScore").textContent = `${score} / ${questions.length}`;
+
+            // Show confetti if the user scores 100%
+            if (score === questions.length) {
+                showConfetti();
+            }
+        }
+
+        // Show Review Answers
+        function showReview() {
+            resultContainer.style.display = "none";
+            reviewContainer.style.display = "block";
+
+            const reviewDetails = document.getElementById("reviewDetails");
+            reviewDetails.innerHTML = "";
+
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer && userAnswer.hindi === question.answer.hindi;
+
+                reviewDetails.innerHTML += `
+                    <div class="review-item">
+                        <p><strong>Question ${index + 1}:</strong></p>
+                        <p>${question.question.hindi}</p>
+                        <p>${question.question.english}</p>
+                        <div class="options">
+                            ${question.options.map(option => `
+                                <div class="option-button ${userAnswer && userAnswer.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
+                                    <div>${option.hindi}</div>
+                                    <div>${option.english}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <p><strong>Correct Answer:</strong> <span class="correct">
+                            ${question.answer.hindi} / ${question.answer.english}
+                        </span></p>
+                    </div>
+                `;
+            });
+        }
+
+        // Restart Test
+        function restartTest() {
+            currentQuestionIndex = 0;
+            score = 0; // Reset the score
+            userAnswers = new Array(questions.length).fill(null);
+            timeLeft = 6000; // Reset time
+
+            document.getElementById("testContainer").style.display = "block";
+            document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "none";
+
+            loadQuestion();
+            
+            clearTimeout(timerId); // Stop any previous timer before restarting
+            updateTimer(); // Restart timer
+        }
+
+        // Go to Home Page
+        function goToHomePage() {
+            window.location.href = "index.html"; // Replace with your home page URL
+        }
+
+        // Go to Result Page
+        function goToResultPage() {
+            reviewContainer.style.display = "none";
+            resultContainer.style.display = "block";
+        }
+
+        // Timer
+        function updateTimer() {
+            const timer = document.getElementById("timer");
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            const secondsFormatted = seconds < 10 ? `0${seconds}` : seconds;
+            timer.innerText = `Time Left: ${minutes}:${secondsFormatted}`;
+
+            if (timeLeft === 0) {
+                submitTest();
+            } else {
+                timeLeft--;
+                timerId = setTimeout(updateTimer, 1000);
+            }
+        }
+
+        // Confetti Animation
+        function showConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti");
+            document.body.appendChild(confettiContainer);
+
+            setTimeout(() => confettiContainer.remove(), 5000); // Remove after 5 sec
+        }
+    </script>
+</body>
+</html>
