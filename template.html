@@ -332,13 +332,13 @@
 
         // Load test data dynamically
         async function loadTestData() {
-            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1"; // Default to genetics-1.json
+            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1";
             try {
-                const response = await fetch(`${testId}.json`); // Fetch from main directory
+                const response = await fetch(`${testId}.json`);
                 if (!response.ok) throw new Error("Failed to load test data");
                 testData = await response.json();
-                questions = testData.questions; // Store questions globally
-                timeLeft = testData.time; // Set timer based on JSON
+                questions = testData.questions;
+                timeLeft = testData.time;
                 return testData;
             } catch (error) {
                 console.error("Error loading test data:", error);
@@ -348,19 +348,80 @@
             }
         }
 
-        // Save test data locally
-        function saveTestDataLocally() {
-            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1"; // Get testId from URL
-            const testResult = {
-                testId: testId,
-                score: score,
-                totalQuestions: questions.length,
-                userAnswers: userAnswers,
-                timestamp: new Date().toISOString() // Add a timestamp
-            };
+        // Start test
+        async function startTest() {
+            if (!testData) return;
 
-            // Save to localStorage
-            localStorage.setItem(`testResult_${testId}`, JSON.stringify(testResult));
+            document.getElementById("testTitle").textContent = testData.title;
+            document.getElementById("welcomeMessage").textContent = `Welcome to ${testData.title}`;
+            document.getElementById("testSection").textContent = testData.section;
+            document.getElementById("testSubject").textContent = testData.subject;
+            document.getElementById("totalQuestions").textContent = testData.questions.length;
+            document.getElementById("testTime").textContent = `${Math.floor(testData.time / 60)} minutes`;
+            document.getElementById("totalQuestionsDisplay").textContent = testData.questions.length;
+
+            document.getElementById("notificationModal").style.display = "none";
+            document.getElementById("testContainer").style.display = "block";
+
+            loadQuestion();
+            updateTimer();
+        }
+
+        // Load question
+        function loadQuestion() {
+            const questionText = document.getElementById("questionText");
+            const optionsDiv = document.getElementById("options");
+            const progress = document.getElementById("progress");
+            const progressText = document.getElementById("progressText");
+
+            const question = questions[currentQuestionIndex];
+            questionText.innerHTML = `
+                <div>${question.question.hindi}</div>
+                <div>${question.question.english}</div>
+            `;
+
+            optionsDiv.innerHTML = "";
+            question.options.forEach((option) => {
+                const optionButton = document.createElement("div");
+                optionButton.classList.add("option-button");
+                optionButton.innerHTML = `
+                    <div>${option.hindi}</div>
+                    <div>${option.english}</div>
+                `;
+                optionButton.onclick = () => selectAnswer(option, optionButton);
+                if (userAnswers[currentQuestionIndex]?.hindi === option.hindi) {
+                    optionButton.classList.add("selected");
+                }
+                optionsDiv.appendChild(optionButton);
+            });
+
+            progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+            progressText.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+            document.getElementById("submitBtn").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        // Select answer
+        function selectAnswer(selectedOption, button) {
+            document.querySelectorAll(".option-button").forEach(btn => btn.classList.remove("selected"));
+            button.classList.add("selected");
+            userAnswers[currentQuestionIndex] = selectedOption;
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
         }
 
         // Submit test
@@ -376,15 +437,13 @@
 
             score = finalScore;
 
-            // Save test data locally
-            saveTestDataLocally();
-
             document.getElementById("testContainer").style.display = "none";
             document.getElementById("resultContainer").style.display = "block";
             document.getElementById("finalScore").textContent = `${score} / ${testData.questions.length}`;
 
-            document.querySelectorAll("button").forEach(btn => btn.disabled = true); // Disable buttons
-            sessionStorage.removeItem("remainingTime"); // Clear timer after submission
+            // Remove this line to prevent disabling result buttons
+            // document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+            sessionStorage.removeItem("remainingTime");
         }
 
         // Restart Test
@@ -392,16 +451,77 @@
             currentQuestionIndex = 0;
             score = 0;
             userAnswers = [];
-            timeLeft = testData.time; // Reset timer
+            timeLeft = testData.time;
 
             document.getElementById("testContainer").style.display = "block";
             document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "none";
+
             loadQuestion();
             clearTimeout(timerId);
             updateTimer();
         }
 
-        // Your existing functions (loadQuestion, selectAnswer, nextQuestion, prevQuestion, updateTimer, etc.) remain unchanged -->
+        // Go to Home Page
+        function goToHomePage() {
+            window.location.href = "index.html";
+        }
+
+        // Show Review Answers
+        function showReview() {
+            document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "block";
+
+            const reviewDetails = document.getElementById("reviewDetails");
+            reviewDetails.innerHTML = "";
+
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer?.hindi === question.answer.hindi;
+
+                reviewDetails.innerHTML += `
+                    <div class="review-item">
+                        <p><strong>Question ${index + 1}:</strong></p>
+                        <p>${question.question.hindi}</p>
+                        <p>${question.question.english}</p>
+                        <div class="options">
+                            ${question.options.map(option => `
+                                <div class="option-button ${userAnswer?.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
+                                    <div>${option.hindi}</div>
+                                    <div>${option.english}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <p><strong>Correct Answer:</strong> <span class="correct">
+                            ${question.answer.hindi} / ${question.answer.english}
+                        </span></p>
+                    </div>
+                `;
+            });
+        }
+
+        // Go to Result Page
+        function goToResultPage() {
+            document.getElementById("reviewContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+        }
+
+        // Timer with sessionStorage persistence
+        function updateTimer() {
+            const timer = document.getElementById("timer");
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timer.innerText = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            sessionStorage.setItem("remainingTime", timeLeft);
+
+            if (timeLeft <= 0) {
+                submitTest();
+                return;
+            }
+            timeLeft--;
+            timerId = setTimeout(updateTimer, 1000);
+        }
 
         // Initialize the test data when the page loads
         window.onload = async () => {
