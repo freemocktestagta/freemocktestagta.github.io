@@ -329,10 +329,11 @@
         let timerId;
         let questions = [];
         let testData;
+        let testId;
 
         // Load test data dynamically
         async function loadTestData() {
-            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1"; // Default to genetics-1.json
+            testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1"; // Default to genetics-1.json
             try {
                 const response = await fetch(`${testId}.json`); // Fetch from main directory
                 if (!response.ok) throw new Error("Failed to load test data");
@@ -441,6 +442,12 @@
             document.getElementById("resultContainer").style.display = "block";
             document.getElementById("finalScore").textContent = `${score} / ${testData.questions.length}`;
 
+            // Save test results to localStorage
+            localStorage.setItem(`test_${testId}`, JSON.stringify({
+                score: `${score}/${testData.questions.length}`,
+                answers: userAnswers
+            }));
+
             document.querySelectorAll("button").forEach(btn => btn.disabled = true); // Disable buttons
             sessionStorage.removeItem("remainingTime"); // Clear timer after submission
         }
@@ -451,6 +458,9 @@
             score = 0;
             userAnswers = [];
             timeLeft = testData.time; // Reset timer
+
+            // Clear saved data for this test
+            localStorage.removeItem(`test_${testId}`);
 
             document.getElementById("testContainer").style.display = "block";
             document.getElementById("resultContainer").style.display = "none";
