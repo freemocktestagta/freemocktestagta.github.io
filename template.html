@@ -535,5 +535,23 @@
             }
         };
     </script>
+
+    <!-- Ensure event listeners are attached after the DOM is fully loaded -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Page Loaded - Attaching event listeners");
+
+            // Ensure all buttons have event listeners
+            const restartBtn = document.querySelector(".result-buttons button:nth-child(1)");
+            const homeBtn = document.querySelector(".result-buttons button:nth-child(2)");
+            const reviewBtn = document.querySelector(".result-buttons button:nth-child(3)");
+
+            if (restartBtn) restartBtn.addEventListener("click", restartTest);
+            if (homeBtn) homeBtn.addEventListener("click", goToHomePage);
+            if (reviewBtn) reviewBtn.addEventListener("click", showReview);
+
+            console.log("Event listeners attached successfully");
+        });
+    </script>
 </body>
 </html>
