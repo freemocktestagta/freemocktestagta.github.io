@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1 id="testTitle">Test Title</h1>
+    </header>
+
+    <!-- Notification Modal -->
+    <div class="notification-modal" id="notificationModal">
+        <div class="notification-content">
+            <h2 id="welcomeMessage">Welcome to the Test</h2>
+            <p><strong>Section:</strong> <span id="testSection"></span></p>
+            <p><strong>Subject:</strong> <span id="testSubject"></span></p>
+            <p><strong>Total Questions:</strong> <span id="totalQuestions"></span></p>
+            <p><strong>Total Time:</strong> <span id="testTime"></span></p>
+            <button onclick="startTest()">OK, Let's Start</button>
+        </div>
+    </div>
+
+    <!-- Test Container -->
+    <div class="test-container" id="testContainer">
+        <!-- Progress Tracker -->
+        <p id="progressText">Question 1 of <span id="totalQuestionsDisplay"></span></p>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer" id="timer">Time Left: 20:00</div>
+
+        <!-- Question -->
+        <div class="question-text" id="questionText"></div>
+
+        <!-- Options -->
+        <div class="options" id="options"></div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()">Next</button>
+            <button id="submitBtn" onclick="submitTest()" style="display: none;">Submit</button>
+        </div>
+    </div>
+
+    <!-- Result Container -->
+    <div class="result-container" id="resultContainer">
+        <h2>Test Results</h2>
+        <p><strong>Your Score: <span id="finalScore"></span></strong></p>
+        <div class="result-buttons">
+            <button onclick="restartTest()">Restart Test</button>
+            <button onclick="goToHomePage()">Home</button>
+            <button onclick="showReview()">Review Your Answers</button>
+        </div>
+    </div>
+
+    <!-- Review Answers Container -->
+    <div class="review-container" id="reviewContainer">
+        <h2>Review Your Answers</h2>
+        <div id="reviewDetails"></div>
+        <div class="result-buttons">
+            <button onclick="goToResultPage()">Back to Results</button>
+            <button onclick="goToHomePage()">Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+    </footer>
+
+    <script>
+        // Global variables
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+        let timeLeft = sessionStorage.getItem("remainingTime") || 1200; // Store timer across page refreshes
+        let timerId;
+        let questions = [];
+
+        // Load test data dynamically
+        async function loadTestData() {
+            const testId = new URLSearchParams(window.location.search).get('testId') || "default-test";
+            const response = await fetch(`tests/${testId}.json`);
+            const testData = await response.json();
+            questions = testData.questions; // Store questions globally
+            return testData;
+        }
+
+        // Start test
+        async function startTest() {
+            const testData = await loadTestData();
+            document.getElementById("testTitle").textContent = testData.title;
+            document.getElementById("welcomeMessage").textContent = `Welcome to ${testData.title}`;
+            document.getElementById("testSection").textContent = testData.section; // Display section
+            document.getElementById("testSubject").textContent = testData.subject; // Display subject
+            document.getElementById("totalQuestions").textContent = testData.questions.length;
+            document.getElementById("testTime").textContent = `${Math.floor(testData.time / 60)} minutes`;
+            document.getElementById("totalQuestionsDisplay").textContent = testData.questions.length;
+
+            document.getElementById("notificationModal").style.display = "none";
+            document.getElementById("testContainer").style.display = "block";
+
+            loadQuestion();
+            updateTimer();
+        }
+
+        // Load question
+        function loadQuestion() {
+            const questionText = document.getElementById("questionText");
+            const optionsDiv = document.getElementById("options");
+            const progress = document.getElementById("progress");
+            const progressText = document.getElementById("progressText");
+
+            const question = questions[currentQuestionIndex];
+            questionText.innerHTML = `
+                <div>${question.question.hindi}</div>
+                <div>${question.question.english}</div>
+            `;
+
+            optionsDiv.innerHTML = "";
+            question.options.forEach((option) => {
+                const optionButton = document.createElement("div");
+                optionButton.classList.add("option-button");
+                optionButton.innerHTML = `
+                    <div>${option.hindi}</div>
+                    <div>${option.english}</div>
+                `;
+                optionButton.onclick = () => selectAnswer(option, optionButton);
+                if (userAnswers[currentQuestionIndex]?.hindi === option.hindi) {
+                    optionButton.classList.add("selected");
+                }
+                optionsDiv.appendChild(optionButton);
+            });
+
+            progress.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+            progressText.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+            document.getElementById("submitBtn").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        // Select answer
+        function selectAnswer(selectedOption, button) {
+            document.querySelectorAll(".option-button").forEach(btn => btn.classList.remove("selected"));
+            button.classList.add("selected");
+            userAnswers[currentQuestionIndex] = selectedOption;
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Submit test
+        async function submitTest() {
+            clearTimeout(timerId);
+
+            const testData = await loadTestData();
+            let finalScore = 0;
+            userAnswers.forEach((userAnswer, index) => {
+                if (userAnswer?.hindi === testData.questions[index].answer.hindi) {
+                    finalScore++;
+                }
+            });
+
+            score = finalScore;
+
+            document.getElementById("testContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+            document.getElementById("finalScore").textContent = `${score} / ${testData.questions.length}`;
+
+            if (score === testData.questions.length) {
+                showConfetti();
+            }
+
+            sessionStorage.removeItem("remainingTime"); // Clear timer after submission
+        }
+
+        // Restart Test
+        function restartTest() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+            timeLeft = 1200;
+
+            document.getElementById("testContainer").style.display = "block";
+            document.getElementById("resultContainer").style.display = "none";
+            loadQuestion();
+            clearTimeout(timerId);
+            updateTimer();
+        }
+
+        // Timer with sessionStorage persistence
+        function updateTimer() {
+            const timer = document.getElementById("timer");
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timer.innerText = `Time Left: ${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+
+            sessionStorage.setItem("remainingTime", timeLeft); // Store remaining time
+
+            if (timeLeft === 0) {
+                submitTest();
+            } else {
+                timeLeft--;
+                timerId = setTimeout(updateTimer, 1000);
+            }
+        }
+
+        // Confetti Animation
+        function showConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti");
+            document.body.appendChild(confettiContainer);
+            setTimeout(() => confettiContainer.remove(), 5000);
+        }
+
+        // Go to Home Page
+        function goToHomePage() {
+            window.location.href = "index.html"; // Replace with your home page URL
+        }
+
+        // Go to Result Page
+        function goToResultPage() {
+            document.getElementById("reviewContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+        }
+
+        // Show Review Answers
+        function showReview() {
+            document.getElementById("resultContainer").style.display = "none";
+            document.getElementById("reviewContainer").style.display = "block";
+
+            const reviewDetails = document.getElementById("reviewDetails");
+            reviewDetails.innerHTML = "";
+
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer?.hindi === question.answer.hindi;
+
+                reviewDetails.innerHTML += `
+                    <div class="review-item">
+                        <p><strong>Question ${index + 1}:</strong></p>
+                        <p>${question.question.hindi}</p>
+                        <p>${question.question.english}</p>
+                        <div class="options">
+                            ${question.options.map(option => `
+                                <div class="option-button ${userAnswer?.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
+                                    <div>${option.hindi}</div>
+                                    <div>${option.english}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <p><strong>Correct Answer:</strong> <span class="correct">
+                            ${question.answer.hindi} / ${question.answer.english}
+                        </span></p>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
