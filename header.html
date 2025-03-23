@@ -1,4 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testro</title>
+
     <!-- ✅ Google AdSense Script (Correctly Placed in <head>) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
      crossorigin="anonymous"></script>
@@ -30,6 +36,9 @@
         .nav-links {
             display: flex;
             gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
         .nav-links a {
             text-decoration: none;
@@ -44,6 +53,9 @@
             display: none;
             font-size: 24px;
             cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
         }
 
         /* Responsive Design */
@@ -52,42 +64,87 @@
                 display: block;
             }
             .nav-links {
-                display: none;
                 flex-direction: column;
                 background: #004080;
                 position: absolute;
                 width: 100%;
                 top: 60px;
                 left: 0;
+                z-index: 1001;
+                transform: translateY(-100%); /* Start off-screen */
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth sliding animation */
+                opacity: 0; /* Hide without breaking transitions */
+                pointer-events: none; /* Disable interactions when hidden */
+                visibility: hidden; /* Prevent flashing on load */
+                height: 0; /* Prevent layout shifts */
+                overflow: hidden; /* Hide overflow */
             }
             .nav-links.active {
-                display: flex;
+                transform: translateY(0); /* Slide into view */
+                opacity: 1; /* Show when active */
+                pointer-events: auto; /* Enable interactions when visible */
+                visibility: visible; /* Ensure it's visible */
+                height: auto; /* Allow height to adjust */
             }
             .nav-links li {
                 margin: 10px 0;
+                padding: 0 20px;
             }
         }
     </style>
 </head>
-
 <body>
     <header>
         <div class="header-container">
             <h1>Testro</h1>
             <nav>
-                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="UpssscAGTA.html">UPSSSC AG TA</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
+                <ul class="nav-links" role="menu">
+                    <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                    <li role="none"><a href="UpssscAGTA.html" role="menuitem">UPSSSC AG TA</a></li>
+                    <li role="none"><a href="contact.html" role="menuitem">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <script>
+        // Function to toggle the mobile menu
         function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
+            const navLinks = document.querySelector(".nav-links");
+            const menuToggle = document.querySelector(".menu-toggle");
+            const isOpen = navLinks.classList.toggle("active");
+
+            // Update aria-expanded, aria-label, and button text
+            menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+            menuToggle.textContent = isOpen ? "✖" : "☰";
         }
+
+        // Close the mobile menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                const navLinks = document.querySelector(".nav-links");
+                const menuToggle = document.querySelector(".menu-toggle");
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open menu");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // Close the mobile menu when clicking outside
+        document.addEventListener("click", (event) => {
+            const navLinks = document.querySelector(".nav-links");
+            const menuToggle = document.querySelector(".menu-toggle");
+
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target) && navLinks.classList.contains("active")) {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open menu");
+                menuToggle.textContent = "☰";
+            }
+        });
     </script>
 </body>
+</html>
