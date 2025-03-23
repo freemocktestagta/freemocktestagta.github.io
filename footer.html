@@ -1,54 +1,15 @@
-@@@@@@@ SEARCH
 <div
   _id="14"
   css={{
     display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    gap: "15px",
-    marginTop: "15px",
-  }}
->
-  {state.socialLinks.map((social, index) => (
-    <a
-      class="builder-7604d1d2b63447f1a74d0c035b2127c1"
-      target="_blank"
-      rel="noopener noreferrer"
-      _id="16"
-      key={social.icon}
-      href={social.url}
-      aria-label={social.label}
-      css={{
-        color: "white",
-        fontSize: "20px",
-        transition: "all 0.3s ease",
-        padding: "8px 15px",
-        borderRadius: "8px",
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
-        display: "flex",
-        alignItems: "center",
-        gap: "10px",
-        textDecoration: "none",
-        width: "140px",
-        justifyContent: "center",
-      }}
-    >
-      <i _id="17" class={`fab fa-${social.icon}`} />
-      <span _id="18">{social.label}</span>
-    </a>
-=======
-<div
-  _id="14"
-  css={{
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    gap: "15px",
+    flexDirection: "row", // Changed from "column" to "row"
+    alignItems: "center", // Changed from "flex-end" to "center"
+    justifyContent: "flex-end", // Added to align items to the right
+    gap: "15px", // Space between items
     marginTop: "15px",
     "@media (max-width: 640px)": {
-      justifyContent: "center"
-    }
+      justifyContent: "center", // Center items on small screens
+    },
   }}
 >
   {state.socialLinks.map((social, index) => (
@@ -57,28 +18,30 @@
       target="_blank"
       rel="noopener noreferrer"
       _id="16"
-      key={social.icon}
+      key={index} // Changed from `social.icon` to `index` for unique keys
       href={social.url}
       aria-label={social.label}
       css={{
         color: "white",
-        fontSize: "24px",
+        fontSize: "24px", // Increased font size
         transition: "all 0.3s ease",
-        padding: "10px",
-        borderRadius: "50%",
+        padding: "10px", // Adjusted padding
+        borderRadius: "50%", // Changed to circular buttons
         backgroundColor: "rgba(255, 255, 255, 0.1)",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center", // Center icon inside the button
         textDecoration: "none",
-        width: "40px",
+        width: "40px", // Fixed width and height for circular buttons
         height: "40px",
         "&:hover": {
-          backgroundColor: "rgba(255, 255, 255, 0.2)",
-          transform: "translateY(-3px)",
-        }
+          backgroundColor: "rgba(255, 255, 255, 0.2)", // Hover effect
+          transform: "translateY(-3px)", // Slight lift on hover
+        },
       }}
     >
       <i _id="17" class={`fab fa-${social.icon}`} />
+      {/* Removed the <span> for labels to match the new design */}
     </a>
->>>>>>> REPLACE
+  ))}
+</div>
