@@ -428,6 +428,7 @@
         // Automatically open the first tile (Daily Test Series)
         document.addEventListener('DOMContentLoaded', () => {
             showTestList('daily');
+            initializeSlider(); // Initialize slider touch events
         });
 
         // Update total tests dynamically
@@ -459,6 +460,54 @@
                 toggleMenu();
             });
         });
+
+        // Initialize slider touch events
+        function initializeSlider() {
+            const sliderContainer = document.querySelector('.subject-slider .slider-container');
+            let isDragging = false;
+            let startX, scrollLeft;
+
+            sliderContainer.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX - sliderContainer.offsetLeft;
+                scrollLeft = sliderContainer.scrollLeft;
+            });
+
+            sliderContainer.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+
+            sliderContainer.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            sliderContainer.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - sliderContainer.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll speed
+                sliderContainer.scrollLeft = scrollLeft - walk;
+            });
+
+            // Touch events for mobile
+            sliderContainer.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].pageX - sliderContainer.offsetLeft;
+                scrollLeft = sliderContainer.scrollLeft;
+            });
+
+            sliderContainer.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            sliderContainer.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - sliderContainer.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll speed
+                sliderContainer.scrollLeft = scrollLeft - walk;
+            });
+        }
     </script>
 </body>
 </html>
