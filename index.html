@@ -94,13 +94,16 @@
     <!-- Header with Navigation -->
     <header>
         <div class="header-container">
-            <h1>Testro</h1>
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <h1>Testro</h1>
+            </div>
             <nav>
-                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-                <ul class="nav-links">
-                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
-                    <li><a href="UpssscAGTA.html" onclick="closeMenu()">UPSSSC AG TA</a></li>
-                    <li><a href="contact.html" onclick="closeMenu()">Contact Us</a></li>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+                <ul class="nav-links" id="nav-menu" role="menu">
+                    <li role="none"><a href="index.html" role="menuitem" class="active">Home</a></li>
+                    <li role="none"><a href="UpssscAGTA.html" role="menuitem">UPSSSC AG TA</a></li>
+                    <li role="none"><a href="contact.html" role="menuitem">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -171,56 +174,83 @@
 
     <script>
         // Function to toggle the mobile menu
-        function toggleMenu() {
-            const navLinks = document.querySelector(".nav-links");
-            navLinks.classList.toggle("active");
+        function toggleMenu(event) {
+            if (event) event.stopPropagation(); // Prevent the event from bubbling up
+            const navLinks = document.getElementById("nav-menu");
+            const menuToggle = document.querySelector(".menu-toggle");
+            const isOpen = navLinks.classList.toggle("active");
 
-            // Close menu when clicking outside
-            if (navLinks.classList.contains("active")) {
-                document.addEventListener("click", closeMenuOnClickOutside);
-            } else {
-                document.removeEventListener("click", closeMenuOnClickOutside);
-            }
+            // Update aria-expanded and button text
+            menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            menuToggle.textContent = isOpen ? "✖" : "☰";
         }
 
-        // Function to close the mobile menu when clicking outside
-        function closeMenuOnClickOutside(event) {
-            const navLinks = document.querySelector(".nav-links");
+        // Attach event listener to menu toggle button
+        document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
+
+        // Close the mobile menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                const navLinks = document.getElementById("nav-menu");
+                const menuToggle = document.querySelector(".menu-toggle");
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // Close the mobile menu when clicking outside
+        document.addEventListener("click", (event) => {
+            const navLinks = document.getElementById("nav-menu");
             const menuToggle = document.querySelector(".menu-toggle");
 
-            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+            if (navLinks.classList.contains("active") && 
+                !navLinks.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
                 navLinks.classList.remove("active");
-                document.removeEventListener("click", closeMenuOnClickOutside);
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
             }
-        }
+        });
 
-        // Function to close the mobile menu when a link is clicked
-        function closeMenu() {
-            document.querySelector(".nav-links").classList.remove("active");
-            document.removeEventListener("click", closeMenuOnClickOutside);
-        }
+        // Set active nav link based on current page
+        document.addEventListener("DOMContentLoaded", () => {
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                } else if (currentPage === "" && link.getAttribute("href") === "index.html") {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        });
     </script>
 
     <style>
         /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
             background: #f4f4f4;
             color: #333;
             scroll-behavior: smooth; /* Enable smooth scrolling */
+            line-height: 1.6;
         }
 
-        /* Header */
+        /* Header Styles */
         header {
-            background: #004080;
+            background: linear-gradient(135deg, #004080, #002040);
             color: white;
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .header-container {
             display: flex;
@@ -230,25 +260,64 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
         h1 {
             margin: 0;
             font-size: 24px;
             color: white;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
-
-        /* Navigation Menu */
         .nav-links {
             display: flex;
             gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
         .nav-links a {
             text-decoration: none;
             color: white;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
         }
         .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
             color: #ffcc00;
+        }
+        .nav-links a:focus {
+            outline: 2px solid #ffcc00;
+            outline-offset: 2px;
+        }
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffcc00;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .menu-toggle:focus {
+            outline: 2px solid #ffcc00;
+            outline-offset: 2px;
         }
 
         /* Notification Bar */
@@ -269,11 +338,21 @@
             color: #ffcc00; /* Bright yellow text */
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Added shadow for highlight */
+            animation: scrollLeftToRight 15s linear infinite;
+            position: relative;
         }
         .notification-bar .highlight {
             font-size: 20px; /* Larger font size */
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Text shadow for better visibility */
+        }
+        @keyframes scrollLeftToRight {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
         }
 
         /* Hero Section */
@@ -404,25 +483,47 @@
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
-                font-size: 24px;
-                cursor: pointer;
             }
             .nav-links {
-                display: none;
                 flex-direction: column;
-                background: #004080;
+                background: linear-gradient(135deg, #004080, #002040);
                 position: absolute;
                 width: 100%;
                 top: 60px;
                 left: 0;
+                z-index: 1001;
+                transform: translateY(-150%); /* Start off-screen */
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                height: 0;
+                overflow: hidden;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             }
             .nav-links.active {
-                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+                visibility: visible;
+                height: auto;
+                padding: 10px 0;
             }
             .nav-links li {
-                margin: 10px 0;
+                margin: 0;
+                width: 100%;
+            }
+            .nav-links a {
+                display: block;
+                padding: 12px 20px;
+                border-radius: 0;
+            }
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
             }
         }
     </style>
 </body>
 </html>
+
