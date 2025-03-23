@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UPSSSC AGTA Mock Test Series 2024</title>
 
-    <!-- Google AdSense Auto Ads Code -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
-     crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* General Styles */
@@ -187,6 +183,10 @@
     </style>
 </head>
 <body>
+    <!-- Google AdSense Auto Ads Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
+     crossorigin="anonymous"></script>
+
     <!-- Loading Animation -->
     <div id="loading">Loading...</div>
 
@@ -385,6 +385,12 @@
     <div id="footer"></div>
 
     <script>
+        // Function to update the total tests count
+        function updateTotalTests() {
+            const totalTests = document.querySelectorAll('.test-list ul li').length;
+            document.getElementById('total-tests').textContent = totalTests;
+        }
+
         // Function to show the selected test list
         function showTestList(type) {
             // Hide all test lists
@@ -431,10 +437,6 @@
             initializeSlider(); // Initialize slider touch events
         });
 
-        // Update total tests dynamically
-        const totalTests = document.querySelectorAll('.test-list ul li').length;
-        document.getElementById('total-tests').textContent = totalTests;
-
         // Load header and footer
         Promise.all([
             fetch('header.html').then(response => response.text()),
@@ -442,50 +444,34 @@
         ]).then(([headerData, footerData]) => {
             document.getElementById('header').innerHTML = headerData;
             document.getElementById('footer').innerHTML = footerData;
-        }).catch(() => {
-            console.error("Error loading header or footer!");
-        }).finally(() => {
+            document.getElementById('header').style.visibility = "visible";
+            document.getElementById('footer').style.visibility = "visible";
+            updateTotalTests(); // Update count after loading
+        }).catch(() => console.error("Error loading header or footer!"))
+        .finally(() => {
             document.getElementById('loading').style.display = 'none'; // Always remove loading text
-        });
-
-        // Mobile menu auto-close
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                toggleMenu();
-            });
         });
 
         // Initialize slider touch events
         function initializeSlider() {
             const sliderContainer = document.querySelector('.subject-slider .slider-container');
-            let isDragging = false;
-            let startX, scrollLeft;
+            let isDragging = false, startX, scrollLeft;
 
             sliderContainer.addEventListener('mousedown', (e) => {
                 isDragging = true;
                 startX = e.pageX - sliderContainer.offsetLeft;
                 scrollLeft = sliderContainer.scrollLeft;
+                sliderContainer.style.scrollBehavior = 'auto';
             });
 
-            sliderContainer.addEventListener('mouseleave', () => {
-                isDragging = false;
-            });
-
-            sliderContainer.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
+            sliderContainer.addEventListener('mouseleave', () => isDragging = false);
+            sliderContainer.addEventListener('mouseup', () => isDragging = false);
 
             sliderContainer.addEventListener('mousemove', (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
                 const x = e.pageX - sliderContainer.offsetLeft;
-                const walk = (x - startX) * 2; // Scroll speed
+                const walk = (x - startX) * 1.5; // Reduced speed for smooth scrolling
                 sliderContainer.scrollLeft = scrollLeft - walk;
             });
 
@@ -496,15 +482,13 @@
                 scrollLeft = sliderContainer.scrollLeft;
             });
 
-            sliderContainer.addEventListener('touchend', () => {
-                isDragging = false;
-            });
+            sliderContainer.addEventListener('touchend', () => isDragging = false);
 
             sliderContainer.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
                 const x = e.touches[0].pageX - sliderContainer.offsetLeft;
-                const walk = (x - startX) * 2; // Scroll speed
+                const walk = (x - startX) * 1.5; // Reduced speed for better control
                 sliderContainer.scrollLeft = scrollLeft - walk;
             });
         }
