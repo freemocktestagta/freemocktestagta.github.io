@@ -2,7 +2,7 @@
     "title": "Genetics Test One",
     "section": "Biology",
     "subject": "Genetics",
-    "time": 3000, // 50 minutes (3000 seconds)
+    "time": 3000,
     "questions": [
         {
             "question": {
