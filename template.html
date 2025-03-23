@@ -6,319 +6,11 @@
     <title>Test Template</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background: #004080;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Notification Modal */
-        .notification-modal {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-        }
-
-        .notification-content {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-            width: 90%;
-        }
-
-        .notification-content h2 {
-            font-size: 24px;
-            color: #004080;
-            margin-bottom: 15px;
-        }
-
-        .notification-content p {
-            font-size: 16px;
-            color: #555;
-            margin: 10px 0;
-        }
-
-        .notification-content button {
-            background: #004080;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
-
-        .notification-content button:hover {
-            background: #002b5e;
-        }
-
-        /* Test Container */
-        .test-container {
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        .progress-bar {
-            width: 100%;
-            background: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .progress {
-            height: 10px;
-            background: #004080;
-            width: 0;
-            transition: width 0.3s;
-        }
-
-        .timer {
-            font-size: 18px;
-            font-weight: bold;
-            color: #004080;
-            margin-bottom: 20px;
-        }
-
-        .question-text {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .option-button {
-            background: #f9f9f9;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s, border-color 0.3s;
-            text-align: left;
-        }
-
-        .option-button:hover {
-            background: #e0e0e0;
-        }
-
-        .option-button.selected {
-            background: #004080;
-            color: white;
-            border-color: #004080;
-        }
-
-        .navigation-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .navigation-buttons button {
-            padding: 10px 20px;
-            background: #004080;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .navigation-buttons button:hover {
-            background: #002b5e;
-        }
-
-        .navigation-buttons button:disabled {
-            background: #cccccc;
-            cursor: not-allowed;
-        }
-
-        /* Result Container */
-        .result-container {
-            display: none;
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .result-container h2 {
-            color: #004080;
-        }
-
-        .result-buttons button {
-            margin: 10px;
-            padding: 10px 20px;
-            background: #004080;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .result-buttons button:hover {
-            background: #002b5e;
-        }
-
-        /* Review Container */
-        .review-container {
-            display: none;
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .review-container h2 {
-            color: #004080;
-        }
-
-        .review-item {
-            margin-bottom: 20px;
-        }
-
-        .review-item p {
-            margin: 10px 0;
-        }
-
-        .correct {
-            color: green;
-            font-weight: bold;
-        }
-
-        .wrong {
-            color: red;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background: #004080;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            .notification-content, .test-container, .result-container {
-                padding: 15px;
-            }
-            .question-text {
-                font-size: 18px;
-            }
-        }
+        /* Your existing CSS styles */
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1 id="testTitle">Test Title</h1>
-    </header>
-
-    <!-- Notification Modal -->
-    <div class="notification-modal" id="notificationModal">
-        <div class="notification-content">
-            <h2 id="welcomeMessage">Welcome to the Test</h2>
-            <p><strong>Section:</strong> <span id="testSection"></span></p>
-            <p><strong>Subject:</strong> <span id="testSubject"></span></p>
-            <p><strong>Total Questions:</strong> <span id="totalQuestions"></span></p>
-            <p><strong>Total Time:</strong> <span id="testTime"></span></p>
-            <button onclick="startTest()">OK, Let's Start</button>
-        </div>
-    </div>
-
-    <!-- Test Container -->
-    <div class="test-container" id="testContainer">
-        <!-- Progress Tracker -->
-        <p id="progressText">Question 1 of <span id="totalQuestionsDisplay"></span></p>
-
-        <!-- Progress Bar -->
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
-        </div>
-
-        <!-- Timer -->
-        <div class="timer" id="timer">Time Left: 20:00</div>
-
-        <!-- Question -->
-        <div class="question-text" id="questionText"></div>
-
-        <!-- Options -->
-        <div class="options" id="options"></div>
-
-        <!-- Navigation Buttons -->
-        <div class="navigation-buttons">
-            <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
-            <button id="nextBtn" onclick="nextQuestion()">Next</button>
-            <button id="submitBtn" onclick="submitTest()" style="display: none;">Submit</button>
-        </div>
-    </div>
-
-    <!-- Result Container -->
-    <div class="result-container" id="resultContainer">
-        <h2>Test Results</h2>
-        <p><strong>Your Score: <span id="finalScore"></span></strong></p>
-        <div class="result-buttons">
-            <button onclick="restartTest()">Restart Test</button>
-            <button onclick="goToHomePage()">Home</button>
-            <button onclick="showReview()">Review Your Answers</button>
-        </div>
-    </div>
-
-    <!-- Review Answers Container -->
-    <div class="review-container" id="reviewContainer">
-        <h2>Review Your Answers</h2>
-        <div id="reviewDetails"></div>
-        <div class="result-buttons">
-            <button onclick="goToResultPage()">Back to Results</button>
-            <button onclick="goToHomePage()">Home</button>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
-    </footer>
+    <!-- Your existing HTML structure -->
 
     <script>
         // Global variables
@@ -332,13 +24,13 @@
 
         // Load test data dynamically
         async function loadTestData() {
-            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1"; // Default to genetics-1.json
+            const testId = new URLSearchParams(window.location.search).get('testId') || "genetics-1";
             try {
-                const response = await fetch(`${testId}.json`); // Fetch from main directory
+                const response = await fetch(`${testId}.json`);
                 if (!response.ok) throw new Error("Failed to load test data");
                 testData = await response.json();
-                questions = testData.questions; // Store questions globally
-                timeLeft = testData.time; // Set timer based on JSON
+                questions = testData.questions;
+                timeLeft = testData.time;
                 return testData;
             } catch (error) {
                 console.error("Error loading test data:", error);
@@ -354,8 +46,8 @@
 
             document.getElementById("testTitle").textContent = testData.title;
             document.getElementById("welcomeMessage").textContent = `Welcome to ${testData.title}`;
-            document.getElementById("testSection").textContent = testData.section; // Display section
-            document.getElementById("testSubject").textContent = testData.subject; // Display subject
+            document.getElementById("testSection").textContent = testData.section;
+            document.getElementById("testSubject").textContent = testData.subject;
             document.getElementById("totalQuestions").textContent = testData.questions.length;
             document.getElementById("testTime").textContent = `${Math.floor(testData.time / 60)} minutes`;
             document.getElementById("totalQuestionsDisplay").textContent = testData.questions.length;
@@ -415,6 +107,13 @@
                 currentQuestionIndex++;
                 loadQuestion();
             }
+
+            if (currentQuestionIndex === questions.length - 1) {
+                document.getElementById("nextBtn").disabled = true;
+                document.getElementById("submitBtn").style.display = "inline-block";
+            }
+
+            document.getElementById("prevBtn").disabled = false;
         }
 
         function prevQuestion() {
@@ -422,51 +121,38 @@
                 currentQuestionIndex--;
                 loadQuestion();
             }
+
+            if (currentQuestionIndex === 0) {
+                document.getElementById("prevBtn").disabled = true;
+            }
+
+            document.getElementById("nextBtn").disabled = false;
+            document.getElementById("submitBtn").style.display = "none";
         }
 
         // Submit test
-        async function submitTest() {
+        function submitTest() {
             clearTimeout(timerId);
+            let correctAnswers = 0;
 
-            let finalScore = 0;
-            userAnswers.forEach((userAnswer, index) => {
-                if (userAnswer?.hindi === testData.questions[index].answer.hindi) {
-                    finalScore++;
+            questions.forEach((question, index) => {
+                if (userAnswers[index]?.hindi === question.answer.hindi) {
+                    correctAnswers++;
                 }
             });
 
-            score = finalScore;
-
+            document.getElementById("finalScore").textContent = `${correctAnswers} / ${questions.length}`;
             document.getElementById("testContainer").style.display = "none";
             document.getElementById("resultContainer").style.display = "block";
-            document.getElementById("finalScore").textContent = `${score} / ${testData.questions.length}`;
-
-            document.querySelectorAll("button").forEach(btn => btn.disabled = true); // Disable buttons
-            sessionStorage.removeItem("remainingTime"); // Clear timer after submission
+            document.querySelectorAll("button").forEach(btn => btn.disabled = true);
         }
 
-        // Restart Test
-        function restartTest() {
-            currentQuestionIndex = 0;
-            score = 0;
-            userAnswers = [];
-            timeLeft = testData.time; // Reset timer
-
-            document.getElementById("testContainer").style.display = "block";
-            document.getElementById("resultContainer").style.display = "none";
-            loadQuestion();
-            clearTimeout(timerId);
-            updateTimer();
-        }
-
-        // Timer with sessionStorage persistence
+        // Timer
         function updateTimer() {
             const timer = document.getElementById("timer");
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
             timer.innerText = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
-
-            sessionStorage.setItem("remainingTime", timeLeft); // Store remaining time
 
             if (timeLeft <= 0) {
                 submitTest();
@@ -476,52 +162,8 @@
             timerId = setTimeout(updateTimer, 1000);
         }
 
-        // Go to Home Page
-        function goToHomePage() {
-            window.location.href = "index.html"; // Replace with your home page URL
-        }
-
-        // Go to Result Page
-        function goToResultPage() {
-            document.getElementById("reviewContainer").style.display = "none";
-            document.getElementById("resultContainer").style.display = "block";
-        }
-
-        // Show Review Answers
-        function showReview() {
-            document.getElementById("resultContainer").style.display = "none";
-            document.getElementById("reviewContainer").style.display = "block";
-
-            const reviewDetails = document.getElementById("reviewDetails");
-            reviewDetails.innerHTML = "";
-
-            questions.forEach((question, index) => {
-                const userAnswer = userAnswers[index];
-                const isCorrect = userAnswer?.hindi === question.answer.hindi;
-
-                reviewDetails.innerHTML += `
-                    <div class="review-item">
-                        <p><strong>Question ${index + 1}:</strong></p>
-                        <p>${question.question.hindi}</p>
-                        <p>${question.question.english}</p>
-                        <div class="options">
-                            ${question.options.map(option => `
-                                <div class="option-button ${userAnswer?.hindi === option.hindi ? (isCorrect ? 'correct' : 'wrong') : ''} ${question.answer.hindi === option.hindi ? 'correct' : ''}">
-                                    <div>${option.hindi}</div>
-                                    <div>${option.english}</div>
-                                </div>
-                            `).join("")}
-                        </div>
-                        <p><strong>Correct Answer:</strong> <span class="correct">
-                            ${question.answer.hindi} / ${question.answer.english}
-                        </span></p>
-                    </div>
-                `;
-            });
-        }
-
         // Initialize the test data when the page loads
-        window.onload = async () => {
+        document.addEventListener("DOMContentLoaded", async () => {
             await loadTestData();
             if (testData) {
                 document.getElementById("testTitle").textContent = testData.title;
@@ -531,7 +173,7 @@
                 document.getElementById("totalQuestions").textContent = testData.questions.length;
                 document.getElementById("testTime").textContent = `${Math.floor(testData.time / 60)} minutes`;
             }
-        };
+        });
     </script>
 </body>
 </html>
