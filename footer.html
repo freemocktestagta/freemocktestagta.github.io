@@ -1,50 +1,518 @@
-<div
-  _id="14"
-  css={{
-    display: "flex",
-    flexDirection: "row", // Align items horizontally
-    alignItems: "center", // Center items vertically
-    justifyContent: "flex-end", // Align items to the right
-    gap: "15px", // Space between items
-    marginTop: "15px",
-    "@media (max-width: 640px)": {
-      justifyContent: "center", // Center items on small screens
-    },
-  }}
->
-  {state.socialLinks?.length > 0 ? ( // Check if socialLinks exists and is not empty
-    state.socialLinks.map((social, index) => (
-      <a
-        class="builder-7604d1d2b63447f1a74d0c035b2127c1"
-        target="_blank"
-        rel="noopener noreferrer"
-        _id="16"
-        key={index} // Use index as the key
-        href={social.url}
-        aria-label={social.label}
-        css={{
-          color: "white",
-          fontSize: "24px", // Larger icons
-          transition: "all 0.3s ease",
-          padding: "10px", // Padding for circular buttons
-          borderRadius: "50%", // Circular buttons
-          backgroundColor: "rgba(255, 255, 255, 0.1)", // Semi-transparent background
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center", // Center icons inside buttons
-          textDecoration: "none",
-          width: "40px", // Fixed width and height for circular buttons
-          height: "40px",
-          "&:hover": {
-            backgroundColor: "rgba(255, 255, 255, 0.2)", // Hover effect
-            transform: "translateY(-3px)", // Slight lift on hover
-          },
-        }}
-      >
-        <i _id="17" class={`fab fa-${social.icon}`} /> {/* Font Awesome icon */}
-      </a>
-    ))
-  ) : (
-    <p>No social links available.</p> // Fallback message if socialLinks is empty
-  )}
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testro - Free Agriculture Mock Tests</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Prepare for competitive agriculture exams with Testro. Access free mock tests for UPSSSC AG TA (Agriculture Technical Assistant) and more. Start your preparation today!">
+    <meta name="keywords" content="free agriculture mock tests, free competitive exam mock tests, UPSSSC AG TA mock test, agriculture technical assistant, free agta mock test, agriculture exam preparation, free online mock tests, competitive exam preparation, Testro, agriculture study material, free practice tests">
+    <meta name="author" content="Testro">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:title" content="Testro - Free Agriculture Mock Tests">
+    <meta property="og:description" content="Prepare for competitive agriculture exams with Testro. Access free mock tests for UPSSSC AG TA (Agriculture Technical Assistant) and more. Start your preparation today!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.testro.com">
+    <meta property="og:image" content="https://www.testro.com/path_to_image.jpg">
+    <meta property="og:site_name" content="Testro">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Testro - Free Agriculture Mock Tests">
+    <meta name="twitter:description" content="Prepare for competitive agriculture exams with Testro. Access free mock tests for UPSSSC AG TA (Agriculture Technical Assistant) and more. Start your preparation today!">
+    <meta name="twitter:image" content="https://www.testro.com/path_to_image.jpg">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://www.testro.com">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://www.testro.com/favicon.ico">
+
+    <!-- Additional Meta Tags for Competitive Exams and Agriculture -->
+    <meta name="subject" content="Free Agriculture Mock Tests for Competitive Exams">
+    <meta name="classification" content="Education, Competitive Exams, Agriculture, Mock Tests">
+    <meta name="topic" content="Free Mock Tests for Agriculture Competitive Exams">
+    <meta name="summary" content="Testro provides free mock tests for agriculture competitive exams like UPSSSC AG TA (Agriculture Technical Assistant).">
+    <meta name="abstract" content="Free online mock tests for agriculture competitive exams, including UPSSSC AG TA, to help you prepare effectively.">
+    <meta name="url" content="https://www.testro.com">
+    <meta name="identifier-URL" content="https://www.testro.com">
+    <meta name="directory" content="submission">
+    <meta name="category" content="Education">
+    <meta name="coverage" content="Worldwide">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="7 days">
+    <meta name="target" content="all">
+    <meta name="audience" content="Students, Competitive Exam Aspirants">
+    <meta name="language" content="English, Hindi">
+    <meta name="geo.region" content="IN-UP">
+    <meta name="geo.placename" content="Uttar Pradesh">
+    <meta name="geo.position" content="26.8467;80.9462">
+    <meta name="ICBM" content="26.8467, 80.9462">
+
+    <!-- Additional Keywords and Tags -->
+    <meta name="news_keywords" content="free agriculture mock tests, UPSSSC AG TA, agriculture technical assistant, competitive exams, free mock tests, agriculture exam preparation">
+    <meta name="page-topic" content="Education">
+    <meta name="page-type" content="Mock Tests">
+    <meta name="resource-type" content="Document">
+    <meta name="revisit" content="7 days">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="msnbot" content="index, follow">
+    <meta name="slurp" content="index, follow">
+    <meta name="webcrawlers" content="all">
+    <meta name="spiders" content="all">
+    <meta name="robots" content="all">
+    <meta name="document-state" content="Dynamic">
+    <meta name="distribution" content="Global">
+    <meta name="content-language" content="en, hi">
+    <meta name="author-email" content="support@testro.com">
+    <meta name="reply-to" content="support@testro.com">
+    <meta name="contact" content="support@testro.com">
+    <meta name="designer" content="Testro Team">
+    <meta name="publisher" content="Testro">
+    <meta name="copyright" content="Copyright 2025 Testro">
+    <meta name="doc-class" content="Completed">
+    <meta name="doc-rights" content="Public">
+    <meta name="doc-type" content="Web Page">
+    <meta name="doc-publisher" content="Testro">
+    <meta name="doc-source" content="Testro">
+    <meta name="doc-creator" content="Testro Team">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">??</span>
+                <h1>Testro</h1>
+            </div>
+            <nav>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">?</button>
+                <ul class="nav-links" id="nav-menu" role="menu">
+                    <li role="none"><a href="index.html" role="menuitem" class="active">Home</a></li>
+                    <li role="none"><a href="UpssscAGTA.html" role="menuitem">UPSSSC AG TA</a></li>
+                    <li role="none"><a href="contact.html" role="menuitem">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+        <div class="notification-content">
+            <span class="highlight">?? ?????? ?? ??? ????? ????? ???? ??! (Every Sunday, new tests are added!)</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Testro!</h2>
+            <p><strong>??? ????????? ????????? ?? ?????? ?? ???? ???? ?????!</strong></p>
+            <a href="UpssscAGTA.html" class="cta-button">Start Free Test</a>
+        </div>
+    </section>
+
+    <!-- Exams Section -->
+    <section class="exams-section">
+        <h2>Exams</h2>
+        <div class="exams-container">
+            <!-- UPSSSC AG TA Tile -->
+            <a href="UpssscAGTA.html" class="exam-tile upsssc-tile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Seal_of_Uttar_Pradesh.png" 
+                     alt="UP Government Seal" class="exam-logo" 
+                     style="width: 50px; height: 50px; margin-bottom: 5px;">
+                <span>Upsssc Ag Ta</span>
+            </a>
+            <!-- Add more exam tiles here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Testro</h3>
+                <p>Your one-stop destination for free agriculture mock tests.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="UpssscAGTA.html">UPSSSC AG TA</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/testro" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/testro" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/testro" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/testro" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle the mobile menu
+        function toggleMenu(event) {
+            if (event) event.stopPropagation(); // Prevent the event from bubbling up
+            const navLinks = document.getElementById("nav-menu");
+            const menuToggle = document.querySelector(".menu-toggle");
+            const isOpen = navLinks.classList.toggle("active");
+
+            // Update aria-expanded and button text
+            menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            menuToggle.textContent = isOpen ? "?" : "?";
+        }
+
+        // Attach event listener to menu toggle button
+        document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
+
+        // Close the mobile menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                const navLinks = document.getElementById("nav-menu");
+                const menuToggle = document.querySelector(".menu-toggle");
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "?";
+            });
+        });
+
+        // Close the mobile menu when clicking outside
+        document.addEventListener("click", (event) => {
+            const navLinks = document.getElementById("nav-menu");
+            const menuToggle = document.querySelector(".menu-toggle");
+
+            if (navLinks.classList.contains("active") && 
+                !navLinks.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "?";
+            }
+        });
+
+        // Set active nav link based on current page
+        document.addEventListener("DOMContentLoaded", () => {
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                } else if (currentPage === "" && link.getAttribute("href") === "index.html") {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f4f4f4;
+            color: #333;
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #004080, #002040);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffcc00;
+        }
+        .nav-links a:focus {
+            outline: 2px solid #ffcc00;
+            outline-offset: 2px;
+        }
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffcc00;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .menu-toggle:focus {
+            outline: 2px solid #ffcc00;
+            outline-offset: 2px;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background: #ffcc00; /* Bright yellow background */
+            color: #004080; /* Dark blue text */
+            padding: 15px 0;
+            font-weight: bold;
+            font-size: 18px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .notification-content {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #004080; /* Dark blue background */
+            color: #ffcc00; /* Bright yellow text */
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Added shadow for highlight */
+        }
+        .notification-bar .highlight {
+            font-size: 20px; /* Larger font size */
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Text shadow for better visibility */
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            background: #f4f4f4; /* Removed background image */
+            color: #004080;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #004080;
+        }
+        .hero p {
+            font-size: 1.5em; /* Larger font size for Hindi intro */
+            margin: 20px 0;
+            color: #004080;
+        }
+        .cta-button {
+            background: #ffcc00;
+            color: #004080;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .cta-button:hover {
+            background: #e6b800;
+        }
+
+        /* Exams Section */
+        .exams-section {
+            padding: 40px 20px;
+            background: white;
+        }
+        .exams-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .exam-tile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #004080;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 150px;
+        }
+        .exam-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .exam-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .exam-tile span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Specific Style for UPSSSC AG TA Tile */
+        .upsssc-tile {
+            background: white;
+            color: #004080;
+            border: 1px solid #004080;
+        }
+        .upsssc-tile:hover {
+            background: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            background: #004080;
+            padding: 40px 20px;
+            color: white;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px; /* Reduced from 1200px to 800px */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+        }
+        .footer-section a {
+            text-decoration: none;
+            transition: color 0.3s;
+            color: white;
+        }
+        .footer-section a:hover {
+            color: #ffcc00;
+        }
+        .social-links a {
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+            color: white;
+        }
+        .social-links a:hover {
+            color: #ffcc00;
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                flex-direction: column;
+                background: linear-gradient(135deg, #004080, #002040);
+                position: absolute;
+                width: 100%;
+                top: 60px;
+                left: 0;
+                z-index: 1001;
+                transform: translateY(-150%); /* Start off-screen */
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                height: 0;
+                overflow: hidden;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+                visibility: visible;
+                height: auto;
+                padding: 10px 0;
+            }
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+            }
+            .nav-links a {
+                display: block;
+                padding: 12px 20px;
+                border-radius: 0;
+            }
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</body>
+</html>
