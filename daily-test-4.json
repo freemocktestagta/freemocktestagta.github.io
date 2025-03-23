@@ -1,0 +1,138 @@
+{
+    "title": "Plant Biology Test - Testro",
+    "section": "Plant Biology",
+    "subject": "Plant Biology",
+    "time": 600,
+    "questions": [
+        {
+            "question": {
+                "hindi": "1. पौधों में भोजन संश्लेषण की प्रक्रिया क्या कहलाती है?",
+                "english": "1. What is the process of food synthesis in plants called?"
+            },
+            "options": [
+                { "hindi": "A) श्वसन (Respiration)", "english": "A) Respiration" },
+                { "hindi": "B) प्रकाशसंश्लेषण (Photosynthesis)", "english": "B) Photosynthesis" },
+                { "hindi": "C) वाष्पोत्सर्जन (Transpiration)", "english": "C) Transpiration" },
+                { "hindi": "D) परागण (Pollination)", "english": "D) Pollination" }
+            ],
+            "answer": { "hindi": "B) प्रकाशसंश्लेषण (Photosynthesis)", "english": "B) Photosynthesis" }
+        },
+        {
+            "question": {
+                "hindi": "2. प्रकाश संश्लेषण में किस गैस की आवश्यकता होती है?",
+                "english": "2. Which gas is required for photosynthesis?"
+            },
+            "options": [
+                { "hindi": "A) ऑक्सीजन (Oxygen)", "english": "A) Oxygen" },
+                { "hindi": "B) हाइड्रोजन (Hydrogen)", "english": "B) Hydrogen" },
+                { "hindi": "C) कार्बन डाइऑक्साइड (Carbon dioxide)", "english": "C) Carbon dioxide" },
+                { "hindi": "D) नाइट्रोजन (Nitrogen)", "english": "D) Nitrogen" }
+            ],
+            "answer": { "hindi": "C) कार्बन डाइऑक्साइड (Carbon dioxide)", "english": "C) Carbon dioxide" }
+        },
+        {
+            "question": {
+                "hindi": "3. पौधों में जल का परिवहन कौन करता है?",
+                "english": "3. What transports water in plants?"
+            },
+            "options": [
+                { "hindi": "A) फ्लोएम (Phloem)", "english": "A) Phloem" },
+                { "hindi": "B) जाइलम (Xylem)", "english": "B) Xylem" },
+                { "hindi": "C) पत्तियां (Leaves)", "english": "C) Leaves" },
+                { "hindi": "D) मूलावरण (Cortex)", "english": "D) Cortex" }
+            ],
+            "answer": { "hindi": "B) जाइलम (Xylem)", "english": "B) Xylem" }
+        },
+        {
+            "question": {
+                "hindi": "4. पौधों में भोजन का परिवहन किसके द्वारा होता है?",
+                "english": "4. What transports food in plants?"
+            },
+            "options": [
+                { "hindi": "A) जाइलम (Xylem)", "english": "A) Xylem" },
+                { "hindi": "B) फ्लोएम (Phloem)", "english": "B) Phloem" },
+                { "hindi": "C) मूल (Root)", "english": "C) Root" },
+                { "hindi": "D) रंध्र (Stomata)", "english": "D) Stomata" }
+            ],
+            "answer": { "hindi": "B) फ्लोएम (Phloem)", "english": "B) Phloem" }
+        },
+        {
+            "question": {
+                "hindi": "5. प्रकाश संश्लेषण के दौरान कौन सी गैस उत्सर्जित होती है?",
+                "english": "5. Which gas is released during photosynthesis?"
+            },
+            "options": [
+                { "hindi": "A) कार्बन डाइऑक्साइड (Carbon dioxide)", "english": "A) Carbon dioxide" },
+                { "hindi": "B) नाइट्रोजन (Nitrogen)", "english": "B) Nitrogen" },
+                { "hindi": "C) ऑक्सीजन (Oxygen)", "english": "C) Oxygen" },
+                { "hindi": "D) मीथेन (Methane)", "english": "D) Methane" }
+            ],
+            "answer": { "hindi": "C) ऑक्सीजन (Oxygen)", "english": "C) Oxygen" }
+        },
+        {
+            "question": {
+                "hindi": "6. पौधों में जल के वाष्पीकरण की प्रक्रिया को क्या कहा जाता है?",
+                "english": "6. What is the process of water evaporation in plants called?"
+            },
+            "options": [
+                { "hindi": "A) प्रकाशसंश्लेषण (Photosynthesis)", "english": "A) Photosynthesis" },
+                { "hindi": "B) श्वसन (Respiration)", "english": "B) Respiration" },
+                { "hindi": "C) वाष्पोत्सर्जन (Transpiration)", "english": "C) Transpiration" },
+                { "hindi": "D) निषेचन (Fertilization)", "english": "D) Fertilization" }
+            ],
+            "answer": { "hindi": "C) वाष्पोत्सर्जन (Transpiration)", "english": "C) Transpiration" }
+        },
+        {
+            "question": {
+                "hindi": "7. पत्तियों के नीचे छोटे छिद्र क्या कहलाते हैं?",
+                "english": "7. What are the small pores under leaves called?"
+            },
+            "options": [
+                { "hindi": "A) रंध्र (Stomata)", "english": "A) Stomata" },
+                { "hindi": "B) ट्राइकोम (Trichome)", "english": "B) Trichome" },
+                { "hindi": "C) जाइलम (Xylem)", "english": "C) Xylem" },
+                { "hindi": "D) फ्लोएम (Phloem)", "english": "D) Phloem" }
+            ],
+            "answer": { "hindi": "A) रंध्र (Stomata)", "english": "A) Stomata" }
+        },
+        {
+            "question": {
+                "hindi": "8. पौधों में रंध्र (Stomata) का मुख्य कार्य क्या है?",
+                "english": "8. What is the main function of stomata in plants?"
+            },
+            "options": [
+                { "hindi": "A) भोजन परिवहन (Transport of food)", "english": "A) Transport of food" },
+                { "hindi": "B) जल परिवहन (Transport of water)", "english": "B) Transport of water" },
+                { "hindi": "C) गैसों का विनिमय (Exchange of gases)", "english": "C) Exchange of gases" },
+                { "hindi": "D) फूल बनाना (Flower production)", "english": "D) Flower production" }
+            ],
+            "answer": { "hindi": "C) गैसों का विनिमय (Exchange of gases)", "english": "C) Exchange of gases" }
+        },
+        {
+            "question": {
+                "hindi": "9. पौधों में वृद्धि के लिए कौन सा हार्मोन उत्तरदायी होता है?",
+                "english": "9. Which hormone is responsible for growth in plants?"
+            },
+            "options": [
+                { "hindi": "A) साइटोकाइनिन (Cytokinin)", "english": "A) Cytokinin" },
+                { "hindi": "B) ऑक्सिन (Auxin)", "english": "B) Auxin" },
+                { "hindi": "C) एथिलीन (Ethylene)", "english": "C) Ethylene" },
+                { "hindi": "D) एब्सिसिक एसिड (Abscisic Acid)", "english": "D) Abscisic Acid" }
+            ],
+            "answer": { "hindi": "B) ऑक्सिन (Auxin)", "english": "B) Auxin" }
+        },
+        {
+            "question": {
+                "hindi": "10. पौधों में कौन सा तत्व क्लोरोफिल निर्माण के लिए आवश्यक है?",
+                "english": "10. Which element is essential for chlorophyll formation in plants?"
+            },
+            "options": [
+                { "hindi": "A) नाइट्रोजन (Nitrogen)", "english": "A) Nitrogen" },
+                { "hindi": "B) पोटेशियम (Potassium)", "english": "B) Potassium" },
+                { "hindi": "C) कैल्शियम (Calcium)", "english": "C) Calcium" },
+                { "hindi": "D) मैग्नीशियम (Magnesium)", "english": "D) Magnesium" }
+            ],
+            "answer": { "hindi": "D) मैग्नीशियम (Magnesium)", "english": "D) Magnesium" }
+        }
+    ]
+}
