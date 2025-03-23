@@ -237,6 +237,16 @@
             padding: 10px 0;
             margin-top: 20px;
         }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .notification-content, .test-container, .result-container {
+                padding: 15px;
+            }
+            .question-text {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -315,9 +325,10 @@
         let currentQuestionIndex = 0;
         let score = 0;
         let userAnswers = [];
-        let timeLeft = sessionStorage.getItem("remainingTime") || 1200; // Store timer across page refreshes
+        let timeLeft;
         let timerId;
         let questions = [];
+        let testData;
 
         // Load test data dynamically
         async function loadTestData() {
@@ -325,19 +336,20 @@
             try {
                 const response = await fetch(`${testId}.json`); // Fetch from main directory
                 if (!response.ok) throw new Error("Failed to load test data");
-                const testData = await response.json();
+                testData = await response.json();
                 questions = testData.questions; // Store questions globally
+                timeLeft = testData.time; // Set timer based on JSON
                 return testData;
             } catch (error) {
                 console.error("Error loading test data:", error);
-                alert("Failed to load test data. Please try again later.");
+                alert("Test data not found. Redirecting to home.");
+                window.location.href = "index.html";
                 return null;
             }
         }
 
         // Start test
         async function startTest() {
-            const testData = await loadTestData();
             if (!testData) return;
 
             document.getElementById("testTitle").textContent = testData.title;
@@ -416,7 +428,6 @@
         async function submitTest() {
             clearTimeout(timerId);
 
-            const testData = await loadTestData();
             let finalScore = 0;
             userAnswers.forEach((userAnswer, index) => {
                 if (userAnswer?.hindi === testData.questions[index].answer.hindi) {
@@ -430,6 +441,7 @@
             document.getElementById("resultContainer").style.display = "block";
             document.getElementById("finalScore").textContent = `${score} / ${testData.questions.length}`;
 
+            document.querySelectorAll("button").forEach(btn => btn.disabled = true); // Disable buttons
             sessionStorage.removeItem("remainingTime"); // Clear timer after submission
         }
 
@@ -438,7 +450,7 @@
             currentQuestionIndex = 0;
             score = 0;
             userAnswers = [];
-            timeLeft = 1200;
+            timeLeft = testData.time; // Reset timer
 
             document.getElementById("testContainer").style.display = "block";
             document.getElementById("resultContainer").style.display = "none";
@@ -452,16 +464,16 @@
             const timer = document.getElementById("timer");
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            timer.innerText = `Time Left: ${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+            timer.innerText = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
 
             sessionStorage.setItem("remainingTime", timeLeft); // Store remaining time
 
-            if (timeLeft === 0) {
+            if (timeLeft <= 0) {
                 submitTest();
-            } else {
-                timeLeft--;
-                timerId = setTimeout(updateTimer, 1000);
+                return;
             }
+            timeLeft--;
+            timerId = setTimeout(updateTimer, 1000);
         }
 
         // Go to Home Page
@@ -510,7 +522,7 @@
 
         // Initialize the test data when the page loads
         window.onload = async () => {
-            const testData = await loadTestData();
+            await loadTestData();
             if (testData) {
                 document.getElementById("testTitle").textContent = testData.title;
                 document.getElementById("welcomeMessage").textContent = `Welcome to ${testData.title}`;
