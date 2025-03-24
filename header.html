@@ -10,6 +10,7 @@
      crossorigin="anonymous"></script>
 
     <style>
+        /* All original CSS remains unchanged */
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -100,7 +101,6 @@
             outline-offset: 2px;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -113,7 +113,7 @@
                 top: 60px;
                 left: 0;
                 z-index: 1001;
-                transform: translateY(-150%); /* Start off-screen */
+                transform: translateY(-150%);
                 transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
                 opacity: 0;
                 pointer-events: none;
@@ -161,22 +161,23 @@
     </header>
 
     <script>
-        // Function to toggle the mobile menu
+        // Modified mobile menu handling
         function toggleMenu(event) {
-            event.stopPropagation(); // Prevent the event from bubbling up
+            event.preventDefault();
+            event.stopPropagation();
             const navLinks = document.getElementById("nav-menu");
             const menuToggle = document.querySelector(".menu-toggle");
             const isOpen = navLinks.classList.toggle("active");
 
-            // Update aria-expanded and button text
             menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
             menuToggle.textContent = isOpen ? "✖" : "☰";
         }
 
-        // Attach event listener to menu toggle button
+        // Added touch event listener
         document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
+        document.querySelector(".menu-toggle").addEventListener("touchstart", toggleMenu);
 
-        // Close the mobile menu when a link is clicked
+        // Original close handlers remain unchanged
         document.querySelectorAll(".nav-links a").forEach(link => {
             link.addEventListener("click", () => {
                 const navLinks = document.getElementById("nav-menu");
@@ -187,7 +188,6 @@
             });
         });
 
-        // Close the mobile menu when clicking outside
         document.addEventListener("click", (event) => {
             const navLinks = document.getElementById("nav-menu");
             const menuToggle = document.querySelector(".menu-toggle");
@@ -201,7 +201,6 @@
             }
         });
 
-        // Set active nav link based on current page
         document.addEventListener("DOMContentLoaded", () => {
             const currentPage = window.location.pathname.split("/").pop();
             document.querySelectorAll(".nav-links a").forEach(link => {
