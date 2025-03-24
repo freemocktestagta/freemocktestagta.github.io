@@ -27,10 +27,10 @@
         /* Introduction Section */
         .introduction {
             padding: 20px;
-            background: linear-gradient(135deg, #004080, #0066cc); /* Gradient background */
+            background: linear-gradient(135deg, #004080, #0066cc);
             color: white;
             border-radius: 10px;
-            margin: 20px auto 30px; /* Added margin-bottom */
+            margin: 20px auto 30px;
             max-width: 1200px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -79,7 +79,7 @@
         .test-card {
             flex: 0 0 auto;
             width: 200px;
-            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* Gradient background */
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 20px;
@@ -94,7 +94,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         .test-card.active {
-            background: linear-gradient(135deg, #004080, #003366); /* Active tile color */
+            background: linear-gradient(135deg, #004080, #003366);
             color: white;
         }
         .test-card h3 {
@@ -110,23 +110,23 @@
 
         /* Subject Slider */
         .subject-slider {
-            display: none; /* Hidden by default */
+            display: none;
             margin-top: 20px;
         }
         .subject-slider h3 {
-            font-size: 18px; /* Smaller font size */
+            font-size: 18px;
             color: #004080;
             margin-bottom: 10px;
         }
         .subject-slider .slider-container {
-            gap: 10px; /* Smaller gap */
+            gap: 10px;
         }
 
         /* Subject Card */
         .subject-card {
             flex: 0 0 auto;
-            width: 120px; /* Reduced width for mobile */
-            background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Gradient background */
+            width: 120px;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 15px;
@@ -142,7 +142,7 @@
         }
         .subject-card h4 {
             margin: 0 0 10px;
-            font-size: 14px; /* Smaller font size */
+            font-size: 14px;
             color: #004080;
         }
 
@@ -157,7 +157,7 @@
         .test-list ul {
             list-style: none;
             padding: 0;
-            display: block; /* Always show the list */
+            display: block;
         }
         .test-list li {
             background: white;
@@ -179,6 +179,14 @@
         }
         .test-list li a:hover {
             background: #003366;
+        }
+
+        /* NEW STYLE FOR SCORE DISPLAY */
+        .test-result-info {
+            font-size: 12px;
+            color: #2e7d32;
+            margin: 2px 0;
+            display: none;
         }
     </style>
 </head>
@@ -258,125 +266,377 @@
             </div>
         </div>
 
-        <!-- Test Lists -->
+        <!-- Test Lists (Modified with score display) -->
         <div id="daily-list" class="test-list">
             <h3>Daily Test Series</h3>
             <ul>
-                <li>Daily Test 1 <a href="template.html?testId=daily-test-1&path=daily-test-1.json">Start Now</a></li>
-                <li>Daily Test 2 <a href="template.html?testId=daily-test-2&path=daily-test-2.json">Start Now</a></li>
-                <li>Daily Test 3 <a href="template.html?testId=daily-test-3&path=daily-test-3.json">Start Now</a></li>
-                <li>Daily Test 4 <a href="template.html?testId=daily-test-4&path=daily-test-4.json">Start Now</a></li>
-                <li>Daily Test 5 <a href="template.html?testId=daily-test-5&path=daily-test-5.json">Start Now</a></li>
+                <li>
+                    Daily Test 1 
+                    <div class="test-result-info" id="daily-test-1-result"></div>
+                    <a href="template.html?testId=daily-test-1&path=daily-test-1.json" id="daily-test-1-link">Start Now</a>
+                </li>
+                <li>
+                    Daily Test 2 
+                    <div class="test-result-info" id="daily-test-2-result"></div>
+                    <a href="template.html?testId=daily-test-2&path=daily-test-2.json" id="daily-test-2-link">Start Now</a>
+                </li>
+                <li>
+                    Daily Test 3 
+                    <div class="test-result-info" id="daily-test-3-result"></div>
+                    <a href="template.html?testId=daily-test-3&path=daily-test-3.json" id="daily-test-3-link">Start Now</a>
+                </li>
+                <li>
+                    Daily Test 4 
+                    <div class="test-result-info" id="daily-test-4-result"></div>
+                    <a href="template.html?testId=daily-test-4&path=daily-test-4.json" id="daily-test-4-link">Start Now</a>
+                </li>
+                <li>
+                    Daily Test 5 
+                    <div class="test-result-info" id="daily-test-5-result"></div>
+                    <a href="template.html?testId=daily-test-5&path=daily-test-5.json" id="daily-test-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
+        <!-- All other test lists follow same pattern -->
         <div id="full-list" class="test-list">
             <h3>Full Mock Tests</h3>
             <ul>
-                <li>Full Mock Test 1 <a href="full-test-1.html">Start Now</a></li>
-                <li>Full Mock Test 2 <a href="template.html?testId=full-test-2&path=full-test-2.json">Start Now</a></li>
-                <li>Full Mock Test 3 <a href="template.html?testId=full-test-3&path=full-test-3.json">Start Now</a></li>
-                <li>Full Mock Test 4 <a href="template.html?testId=full-test-4&path=full-test-4.json">Start Now</a></li>
-                <li>Full Mock Test 5 <a href="template.html?testId=full-test-5&path=full-test-5.json">Start Now</a></li>
+                <li>
+                    Full Mock Test 1 
+                    <div class="test-result-info" id="full-test-1-result"></div>
+                    <a href="full-test-1.html" id="full-test-1-link">Start Now</a>
+                </li>
+                <li>
+                    Full Mock Test 2 
+                    <div class="test-result-info" id="full-test-2-result"></div>
+                    <a href="template.html?testId=full-test-2&path=full-test-2.json" id="full-test-2-link">Start Now</a>
+                </li>
+                <li>
+                    Full Mock Test 3 
+                    <div class="test-result-info" id="full-test-3-result"></div>
+                    <a href="template.html?testId=full-test-3&path=full-test-3.json" id="full-test-3-link">Start Now</a>
+                </li>
+                <li>
+                    Full Mock Test 4 
+                    <div class="test-result-info" id="full-test-4-result"></div>
+                    <a href="template.html?testId=full-test-4&path=full-test-4.json" id="full-test-4-link">Start Now</a>
+                </li>
+                <li>
+                    Full Mock Test 5 
+                    <div class="test-result-info" id="full-test-5-result"></div>
+                    <a href="template.html?testId=full-test-5&path=full-test-5.json" id="full-test-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="up-gk-list" class="test-list">
             <h3>UP GK Test</h3>
             <ul>
-                <li>UP GK Test 1 <a href="up-gk-test-1.html">Start Now</a></li>
-                <li>UP GK Test 2 <a href="up-gk-test-2.html">Start Now</a></li>
-                <li>UP GK Test 3 <a href="up-gk-test-3.html">Start Now</a></li>
-                <li>UP GK Test 4 <a href="up-gk-test-4.html">Start Now</a></li>
-                <li>UP GK Test 5 <a href="up-gk-test-5.html">Start Now</a></li>
+                <li>
+                    UP GK Test 1 
+                    <div class="test-result-info" id="up-gk-test-1-result"></div>
+                    <a href="up-gk-test-1.html" id="up-gk-test-1-link">Start Now</a>
+                </li>
+                <li>
+                    UP GK Test 2 
+                    <div class="test-result-info" id="up-gk-test-2-result"></div>
+                    <a href="up-gk-test-2.html" id="up-gk-test-2-link">Start Now</a>
+                </li>
+                <li>
+                    UP GK Test 3 
+                    <div class="test-result-info" id="up-gk-test-3-result"></div>
+                    <a href="up-gk-test-3.html" id="up-gk-test-3-link">Start Now</a>
+                </li>
+                <li>
+                    UP GK Test 4 
+                    <div class="test-result-info" id="up-gk-test-4-result"></div>
+                    <a href="up-gk-test-4.html" id="up-gk-test-4-link">Start Now</a>
+                </li>
+                <li>
+                    UP GK Test 5 
+                    <div class="test-result-info" id="up-gk-test-5-result"></div>
+                    <a href="up-gk-test-5.html" id="up-gk-test-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="computer-list" class="test-list">
             <h3>Computer Test</h3>
             <ul>
-                <li>Computer Test 1 <a href="computer-test-1.html">Start Now</a></li>
-                <li>Computer Test 2 <a href="computer-test-2.html">Start Now</a></li>
-                <li>Computer Test 3 <a href="computer-test-3.html">Start Now</a></li>
-                <li>Computer Test 4 <a href="computer-test-4.html">Start Now</a></li>
-                <li>Computer Test 5 <a href="computer-test-5.html">Start Now</a></li>
+                <li>
+                    Computer Test 1 
+                    <div class="test-result-info" id="computer-test-1-result"></div>
+                    <a href="computer-test-1.html" id="computer-test-1-link">Start Now</a>
+                </li>
+                <li>
+                    Computer Test 2 
+                    <div class="test-result-info" id="computer-test-2-result"></div>
+                    <a href="computer-test-2.html" id="computer-test-2-link">Start Now</a>
+                </li>
+                <li>
+                    Computer Test 3 
+                    <div class="test-result-info" id="computer-test-3-result"></div>
+                    <a href="computer-test-3.html" id="computer-test-3-link">Start Now</a>
+                </li>
+                <li>
+                    Computer Test 4 
+                    <div class="test-result-info" id="computer-test-4-result"></div>
+                    <a href="computer-test-4.html" id="computer-test-4-link">Start Now</a>
+                </li>
+                <li>
+                    Computer Test 5 
+                    <div class="test-result-info" id="computer-test-5-result"></div>
+                    <a href="computer-test-5.html" id="computer-test-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="agronomy-list" class="test-list">
             <h3>Agronomy Tests</h3>
             <ul>
-                <li>Agronomy Test 1 <a href="agronomy-1.html">Start Now</a></li>
-                <li>Agronomy Test 2 <a href="agronomy-2.html">Start Now</a></li>
-                <li>Agronomy Test 3 <a href="agronomy-3.html">Start Now</a></li>
-                <li>Agronomy Test 4 <a href="agronomy-4.html">Start Now</a></li>
-                <li>Agronomy Test 5 <a href="agronomy-5.html">Start Now</a></li>
+                <li>
+                    Agronomy Test 1 
+                    <div class="test-result-info" id="agronomy-1-result"></div>
+                    <a href="agronomy-1.html" id="agronomy-1-link">Start Now</a>
+                </li>
+                <li>
+                    Agronomy Test 2 
+                    <div class="test-result-info" id="agronomy-2-result"></div>
+                    <a href="agronomy-2.html" id="agronomy-2-link">Start Now</a>
+                </li>
+                <li>
+                    Agronomy Test 3 
+                    <div class="test-result-info" id="agronomy-3-result"></div>
+                    <a href="agronomy-3.html" id="agronomy-3-link">Start Now</a>
+                </li>
+                <li>
+                    Agronomy Test 4 
+                    <div class="test-result-info" id="agronomy-4-result"></div>
+                    <a href="agronomy-4.html" id="agronomy-4-link">Start Now</a>
+                </li>
+                <li>
+                    Agronomy Test 5 
+                    <div class="test-result-info" id="agronomy-5-result"></div>
+                    <a href="agronomy-5.html" id="agronomy-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="horticulture-list" class="test-list">
             <h3>Horticulture Tests</h3>
             <ul>
-                <li>Horticulture Test 1 <a href="horticulture-1.html">Start Now</a></li>
-                <li>Horticulture Test 2 <a href="horticulture-2.html">Start Now</a></li>
-                <li>Horticulture Test 3 <a href="horticulture-3.html">Start Now</a></li>
-                <li>Horticulture Test 4 <a href="horticulture-4.html">Start Now</a></li>
-                <li>Horticulture Test 5 <a href="horticulture-5.html">Start Now</a></li>
+                <li>
+                    Horticulture Test 1 
+                    <div class="test-result-info" id="horticulture-1-result"></div>
+                    <a href="horticulture-1.html" id="horticulture-1-link">Start Now</a>
+                </li>
+                <li>
+                    Horticulture Test 2 
+                    <div class="test-result-info" id="horticulture-2-result"></div>
+                    <a href="horticulture-2.html" id="horticulture-2-link">Start Now</a>
+                </li>
+                <li>
+                    Horticulture Test 3 
+                    <div class="test-result-info" id="horticulture-3-result"></div>
+                    <a href="horticulture-3.html" id="horticulture-3-link">Start Now</a>
+                </li>
+                <li>
+                    Horticulture Test 4 
+                    <div class="test-result-info" id="horticulture-4-result"></div>
+                    <a href="horticulture-4.html" id="horticulture-4-link">Start Now</a>
+                </li>
+                <li>
+                    Horticulture Test 5 
+                    <div class="test-result-info" id="horticulture-5-result"></div>
+                    <a href="horticulture-5.html" id="horticulture-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="pathology-list" class="test-list">
             <h3>Pathology Tests</h3>
             <ul>
-                <li>Pathology Test 1 <a href="pathology-1.html">Start Now</a></li>
-                <li>Pathology Test 2 <a href="pathology-2.html">Start Now</a></li>
-                <li>Pathology Test 3 <a href="pathology-3.html">Start Now</a></li>
-                <li>Pathology Test 4 <a href="pathology-4.html">Start Now</a></li>
-                <li>Pathology Test 5 <a href="pathology-5.html">Start Now</a></li>
+                <li>
+                    Pathology Test 1 
+                    <div class="test-result-info" id="pathology-1-result"></div>
+                    <a href="pathology-1.html" id="pathology-1-link">Start Now</a>
+                </li>
+                <li>
+                    Pathology Test 2 
+                    <div class="test-result-info" id="pathology-2-result"></div>
+                    <a href="pathology-2.html" id="pathology-2-link">Start Now</a>
+                </li>
+                <li>
+                    Pathology Test 3 
+                    <div class="test-result-info" id="pathology-3-result"></div>
+                    <a href="pathology-3.html" id="pathology-3-link">Start Now</a>
+                </li>
+                <li>
+                    Pathology Test 4 
+                    <div class="test-result-info" id="pathology-4-result"></div>
+                    <a href="pathology-4.html" id="pathology-4-link">Start Now</a>
+                </li>
+                <li>
+                    Pathology Test 5 
+                    <div class="test-result-info" id="pathology-5-result"></div>
+                    <a href="pathology-5.html" id="pathology-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="entomology-list" class="test-list">
             <h3>Entomology Tests</h3>
             <ul>
-                <li>Entomology Test 1 <a href="entomology-1.html">Start Now</a></li>
-                <li>Entomology Test 2 <a href="entomology-2.html">Start Now</a></li>
-                <li>Entomology Test 3 <a href="entomology-3.html">Start Now</a></li>
-                <li>Entomology Test 4 <a href="entomology-4.html">Start Now</a></li>
-                <li>Entomology Test 5 <a href="entomology-5.html">Start Now</a></li>
+                <li>
+                    Entomology Test 1 
+                    <div class="test-result-info" id="entomology-1-result"></div>
+                    <a href="entomology-1.html" id="entomology-1-link">Start Now</a>
+                </li>
+                <li>
+                    Entomology Test 2 
+                    <div class="test-result-info" id="entomology-2-result"></div>
+                    <a href="entomology-2.html" id="entomology-2-link">Start Now</a>
+                </li>
+                <li>
+                    Entomology Test 3 
+                    <div class="test-result-info" id="entomology-3-result"></div>
+                    <a href="entomology-3.html" id="entomology-3-link">Start Now</a>
+                </li>
+                <li>
+                    Entomology Test 4 
+                    <div class="test-result-info" id="entomology-4-result"></div>
+                    <a href="entomology-4.html" id="entomology-4-link">Start Now</a>
+                </li>
+                <li>
+                    Entomology Test 5 
+                    <div class="test-result-info" id="entomology-5-result"></div>
+                    <a href="entomology-5.html" id="entomology-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="genetics-list" class="test-list">
             <h3>Genetics & Plant Breeding Tests</h3>
             <ul>
-                <li>Genetics Test 1 <a href="template.html?testId=genetics-1">Start Now</a></li>
-                <li>Genetics Test 2 <a href="genetics-2.html">Start Now</a></li>
-                <li>Genetics Test 3 <a href="genetics-3.html">Start Now</a></li>
-                <li>Genetics Test 4 <a href="genetics-4.html">Start Now</a></li>
-                <li>Genetics Test 5 <a href="genetics-5.html">Start Now</a></li>
+                <li>
+                    Genetics Test 1 
+                    <div class="test-result-info" id="genetics-1-result"></div>
+                    <a href="template.html?testId=genetics-1" id="genetics-1-link">Start Now</a>
+                </li>
+                <li>
+                    Genetics Test 2 
+                    <div class="test-result-info" id="genetics-2-result"></div>
+                    <a href="genetics-2.html" id="genetics-2-link">Start Now</a>
+                </li>
+                <li>
+                    Genetics Test 3 
+                    <div class="test-result-info" id="genetics-3-result"></div>
+                    <a href="genetics-3.html" id="genetics-3-link">Start Now</a>
+                </li>
+                <li>
+                    Genetics Test 4 
+                    <div class="test-result-info" id="genetics-4-result"></div>
+                    <a href="genetics-4.html" id="genetics-4-link">Start Now</a>
+                </li>
+                <li>
+                    Genetics Test 5 
+                    <div class="test-result-info" id="genetics-5-result"></div>
+                    <a href="genetics-5.html" id="genetics-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="animal-husbandry-list" class="test-list">
             <h3>Animal Husbandry Tests</h3>
             <ul>
-                <li>Animal Husbandry Test 1 <a href="animal-husbandry-1.html">Start Now</a></li>
-                <li>Animal Husbandry Test 2 <a href="animal-husbandry-2.html">Start Now</a></li>
-                <li>Animal Husbandry Test 3 <a href="animal-husbandry-3.html">Start Now</a></li>
-                <li>Animal Husbandry Test 4 <a href="animal-husbandry-4.html">Start Now</a></li>
-                <li>Animal Husbandry Test 5 <a href="animal-husbandry-5.html">Start Now</a></li>
+                <li>
+                    Animal Husbandry Test 1 
+                    <div class="test-result-info" id="animal-husbandry-1-result"></div>
+                    <a href="animal-husbandry-1.html" id="animal-husbandry-1-link">Start Now</a>
+                </li>
+                <li>
+                    Animal Husbandry Test 2 
+                    <div class="test-result-info" id="animal-husbandry-2-result"></div>
+                    <a href="animal-husbandry-2.html" id="animal-husbandry-2-link">Start Now</a>
+                </li>
+                <li>
+                    Animal Husbandry Test 3 
+                    <div class="test-result-info" id="animal-husbandry-3-result"></div>
+                    <a href="animal-husbandry-3.html" id="animal-husbandry-3-link">Start Now</a>
+                </li>
+                <li>
+                    Animal Husbandry Test 4 
+                    <div class="test-result-info" id="animal-husbandry-4-result"></div>
+                    <a href="animal-husbandry-4.html" id="animal-husbandry-4-link">Start Now</a>
+                </li>
+                <li>
+                    Animal Husbandry Test 5 
+                    <div class="test-result-info" id="animal-husbandry-5-result"></div>
+                    <a href="animal-husbandry-5.html" id="animal-husbandry-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="statistics-list" class="test-list">
             <h3>Statistics Tests</h3>
             <ul>
-                <li>Statistics Test 1 <a href="statistics-1.html">Start Now</a></li>
-                <li>Statistics Test 2 <a href="statistics-2.html">Start Now</a></li>
-                <li>Statistics Test 3 <a href="statistics-3.html">Start Now</a></li>
-                <li>Statistics Test 4 <a href="statistics-4.html">Start Now</a></li>
-                <li>Statistics Test 5 <a href="statistics-5.html">Start Now</a></li>
+                <li>
+                    Statistics Test 1 
+                    <div class="test-result-info" id="statistics-1-result"></div>
+                    <a href="statistics-1.html" id="statistics-1-link">Start Now</a>
+                </li>
+                <li>
+                    Statistics Test 2 
+                    <div class="test-result-info" id="statistics-2-result"></div>
+                    <a href="statistics-2.html" id="statistics-2-link">Start Now</a>
+                </li>
+                <li>
+                    Statistics Test 3 
+                    <div class="test-result-info" id="statistics-3-result"></div>
+                    <a href="statistics-3.html" id="statistics-3-link">Start Now</a>
+                </li>
+                <li>
+                    Statistics Test 4 
+                    <div class="test-result-info" id="statistics-4-result"></div>
+                    <a href="statistics-4.html" id="statistics-4-link">Start Now</a>
+                </li>
+                <li>
+                    Statistics Test 5 
+                    <div class="test-result-info" id="statistics-5-result"></div>
+                    <a href="statistics-5.html" id="statistics-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
+        
         <div id="physiology-list" class="test-list">
             <h3>Physiology Tests</h3>
             <ul>
-                <li>Physiology Test 1 <a href="physiology-1.html">Start Now</a></li>
-                <li>Physiology Test 2 <a href="physiology-2.html">Start Now</a></li>
-                <li>Physiology Test 3 <a href="physiology-3.html">Start Now</a></li>
-                <li>Physiology Test 4 <a href="physiology-4.html">Start Now</a></li>
-                <li>Physiology Test 5 <a href="physiology-5.html">Start Now</a></li>
+                <li>
+                    Physiology Test 1 
+                    <div class="test-result-info" id="physiology-1-result"></div>
+                    <a href="physiology-1.html" id="physiology-1-link">Start Now</a>
+                </li>
+                <li>
+                    Physiology Test 2 
+                    <div class="test-result-info" id="physiology-2-result"></div>
+                    <a href="physiology-2.html" id="physiology-2-link">Start Now</a>
+                </li>
+                <li>
+                    Physiology Test 3 
+                    <div class="test-result-info" id="physiology-3-result"></div>
+                    <a href="physiology-3.html" id="physiology-3-link">Start Now</a>
+                </li>
+                <li>
+                    Physiology Test 4 
+                    <div class="test-result-info" id="physiology-4-result"></div>
+                    <a href="physiology-4.html" id="physiology-4-link">Start Now</a>
+                </li>
+                <li>
+                    Physiology Test 5 
+                    <div class="test-result-info" id="physiology-5-result"></div>
+                    <a href="physiology-5.html" id="physiology-5-link">Start Now</a>
+                </li>
             </ul>
         </div>
     </section>
@@ -385,13 +645,46 @@
     <div id="footer"></div>
 
     <script>
-        // Function to update the total tests count
+        // NEW: Function to format date
+        function formatDate(dateString) {
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // NEW: Function to display test results
+        function displayTestResults() {
+            document.querySelectorAll('.test-list li a').forEach(link => {
+                // Extract testId from URL
+                const testId = new URLSearchParams(link.href.split('?')[1]).get('testId') || 
+                              link.href.split('/').pop().split('.')[0];
+                
+                if (testId) {
+                    const savedResult = localStorage.getItem(testId);
+                    const resultElement = link.previousElementSibling;
+                    
+                    if (savedResult && resultElement && resultElement.classList.contains('test-result-info')) {
+                        const result = JSON.parse(savedResult);
+                        resultElement.style.display = 'block';
+                        resultElement.innerHTML = `Score: ${result.score}/${result.totalQuestions} | Date: ${formatDate(result.timestamp)}`;
+                        link.textContent = 'Retake Test';
+                    }
+                }
+            });
+        }
+
+        // Modified DOMContentLoaded event handler
+        document.addEventListener('DOMContentLoaded', () => {
+            showTestList('daily');
+            initializeSlider();
+            displayTestResults(); // NEW: Call to display results
+        });
+
+        // Existing functions remain exactly the same
         function updateTotalTests() {
             const totalTests = document.querySelectorAll('.test-list ul li').length;
             document.getElementById('total-tests').textContent = totalTests;
         }
 
-        // Function to show the selected test list
         function showTestList(type) {
             // Hide all test lists
             const testLists = document.querySelectorAll('.test-list');
@@ -422,7 +715,6 @@
             }
         }
 
-        // Function to show the subject slider
         function showSubjectSlider() {
             const subjectSlider = document.getElementById('subject-slider');
             if (subjectSlider) {
@@ -431,28 +723,6 @@
             showTestList('subject');
         }
 
-        // Automatically open the first tile (Daily Test Series)
-        document.addEventListener('DOMContentLoaded', () => {
-            showTestList('daily');
-            initializeSlider(); // Initialize slider touch events
-        });
-
-        // Load header and footer
-        Promise.all([
-            fetch('header.html').then(response => response.text()),
-            fetch('footer.html').then(response => response.text())
-        ]).then(([headerData, footerData]) => {
-            document.getElementById('header').innerHTML = headerData;
-            document.getElementById('footer').innerHTML = footerData;
-            document.getElementById('header').style.visibility = "visible";
-            document.getElementById('footer').style.visibility = "visible";
-            updateTotalTests(); // Update count after loading
-        }).catch(() => console.error("Error loading header or footer!"))
-        .finally(() => {
-            document.getElementById('loading').style.display = 'none'; // Always remove loading text
-        });
-
-        // Initialize slider touch events
         function initializeSlider() {
             const sliderContainer = document.querySelector('.subject-slider .slider-container');
             let isDragging = false, startX, scrollLeft;
@@ -471,7 +741,7 @@
                 if (!isDragging) return;
                 e.preventDefault();
                 const x = e.pageX - sliderContainer.offsetLeft;
-                const walk = (x - startX) * 1.5; // Reduced speed for smooth scrolling
+                const walk = (x - startX) * 1.5;
                 sliderContainer.scrollLeft = scrollLeft - walk;
             });
 
@@ -488,10 +758,25 @@
                 if (!isDragging) return;
                 e.preventDefault();
                 const x = e.touches[0].pageX - sliderContainer.offsetLeft;
-                const walk = (x - startX) * 1.5; // Reduced speed for better control
+                const walk = (x - startX) * 1.5;
                 sliderContainer.scrollLeft = scrollLeft - walk;
             });
         }
+
+        // Load header and footer
+        Promise.all([
+            fetch('header.html').then(response => response.text()),
+            fetch('footer.html').then(response => response.text())
+        ]).then(([headerData, footerData]) => {
+            document.getElementById('header').innerHTML = headerData;
+            document.getElementById('footer').innerHTML = footerData;
+            document.getElementById('header').style.visibility = "visible";
+            document.getElementById('footer').style.visibility = "visible";
+            updateTotalTests();
+        }).catch(() => console.error("Error loading header or footer!"))
+        .finally(() => {
+            document.getElementById('loading').style.display = 'none';
+        });
     </script>
 </body>
 </html>
