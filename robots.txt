@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://freemocktestagta.github.io/sitemap.xml
