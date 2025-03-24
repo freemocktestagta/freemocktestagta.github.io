@@ -57,7 +57,7 @@
         <priority>0.7</priority>
     </url>
 
-    <!-- Daily Tests with Correct JSON Paths -->
+    <!-- Daily Tests -->
     <url>
         <loc>https://freemocktestagta.github.io/template.html?testId=daily-test-1&amp;path=daily-test-1.json</loc>
         <lastmod>2025-03-24</lastmod>
@@ -84,7 +84,7 @@
         <priority>0.6</priority>
     </url>
 
-    <!-- Genetics Test (Corrected JSON Path) -->
+    <!-- Genetics Test -->
     <url>
         <loc>https://freemocktestagta.github.io/template.html?testId=genetics-1&amp;path=genetics-1.json</loc>
         <lastmod>2025-03-24</lastmod>
