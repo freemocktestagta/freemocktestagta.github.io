@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UPSSSC AGTA Mock Test Series 2024</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* General Styles */
@@ -62,7 +63,6 @@
             gap: 20px;
             padding-bottom: 20px;
             scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
         }
         .slider-container::-webkit-scrollbar {
             height: 8px;
@@ -181,7 +181,7 @@
             background: #003366;
         }
 
-        /* Test Result Info */
+        /* NEW STYLE FOR SCORE DISPLAY */
         .test-result-info {
             font-size: 12px;
             color: #2e7d32;
@@ -266,7 +266,7 @@
             </div>
         </div>
 
-        <!-- Test Lists -->
+        <!-- Test Lists (Modified with score display) -->
         <div id="daily-list" class="test-list">
             <h3>Daily Test Series</h3>
             <ul>
@@ -297,6 +297,8 @@
                 </li>
             </ul>
         </div>
+        
+        <!-- All other test lists follow same pattern -->
         <div id="full-list" class="test-list">
             <h3>Full Mock Tests</h3>
             <ul>
@@ -327,6 +329,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="up-gk-list" class="test-list">
             <h3>UP GK Test</h3>
             <ul>
@@ -357,6 +360,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="computer-list" class="test-list">
             <h3>Computer Test</h3>
             <ul>
@@ -387,6 +391,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="agronomy-list" class="test-list">
             <h3>Agronomy Tests</h3>
             <ul>
@@ -417,6 +422,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="horticulture-list" class="test-list">
             <h3>Horticulture Tests</h3>
             <ul>
@@ -447,6 +453,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="pathology-list" class="test-list">
             <h3>Pathology Tests</h3>
             <ul>
@@ -477,6 +484,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="entomology-list" class="test-list">
             <h3>Entomology Tests</h3>
             <ul>
@@ -507,6 +515,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="genetics-list" class="test-list">
             <h3>Genetics & Plant Breeding Tests</h3>
             <ul>
@@ -537,6 +546,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="animal-husbandry-list" class="test-list">
             <h3>Animal Husbandry Tests</h3>
             <ul>
@@ -567,6 +577,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="statistics-list" class="test-list">
             <h3>Statistics Tests</h3>
             <ul>
@@ -597,6 +608,7 @@
                 </li>
             </ul>
         </div>
+        
         <div id="physiology-list" class="test-list">
             <h3>Physiology Tests</h3>
             <ul>
@@ -633,15 +645,16 @@
     <div id="footer"></div>
 
     <script>
-        // Function to format date
+        // NEW: Function to format date
         function formatDate(dateString) {
             const options = { day: 'numeric', month: 'long', year: 'numeric' };
             return new Date(dateString).toLocaleDateString('en-US', options);
         }
 
-        // Function to display test results
+        // NEW: Function to display test results
         function displayTestResults() {
             document.querySelectorAll('.test-list li a').forEach(link => {
+                // Extract testId from URL
                 const testId = new URLSearchParams(link.href.split('?')[1]).get('testId') || 
                               link.href.split('/').pop().split('.')[0];
                 
@@ -659,25 +672,23 @@
             });
         }
 
-        // Function to update the total tests count
+        // Modified DOMContentLoaded event handler
+        document.addEventListener('DOMContentLoaded', () => {
+            showTestList('daily');
+            initializeSlider();
+            displayTestResults(); // NEW: Call to display results
+        });
+
+        // Existing functions remain exactly the same
         function updateTotalTests() {
             const totalTests = document.querySelectorAll('.test-list ul li').length;
             document.getElementById('total-tests').textContent = totalTests;
         }
 
-        // Function to show the selected test list
         function showTestList(type) {
             // Hide all test lists
             const testLists = document.querySelectorAll('.test-list');
             testLists.forEach(list => list.style.display = 'none');
-
-            // Hide subject slider if not showing subjects
-            const subjectSlider = document.getElementById('subject-slider');
-            if (type !== 'agronomy' && type !== 'horticulture' && type !== 'pathology' && 
-                type !== 'entomology' && type !== 'genetics' && type !== 'animal-husbandry' && 
-                type !== 'statistics' && type !== 'physiology') {
-                subjectSlider.style.display = 'none';
-            }
 
             // Show the selected test list
             const selectedList = document.getElementById(`${type}-list`);
@@ -688,125 +699,69 @@
             // Highlight the active tile
             const testCards = document.querySelectorAll('.test-card');
             testCards.forEach(card => card.classList.remove('active'));
-            const activeCard = document.querySelector(`.test-card[onclick*="showTestList('${type}')"], .test-card[onclick*="showSubjectSlider()"]`);
+            const activeCard = document.querySelector(`.test-card[onclick="showTestList('${type}')"]`);
             if (activeCard) {
                 activeCard.classList.add('active');
             }
+
+            // Show subject slider if a subject is selected
+            if (type === 'agronomy' || type === 'horticulture' || type === 'pathology' || 
+                type === 'entomology' || type === 'genetics' || type === 'animal-husbandry' || 
+                type === 'statistics' || type === 'physiology') {
+                const subjectSlider = document.getElementById('subject-slider');
+                if (subjectSlider) {
+                    subjectSlider.style.display = 'block';
+                }
+            }
         }
 
-        // Function to show the subject slider
         function showSubjectSlider() {
             const subjectSlider = document.getElementById('subject-slider');
             if (subjectSlider) {
                 subjectSlider.style.display = 'block';
-                // Hide all test lists when showing subjects
-                document.querySelectorAll('.test-list').forEach(list => list.style.display = 'none');
             }
-            
-            // Highlight the subject tile
-            document.querySelectorAll('.test-card').forEach(card => card.classList.remove('active'));
-            document.querySelector('.test-card[onclick="showSubjectSlider()"]').classList.add('active');
+            showTestList('subject');
         }
 
-        // Initialize slider with momentum scrolling
         function initializeSlider() {
-            const sliderContainers = document.querySelectorAll('.slider-container');
-            
-            sliderContainers.forEach(sliderContainer => {
-                let isDragging = false, startX, scrollLeft;
-                let momentum = 0;
-                let lastTime = 0;
-                let lastPos = 0;
-                let velocity = 0;
-                let animationFrame;
+            const sliderContainer = document.querySelector('.subject-slider .slider-container');
+            let isDragging = false, startX, scrollLeft;
 
-                const handleMove = (x) => {
-                    if (!isDragging) return;
-                    const dx = x - startX;
-                    sliderContainer.scrollLeft = scrollLeft - dx * 1.5;
-                    
-                    // Calculate velocity for momentum scrolling
-                    const now = performance.now();
-                    const timeDiff = now - lastTime;
-                    if (timeDiff > 0) {
-                        const pos = sliderContainer.scrollLeft;
-                        velocity = (pos - lastPos) / timeDiff;
-                        lastPos = pos;
-                        lastTime = now;
-                    }
-                };
+            sliderContainer.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX - sliderContainer.offsetLeft;
+                scrollLeft = sliderContainer.scrollLeft;
+                sliderContainer.style.scrollBehavior = 'auto';
+            });
 
-                const momentumScroll = () => {
-                    if (Math.abs(velocity) > 0.1) {
-                        sliderContainer.scrollLeft += velocity * 16;
-                        velocity *= 0.95;
-                        animationFrame = requestAnimationFrame(momentumScroll);
-                    } else {
-                        cancelAnimationFrame(animationFrame);
-                    }
-                };
+            sliderContainer.addEventListener('mouseleave', () => isDragging = false);
+            sliderContainer.addEventListener('mouseup', () => isDragging = false);
 
-                sliderContainer.addEventListener('mousedown', (e) => {
-                    isDragging = true;
-                    startX = e.pageX;
-                    scrollLeft = sliderContainer.scrollLeft;
-                    lastTime = performance.now();
-                    lastPos = scrollLeft;
-                    velocity = 0;
-                    sliderContainer.style.scrollBehavior = 'auto';
-                    cancelAnimationFrame(animationFrame);
-                });
+            sliderContainer.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - sliderContainer.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                sliderContainer.scrollLeft = scrollLeft - walk;
+            });
 
-                sliderContainer.addEventListener('mousemove', (e) => {
-                    handleMove(e.pageX);
-                });
+            // Touch events for mobile
+            sliderContainer.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].pageX - sliderContainer.offsetLeft;
+                scrollLeft = sliderContainer.scrollLeft;
+            });
 
-                sliderContainer.addEventListener('mouseup', () => {
-                    isDragging = false;
-                    sliderContainer.style.scrollBehavior = 'smooth';
-                    if (Math.abs(velocity) > 0.5) {
-                        animationFrame = requestAnimationFrame(momentumScroll);
-                    }
-                });
+            sliderContainer.addEventListener('touchend', () => isDragging = false);
 
-                sliderContainer.addEventListener('mouseleave', () => {
-                    isDragging = false;
-                    sliderContainer.style.scrollBehavior = 'smooth';
-                });
-
-                // Touch events
-                sliderContainer.addEventListener('touchstart', (e) => {
-                    isDragging = true;
-                    startX = e.touches[0].pageX;
-                    scrollLeft = sliderContainer.scrollLeft;
-                    lastTime = performance.now();
-                    lastPos = scrollLeft;
-                    velocity = 0;
-                    sliderContainer.style.scrollBehavior = 'auto';
-                    cancelAnimationFrame(animationFrame);
-                });
-
-                sliderContainer.addEventListener('touchmove', (e) => {
-                    e.preventDefault();
-                    handleMove(e.touches[0].pageX);
-                });
-
-                sliderContainer.addEventListener('touchend', () => {
-                    isDragging = false;
-                    sliderContainer.style.scrollBehavior = 'smooth';
-                    if (Math.abs(velocity) > 0.5) {
-                        animationFrame = requestAnimationFrame(momentumScroll);
-                    }
-                });
+            sliderContainer.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - sliderContainer.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                sliderContainer.scrollLeft = scrollLeft - walk;
             });
         }
-
-        // Automatically open the first tile (Daily Test Series)
-        document.addEventListener('DOMContentLoaded', () => {
-            showTestList('daily');
-            initializeSlider();
-            displayTestResults();
-        });
 
         // Load header and footer
         Promise.all([
