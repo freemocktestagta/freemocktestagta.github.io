@@ -35,29 +35,31 @@
         <priority>0.8</priority>
     </url>
 
-    <!-- Test Pages -->
+    <!-- Full Mock Tests -->
     <url>
-        <loc>https://freemocktestagta.github.io/full-test-1.html</loc>
+        <loc>https://freemocktestagta.github.io/template.html?testId=full-test-1&amp;path=full-test-1.json</loc>
         <lastmod>2025-03-24</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://freemocktestagta.github.io/full-test-2.html</loc>
+        <loc>https://freemocktestagta.github.io/template.html?testId=full-test-2&amp;path=full-test-2.json</loc>
+        <lastmod>2025-03-24</lastmod>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- UP GK Tests -->
+    <url>
+        <loc>https://freemocktestagta.github.io/template.html?testId=up-gk-test-1&amp;path=up-gk-test-1.json</loc>
         <lastmod>2025-03-24</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://freemocktestagta.github.io/up-gk-test-1.html</loc>
+        <loc>https://freemocktestagta.github.io/template.html?testId=up-gk-test-2&amp;path=up-gk-test-2.json</loc>
         <lastmod>2025-03-24</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://freemocktestagta.github.io/up-gk-test-2.html</loc>
-        <lastmod>2025-03-24</lastmod>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://freemocktestagta.github.io/up-gk-test-3.html</loc>
+        <loc>https://freemocktestagta.github.io/template.html?testId=up-gk-test-3&amp;path=up-gk-test-3.json</loc>
         <lastmod>2025-03-24</lastmod>
         <priority>0.7</priority>
     </url>
