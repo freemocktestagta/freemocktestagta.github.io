@@ -1,17 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testro - Free Agriculture & GK Mock Tests for Competitive Exams</title>
-    <meta name="description" content="Testro offers free mock tests for UPSSSC, Agriculture, General Knowledge, and more. Prepare for competitive exams with our daily test series!">
-    <meta name="keywords" content="Testro, UPSSSC Mock Test, Free Online Tests, GK Mock Test, Agriculture Exam">
-    <meta name="robots" content="index, follow">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Testro</title>
 
     <!-- Google AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
@@ -25,12 +18,8 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-        }
-        main {
-            margin-top: 70px; /* Prevents overlap with sticky header */
-            min-height: calc(100vh - 70px); /* Ensures footer stays at bottom */
         }
 
         /* Header Styles */
@@ -59,7 +48,6 @@
         .logo-icon {
             margin-right: 10px;
             font-size: 24px;
-            aria-hidden: "true";
         }
         h1 {
             margin: 0;
@@ -82,20 +70,6 @@
             padding: 8px 12px;
             border-radius: 4px;
             transition: all 0.3s;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background: #ffcc00;
-            transition: width 0.3s ease-in-out;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
         }
         .nav-links a:hover {
             background-color: rgba(255, 255, 255, 0.1);
@@ -108,9 +82,6 @@
         .nav-links a.active {
             background-color: rgba(255, 255, 255, 0.2);
             color: #ffcc00;
-        }
-        .nav-links a.active::after {
-            width: 100%;
         }
         .menu-toggle {
             display: none;
@@ -143,9 +114,9 @@
                 top: 60px;
                 left: 0;
                 z-index: 1001;
-                transform: translateY(-100%);
+                transform: translateY(-150%); /* Start off-screen */
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
                 opacity: 0;
-                transition: transform 0.3s ease-out, opacity 0.2s ease-in-out;
                 pointer-events: none;
                 visibility: hidden;
                 height: 0;
@@ -169,18 +140,6 @@
                 padding: 12px 20px;
                 border-radius: 0;
             }
-            .nav-links a::after {
-                bottom: 0;
-                left: 20px;
-                width: calc(100% - 40px);
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 0.3s ease-in-out;
-            }
-            .nav-links a:hover::after,
-            .nav-links a.active::after {
-                transform: scaleX(1);
-            }
         }
     </style>
 </head>
@@ -188,11 +147,11 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <span class="logo-icon" aria-hidden="true">📚</span>
+                <span class="logo-icon">📚</span>
                 <h1>Testro</h1>
             </div>
             <nav>
-                <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
                 <ul class="nav-links" id="nav-menu" role="menu">
                     <li role="none"><a href="index.html" role="menuitem" class="active">Home</a></li>
                     <li role="none"><a href="UpssscAGTA.html" role="menuitem">UPSSSC AG TA</a></li>
@@ -202,15 +161,10 @@
         </div>
     </header>
 
-    <main>
-        <!-- Your main content goes here -->
-    </main>
-
     <script>
         // Function to toggle the mobile menu
         function toggleMenu(event) {
-            event.preventDefault();
-            event.stopPropagation();
+            event.stopPropagation(); // Prevent the event from bubbling up
             const navLinks = document.getElementById("nav-menu");
             const menuToggle = document.querySelector(".menu-toggle");
             const isOpen = navLinks.classList.toggle("active");
@@ -222,18 +176,15 @@
 
         // Attach event listener to menu toggle button
         document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
-        document.querySelector(".menu-toggle").addEventListener("touchstart", toggleMenu);
 
         // Close the mobile menu when a link is clicked
         document.querySelectorAll(".nav-links a").forEach(link => {
             link.addEventListener("click", () => {
                 const navLinks = document.getElementById("nav-menu");
                 const menuToggle = document.querySelector(".menu-toggle");
-                if (navLinks.classList.contains("active")) {
-                    navLinks.classList.remove("active");
-                    menuToggle.setAttribute("aria-expanded", "false");
-                    menuToggle.textContent = "☰";
-                }
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
             });
         });
 
@@ -245,18 +196,6 @@
             if (navLinks.classList.contains("active") && 
                 !navLinks.contains(event.target) && 
                 !menuToggle.contains(event.target)) {
-                navLinks.classList.remove("active");
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.textContent = "☰";
-            }
-        });
-
-        // Close the mobile menu when scrolling
-        document.addEventListener("scroll", () => {
-            const navLinks = document.getElementById("nav-menu");
-            const menuToggle = document.querySelector(".menu-toggle");
-
-            if (navLinks.classList.contains("active")) {
                 navLinks.classList.remove("active");
                 menuToggle.setAttribute("aria-expanded", "false");
                 menuToggle.textContent = "☰";
