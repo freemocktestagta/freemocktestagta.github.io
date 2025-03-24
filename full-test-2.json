@@ -1,0 +1,1299 @@
+{
+    "title": "Full Test 2",
+    "section": "Full Test",
+    "subject": "UPSSSC AG TA (Uttar Pradesh Subordinate Services Selection Commission Agriculture Technical Assistant)",
+    "time": 6000,
+    "questions": [
+        {
+            "question": {
+                "hindi": "1. मनोरमा नदी के किनारे स्थित प्रसिद्ध और धार्मिक भदेवरनाथ मंदिर किस जिले में है?",
+                "english": "1. In which district is the famous and religious Bhadevar Nath temple situated on the banks of the Manorama River?"
+            },
+            "options": [
+                { "hindi": "(a) बलिया", "english": "(a) Ballia" },
+                { "hindi": "(b) जौनपुर", "english": "(b) Jaunpur" },
+                { "hindi": "(c) बस्ती", "english": "(c) Basti" },
+                { "hindi": "(d) वाराणसी", "english": "(d) Varanasi" }
+            ],
+            "answer": { "hindi": "(c) बस्ती", "english": "(c) Basti" }
+        },
+        {
+            "question": {
+                "hindi": "2. झाँसी के पास देवगढ़ का मंदिर और इलाहाबाद के पास गढ़वास मंदिर में बनी मूर्तियाँ निम्नलिखित में से किस कला के महत्वपूर्ण अवशेष हैं?",
+                "english": "2. The sculptures made in Devgarh temple near Jhansi and Garhwas temple near Allahabad are important remains of which art?"
+            },
+            "options": [
+                { "hindi": "(a) मौर्य कला", "english": "(a) Maurya Art" },
+                { "hindi": "(b) गुप्त कला", "english": "(b) Gupta Art" },
+                { "hindi": "(c) राष्ट्रकूट कला", "english": "(c) Rashtrakuta Art" },
+                { "hindi": "(d) पल्लव कला", "english": "(d) Pallava Art" }
+            ],
+            "answer": { "hindi": "(b) गुप्त कला", "english": "(b) Gupta Art" }
+        },
+        {
+            "question": {
+                "hindi": "3. पारधौनी नृत्य-रूप निम्नलिखित में से किस समुदाय के बीच लोकप्रिय है?",
+                "english": "3. Pardhoni dance form is popular among which of the following communities?"
+            },
+            "options": [
+                { "hindi": "(a) गोंड", "english": "(a) Gond" },
+                { "hindi": "(b) भील", "english": "(b) Bhil" },
+                { "hindi": "(c) सहरिया", "english": "(c) Sahariya" },
+                { "hindi": "(d) बैगा", "english": "(d) Baiga" }
+            ],
+            "answer": { "hindi": "(d) बैगा", "english": "(d) Baiga" }
+        },
+        {
+            "question": {
+                "hindi": "4. उत्तर प्रदेश के किस शहर में भगवान शिव के सम्मान में कैलाश मेला आयोजित किया जाता है?",
+                "english": "4. In which city of Uttar Pradesh is the Kailash Mela organized in honor of Lord Shiva?"
+            },
+            "options": [
+                { "hindi": "(a) वाराणसी", "english": "(a) Varanasi" },
+                { "hindi": "(b) बाराबंकी", "english": "(b) Barabanki" },
+                { "hindi": "(c) आगरा", "english": "(c) Agra" },
+                { "hindi": "(d) लखनऊ", "english": "(d) Lucknow" }
+            ],
+            "answer": { "hindi": "(c) आगरा", "english": "(c) Agra" }
+        },
+        {
+            "question": {
+                "hindi": "5. निम्न में से कौन सा युग्म सही सुमेलित है?",
+                "english": "5. Which of the following pairs is correctly matched?"
+            },
+            "options": [
+                { "hindi": "(1) काला नमक चावल महोत्सव - सिद्धार्थनगर", "english": "(1) Kala Namak Rice Festival - Siddharthnagar" },
+                { "hindi": "(2) स्ट्रॉबेरी महोत्सव - झाँसी", "english": "(2) Strawberry Festival - Jhansi" },
+                { "hindi": "(3) गुड़गु महोत्सव - लखनऊ", "english": "(3) Jaggery Festival - Lucknow" }
+            ],
+            "answer": { "hindi": "(d) सभी सही हैं", "english": "(d) All are correct" }
+        },
+        {
+            "question": {
+                "hindi": "6. उत्तर प्रदेश के किस जिले में जापानी इंसेफेलाइटिस अनुसंधान केंद्र स्थापित किया जाने वाला है?",
+                "english": "6. In which district of Uttar Pradesh is the Japanese Encephalitis Research Center going to be established?"
+            },
+            "options": [
+                { "hindi": "(a) वाराणसी", "english": "(a) Varanasi" },
+                { "hindi": "(b) लखनऊ", "english": "(b) Lucknow" },
+                { "hindi": "(c) नोएडा", "english": "(c) Noida" },
+                { "hindi": "(d) गोरखपुर", "english": "(d) Gorakhpur" }
+            ],
+            "answer": { "hindi": "(d) गोरखपुर", "english": "(d) Gorakhpur" }
+        },
+        {
+            "question": {
+                "hindi": "7. उर्दू शायरी में 'फिराक गोरखपुरी' के नाम से प्रसिद्ध कौन हैं?",
+                "english": "7. Who is famous by the name 'Firaq Gorakhpuri' in poetry?"
+            },
+            "options": [
+                { "hindi": "(a) द्वारिका प्रसाद", "english": "(a) Dwarika Prasad" },
+                { "hindi": "(b) रघुपति सहाय", "english": "(b) Raghupati Sahay" },
+                { "hindi": "(c) नवल किशोर", "english": "(c) Naval Kishore" },
+                { "hindi": "(d) अली अय्यूब खाँ", "english": "(d) Ali Ayyub Khan" }
+            ],
+            "answer": { "hindi": "(b) रघुपति सहाय", "english": "(b) Raghupati Sahay" }
+        },
+        {
+            "question": {
+                "hindi": "8. बेगम समरू से एक प्रसिद्ध चर्च का निर्माण कहाँ करवाया गया था?",
+                "english": "8. Where was a famous church constructed by Begum Samru?"
+            },
+            "options": [
+                { "hindi": "(a) माउंट आबू", "english": "(a) Mount Abu" },
+                { "hindi": "(b) सरधना", "english": "(b) Sardhana" },
+                { "hindi": "(c) कानपुर", "english": "(c) Kanpur" },
+                { "hindi": "(d) बरेली", "english": "(d) Bareilly" }
+            ],
+            "answer": { "hindi": "(b) सरधना", "english": "(b) Sardhana" }
+        },
+        {
+            "question": {
+                "hindi": "9. बहू-बेगम का मकबरा निम्नलिखित में से किस स्थान पर स्थित है?",
+                "english": "9. Where is the tomb of Bahu Begum located?"
+            },
+            "options": [
+                { "hindi": "(a) आजमगढ़", "english": "(a) Azamgarh" },
+                { "hindi": "(b) प्रयागराज", "english": "(b) Prayagraj" },
+                { "hindi": "(c) लखनऊ", "english": "(c) Lucknow" },
+                { "hindi": "(d) फैजाबाद", "english": "(d) Faizabad" }
+            ],
+            "answer": { "hindi": "(d) फैजाबाद", "english": "(d) Faizabad" }
+        },
+        {
+            "question": {
+                "hindi": "10. आगरा स्थित दयाल बाग किससे संबंधित है?",
+                "english": "10. Dayal Bagh in Agra is associated with which of the following?"
+            },
+            "options": [
+                { "hindi": "(a) रामानुज समुदाय", "english": "(a) Ramanuj Community" },
+                { "hindi": "(b) कबीर पंथ", "english": "(b) Kabir Sect" },
+                { "hindi": "(c) राधा स्वामी पंथ", "english": "(c) Radha Soami Sect" },
+                { "hindi": "(d) नाथ सम्प्रदाय", "english": "(d) Nath Sect" }
+            ],
+            "answer": { "hindi": "(c) राधा स्वामी पंथ", "english": "(c) Radha Soami Sect" }
+        },
+        {
+            "question": {
+                "hindi": "11. उत्तर प्रदेश के किस जिले में मुख्य रूप से पोटाश की कमी वाली मृदा पाई जाती है?",
+                "english": "11. In which district of Uttar Pradesh is soil mainly deficient in potash found?"
+            },
+            "options": [
+                { "hindi": "(a) बहराइच", "english": "(a) Bahraich" },
+                { "hindi": "(b) जौनपुर", "english": "(b) Jaunpur" },
+                { "hindi": "(c) बलरामपुर", "english": "(c) Balrampur" },
+                { "hindi": "(d) गोंडा", "english": "(d) Gonda" }
+            ],
+            "answer": { "hindi": "(c) बलरामपुर", "english": "(c) Balrampur" }
+        },
+        {
+            "question": {
+                "hindi": "12. सुरहा ताल पक्षी विहार कहाँ स्थित है?",
+                "english": "12. Where is Surha Tal Bird Sanctuary located?"
+            },
+            "options": [
+                { "hindi": "(a) बलिया", "english": "(a) Ballia" },
+                { "hindi": "(b) आजमगढ़", "english": "(b) Azamgarh" },
+                { "hindi": "(c) प्रतापगढ़", "english": "(c) Pratapgarh" },
+                { "hindi": "(d) हरदोई", "english": "(d) Hardoi" }
+            ],
+            "answer": { "hindi": "(a) बलिया", "english": "(a) Ballia" }
+        },
+        {
+            "question": {
+                "hindi": "13. प्रधानमंत्री मोदी ने 6 अगस्त 2023 को देश भर में 508 रेलवे स्टेशनों के पुनर्विकास की आधारशिला रखी, उसमें उत्तर प्रदेश के कितने रेलवे स्टेशन शामिल हैं?",
+                "english": "13. On August 6, 2023, Prime Minister Modi laid the foundation for the redevelopment of 508 railway stations across the country. How many railway stations from Uttar Pradesh are included in this?"
+            },
+            "options": [
+                { "hindi": "(a) 45", "english": "(a) 45" },
+                { "hindi": "(b) 55", "english": "(b) 55" },
+                { "hindi": "(c) 66", "english": "(c) 66" },
+                { "hindi": "(d) 75", "english": "(d) 75" }
+            ],
+            "answer": { "hindi": "(b) 55", "english": "(b) 55" }
+        },
+        {
+            "question": {
+                "hindi": "14. वर्तमान में उत्तर प्रदेश के लोकायुक्त कौन हैं?",
+                "english": "14. Who is the current Lokayukta of Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) विषंभर दयाल", "english": "(a) Vishambhar Dayal" },
+                { "hindi": "(b) संजय सिंह", "english": "(b) Sanjay Singh" },
+                { "hindi": "(c) मुर्तजा हुसैन", "english": "(c) Murtaza Hussain" },
+                { "hindi": "(d) राजेश्वर सिंह", "english": "(d) Rajeshwar Singh" }
+            ],
+            "answer": { "hindi": "(b) संजय सिंह", "english": "(b) Sanjay Singh" }
+        },
+        {
+            "question": {
+                "hindi": "15. उत्तर प्रदेश में \"दीदी कैफे\" किन शहरों में खोले जाएंगे?",
+                "english": "15. In which cities of Uttar Pradesh will \"Didi Cafe\" be opened?"
+            },
+            "options": [
+                { "hindi": "(a) 10 लाख से ज्यादा आबादी वाले शहरों में", "english": "(a) Cities with a population of more than 10 lakh" },
+                { "hindi": "(b) 10 लाख से कम आबादी वाले शहरों में", "english": "(b) Cities with a population of less than 10 lakh" },
+                { "hindi": "(c) नगर निगम वाले शहरों में", "english": "(c) Cities with municipal corporations" },
+                { "hindi": "(d) मंडल मुख्यालयों में", "english": "(d) Divisional headquarters" }
+            ],
+            "answer": { "hindi": "(a) 10 लाख से ज्यादा आबादी वाले शहरों में", "english": "(a) Cities with a population of more than 10 lakh" }
+        },
+        {
+            "question": {
+                "hindi": "16. \"पूर्व का ऑक्सफोर्ड\" किस विश्वविद्यालय को कहा जाता है?",
+                "english": "16. Which university is called the \"Oxford of the East\"?"
+            },
+            "options": [
+                { "hindi": "(a) लखनऊ विश्वविद्यालय", "english": "(a) Lucknow University" },
+                { "hindi": "(b) गोरखपुर विश्वविद्यालय", "english": "(b) Gorakhpur University" },
+                { "hindi": "(c) बनारस हिंदू विश्वविद्यालय", "english": "(c) Banaras Hindu University" },
+                { "hindi": "(d) प्रयागराज विश्वविद्यालय", "english": "(d) Prayagraj University" }
+            ],
+            "answer": { "hindi": "(d) प्रयागराज विश्वविद्यालय", "english": "(d) Prayagraj University" }
+        },
+        {
+            "question": {
+                "hindi": "17. \"हमारी बेटी उसका कल\" योजना की शुरुआत किस वर्ष हुई थी?",
+                "english": "17. In which year was the \"Hamari Beti Uska Kal\" scheme launched?"
+            },
+            "options": [
+                { "hindi": "(a) 10 दिसंबर 2012", "english": "(a) 10 Dec 2012" },
+                { "hindi": "(b) 15 दिसंबर 2015", "english": "(b) 15 Dec 2015" },
+                { "hindi": "(c) अक्टूबर 2013", "english": "(c) October 2013" },
+                { "hindi": "(d) 10 नवंबर 2012", "english": "(d) 10 Nov 2012" }
+            ],
+            "answer": { "hindi": "(a) 10 दिसंबर 2012", "english": "(a) 10 Dec 2012" }
+        },
+        {
+            "question": {
+                "hindi": "18. \"The Land of Diversity\" (विविधता की भूमि) किस जिले को कहा जाता है?",
+                "english": "18. Which district is known as \"The Land of Diversity\"?"
+            },
+            "options": [
+                { "hindi": "(a) अमेठी", "english": "(a) Amethi" },
+                { "hindi": "(b) वाराणसी", "english": "(b) Varanasi" },
+                { "hindi": "(c) इटावा", "english": "(c) Etawah" },
+                { "hindi": "(d) औरैया", "english": "(d) Auraiya" }
+            ],
+            "answer": { "hindi": "(d) औरैया", "english": "(d) Auraiya" }
+        },
+        {
+            "question": {
+                "hindi": "19. मनरेगा की मजदूरी में प्रदेश में कितने रुपये की वृद्धि की गई?",
+                "english": "19. By how many rupees has the wage under MGNREGA increased in the state?"
+            },
+            "options": [
+                { "hindi": "(a) ₹1", "english": "(a) ₹1" },
+                { "hindi": "(b) ₹7", "english": "(b) ₹7" },
+                { "hindi": "(c) ₹9", "english": "(c) ₹9" },
+                { "hindi": "(d) ₹11", "english": "(d) ₹11" }
+            ],
+            "answer": { "hindi": "(b) ₹7", "english": "(b) ₹7" }
+        },
+        {
+            "question": {
+                "hindi": "20. स्टील्थ तकनीक के लिए \"अनालक्ष्य\" (Meta-Material Surface Cloaking System - MSCs) किस IIT संस्थान ने विकसित किया?",
+                "english": "20. Which IIT institute developed \"Analakshya\" (Meta Material Surface Cloaking System - MSCs) for stealth technology?"
+            },
+            "options": [
+                { "hindi": "(a) IIT Bombay", "english": "(a) IIT Bombay" },
+                { "hindi": "(b) IIT Delhi", "english": "(b) IIT Delhi" },
+                { "hindi": "(c) IIT Kanpur", "english": "(c) IIT Kanpur" },
+                { "hindi": "(d) IIT Madras", "english": "(d) IIT Madras" }
+            ],
+            "answer": { "hindi": "(c) IIT Kanpur", "english": "(c) IIT Kanpur" }
+        },
+        {
+            "question": {
+                "hindi": "21. कई परतों वाली गाढ़ी क्रीम से बना एक संकेंद्रित मीठा उत्पाद के रूप में जाना जाता है।",
+                "english": "21. A concentrated sweetened product comprising several layers of clotted cream is known as:"
+            },
+            "options": [
+                { "hindi": "(a) छैना", "english": "(a) Chhaina" },
+                { "hindi": "(b) रबड़ी", "english": "(b) Rabri" },
+                { "hindi": "(c) खोया", "english": "(c) Khoa" },
+                { "hindi": "(d) कोलोस्ट्रम", "english": "(d) Colostrum" }
+            ],
+            "answer": { "hindi": "(b) रबड़ी", "english": "(b) Rabri" }
+        },
+        {
+            "question": {
+                "hindi": "22. भैंस के दूध में कोलोस्ट्रम (खीस) का कुल प्रोटीन कितना होता है?",
+                "english": "22. What is the total protein content in colostrum of buffalo milk?"
+            },
+            "options": [
+                { "hindi": "(a) 18.68%", "english": "(a) 18.68%" },
+                { "hindi": "(b) 21.32%", "english": "(b) 21.32%" },
+                { "hindi": "(c) 7.12%", "english": "(c) 7.12%" },
+                { "hindi": "(d) 23.8%", "english": "(d) 23.8%" }
+            ],
+            "answer": { "hindi": "(b) 21.32%", "english": "(b) 21.32%" }
+        },
+        {
+            "question": {
+                "hindi": "23. निम्नलिखित में से कौन सी एक सूअर की विदेशी नस्ल है?",
+                "english": "23. Which among the following is an exotic breed of pig?"
+            },
+            "options": [
+                { "hindi": "(a) अगोंडा गोवा", "english": "(a) Agonda Goan" },
+                { "hindi": "(b) नियांग मेधना", "english": "(b) Niang Meghna" },
+                { "hindi": "(c) टनी-वो", "english": "(c) Tany-Vo" },
+                { "hindi": "(d) हैम्पशायर", "english": "(d) Hampshire" }
+            ],
+            "answer": { "hindi": "(d) हैम्पशायर", "english": "(d) Hampshire" }
+        },
+        {
+            "question": {
+                "hindi": "24. गाय में कितने अस्थायी और गिरने वाले मोलर दांत होते हैं?",
+                "english": "24. How many temporary or deciduous molar teeth are present in cattle?"
+            },
+            "options": [
+                { "hindi": "(a) 8", "english": "(a) 8" },
+                { "hindi": "(b) 12", "english": "(b) 12" },
+                { "hindi": "(c) 0", "english": "(c) 0" },
+                { "hindi": "(d) 20", "english": "(d) 20" }
+            ],
+            "answer": { "hindi": "(c) 0", "english": "(c) 0" }
+        },
+        {
+            "question": {
+                "hindi": "25. निम्नलिखित में से प्रसिद्ध \"पंचकव्यानि\" नाम से कौन सी भैंस की नस्ल जानी जाती है?",
+                "english": "25. Which of the following breed of buffalo is famous by the name \"Panchkavyani\"?"
+            },
+            "options": [
+                { "hindi": "(a) मुर्रा", "english": "(a) Murrah" },
+                { "hindi": "(b) भदावरी", "english": "(b) Bhadawari" },
+                { "hindi": "(c) टोड़ा", "english": "(c) Toda" },
+                { "hindi": "(d) नीली-रावी", "english": "(d) Nili-Ravi" }
+            ],
+            "answer": { "hindi": "(d) नीली-रावी", "english": "(d) Nili-Ravi" }
+        },
+        {
+            "question": {
+                "hindi": "26. सही उत्तर चुनें:",
+                "english": "26. Choose the correct answer:"
+            },
+            "options": [
+                { "hindi": "(A) गिर नस्ल की गाय सबसे अच्छी भारतीय नस्ल मानी जाती है, जो अधिक दूध उत्पादन क्षमता रखती है।", "english": "(A) Gir cattle breed is the best Indian breed with high milk-yielding capacity." },
+                { "hindi": "(R) गिर गाय का उपयोग क्रॉस ब्रीडिंग प्रोग्राम में व्यापक रूप से किया जाता है।", "english": "(R) Gir cow is widely used in crossbreeding programs." }
+            ],
+            "answer": { "hindi": "(b) A और R दोनों सही हैं लेकिन R, A की सही व्याख्या नहीं है।", "english": "(b) Both A and R are correct, but R is not the correct explanation of A." }
+        },
+        {
+            "question": {
+                "hindi": "27. कोशिका विभाजन की कौन सी अवस्था में DNA प्रतिकृति (Replication) होती है?",
+                "english": "27. In which stage of cell division does DNA replication occur?"
+            },
+            "options": [
+                { "hindi": "(a) G1 चरण", "english": "(a) G1 Phase" },
+                { "hindi": "(b) S चरण", "english": "(b) S Phase" },
+                { "hindi": "(c) M चरण", "english": "(c) M Phase" },
+                { "hindi": "(d) G2 चरण", "english": "(d) G2 Phase" }
+            ],
+            "answer": { "hindi": "(b) S चरण", "english": "(b) S Phase" }
+        },
+        {
+            "question": {
+                "hindi": "28. DNA के संवर्धन (Amplification) के लिए निम्नलिखित में से कौन सी तकनीक का उपयोग किया जाता है?",
+                "english": "28. Which of the following techniques is used for DNA amplification?"
+            },
+            "options": [
+                { "hindi": "(a) HPLC", "english": "(a) HPLC" },
+                { "hindi": "(b) PCR", "english": "(b) PCR" },
+                { "hindi": "(c) TLC", "english": "(c) TLC" },
+                { "hindi": "(d) RT-PCR", "english": "(d) RT-PCR" }
+            ],
+            "answer": { "hindi": "(b) PCR", "english": "(b) PCR" }
+        },
+        {
+            "question": {
+                "hindi": "29. मीओसिस के दौरान गुणसूत्रों की वास्तविक कमी (Reduction of Chromosomes) किस उप-चरण में होती है?",
+                "english": "29. During meiosis, the actual reduction of chromosomes occurs in which sub-stage?"
+            },
+            "options": [
+                { "hindi": "(a) ऐनाफेज", "english": "(a) Anaphase" },
+                { "hindi": "(b) टेलोफेज", "english": "(b) Telophase" },
+                { "hindi": "(c) मेटाफेज", "english": "(c) Metaphase" },
+                { "hindi": "(d) प्रोफेज", "english": "(d) Prophase" }
+            ],
+            "answer": { "hindi": "(a) ऐनाफेज", "english": "(a) Anaphase" }
+        },
+        {
+            "question": {
+                "hindi": "30. डीएनए फिंगरप्रिंटिंग में उपयोग की जाने वाली तकनीक कौन सी है?",
+                "english": "30. Which of the following techniques is used for DNA fingerprinting?"
+            },
+            "options": [
+                { "hindi": "(a) TLC", "english": "(a) TLC" },
+                { "hindi": "(b) RFLP", "english": "(b) RFLP" },
+                { "hindi": "(c) HPLC", "english": "(c) HPLC" },
+                { "hindi": "(d) HPC", "english": "(d) HPC" }
+            ],
+            "answer": { "hindi": "(b) RFLP", "english": "(b) RFLP" }
+        },
+        {
+            "question": {
+                "hindi": "31. निम्नलिखित में से कौन सा रस्ट (गेरुई) अपने जीवन चक्र का स्वायत्त स्वभाव रखता है?",
+                "english": "31. Which of the following rusts has an autoecious nature in its life cycle?"
+            },
+            "options": [
+                { "hindi": "(a) गेहूं का काला रस्ट", "english": "(a) Black Stem Rust of Wheat" },
+                { "hindi": "(b) गेहूं का भूरा रस्ट", "english": "(b) Brown Leaf Rust of Wheat" },
+                { "hindi": "(c) बाजरा का रस्ट", "english": "(c) Rust of Bajra" },
+                { "hindi": "(d) अलसी का रस्ट", "english": "(d) Rust of Linseed" }
+            ],
+            "answer": { "hindi": "(d) अलसी का रस्ट", "english": "(d) Rust of Linseed" }
+        },
+        {
+            "question": {
+                "hindi": "32. बोर्डो मिश्रण का उपयोग कवक (फंगस) के खिलाफ फस्प्रे करने के लिए किया जाता है जब यह कैसा होता है?",
+                "english": "32. Bordeaux mixture is used for spraying against fungi when it is:"
+            },
+            "options": [
+                { "hindi": "(a) अत्यधिक अम्लीय", "english": "(a) Highly acidic" },
+                { "hindi": "(b) अत्यधिक क्षारीय", "english": "(b) Highly alkaline" },
+                { "hindi": "(c) हल्का क्षारीय", "english": "(c) Slightly alkaline" },
+                { "hindi": "(d) हल्का अम्लीय", "english": "(d) Slightly acidic" }
+            ],
+            "answer": { "hindi": "(c) हल्का क्षारीय", "english": "(c) Slightly alkaline" }
+        },
+        {
+            "question": {
+                "hindi": "33. निम्नलिखित में से किस फसल में गर्म पानी के उपचार (HWT) का उपयोग सुप्तावस्था (Dormancy) को तोड़ने के लिए किया जाता है?",
+                "english": "33. In which of the following crops is hot water treatment used to break dormancy?"
+            },
+            "options": [
+                { "hindi": "(a) कपास", "english": "(a) Cotton" },
+                { "hindi": "(b) धान", "english": "(b) Paddy" },
+                { "hindi": "(c) मसूर", "english": "(c) Lentil" },
+                { "hindi": "(d) गेहूं", "english": "(d) Wheat" }
+            ],
+            "answer": { "hindi": "(c) मसूर", "english": "(c) Lentil" }
+        },
+        {
+            "question": {
+                "hindi": "34. हरियाली योजना निम्नलिखित में से किसके साथ संबंधित है?",
+                "english": "34. Hariyali Yojana is related to which among the following practices?"
+            },
+            "options": [
+                { "hindi": "(a) वायु प्रबंधन", "english": "(a) Air Management" },
+                { "hindi": "(b) कृषि प्रबंधन", "english": "(b) Crop Management" },
+                { "hindi": "(c) जल प्रबंधन", "english": "(c) Water Management" },
+                { "hindi": "(d) वन प्रबंधन", "english": "(d) Forest Management" }
+            ],
+            "answer": { "hindi": "(d) वन प्रबंधन", "english": "(d) Forest Management" }
+        },
+        {
+            "question": {
+                "hindi": "35. प्याज के छोटे बल्ब (बीज मानक) का औसत व्यास कम से कम कितना होना चाहिए?",
+                "english": "35. The average diameter of the bulblet of onion (seed standard) shall not be less than:"
+            },
+            "options": [
+                { "hindi": "(a) 2.5 सेमी", "english": "(a) 2.5 cm" },
+                { "hindi": "(b) 2 सेमी", "english": "(b) 2 cm" },
+                { "hindi": "(c) 3.5 सेमी", "english": "(c) 3.5 cm" },
+                { "hindi": "(d) 4 सेमी", "english": "(d) 4 cm" }
+            ],
+            "answer": { "hindi": "(b) 2 सेमी", "english": "(b) 2 cm" }
+        },
+        {
+            "question": {
+                "hindi": "36. MAK-12 किस फसल की एक प्रजाति है?",
+                "english": "36. MAK-12 is a variety of which crop?"
+            },
+            "options": [
+                { "hindi": "(a) मेडिकैगो", "english": "(a) Medicago" },
+                { "hindi": "(b) बी.टी. कपास", "english": "(b) B.T. Cotton" },
+                { "hindi": "(c) हाइब्रिड कपास", "english": "(c) Hybrid Cotton" },
+                { "hindi": "(d) टमाटर", "english": "(d) Tomato" }
+            ],
+            "answer": { "hindi": "(b) बी.टी. कपास", "english": "(b) B.T. Cotton" }
+        },
+        {
+            "question": {
+                "hindi": "37. भारतीय रिजर्व बैंक का राष्ट्रीयकरण किस वर्ष हुआ?",
+                "english": "37. In which year was the Reserve Bank of India nationalized?"
+            },
+            "options": [
+                { "hindi": "(a) 1958", "english": "(a) 1958" },
+                { "hindi": "(b) 1949", "english": "(b) 1949" },
+                { "hindi": "(c) 1967", "english": "(c) 1967" },
+                { "hindi": "(d) 1935", "english": "(d) 1935" }
+            ],
+            "answer": { "hindi": "(b) 1949", "english": "(b) 1949" }
+        },
+        {
+            "question": {
+                "hindi": "38. जब किसी वस्तु की मांग वक्र X-अक्ष के समानांतर होती है, तो उस वस्तु की मांग लोच (Elasticity) कितनी होती है?",
+                "english": "38. When the demand curve of a commodity is parallel to the X-axis, then the elasticity of that commodity is:"
+            },
+            "options": [
+                { "hindi": "(a) अधूरी", "english": "(a) Incomplete" },
+                { "hindi": "(b) शून्य", "english": "(b) Zero" },
+                { "hindi": "(c) पूर्ण", "english": "(c) Complete" },
+                { "hindi": "(d) एक", "english": "(d) One" }
+            ],
+            "answer": { "hindi": "(c) पूर्ण", "english": "(c) Complete" }
+        },
+        {
+            "question": {
+                "hindi": "39. \"नेशनल डिमॉन्स्ट्रेशन प्रोग्राम\" किस वर्ष शुरू किया गया था?",
+                "english": "39. The \"National Demonstration Programme\" was started in which year?"
+            },
+            "options": [
+                { "hindi": "(a) 1965", "english": "(a) 1965" },
+                { "hindi": "(b) 1971", "english": "(b) 1971" },
+                { "hindi": "(c) 1961", "english": "(c) 1961" },
+                { "hindi": "(d) 1986", "english": "(d) 1986" }
+            ],
+            "answer": { "hindi": "(a) 1965", "english": "(a) 1965" }
+        },
+        {
+            "question": {
+                "hindi": "40. निम्नलिखित में से कौन सा जोड़ा भारतीय/विदेशी कार्प मछलियों और उनके वैज्ञानिक नामों से संबंधित है?",
+                "english": "40. Which of the following pairs is related to Indian/exotic carps and their scientific names?"
+            },
+            "options": [
+                { "hindi": "(a) म्रिगल - क्लिंबिंग मिगल", "english": "(a) Mrigal - *Cirrhinus cirrhosus*" },
+                { "hindi": "(b) कॉमन कार्प - साइप्रिनस कार्पियो", "english": "(b) Common carp - *Cyprinus carpio*" },
+                { "hindi": "(c) पिगमाउथ कार्प - सिल्वर स्प्रिंग", "english": "(c) Pigmouth Carp - *Labeo rohita*" },
+                { "hindi": "(d) ये सभी", "english": "(d) All of these" }
+            ],
+            "answer": { "hindi": "(a) और (b) सही हैं।", "english": "(a) and (b) are correct." }
+        },
+        {
+            "question": {
+                "hindi": "41. निम्न में से कौन सा राज्य और उसकी राज्य मछली के संबंध में गलत जोड़ा गया है?",
+                "english": "41. Which of the following pairs is incorrectly matched regarding states and their state fish?"
+            },
+            "options": [
+                { "hindi": "(a) पश्चिम बंगाल - टेनुअलोसा हिल्सा", "english": "(a) West Bengal - *Tenualosa ilisha*" },
+                { "hindi": "(b) मणिपुर - क्लेरियस बैट्राकस", "english": "(b) Manipur - *Clarias batrachus*" },
+                { "hindi": "(c) उत्तर प्रदेश - चितला चितला", "english": "(c) Uttar Pradesh - *Chitala chitala*" },
+                { "hindi": "(d) केरल - एट्रोप्लस सुराटेंसिस", "english": "(d) Kerala - *Etroplus suratensis*" }
+            ],
+            "answer": { "hindi": "(d) सभी जोड़े सही हैं", "english": "(d) All pairs are correct" }
+        },
+        {
+            "question": {
+                "hindi": "42. निम्नलिखित में से कौन सा कथन मत्स्य पालन (Fisheries) से संबंधित सही है?",
+                "english": "42. Which of the following statements is correct regarding fisheries?"
+            },
+            "options": [
+                { "hindi": "(a) विश्व मत्स्य केंद्र मलेशिया में स्थित है।", "english": "(a) The World Fish Center is located in Malaysia." },
+                { "hindi": "(b) फ्राई (Fry) का आकार 5-8 सेमी होता है।", "english": "(b) The size of fry is 5-8 cm." },
+                { "hindi": "(c) विश्व ट्यूना दिवस पहली बार 2 मई 2015 को मनाया गया था।", "english": "(c) World Tuna Day was first celebrated on 2 May 2015." },
+                { "hindi": "(d) ये सभी सही हैं।", "english": "(d) All of these are correct." }
+            ],
+            "answer": { "hindi": "(d) ये सभी सही हैं", "english": "(d) All of these are correct." }
+        },
+        {
+            "question": {
+                "hindi": "43. मछलियों के कृत्रिम प्रजनन (Induced Breeding) के लिए सबसे अच्छा जैव-प्रौद्योगिकी उपकरण कौन सा हार्मोन है?",
+                "english": "43. Which hormone is the best biotechnology tool for induced breeding in fish?"
+            },
+            "options": [
+                { "hindi": "(a) गोनाडोट्रॉपिन रिलीजिंग हार्मोन", "english": "(a) Gonadotropin Releasing Hormone (GnRH)" },
+                { "hindi": "(b) फॉलिक्युलर हार्मोन", "english": "(b) Follicular Hormone" },
+                { "hindi": "(c) गोनैडोट्रोपिन रिलैक्स हार्मोन", "english": "(c) Gonadotropin Relax Hormone" },
+                { "hindi": "(d) गोनाडोट्रॉपिन रिलीज हार्मोन", "english": "(d) Gonadotropin Release Hormone" }
+            ],
+            "answer": { "hindi": "(a) गोनाडोट्रॉपिन रिलीजिंग हार्मोन", "english": "(a) Gonadotropin Releasing Hormone (GnRH)" }
+        },
+        {
+            "question": {
+                "hindi": "44. वाणिज्यिक कृषि (Commercial Farming) हमेशा निर्वाह कृषि (Subsistence Farming) से किन तरीकों से भिन्न होती है?",
+                "english": "44. How does commercial farming always differ from subsistence farming?"
+            },
+            "options": [
+                { "hindi": "1. फसल का चयन", "english": "1. Selection of Crops" },
+                { "hindi": "2. आधुनिक कृषि इनपुट का उपयोग", "english": "2. Use of Modern Agricultural Inputs" },
+                { "hindi": "3. खेत का आकार", "english": "3. Farm Size" },
+                { "hindi": "4. बाजार में कृषि उपज की बिक्री", "english": "4. Sale of Farm Produce in the Market" }
+            ],
+            "answer": { "hindi": "(d) 1, 2, 3 और 4", "english": "(d) 1, 2, 3, and 4" }
+        },
+        {
+            "question": {
+                "hindi": "45. सूची-1 (फसल) को सूची-2 (स्थितियाँ) से मिलाइए।",
+                "english": "45. Match List-1 (Crops) with List-2 (Conditions)."
+            },
+            "options": [
+                { "hindi": "(A) चावल", "english": "(A) Rice" },
+                { "hindi": "(B) गेहूँ", "english": "(B) Wheat" },
+                { "hindi": "(C) बाजरा", "english": "(C) Pearl Millet" },
+                { "hindi": "(D) मक्का", "english": "(D) Maize" }
+            ],
+            "answer": { "hindi": "(c) A-ii, B-i, C-iv, D-iii", "english": "(c) A-ii, B-i, C-iv, D-iii" }
+        },
+        {
+            "question": {
+                "hindi": "46. निम्नलिखित में से खरपतवार नियंत्रण की महत्वपूर्ण अवधि के लिए सही जोड़ा कौन सा है?",
+                "english": "46. Which of the following is correctly matched for the critical period of weed control?"
+            },
+            "options": [
+                { "hindi": "(1) चावल", "english": "(1) Rice" },
+                { "hindi": "(2) गेहूँ", "english": "(2) Wheat" },
+                { "hindi": "(3) मूंगफली", "english": "(3) Groundnut" },
+                { "hindi": "(4) गन्ना", "english": "(4) Sugarcane" }
+            ],
+            "answer": { "hindi": "(a) 1-A, 2-B, 3-C, 4-D", "english": "(a) 1-A, 2-B, 3-C, 4-D" }
+        },
+        {
+            "question": {
+                "hindi": "47. एकीकृत खरपतवार प्रबंधन (IWM) से संबंधित निम्नलिखित में से कौन सा कथन सही है?",
+                "english": "47. Which of the following statements are correct regarding Integrated Weed Management (IWM)?"
+            },
+            "options": [
+                { "hindi": "1. IWM उच्च इनपुट स्तरों पर दो विधियों का संयोजन है।", "english": "1. IWM combines two methods at high input levels." },
+                { "hindi": "2. यह खरपतवार प्रतिस्पर्धा को फसल के पक्ष में बदलता है।", "english": "2. It shifts crop-weed competition in favor of crops." },
+                { "hindi": "3. यह उच्च फसल तीव्रता वाले खेतों के लिए उपयुक्त नहीं है।", "english": "3. It is not suitable for high cropping intensity fields." },
+                { "hindi": "4. IWM दृष्टिकोण कम शुद्ध लाभ देता है।", "english": "4. IWM gives lower net returns." }
+            ],
+            "answer": { "hindi": "(b) 2 और 3 सही हैं।", "english": "(b) Only statements 2 and 3 are correct." }
+        },
+        {
+            "question": {
+                "hindi": "48. उत्तर प्रदेश में दुग्ध उत्पादों का व्यापार किस ट्रेडमार्क के तहत किया जाता है?",
+                "english": "48. Under which trademark are milk products traded in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) मदर डेयरी", "english": "(a) Mother Dairy" },
+                { "hindi": "(b) अमूल", "english": "(b) Amul" },
+                { "hindi": "(c) पराग", "english": "(c) Parag" },
+                { "hindi": "(d) सुधा", "english": "(d) Sudha" }
+            ],
+            "answer": { "hindi": "(c) पराग", "english": "(c) Parag" }
+        },
+        {
+            "question": {
+                "hindi": "49. ई-नाम (E-NAM) के तहत प्रत्येक बाजार को कितनी वित्तीय सहायता प्रदान की जाती है?",
+                "english": "49. How much financial assistance is provided to each market under E-NAM?"
+            },
+            "options": [
+                { "hindi": "(a) 10 लाख रुपये", "english": "(a) 10 lakh" },
+                { "hindi": "(b) 20 लाख रुपये", "english": "(b) 20 lakh" },
+                { "hindi": "(c) 75 लाख रुपये", "english": "(c) 75 lakh" },
+                { "hindi": "(d) 50 लाख रुपये", "english": "(d) 50 lakh" }
+            ],
+            "answer": { "hindi": "(c) 75 लाख रुपये", "english": "(c) 75 lakh" }
+        },
+        {
+            "question": {
+                "hindi": "50. पादप प्रजनन की सबसे तेज़ विधि कौन-सी है?",
+                "english": "50. What is the fastest method of plant breeding?"
+            },
+            "options": [
+                { "hindi": "(a) परिचय", "english": "(a) Introduction" },
+                { "hindi": "(b) संकरण", "english": "(b) Hybridization" },
+                { "hindi": "(c) उत्परिवर्तन प्रजनन", "english": "(c) Mutation Breeding" },
+                { "hindi": "(d) बहुभ्रूणता", "english": "(d) Polyembryony" }
+            ],
+            "answer": { "hindi": "(c) उत्परिवर्तन प्रजनन", "english": "(c) Mutation Breeding" }
+        },
+        {
+            "question": {
+                "hindi": "51. पशुपालन और पादप प्रजनन का कार्यक्रम किसका उदाहरण हैं?",
+                "english": "51. Animal husbandry and plant breeding programmes are examples of:"
+            },
+            "options": [
+                { "hindi": "(a) उत्क्रमण विकास", "english": "(a) Reverse evolution" },
+                { "hindi": "(b) कृत्रिम चयन", "english": "(b) Artificial selection" },
+                { "hindi": "(c) उत्परिवर्तन", "english": "(c) Mutation" },
+                { "hindi": "(d) प्राकृतिक चयन", "english": "(d) Natural selection" }
+            ],
+            "answer": { "hindi": "(b) कृत्रिम चयन", "english": "(b) Artificial selection" }
+        },
+        {
+            "question": {
+                "hindi": "52. निम्नलिखित में से कौन-सी आम की संकर किस्म नहीं है?",
+                "english": "52. Which of the following is not a hybrid variety of mango?"
+            },
+            "options": [
+                { "hindi": "(a) रत्ना", "english": "(a) Ratna" },
+                { "hindi": "(b) हिमसागर", "english": "(b) Himsagar" },
+                { "hindi": "(c) नीलफांसो", "english": "(c) Neelphonso" },
+                { "hindi": "(d) अंबिका", "english": "(d) Ambika" }
+            ],
+            "answer": { "hindi": "(b) हिमसागर", "english": "(b) Himsagar" }
+        },
+        {
+            "question": {
+                "hindi": "53. निम्नलिखित में से कौन-सी मृदा पुनः पूर्ति विधि है?",
+                "english": "53. Which of the following is a soil replenishment method?"
+            },
+            "options": [
+                { "hindi": "(a) फसल चक्रीकरण", "english": "(a) Crop rotation" },
+                { "hindi": "(b) वर्मी कम्पोस्टिंग", "english": "(b) Vermicomposting" },
+                { "hindi": "(c) फलीदार पौधों की खेती", "english": "(c) Growing leguminous plants" },
+                { "hindi": "(d) उपरोक्त सभी", "english": "(d) All of these" }
+            ],
+            "answer": { "hindi": "(d) उपरोक्त सभी", "english": "(d) All of these" }
+        },
+        {
+            "question": {
+                "hindi": "54. पवन अपरदन में, वे कण जिनका व्यास लवणोत्सारण (Saltation) द्वारा स्थानांतरित होता है, उनका आकार क्या होता है?",
+                "english": "54. In wind erosion, what is the diameter of particles moved by saltation?"
+            },
+            "options": [
+                { "hindi": "(a) 0.1 - 0.5 मि.मी.", "english": "(a) 0.1 - 0.5 mm" },
+                { "hindi": "(b) 0.5 - 2 मि.मी.", "english": "(b) 0.5 - 2 mm" },
+                { "hindi": "(c) 1 - 2 मि.मी.", "english": "(c) 1 - 2 mm" },
+                { "hindi": "(d) 2 मि.मी. से अधिक", "english": "(d) More than 2 mm" }
+            ],
+            "answer": { "hindi": "(a) 0.1 - 0.5 मि.मी.", "english": "(a) 0.1 - 0.5 mm" }
+        },
+        {
+            "question": {
+                "hindi": "55. उच्च वर्षा वाले क्षेत्रों में, जहां गीले और सूखे मौसम की अवधियाँ होती हैं, वहां बेस और सिलिका के रिसाव के कारण कौन-सी मिट्टी बनती है?",
+                "english": "55. Which soil is formed due to leaching of base and silica in areas receiving high rainfall with alternating wet and dry spells?"
+            },
+            "options": [
+                { "hindi": "(a) वन मृदा", "english": "(a) Forest soil" },
+                { "hindi": "(b) लाल मिट्टी", "english": "(b) Red soil" },
+                { "hindi": "(c) जलोढ़ मिट्टी", "english": "(c) Alluvial soil" },
+                { "hindi": "(d) लेटराइट मिट्टी", "english": "(d) Laterite soil" }
+            ],
+            "answer": { "hindi": "(d) लेटराइट मिट्टी", "english": "(d) Laterite soil" }
+        },
+        {
+            "question": {
+                "hindi": "56. कृषि अर्थशास्त्र के जनक कौन माने जाते हैं?",
+                "english": "56. Who is considered the father of agricultural economics?"
+            },
+            "options": [
+                { "hindi": "(a) नॉर्मन अर्नेस्ट बोरलॉग", "english": "(a) Norman Ernest Borlaug" },
+                { "hindi": "(b) मेसन वॉन", "english": "(b) Mason Vaugh" },
+                { "hindi": "(c) पिएत्रो डी क्रेसेंज़ी", "english": "(c) Pietro De Crescenzi" },
+                { "hindi": "(d) हेनरी चार्ल्स टेलर", "english": "(d) Henry Charles Taylor" }
+            ],
+            "answer": { "hindi": "(d) हेनरी चार्ल्स टेलर", "english": "(d) Henry Charles Taylor" }
+        },
+        {
+            "question": {
+                "hindi": "57. गायों में वीर्य संचरण (इनसेमिनेशन) का सबसे अच्छा समय कौन-सा होता है?",
+                "english": "57. What is the best time for insemination in cows?"
+            },
+            "options": [
+                { "hindi": "(a) प्रोएस्ट्रस", "english": "(a) Proestrus" },
+                { "hindi": "(b) मिडएस्ट्रस", "english": "(b) Midestrous" },
+                { "hindi": "(c) मेटएस्ट्रस", "english": "(c) Metestrous" },
+                { "hindi": "(d) डायएस्ट्रस", "english": "(d) Diestrous" }
+            ],
+            "answer": { "hindi": "(d) डायएस्ट्रस", "english": "(d) Diestrous" }
+        },
+        {
+            "question": {
+                "hindi": "58. क्षेत्र की परिस्थितियों में रोग के पैटर्न का अध्ययन क्या कहलाता है?",
+                "english": "58. The study of disease patterns in field conditions is called?"
+            },
+            "options": [
+                { "hindi": "(a) एपिडेमियोलॉजी", "english": "(a) Epidemiology" },
+                { "hindi": "(b) एटियोलॉजी", "english": "(b) Etiology" },
+                { "hindi": "(c) पेलियोपेडोलॉजी", "english": "(c) Paleopedology" },
+                { "hindi": "(d) एडाफोलॉजी", "english": "(d) Edaphology" }
+            ],
+            "answer": { "hindi": "(a) एपिडेमियोलॉजी", "english": "(a) Epidemiology" }
+        },
+        {
+            "question": {
+                "hindi": "59. छोटे किसानों की भूमि जोत का आकार कितना होता है?",
+                "english": "59. What is the land holding size of small-scale farmers?"
+            },
+            "options": [
+                { "hindi": "(a) 2-4 हेक्टेयर", "english": "(a) 2-4 hectare" },
+                { "hindi": "(b) 1-2 हेक्टेयर", "english": "(b) 1-2 hectare" },
+                { "hindi": "(c) 1 हेक्टेयर", "english": "(c) 1 hectare" },
+                { "hindi": "(d) 3-10 हेक्टेयर", "english": "(d) 3-10 hectare" }
+            ],
+            "answer": { "hindi": "(b) 1-2 हेक्टेयर", "english": "(b) 1-2 hectare" }
+        },
+        {
+            "question": {
+                "hindi": "60. निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?",
+                "english": "60. Which of the following pairs is correctly matched?"
+            },
+            "options": [
+                { "hindi": "(a) लाल मिट्टी - कैल्शियम सामग्री", "english": "(a) Red soil - Calcium content" },
+                { "hindi": "(b) क्षारीय मिट्टी - pH 9", "english": "(b) Alkali soil - pH 9" },
+                { "hindi": "(c) काली मिट्टी - काओलिनाइट से समृद्ध", "english": "(c) Black soil - rich in kaolinite" },
+                { "hindi": "(d) लेटराइट मिट्टी - pH 8", "english": "(d) Laterite soil - Rich in Kaolinite" }
+            ],
+            "answer": { "hindi": "(b) क्षारीय मिट्टी - pH 9", "english": "(b) Alkali soil - pH 9" }
+        },
+        {
+            "question": {
+                "hindi": "61. मालवीय जनप्रिय किस फसल की एक किस्म है?",
+                "english": "61. Malviya Janpriya is the variety of which crop?"
+            },
+            "options": [
+                { "hindi": "(a) धान", "english": "(a) Rice" },
+                { "hindi": "(b) सोयाबीन", "english": "(b) Soybean" },
+                { "hindi": "(c) मूंग", "english": "(c) Moong" },
+                { "hindi": "(d) चना", "english": "(d) Gram" }
+            ],
+            "answer": { "hindi": "(c) मूंग", "english": "(c) Moong" }
+        },
+        {
+            "question": {
+                "hindi": "62. हवा और पानी दोनों के संयोजन से होने वाले अपरदन को क्या कहा जाता है?",
+                "english": "62. Erosion by the combination of both wind and water is known as:"
+            },
+            "options": [
+                { "hindi": "(a) सतही सरकाव", "english": "(a) Surface creep" },
+                { "hindi": "(b) झुलसना", "english": "(b) Scalding" },
+                { "hindi": "(c) उच्छलन", "english": "(c) Saltation" },
+                { "hindi": "(d) निलंबन", "english": "(d) Suspension" }
+            ],
+            "answer": { "hindi": "(b) झुलसना", "english": "(b) Scalding" }
+        },
+        {
+            "question": {
+                "hindi": "63. धान में लगी सुप्तता (Dormancy) को तोड़ने के लिए क्या उपयोग किया जाता है?",
+                "english": "63. Dormancy in paddy can be broken by:"
+            },
+            "options": [
+                { "hindi": "(a) HNO₃", "english": "(a) HNO₃" },
+                { "hindi": "(b) KNO₃", "english": "(b) KNO₃" },
+                { "hindi": "(c) HNO₃ और KNO₃ दोनों", "english": "(c) HNO₃ & KNO₃ both" },
+                { "hindi": "(d) थायोयूरिया", "english": "(d) Thiourea" }
+            ],
+            "answer": { "hindi": "(c) HNO₃ और KNO₃ दोनों", "english": "(c) HNO₃ & KNO₃ both" }
+        },
+        {
+            "question": {
+                "hindi": "64. धान में भूसी (Husk) का प्रतिशत अनुमानतः कितना होता है?",
+                "english": "64. What is the approximate percentage of husk in paddy?"
+            },
+            "options": [
+                { "hindi": "(a) 15%", "english": "(a) 15%" },
+                { "hindi": "(b) 20%", "english": "(b) 20%" },
+                { "hindi": "(c) 25%", "english": "(c) 25%" },
+                { "hindi": "(d) 35%", "english": "(d) 35%" }
+            ],
+            "answer": { "hindi": "(c) 25%", "english": "(c) 25%" }
+        },
+        {
+            "question": {
+                "hindi": "65. निम्नलिखित में से मक्के की कौन-सी प्रजाति आमतौर पर भारत में उगाई जाती है?",
+                "english": "65. Which of the following species of maize is commonly cultivated in India?"
+            },
+            "options": [
+                { "hindi": "(a) डेंट कॉर्न", "english": "(a) Dent corn" },
+                { "hindi": "(b) स्वीट कॉर्न", "english": "(b) Sweet corn" },
+                { "hindi": "(c) पॉपकॉर्न", "english": "(c) Popcorn" },
+                { "hindi": "(d) फ्लिंट मक्का", "english": "(d) Flint corn" }
+            ],
+            "answer": { "hindi": "(d) फ्लिंट मक्का", "english": "(d) Flint corn" }
+        },
+        {
+            "question": {
+                "hindi": "66. प्रकाश-संश्लेषण में प्रयुक्त सौर विकिरण का प्रतिशत कितना होता है?",
+                "english": "66. What is the percentage of solar radiation used in photosynthesis?"
+            },
+            "options": [
+                { "hindi": "(a) 4%", "english": "(a) 4%" },
+                { "hindi": "(b) 5%", "english": "(b) 5%" },
+                { "hindi": "(c) 10%", "english": "(c) 10%" },
+                { "hindi": "(d) 12%", "english": "(d) 12%" }
+            ],
+            "answer": { "hindi": "(a) 4%", "english": "(a) 4%" }
+        },
+        {
+            "question": {
+                "hindi": "67. प्रकाश-संश्लेषण की प्रकाश अभिक्रिया कैल्विन चक्र को क्या प्रदान करती है?",
+                "english": "67. The light reactions of photosynthesis supply the Calvin cycle with:"
+            },
+            "options": [
+                { "hindi": "(a) प्रकाश ऊर्जा", "english": "(a) Light energy" },
+                { "hindi": "(b) H₂O और NADPH", "english": "(b) H₂O and NADPH" },
+                { "hindi": "(c) ATP और NADPH", "english": "(c) ATP and NADPH" },
+                { "hindi": "(d) O₂ और ATP", "english": "(d) O₂ and ATP" }
+            ],
+            "answer": { "hindi": "(c) ATP और NADPH", "english": "(c) ATP and NADPH" }
+        },
+        {
+            "question": {
+                "hindi": "68. अधिकतम प्रकाश-संश्लेषण किस प्रकाश में होता है?",
+                "english": "68. Maximum photosynthesis takes place in:"
+            },
+            "options": [
+                { "hindi": "(a) श्वेत प्रकाश", "english": "(a) White light" },
+                { "hindi": "(b) बैंगनी प्रकाश", "english": "(b) Violet light" },
+                { "hindi": "(c) नीला प्रकाश", "english": "(c) Blue light" },
+                { "hindi": "(d) हरा प्रकाश", "english": "(d) Green light" }
+            ],
+            "answer": { "hindi": "(a) श्वेत प्रकाश", "english": "(a) White light" }
+        },
+        {
+            "question": {
+                "hindi": "69. मृदा स्वास्थ्य कार्ड कितने मृदा पोषक तत्वों के मापदंडों की जानकारी देता है?",
+                "english": "69. The soil health card provides information on how many soil nutrient parameters?"
+            },
+            "options": [
+                { "hindi": "(a) 10", "english": "(a) 10" },
+                { "hindi": "(b) 11", "english": "(b) 11" },
+                { "hindi": "(c) 12", "english": "(c) 12" },
+                { "hindi": "(d) 15", "english": "(d) 15" }
+            ],
+            "answer": { "hindi": "(c) 12", "english": "(c) 12" }
+        },
+        {
+            "question": {
+                "hindi": "70. अल्कोहल विधि का प्रयोग किस प्रकार के मृदा गुण का पता लगाने के लिए किया जाता है?",
+                "english": "70. The alcohol method is used to find which type of soil property?"
+            },
+            "options": [
+                { "hindi": "(a) आयतन घनत्व", "english": "(a) Bulk density" },
+                { "hindi": "(b) विशिष्ट गुरुत्व", "english": "(b) Specific gravity" },
+                { "hindi": "(c) मृदा घनत्व", "english": "(c) Dry density" },
+                { "hindi": "(d) जल सामग्री", "english": "(d) Water content" }
+            ],
+            "answer": { "hindi": "(d) जल सामग्री", "english": "(d) Water content" }
+        },
+        {
+            "question": {
+                "hindi": "71. बर्फ की क्रिया के कारण होने वाली अपरदन प्रक्रिया को क्या कहा जाता है?",
+                "english": "71. The process of erosion caused by the action of snow is called:"
+            },
+            "options": [
+                { "hindi": "(a) जैव अपरदन", "english": "(a) Bio-erosion" },
+                { "hindi": "(b) अवसादन", "english": "(b) Sedimentation" },
+                { "hindi": "(c) मोरेन निर्माण", "english": "(c) Morine formation" },
+                { "hindi": "(d) निवेशन", "english": "(d) Nivation" }
+            ],
+            "answer": { "hindi": "(d) निवेशन", "english": "(d) Nivation" }
+        },
+        {
+            "question": {
+                "hindi": "72. निम्नलिखित में से कौन-सा अपरदन उंगली जैसी संरचनाओं की उपस्थिति से पहचाना जाता है?",
+                "english": "72. Which of the following erosion is characterized by the presence of finger-like structures?"
+            },
+            "options": [
+                { "hindi": "(a) स्प्लैश अपरदन", "english": "(a) Splash erosion" },
+                { "hindi": "(b) गली अपरदन", "english": "(b) Gully erosion" },
+                { "hindi": "(c) शीट अपरदन", "english": "(c) Sheet erosion" },
+                { "hindi": "(d) रिल अपरदन", "english": "(d) Rill erosion" }
+            ],
+            "answer": { "hindi": "(b) गली अपरदन", "english": "(b) Gully erosion" }
+        },
+        {
+            "question": {
+                "hindi": "73. गहरी खाइयों (रवाइन्स) का निर्माण किस अपरदन की उन्नत अवस्था में होता है?",
+                "english": "73. Ravines in the advanced stage of which erosion?"
+            },
+            "options": [
+                { "hindi": "(a) पिल अपरदन", "english": "(a) Pill erosion" },
+                { "hindi": "(b) गली अपरदन", "english": "(b) Gully erosion" },
+                { "hindi": "(c) परत अपरदन", "english": "(c) Sheet erosion" },
+                { "hindi": "(d) स्प्लैश अपरदन", "english": "(d) Splash erosion" }
+            ],
+            "answer": { "hindi": "(b) गली अपरदन", "english": "(b) Gully erosion" }
+        },
+        {
+            "question": {
+                "hindi": "74. रेशम का कीड़ा किसके द्वारा अपना भोजन ढूंढ सकता है?",
+                "english": "74. The silkworm can find its food by:"
+            },
+            "options": [
+                { "hindi": "(a) गंध", "english": "(a) Smell" },
+                { "hindi": "(b) ध्वनि", "english": "(b) Sound" },
+                { "hindi": "(c) रंग", "english": "(c) Color" },
+                { "hindi": "(d) उपरोक्त सभी", "english": "(d) All of the above" }
+            ],
+            "answer": { "hindi": "(a) गंध", "english": "(a) Smell" }
+        },
+        {
+            "question": {
+                "hindi": "75. नवजात मछलियों को क्या कहा जाता है?",
+                "english": "75. The newly hatched fish are called:"
+            },
+            "options": [
+                { "hindi": "(a) निम्फ", "english": "(a) Nymph" },
+                { "hindi": "(b) प्यूपा", "english": "(b) Pupa" },
+                { "hindi": "(c) फ्राई", "english": "(c) Fry" },
+                { "hindi": "(d) लार्वा", "english": "(d) Larva" }
+            ],
+            "answer": { "hindi": "(c) फ्राई", "english": "(c) Fry" }
+        },
+        {
+            "question": {
+                "hindi": "76. सबसे जहरीली मछली कौन-सी होती है?",
+                "english": "76. What is the most poisonous fish?"
+            },
+            "options": [
+                { "hindi": "(a) पफर मछली", "english": "(a) Puffer fish" },
+                { "hindi": "(b) पोर्कुपाइन मछली", "english": "(b) Porcupine fish" },
+                { "hindi": "(c) पिरान्हा", "english": "(c) Piranha" },
+                { "hindi": "(d) एंगएंलर मछली", "english": "(d) Angler fish" }
+            ],
+            "answer": { "hindi": "(a) पफर मछली", "english": "(a) Puffer fish" }
+        },
+        {
+            "question": {
+                "hindi": "77. निम्न में से किस फसल को अन्य नाम \"केनाफ\" से जाना जाता है?",
+                "english": "77. Which one of the following crops is otherwise known as \"Kenaf\"?"
+            },
+            "options": [
+                { "hindi": "(a) मेस्ता", "english": "(a) Mesta" },
+                { "hindi": "(b) सनहेम्प", "english": "(b) Sunhemp" },
+                { "hindi": "(c) जूट", "english": "(c) Jute" },
+                { "hindi": "(d) कपास", "english": "(d) Cotton" }
+            ],
+            "answer": { "hindi": "(a) मेस्ता", "english": "(a) Mesta" }
+        },
+        {
+            "question": {
+                "hindi": "78. गेहूँ के बीज के आदर्श अंकुरण के लिए इष्टतम तापमान कितना होता है?",
+                "english": "78. The optimum temperature for ideal germination of wheat seed is:"
+            },
+            "options": [
+                { "hindi": "(a) 10-15°C", "english": "(a) 10-15°C" },
+                { "hindi": "(b) 15-20°C", "english": "(b) 15-20°C" },
+                { "hindi": "(c) 20-25°C", "english": "(c) 20-25°C" },
+                { "hindi": "(d) 25-30°C", "english": "(d) 25-30°C" }
+            ],
+            "answer": { "hindi": "(c) 20-25°C", "english": "(c) 20-25°C" }
+        },
+        {
+            "question": {
+                "hindi": "79. निम्नलिखित में से कौन सा विकास शून्य जुताई (Zero Tillage) की सफलता में सहायक रहा है?",
+                "english": "79. Which of the following developments has helped in the success of zero tillage?"
+            },
+            "options": [
+                { "hindi": "(a) कीटनाशी", "english": "(a) Insecticide" },
+                { "hindi": "(b) खरपतवारनाशी", "english": "(b) Herbicide" },
+                { "hindi": "(c) कवकनाशी", "english": "(c) Fungicide" },
+                { "hindi": "(d) जीवाणुनाशी", "english": "(d) Bactericide" }
+            ],
+            "answer": { "hindi": "(b) खरपतवारनाशी", "english": "(b) Herbicide" }
+        },
+        {
+            "question": {
+                "hindi": "80. LEISA किससे संबंधित है?",
+                "english": "80. LEISA is related to:"
+            },
+            "options": [
+                { "hindi": "(a) जैविक खेती", "english": "(a) Organic farming" },
+                { "hindi": "(b) अकार्बनिक खेती", "english": "(b) Inorganic farming" },
+                { "hindi": "(c) प्राकृतिक खेती", "english": "(c) Natural farming" },
+                { "hindi": "(d) उपरोक्त सभी", "english": "(d) All of these" }
+            ],
+            "answer": { "hindi": "(a) जैविक खेती", "english": "(a) Organic farming" }
+        },
+        {
+            "question": {
+                "hindi": "81. भारत में कार्बनिक खेती के उत्पादन में अग्रणी राज्य कौन सा है?",
+                "english": "81. Which state is the leading state in the production of organic farming in India?"
+            },
+            "options": [
+                { "hindi": "(a) उत्तराखंड", "english": "(a) Uttarakhand" },
+                { "hindi": "(b) सिक्किम", "english": "(b) Sikkim" },
+                { "hindi": "(c) मध्यप्रदेश", "english": "(c) Madhya Pradesh" },
+                { "hindi": "(d) राजस्थान", "english": "(d) Rajasthan" }
+            ],
+            "answer": { "hindi": "(b) सिक्किम", "english": "(b) Sikkim" }
+        },
+        {
+            "question": {
+                "hindi": "82. कीटों में प्रमुख रक्त शर्करा कौन-सी होती है?",
+                "english": "82. The major blood sugar in insects is:"
+            },
+            "options": [
+                { "hindi": "(a) ग्लूकोज", "english": "(a) Glucose" },
+                { "hindi": "(b) सुक्रोज", "english": "(b) Sucrose" },
+                { "hindi": "(c) ट्रेहेलोज", "english": "(c) Trehalose" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) ट्रेहेलोज", "english": "(c) Trehalose" }
+        },
+        {
+            "question": {
+                "hindi": "83. कपास का IW/CPE अनुपात कितना होता है?",
+                "english": "83. The IW/CPE ratio of cotton is:"
+            },
+            "options": [
+                { "hindi": "(a) 1.2", "english": "(a) 1.2" },
+                { "hindi": "(b) 0.9", "english": "(b) 0.9" },
+                { "hindi": "(c) 0.7", "english": "(c) 0.7" },
+                { "hindi": "(d) 0.6", "english": "(d) 0.6" }
+            ],
+            "answer": { "hindi": "(c) 0.7", "english": "(c) 0.7" }
+        },
+        {
+            "question": {
+                "hindi": "84. मध्यम सिंचित परियोजना के लिए विकसित कमांड क्षेत्र कितना होता है?",
+                "english": "84. The cultivated command area for a medium irrigated project is:"
+            },
+            "options": [
+                { "hindi": "(a) 2000 हेक्टेयर से कम", "english": "(a) <2000 Ha" },
+                { "hindi": "(b) 2000 - 10000 हेक्टेयर", "english": "(b) 2000-10000 Ha" },
+                { "hindi": "(c) 5000 - 10000 हेक्टेयर", "english": "(c) 5000-10000 Ha" },
+                { "hindi": "(d) 10000 हेक्टेयर से अधिक", "english": "(d) >10000 Ha" }
+            ],
+            "answer": { "hindi": "(b) 2000 - 10000 हेक्टेयर", "english": "(b) 2000-10000 Ha" }
+        },
+        {
+            "question": {
+                "hindi": "85. केंचुआ द्वारा जैव निम्नीकरणीय ठोस अपशिष्ट के अपघटन को क्या कहा जाता है?",
+                "english": "85. The decomposition of biodegradable solid waste by earthworms is called?"
+            },
+            "options": [
+                { "hindi": "1. भराव क्षेत्र (Landfill)", "english": "1. Landfill" },
+                { "hindi": "2. सायबान (Shedding)", "english": "2. Shedding" },
+                { "hindi": "3. खाद (Composting)", "english": "3. Composting" },
+                { "hindi": "4. वर्मी कम्पोस्ट (Vermicomposting)", "english": "4. Vermicomposting" }
+            ],
+            "answer": { "hindi": "(d) केवल 4", "english": "(d) Only 4" }
+        },
+        {
+            "question": {
+                "hindi": "86. निम्नलिखित में से कौन RAM (रैम) के बारे में सही नहीं है?",
+                "english": "86. Which of the following is NOT TRUE about RAM?"
+            },
+            "options": [
+                { "hindi": "(a) रैम कंप्यूटर के बंद होने पर भी डेटा को स्थायी रूप से स्टोर करता है।", "english": "(a) RAM stores the data permanently even if the computer shuts down." },
+                { "hindi": "(b) रैम को मुख्यतः SRAM और DRAM, दो प्रकार में वर्गीकृत किया गया है।", "english": "(b) RAM is mainly categorized into two types: SRAM and DRAM." },
+                { "hindi": "(c) रैम एक रीड/राइट मेमोरी है।", "english": "(c) RAM is a read/write memory." },
+                { "hindi": "(d) रैम डेटा, प्रोग्राम और प्रोग्राम रिजल्ट को स्टोर करने के लिए CPU की आंतरिक मेमोरी है।", "english": "(d) RAM is the internal memory of the CPU for storing data, programs, and program results." }
+            ],
+            "answer": { "hindi": "(a) रैम कंप्यूटर के बंद होने पर भी डेटा को स्थायी रूप से स्टोर करता है।", "english": "(a) RAM stores the data permanently even if the computer shuts down." }
+        },
+        {
+            "question": {
+                "hindi": "87. निम्नलिखित में से कौन-से कथन सही हैं?",
+                "english": "87. Which of the following statements are correct?"
+            },
+            "options": [
+                { "hindi": "(i) CD-ROM एक ऑप्टिकल डिस्क है जिसे केवल पढ़ा जा सकता है और लिखा नहीं जा सकता है।", "english": "(i) CD-ROM is an optical disc that can only be read but not written." },
+                { "hindi": "(ii) CD-R और CD-RW दोनों ऑप्टिकल डिस्क हैं।", "english": "(ii) CD-R and CD-RW are both optical discs." }
+            ],
+            "answer": { "hindi": "(d) (i) और (ii) दोनों", "english": "(d) Both (i) and (ii)" }
+        },
+        {
+            "question": {
+                "hindi": "88. उबंतू (Ubuntu), मिंट (Mint) और फेडोरा (Fedora) इनमें से किसके संस्करण (versions) हैं?",
+                "english": "88. Ubuntu, Mint, and Fedora are versions of which of the following?"
+            },
+            "options": [
+                { "hindi": "(a) लिनक्स", "english": "(a) Linux" },
+                { "hindi": "(b) एपल मैक ओएस एक्स", "english": "(b) Apple MAC OS X" },
+                { "hindi": "(c) विंडोज 10", "english": "(c) Windows 10" },
+                { "hindi": "(d) एमएस डॉस", "english": "(d) MS DOS" }
+            ],
+            "answer": { "hindi": "(a) लिनक्स", "english": "(a) Linux" }
+        },
+        {
+            "question": {
+                "hindi": "89. BIOS एक है / BIOS is a:",
+                "english": "89. BIOS is a:"
+            },
+            "options": [
+                { "hindi": "(1) गैर-परिवर्तनीय फर्मवेयर", "english": "(1) non-volatile firmware" },
+                { "hindi": "(2) परिवर्तनीय फर्मवेयर", "english": "(2) volatile firmware" },
+                { "hindi": "(3) सॉफ्टवेयर मदरबोर्ड पर एक छोटी मेमोरी चिप पर संग्रहित होता है", "english": "(3) software stored on a small memory chip on motherboard" }
+            ],
+            "answer": { "hindi": "(c) 1 तथा 3", "english": "(c) 1 and 3" }
+        },
+        {
+            "question": {
+                "hindi": "90. लाइनक्स LAMP प्रोग्राम्स का एक लोकप्रिय वेब सर्वर सेट है, जहाँ पर 'A' का तात्पर्य से है / Linux is a popular web server set of programs - LAMP, where 'A' stands for:",
+                "english": "90. Linux is a popular web server set of programs - LAMP, where 'A' stands for:"
+            },
+            "options": [
+                { "hindi": "(a) अपाचे", "english": "(a) Apache" },
+                { "hindi": "(b) एंड्रॉयड", "english": "(b) Android" },
+                { "hindi": "(c) एडोब", "english": "(c) Adobe" },
+                { "hindi": "(d) एप्पल", "english": "(d) Apple" }
+            ],
+            "answer": { "hindi": "(a) अपाचे", "english": "(a) Apache" }
+        },
+        {
+            "question": {
+                "hindi": "91. जावा स्क्रिप्ट प्रोग्रामिंग लैंग्वेज का आविष्कार किसने किया था?",
+                "english": "91. Who invented the JavaScript programming language?"
+            },
+            "options": [
+                { "hindi": "(a) ब्रेंडन ईच", "english": "(a) Brendan Eich" },
+                { "hindi": "(b) विलेम इन्थोवन", "english": "(b) Willem Einthoven" },
+                { "hindi": "(c) जॉर्ज ईस्टमैन", "english": "(c) George Eastman" },
+                { "hindi": "(d) एमिल अर्लेनमेयर", "english": "(d) Ernil Erlenmeyer" }
+            ],
+            "answer": { "hindi": "(a) ब्रेंडन ईच", "english": "(a) Brendan Eich" }
+        },
+        {
+            "question": {
+                "hindi": "92. यदि 'U' का ASCII कोड01010101 है, तो 'V' का ASCII कोड क्या होगा?",
+                "english": "92. If the ASCII code of 'U' is 01010101, then what will be the ASCII code of 'V'?"
+            },
+            "options": [
+                { "hindi": "(a) 01010100", "english": "(a) 01010100" },
+                { "hindi": "(b) 01010110", "english": "(b) 01010110" },
+                { "hindi": "(c) 01000110", "english": "(c) 01000110" },
+                { "hindi": "(d) 01010111", "english": "(d) 01010111" }
+            ],
+            "answer": { "hindi": "(b) 01010110", "english": "(b) 01010110" }
+        },
+        {
+            "question": {
+                "hindi": "93. 8-बिट से सबसे बड़ी कौन-सी संख्या बन सकती है?",
+                "english": "93. What is the largest number that can be formed with 8 bits?"
+            },
+            "options": [
+                { "hindi": "(a) 256", "english": "(a) 256" },
+                { "hindi": "(b) 128", "english": "(b) 128" },
+                { "hindi": "(c) 1024", "english": "(c) 1024" },
+                { "hindi": "(d) 255", "english": "(d) 255" }
+            ],
+            "answer": { "hindi": "(d) 255", "english": "(d) 255" }
+        },
+        {
+            "question": {
+                "hindi": "94. ऑक्टल नंबर (4060)₈ का 8's कॉम्प्लीमेंट क्या होगा?",
+                "english": "94. What is the 8’s complement of the octal number (4060)₈?"
+            },
+            "options": [
+                { "hindi": "(a) (3720)₈", "english": "(a) (3720)₈" },
+                { "hindi": "(b) (3717)₈", "english": "(b) (3717)₈" },
+                { "hindi": "(c) (4020)₈", "english": "(c) (4020)₈" },
+                { "hindi": "(d) (4720)₈", "english": "(d) (4720)₈" }
+            ],
+            "answer": { "hindi": "(a) (3720)₈", "english": "(a) (3720)₈" }
+        },
+        {
+            "question": {
+                "hindi": "95. MS Word 2007 की निम्नलिखित शॉर्टकट कुंजियों पर विचार कीजिए / Consider the following shortcut keys of MS Word 2007:",
+                "english": "95. Consider the following shortcut keys of MS Word 2007:"
+            },
+            "options": [
+                { "hindi": "1. Ctrl+Shift+> - चयनित फॉण्ट को बड़ा करता है।", "english": "1. Ctrl+Shift+> - Increases the selected font size." },
+                { "hindi": "2. Ctrl+Del - कर्सर के दाईं ओर के शब्द को मिटाता है।", "english": "2. Ctrl+Del - Deletes the word to the right of the cursor." },
+                { "hindi": "3. Ctrl+E - चयनित पाठ को स्क्रीन के केंद्र में संरेखित करता है।", "english": "3. Ctrl+E - Aligns the selected text to the center of the screen." },
+                { "hindi": "4. Ctrl+L - लिंक सम्मिलित करता है।", "english": "4. Ctrl+L - Inserts a link." }
+            ],
+            "answer": { "hindi": "(c) 1, 2 और 3", "english": "(c) 1, 2, and 3" }
+        },
+        {
+            "question": {
+                "hindi": "96. मोबाइल फोन का आविष्कार किसने किया था?",
+                "english": "96. Who invented the mobile phone?"
+            },
+            "options": [
+                { "hindi": "(a) जोसेफ विल्सन", "english": "(a) Joseph Wilson" },
+                { "hindi": "(b) एडविन लैंड", "english": "(b) Edwin Land" },
+                { "hindi": "(c) मार्टिन कूपर", "english": "(c) Martin Cooper" },
+                { "hindi": "(d) जॉन लॉयड राइट", "english": "(d) John Lloyd Right" }
+            ],
+            "answer": { "hindi": "(c) मार्टिन कूपर", "english": "(c) Martin Cooper" }
+        },
+        {
+            "question": {
+                "hindi": "97. निम्नलिखित में से कौन-से ई-गवर्नेंस में इंटरैक्शन के प्रकार हैं?",
+                "english": "97. Which of the following are types of interaction in e-Governance?"
+            },
+            "options": [
+                { "hindi": "1. G2G", "english": "1. G2G" },
+                { "hindi": "2. G2C", "english": "2. G2C" },
+                { "hindi": "3. G2B", "english": "3. G2B" }
+            ],
+            "answer": { "hindi": "(a) (i), (ii), and (iii)", "english": "(a) (i), (ii), and (iii)" }
+        },
+        {
+            "question": {
+                "hindi": "98. सूचना कियोस्क (Information Kiosks) के संबंध में निम्नलिखित में से कौन-से कथन गलत हैं?",
+                "english": "98. Which of the following statements about information kiosks is/are FALSE?"
+            },
+            "options": [
+                { "hindi": "(i) आकार, प्रकार और कार्य पर ध्यान दिए बिना, सभी सूचना कियोस्क में हार्डवेयर और सॉफ्टवेयर घटक होते हैं।", "english": "(i) Regardless of size, type, and function, all information kiosks consist of hardware and software components." },
+                { "hindi": "(ii) मानव कर्मचारियों की तुलना में, कियोस्क अधिक ग्राहकों को सेवा प्रदान कर सकते हैं, क्योंकि वे 24/7 काम करते हैं और ब्रेक नहीं लेते हैं।", "english": "(ii) Compared to human employees, kiosks can serve more customers as they work 24/7 and do not take breaks." }
+            ],
+            "answer": { "hindi": "(d) न तो (i) और न ही (ii)", "english": "(d) Neither (i) nor (ii)" }
+        },
+        {
+            "question": {
+                "hindi": "99. फेसबुक के संस्थापक कौन हैं?",
+                "english": "99. Who is the founder of Facebook?"
+            },
+            "options": [
+                { "hindi": "(a) बिल गेट्स", "english": "(a) Bill Gates" },
+                { "hindi": "(b) टिम बर्नर्स ली", "english": "(b) Tim Berners-Lee" },
+                { "hindi": "(c) मार्क जुकरबर्ग", "english": "(c) Mark Zuckerberg" },
+                { "hindi": "(d) माइकल एस. डेल", "english": "(d) Michael S. Dell" }
+            ],
+            "answer": { "hindi": "(c) मार्क जुकरबर्ग", "english": "(c) Mark Zuckerberg" }
+        },
+        {
+            "question": {
+                "hindi": "100. भारत का पहला 3D प्रिंटेड ह्यूमनॉइड रोबोट कौन सा है?",
+                "english": "100. Which of the following is India's first 3D-printed humanoid robot?"
+            },
+            "options": [
+                { "hindi": "(a) INDRO", "english": "(a) INDRO" },
+                { "hindi": "(b) MANAV", "english": "(b) MANAV" },
+                { "hindi": "(c) DAKSH", "english": "(c) DAKSH" },
+                { "hindi": "(d) KEMPA", "english": "(d) KEMPA" }
+            ],
+            "answer": { "hindi": "(b) MANAV", "english": "(b) MANAV" }
+        }
+    ]
+}
