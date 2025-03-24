@@ -10,7 +10,6 @@
      crossorigin="anonymous"></script>
 
     <style>
-        /* All original CSS remains unchanged */
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -44,6 +43,10 @@
         .logo {
             display: flex;
             align-items: center;
+            text-decoration: none;
+        }
+        .logo:hover {
+            opacity: 0.9;
         }
         .logo-icon {
             margin-right: 10px;
@@ -101,6 +104,7 @@
             outline-offset: 2px;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -113,7 +117,7 @@
                 top: 60px;
                 left: 0;
                 z-index: 1001;
-                transform: translateY(-150%);
+                transform: translateY(-150%); /* Start off-screen */
                 transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
                 opacity: 0;
                 pointer-events: none;
@@ -145,10 +149,10 @@
 <body>
     <header>
         <div class="header-container">
-            <div class="logo">
+            <a href="https://freemocktestagta.github.io/" class="logo">
                 <span class="logo-icon">📚</span>
                 <h1>Testro</h1>
-            </div>
+            </a>
             <nav>
                 <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
                 <ul class="nav-links" id="nav-menu" role="menu">
@@ -161,7 +165,7 @@
     </header>
 
     <script>
-        // Modified mobile menu handling
+        // Function to toggle the mobile menu
         function toggleMenu(event) {
             event.preventDefault();
             event.stopPropagation();
@@ -169,15 +173,16 @@
             const menuToggle = document.querySelector(".menu-toggle");
             const isOpen = navLinks.classList.toggle("active");
 
+            // Update aria-expanded and button text
             menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
             menuToggle.textContent = isOpen ? "✖" : "☰";
         }
 
-        // Added touch event listener
+        // Attach event listener to menu toggle button
         document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
         document.querySelector(".menu-toggle").addEventListener("touchstart", toggleMenu);
 
-        // Original close handlers remain unchanged
+        // Close the mobile menu when a link is clicked
         document.querySelectorAll(".nav-links a").forEach(link => {
             link.addEventListener("click", () => {
                 const navLinks = document.getElementById("nav-menu");
@@ -188,6 +193,7 @@
             });
         });
 
+        // Close the mobile menu when clicking outside
         document.addEventListener("click", (event) => {
             const navLinks = document.getElementById("nav-menu");
             const menuToggle = document.querySelector(".menu-toggle");
@@ -201,6 +207,7 @@
             }
         });
 
+        // Set active nav link based on current page
         document.addEventListener("DOMContentLoaded", () => {
             const currentPage = window.location.pathname.split("/").pop();
             document.querySelectorAll(".nav-links a").forEach(link => {
