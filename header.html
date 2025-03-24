@@ -117,7 +117,7 @@
                 top: 60px;
                 left: 0;
                 z-index: 1001;
-                transform: translateY(-150%); /* Start off-screen */
+                transform: translateY(-150%);
                 transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
                 opacity: 0;
                 pointer-events: none;
@@ -165,60 +165,64 @@
     </header>
 
     <script>
-        // Function to toggle the mobile menu
-        function toggleMenu(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const navLinks = document.getElementById("nav-menu");
-            const menuToggle = document.querySelector(".menu-toggle");
-            const isOpen = navLinks.classList.toggle("active");
-
-            // Update aria-expanded and button text
-            menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-            menuToggle.textContent = isOpen ? "✖" : "☰";
-        }
-
-        // Attach event listener to menu toggle button
-        document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
-        document.querySelector(".menu-toggle").addEventListener("touchstart", toggleMenu);
-
-        // Close the mobile menu when a link is clicked
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            link.addEventListener("click", () => {
+        document.addEventListener("DOMContentLoaded", function() {
+            function toggleMenu(event) {
+                event.preventDefault();
+                event.stopPropagation();
                 const navLinks = document.getElementById("nav-menu");
                 const menuToggle = document.querySelector(".menu-toggle");
-                navLinks.classList.remove("active");
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.textContent = "☰";
-            });
-        });
 
-        // Close the mobile menu when clicking outside
-        document.addEventListener("click", (event) => {
-            const navLinks = document.getElementById("nav-menu");
-            const menuToggle = document.querySelector(".menu-toggle");
+                if (!navLinks || !menuToggle) return;
 
-            if (navLinks.classList.contains("active") && 
-                !navLinks.contains(event.target) && 
-                !menuToggle.contains(event.target)) {
-                navLinks.classList.remove("active");
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.textContent = "☰";
+                const isOpen = navLinks.classList.toggle("active");
+                menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                menuToggle.textContent = isOpen ? "✖" : "☰";
             }
-        });
 
-        // Set active nav link based on current page
-        document.addEventListener("DOMContentLoaded", () => {
-            const currentPage = window.location.pathname.split("/").pop();
-            document.querySelectorAll(".nav-links a").forEach(link => {
-                if (link.getAttribute("href") === currentPage) {
-                    link.classList.add("active");
-                } else if (currentPage === "" && link.getAttribute("href") === "index.html") {
-                    link.classList.add("active");
-                } else {
-                    link.classList.remove("active");
+            function closeMenu() {
+                const navLinks = document.getElementById("nav-menu");
+                const menuToggle = document.querySelector(".menu-toggle");
+                if (navLinks && navLinks.classList.contains("active")) {
+                    navLinks.classList.remove("active");
+                    menuToggle.setAttribute("aria-expanded", "false");
+                    menuToggle.textContent = "☰";
                 }
-            });
+            }
+
+            // Initialize after slight delay to ensure header is loaded
+            setTimeout(() => {
+                const menuToggle = document.querySelector(".menu-toggle");
+                if (menuToggle) {
+                    menuToggle.addEventListener("click", toggleMenu);
+                    menuToggle.addEventListener("touchstart", toggleMenu);
+                }
+
+                document.querySelectorAll(".nav-links a").forEach(link => {
+                    link.addEventListener("click", closeMenu);
+                });
+
+                document.addEventListener("click", (event) => {
+                    const navLinks = document.getElementById("nav-menu");
+                    const menuToggle = document.querySelector(".menu-toggle");
+                    if (navLinks && navLinks.classList.contains("active") &&
+                        !navLinks.contains(event.target) &&
+                        !menuToggle.contains(event.target)) {
+                        closeMenu();
+                    }
+                });
+
+                // Set active nav link
+                const currentPage = window.location.pathname.split("/").pop();
+                document.querySelectorAll(".nav-links a").forEach(link => {
+                    if (link.getAttribute("href") === currentPage) {
+                        link.classList.add("active");
+                    } else if (currentPage === "" && link.getAttribute("href") === "index.html") {
+                        link.classList.add("active");
+                    } else {
+                        link.classList.remove("active");
+                    }
+                });
+            }, 100);
         });
     </script>
 </body>
