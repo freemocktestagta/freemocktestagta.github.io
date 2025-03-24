@@ -112,6 +112,15 @@
         .subject-slider {
             display: none;
             margin-top: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .subject-slider.show {
+            display: block;
+            max-height: 500px;
+            opacity: 1;
         }
         .subject-slider h3 {
             font-size: 18px;
@@ -153,6 +162,11 @@
             text-align: left;
             max-width: 800px;
             margin: 20px auto;
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .test-list ul {
             list-style: none;
@@ -221,7 +235,7 @@
                 <h3>Full Mock Tests</h3>
                 <p>Simulate the actual exam with full-length mock tests.</p>
             </div>
-            <div class="test-card" onclick="showSubjectSlider()">
+            <div class="test-card" onclick="toggleSubjectSlider()">
                 <h3>Subject-Wise Tests</h3>
                 <p>Focus on subjects like Agronomy, Horticulture, Pathology, and more.</p>
             </div>
@@ -699,7 +713,7 @@
             // Highlight the active tile
             const testCards = document.querySelectorAll('.test-card');
             testCards.forEach(card => card.classList.remove('active'));
-            const activeCard = document.querySelector(`.test-card[onclick="showTestList('${type}')"]`);
+            const activeCard = document.querySelector(`.test-card[onclick*="showTestList('${type}')"], .test-card[onclick*="toggleSubjectSlider()"]`);
             if (activeCard) {
                 activeCard.classList.add('active');
             }
@@ -710,17 +724,43 @@
                 type === 'statistics' || type === 'physiology') {
                 const subjectSlider = document.getElementById('subject-slider');
                 if (subjectSlider) {
-                    subjectSlider.style.display = 'block';
+                    subjectSlider.classList.add('show');
+                }
+            } else {
+                // Hide subject slider when other test categories are selected
+                const subjectSlider = document.getElementById('subject-slider');
+                if (subjectSlider) {
+                    subjectSlider.classList.remove('show');
                 }
             }
+            
+            // Update test results display
+            displayTestResults();
         }
 
-        function showSubjectSlider() {
+        function toggleSubjectSlider() {
             const subjectSlider = document.getElementById('subject-slider');
-            if (subjectSlider) {
-                subjectSlider.style.display = 'block';
+            const testCards = document.querySelectorAll('.test-card');
+            
+            // Toggle the subject slider
+            subjectSlider.classList.toggle('show');
+            
+            // Update active card
+            testCards.forEach(card => card.classList.remove('active'));
+            const subjectCard = document.querySelector('.test-card[onclick="toggleSubjectSlider()"]');
+            if (subjectCard) {
+                subjectCard.classList.add('active');
             }
-            showTestList('subject');
+            
+            // If we're closing the subject slider, show the last selected test list
+            if (!subjectSlider.classList.contains('show')) {
+                // Find and show the last selected test list (if any)
+                const lastSelectedTest = localStorage.getItem('lastSelectedTest') || 'daily';
+                showTestList(lastSelectedTest);
+            } else {
+                // Store that we're showing subjects
+                localStorage.setItem('lastSelectedTest', 'subject');
+            }
         }
 
         function initializeSlider() {
