@@ -332,14 +332,8 @@
     </style>
 </head>
 <body>
-    <!-- Include Header -->
+    <!-- Header will be loaded dynamically here -->
     <div id="header"></div>
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header').innerHTML = data)
-            .catch(() => console.log("Header not found - running standalone"));
-    </script>
 
     <div class="container">
         <h1>Your Test Progress</h1>
@@ -396,19 +390,79 @@
         </div>
     </div>
     
-    <!-- Include Footer -->
+    <!-- Footer will be loaded dynamically here -->
     <div id="footer"></div>
-    <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer').innerHTML = data)
-            .catch(() => console.log("Footer not found - running standalone"));
-    </script>
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
     
+    <!-- Dynamic Header/Footer Loading Script -->
+    <script>
+        // Load Header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .then(() => {
+                setupMobileMenu(); 
+                closeMenuOnLinkClick(); 
+                setActiveNavLink(); 
+            })
+            .catch(error => console.error('Header load error:', error));
+
+        // Load Footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(error => console.error('Footer load error:', error));
+
+        // Mobile Menu Functions
+        function toggleMenu(event) {
+            event.preventDefault();
+            const navLinks = document.getElementById("nav-menu");
+            const menuToggle = document.querySelector(".menu-toggle");
+            if (!navLinks || !menuToggle) return;
+            const isOpen = navLinks.classList.toggle("active");
+            menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            menuToggle.textContent = isOpen ? "✖" : "☰";
+        }
+
+        function setupMobileMenu() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            if (menuToggle) {
+                menuToggle.addEventListener("click", toggleMenu);
+                menuToggle.addEventListener("touchstart", toggleMenu);
+            }
+        }
+
+        function closeMenuOnLinkClick() {
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    const navLinks = document.getElementById("nav-menu");
+                    if (navLinks.classList.contains("active")) {
+                        navLinks.classList.remove("active");
+                        document.querySelector(".menu-toggle").textContent = "☰";
+                    }
+                });
+            });
+        }
+
+        function setActiveNavLink() {
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                const linkPage = link.getAttribute("href");
+                if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        }
+    </script>
+
+    <!-- Progress Tracker Script -->
     <script>
         // Firebase configuration - UPDATED STORAGE BUCKET
         const firebaseConfig = {
