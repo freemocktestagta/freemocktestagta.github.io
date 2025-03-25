@@ -44,6 +44,44 @@
             font-size: 16px;
         }
 
+        /* Glowing Rank Button */
+        .rank-button {
+            display: inline-block;
+            margin: 15px auto 0;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .rank-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.6);
+            animation: none;
+        }
+        .rank-button:active {
+            transform: translateY(1px);
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 198, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 198, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 198, 255, 0);
+            }
+        }
+
         /* Test Series Section */
         .test-series {
             padding: 40px 20px;
@@ -221,6 +259,7 @@
         <p>Total Tests: <span id="total-tests">60</span></p>
         <p>Free Tests: 10</p>
         <p>Exam Pattern: 100 Questions | 2 Hours</p>
+        <a href="progress-page.html" class="rank-button">Check Your Current Rank (Globally)</a>
     </div>
 
     <!-- Test Series Section -->
