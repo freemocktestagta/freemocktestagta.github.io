@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Progress Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/format/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #004080;
+            --primary-dark: #002b5e;
+            --secondary: #f4f4f4;
+            --text: #333;
+            --text-light: #555;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --info: #17a2b8;
+            --excellent: #4CAF50;
+            --great: #2196F3;
+            --good: #FFC107;
+            --fine: #FF9800;
+            --ok: #F44336;
+            --god: #9C27B0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 80vh;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .stat-card h3 {
+            color: var(--text-light);
+            font-size: 16px;
+            margin: 0 0 10px 0;
+            font-weight: 500;
+        }
+        
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        /* Chart Container */
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Test History */
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .sort-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        select {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .sort-direction {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--primary);
+            padding: 8px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        
+        .sort-direction:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Test Items */
+        .test-list {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .test-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+        
+        .test-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .test-title {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--primary);
+            text-transform: capitalize;
+        }
+        
+        .test-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        .test-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .test-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .test-score {
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .score-god {
+            background-color: rgba(156, 39, 176, 0.1);
+            color: var(--god);
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+        
+        .score-excellent {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--excellent);
+        }
+        
+        .score-great {
+            background-color: rgba(33, 150, 243, 0.1);
+            color: var(--great);
+        }
+        
+        .score-good {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--good);
+        }
+        
+        .score-fine {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: var(--fine);
+        }
+        
+        .score-ok {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: var(--ok);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .progress-container {
+            width: 200px;
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 600px) {
+            .progress-container {
+                width: 100%;
+            }
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #004080, #007bff);
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+        }
+        
+        /* Loading and Empty States */
+        .loading, .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+        }
+        
+        .empty-state {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .empty-state p {
+            margin: 10px 0;
+        }
+        
+        .empty-state .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .empty-state .cta-button:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data)
+            .catch(() => console.log("Header not found - running standalone"));
+    </script>
+
+    <div class="container">
+        <h1>Your Test Progress</h1>
+        
+        <!-- Stats Summary -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Tests Taken</h3>
+                <p class="value" id="totalTests">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Average Score</h3>
+                <p class="value" id="averageScore">0%</p>
+            </div>
+            <div class="stat-card">
+                <h3>Highest Score</h3>
+                <p class="value" id="highestScore">0%</p>
+            </div>
+        </div>
+        
+        <!-- Progress Chart -->
+        <div class="chart-container">
+            <h2>Your Progress Over Time</h2>
+            <canvas id="progressChart"></canvas>
+        </div>
+        
+        <!-- Test History -->
+        <div class="history-section">
+            <div class="history-header">
+                <h2>Test History</h2>
+                <div class="sort-controls">
+                    <span>Sort by:</span>
+                    <select id="sortField">
+                        <option value="date">Date</option>
+                        <option value="score">Score</option>
+                    </select>
+                    <button class="sort-direction" id="sortDirection" title="Toggle sort direction">
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="test-list" id="testList">
+                <div class="loading">
+                    <p>Loading your test history...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Include Footer -->
+    <div id="footer"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(() => console.log("Footer not found - running standalone"));
+    </script>
+
+    <script>
+        // DOM Elements
+        const sortField = document.getElementById('sortField');
+        const sortDirection = document.getElementById('sortDirection');
+        const testList = document.getElementById('testList');
+        const totalTestsEl = document.getElementById('totalTests');
+        const averageScoreEl = document.getElementById('averageScore');
+        const highestScoreEl = document.getElementById('highestScore');
+        let progressChart = null;
+
+        // State
+        let sortBy = 'date';
+        let sortDir = 'desc';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up event listeners
+            sortField.addEventListener('change', function() {
+                sortBy = this.value;
+                loadTestData();
+            });
+            
+            sortDirection.addEventListener('click', function() {
+                sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+                this.innerHTML = `<i class="fas fa-arrow-${sortDir === 'asc' ? 'up' : 'down'}"></i>`;
+                loadTestData();
+            });
+            
+            // Load initial data
+            loadTestData();
+        });
+
+        // Load test data from localStorage
+        function loadTestData() {
+            const testData = [];
+            
+            // Get all keys from localStorage
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                
+                // Skip system keys and non-test keys
+                if (!key || key.startsWith('_') || key === 'debug') continue;
+                
+                try {
+                    const item = localStorage.getItem(key);
+                    if (item) {
+                        const test = JSON.parse(item);
+                        
+                        // Validate test data structure
+                        if (test.testId && typeof test.score === 'number' && test.timestamp) {
+                            testData.push({
+                                id: test.testId,
+                                score: test.score,
+                                totalQuestions: test.totalQuestions || 20, // Default if missing
+                                timestamp: test.timestamp
+                            });
+                        }
+                    }
+                } catch (e) {
+                    console.error(`Error parsing test data for key ${key}:`, e);
+                }
+            }
+            
+            renderTestData(testData);
+        }
+
+        // Format test name for display
+        function formatTestName(testId) {
+            if (!testId) return "Test";
+            
+            // Remove special characters and numbers
+            let name = testId.replace(/[^a-zA-Z]/g, ' ');
+            
+            // Capitalize first letter of each word
+            name = name.split(' ')
+                       .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                       .join(' ');
+            
+            return name || "Test";
+        }
+
+        // Get score category and label
+        function getScoreCategory(percentage) {
+            if (percentage === 100) {
+                return { class: 'score-god', label: 'God of Competition!' };
+            } else if (percentage >= 90) {
+                return { class: 'score-excellent', label: 'Excellent' };
+            } else if (percentage >= 80) {
+                return { class: 'score-great', label: 'Great' };
+            } else if (percentage >= 70) {
+                return { class: 'score-good', label: 'Good' };
+            } else if (percentage >= 60) {
+                return { class: 'score-fine', label: 'Fine' };
+            } else if (percentage >= 50) {
+                return { class: 'score-ok', label: 'OK' };
+            } else {
+                return { class: 'score-ok', label: 'Needs Improvement' };
+            }
+        }
+
+        // Render test data
+        function renderTestData(tests) {
+            // Sort the data
+            const sortedTests = sortTests(tests);
+            
+            // Update stats
+            updateStats(sortedTests);
+            
+            // Clear existing tests
+            testList.innerHTML = '';
+            
+            if (sortedTests.length === 0) {
+                testList.innerHTML = `
+                    <div class="empty-state">
+                        <p>No test results found yet.</p>
+                        <p>Take a test to start tracking your progress!</p>
+                        <a href="tests.html" class="cta-button">Browse Tests</a>
+                    </div>
+                `;
+                
+                // Hide chart if no data
+                document.getElementById('progressChart').style.display = 'none';
+                return;
+            }
+            
+            // Show chart
+            document.getElementById('progressChart').style.display = 'block';
+            
+            // Render chart
+            renderProgressChart(sortedTests);
+            
+            // Render each test
+            sortedTests.forEach(test => {
+                const percentage = Math.round((test.score / test.totalQuestions) * 100);
+                const date = formatDate(test.timestamp);
+                const testName = formatTestName(test.id);
+                const scoreCategory = getScoreCategory(percentage);
+                
+                // Create test item
+                const testItem = document.createElement('div');
+                testItem.className = 'test-item';
+                testItem.innerHTML = `
+                    <div class="test-header">
+                        <div class="test-title">${testName}</div>
+                        <div class="test-date">
+                            <i class="far fa-calendar-alt"></i>
+                            ${date}
+                        </div>
+                    </div>
+                    <div class="test-body">
+                        <div class="test-meta">
+                            <div class="test-score ${scoreCategory.class}">
+                                ${percentage}% (${test.score}/${test.totalQuestions}) - ${scoreCategory.label}
+                            </div>
+                            <div class="test-id">ID: ${test.id}</div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+                
+                testList.appendChild(testItem);
+            });
+        }
+
+        // Render progress chart
+        function renderProgressChart(tests) {
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            
+            // Prepare data - sort by date ascending for the chart
+            const sortedForChart = [...tests].sort((a, b) => 
+                new Date(a.timestamp) - new Date(b.timestamp)
+            );
+            
+            const labels = sortedForChart.map(t => 
+                formatDate(t.timestamp, true)
+            );
+            
+            const scores = sortedForChart.map(t => 
+                Math.round((t.score / t.totalQuestions) * 100)
+            );
+            
+            // Destroy previous chart if exists
+            if (progressChart) {
+                progressChart.destroy();
+            }
+            
+            // Create new chart
+            progressChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Your Score (%)',
+                        data: scores,
+                        borderColor: '#004080',
+                        backgroundColor: 'rgba(0, 64, 128, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true,
+                        pointBackgroundColor: '#004080',
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Sort tests based on current sort settings
+        function sortTests(tests) {
+            return [...tests].sort((a, b) => {
+                if (sortBy === 'date') {
+                    const dateA = new Date(a.timestamp).getTime();
+                    const dateB = new Date(b.timestamp).getTime();
+                    return sortDir === 'asc' ? dateA - dateB : dateB - dateA;
+                } else {
+                    const scoreA = (a.score / a.totalQuestions) * 100;
+                    const scoreB = (b.score / b.totalQuestions) * 100;
+                    return sortDir === 'asc' ? scoreA - scoreB : scoreB - scoreA;
+                }
+            });
+        }
+
+        // Update statistics
+        function updateStats(tests) {
+            totalTestsEl.textContent = tests.length;
+            
+            if (tests.length === 0) {
+                averageScoreEl.textContent = '0%';
+                highestScoreEl.textContent = '0%';
+                return;
+            }
+            
+            // Calculate total correct answers and total possible
+            let totalCorrect = 0;
+            let totalPossible = 0;
+            let highestPercentage = 0;
+            
+            tests.forEach(test => {
+                totalCorrect += test.score;
+                totalPossible += test.totalQuestions;
+                
+                const testPercentage = (test.score / test.totalQuestions) * 100;
+                if (testPercentage > highestPercentage) {
+                    highestPercentage = testPercentage;
+                }
+            });
+            
+            // Calculate overall average
+            const overallAverage = Math.round((totalCorrect / totalPossible) * 100);
+            averageScoreEl.textContent = `${overallAverage}%`;
+            
+            // Set highest score
+            highestScoreEl.textContent = `${Math.round(highestPercentage)}%`;
+        }
+
+        // Format date (simplified for chart)
+        function formatDate(dateString, forChart = false) {
+            try {
+                const date = new Date(dateString);
+                if (forChart) {
+                    return window.dateFns.format(date, 'MMM d');
+                }
+                return window.dateFns.format(date, 'MMM d, yyyy - h:mm a');
+            } catch (e) {
+                return dateString;
+            }
+        }
+    </script>
+</body>
+</html>
