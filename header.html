@@ -1,184 +1,229 @@
-<!-- HEADER SECTION -->
-<header>
-    <div class="header-container">
-        <a href="https://freemocktestagta.github.io/" class="logo">
-            <span class="logo-icon">📚</span>
-            <h1>Testro</h1>
-        </a>
-        <nav>
-            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
-            <ul class="nav-links" id="nav-menu" role="menu">
-                <li role="none"><a href="index.html" role="menuitem" class="active">Home</a></li>
-                <li role="none"><a href="UpssscAGTA.html" role="menuitem">UPSSSC AG TA</a></li>
-                <li role="none"><a href="progres-page.html" role="menuitem">Check Your Progress</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testro</title>
 
-<!-- HEADER STYLES -->
-<style>
-    /* Reset and Base Styles */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    /* Header Styles */
-    header {
-        background: linear-gradient(135deg, #004080, #002040);
-        color: white;
-        padding: 15px 0;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        width: 100%;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    .logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-    }
-    .logo:hover {
-        opacity: 0.9;
-    }
-    .logo-icon {
-        margin-right: 10px;
-        font-size: 24px;
-    }
-    header h1 {
-        margin: 0;
-        font-size: 24px;
-        color: white;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-    }
-    .nav-links {
-        display: flex;
-        gap: 20px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-    .nav-links a {
-        text-decoration: none;
-        color: white;
-        font-weight: 600;
-        padding: 8px 12px;
-        border-radius: 4px;
-        transition: all 0.3s;
-    }
-    .nav-links a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #ffcc00;
-    }
-    .nav-links a:focus {
-        outline: 2px solid #ffcc00;
-        outline-offset: 2px;
-    }
-    .nav-links a.active {
-        background-color: rgba(255, 255, 255, 0.2);
-        color: #ffcc00;
-    }
-    .menu-toggle {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-        background: none;
-        border: none;
-        color: white;
-        padding: 8px;
-        border-radius: 4px;
-    }
-    .menu-toggle:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
+     crossorigin="anonymous"></script>
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-        .menu-toggle {
-            display: block;
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #004080, #002040);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .logo:hover {
+            opacity: 0.9;
+        }
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         .nav-links {
-            flex-direction: column;
-            background: linear-gradient(135deg, #004080, #002040);
-            position: absolute;
-            width: 100%;
-            top: 60px;
-            left: 0;
-            z-index: 1001;
-            transform: translateY(-150%);
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            opacity: 0;
-            pointer-events: none;
-            visibility: hidden;
-            height: 0;
-            overflow: hidden;
-        }
-        .nav-links.active {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-            visibility: visible;
-            height: auto;
-            padding: 10px 0;
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
         .nav-links a {
-            display: block;
-            padding: 12px 20px;
-            border-radius: 0;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
         }
-    }
-</style>
-
-<!-- HEADER SCRIPTS -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const menuToggle = document.querySelector(".menu-toggle");
-        const navLinks = document.getElementById("nav-menu");
-
-        // Toggle mobile menu
-        function toggleMenu(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const isOpen = navLinks.classList.toggle("active");
-            menuToggle.setAttribute("aria-expanded", isOpen);
-            menuToggle.textContent = isOpen ? "✖" : "☰";
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffcc00;
+        }
+        .nav-links a:focus {
+            outline: 2px solid #ffcc00;
+            outline-offset: 2px;
+        }
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffcc00;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .menu-toggle:focus {
+            outline: 2px solid #ffcc00;
+            outline-offset: 2px;
         }
 
-        // Close menu on click outside
-        function closeMenu(event) {
-            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
-                navLinks.classList.remove("active");
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.textContent = "☰";
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                flex-direction: column;
+                background: linear-gradient(135deg, #004080, #002040);
+                position: absolute;
+                width: 100%;
+                top: 60px;
+                left: 0;
+                z-index: 1001;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                height: 0;
+                overflow: hidden;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+                visibility: visible;
+                height: auto;
+                padding: 10px 0;
+            }
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+            }
+            .nav-links a {
+                display: block;
+                padding: 12px 20px;
+                border-radius: 0;
             }
         }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="https://freemocktestagta.github.io/" class="logo">
+                <span class="logo-icon">ðŸ“š</span>
+                <h1>Testro</h1>
+            </a>
+            <nav>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">â˜°</button>
+                <ul class="nav-links" id="nav-menu" role="menu">
+                    <li role="none"><a href="index.html" role="menuitem" class="active">Home</a></li>
+                    <li role="none"><a href="UpssscAGTA.html" role="menuitem">UPSSSC AG TA</a></li>
+                    <li role="none"><a href="progres-page.html" role="menuitem">Check Your Progress</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        // Event listeners
-        menuToggle.addEventListener("click", toggleMenu);
-        document.addEventListener("click", closeMenu);
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 768) {
-                navLinks.classList.remove("active");
-                menuToggle.textContent = "☰";
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function toggleMenu(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                const navLinks = document.getElementById("nav-menu");
+                const menuToggle = document.querySelector(".menu-toggle");
+
+                if (!navLinks || !menuToggle) return;
+
+                const isOpen = navLinks.classList.toggle("active");
+                menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                menuToggle.textContent = isOpen ? "âœ–" : "â˜°";
             }
-        });
 
-        // Set active link
-        const currentPath = window.location.pathname.split("/").pop();
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            link.classList.toggle("active", link.getAttribute("href") === currentPath);
+            function closeMenu() {
+                const navLinks = document.getElementById("nav-menu");
+                const menuToggle = document.querySelector(".menu-toggle");
+                if (navLinks && navLinks.classList.contains("active")) {
+                    navLinks.classList.remove("active");
+                    menuToggle.setAttribute("aria-expanded", "false");
+                    menuToggle.textContent = "â˜°";
+                }
+            }
+
+            // Initialize after slight delay to ensure header is loaded
+            setTimeout(() => {
+                const menuToggle = document.querySelector(".menu-toggle");
+                if (menuToggle) {
+                    menuToggle.addEventListener("click", toggleMenu);
+                    menuToggle.addEventListener("touchstart", toggleMenu);
+                }
+
+                document.querySelectorAll(".nav-links a").forEach(link => {
+                    link.addEventListener("click", closeMenu);
+                });
+
+                document.addEventListener("click", (event) => {
+                    const navLinks = document.getElementById("nav-menu");
+                    const menuToggle = document.querySelector(".menu-toggle");
+                    if (navLinks && navLinks.classList.contains("active") &&
+                        !navLinks.contains(event.target) &&
+                        !menuToggle.contains(event.target)) {
+                        closeMenu();
+                    }
+                });
+
+                // Set active nav link
+                const currentPage = window.location.pathname.split("/").pop();
+                document.querySelectorAll(".nav-links a").forEach(link => {
+                    if (link.getAttribute("href") === currentPage) {
+                        link.classList.add("active");
+                    } else if (currentPage === "" && link.getAttribute("href") === "index.html") {
+                        link.classList.add("active");
+                    } else {
+                        link.classList.remove("active");
+                    }
+                });
+            }, 100);
         });
-    });
-</script>
+    </script>
+</body>
+</html>
