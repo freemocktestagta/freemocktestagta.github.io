@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Testro</title>
 
-    <!-- Google AdSense Auto Ads Code (Added Here) -->
+    <!-- Google AdSense Auto Ads Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4416573585075652"
      crossorigin="anonymous"></script>
 
@@ -21,42 +21,6 @@
             background: #f4f4f4;
             color: #333;
             text-align: center;
-        }
-
-        /* Header */
-        header {
-            background: #004080;
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 24px;
-            color: white;
-        }
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #ffcc00;
         }
 
         /* Privacy Policy Container */
@@ -86,84 +50,18 @@
             text-decoration: underline;
         }
 
-        /* Footer */
-        footer {
-            background: #004080;
-            padding: 40px 20px;
-            color: white;
-        }
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer-section h3 {
-            margin-bottom: 20px;
-        }
-        .footer-section a {
-            text-decoration: none;
-            transition: color 0.3s;
-            color: white;
-        }
-        .footer-section a:hover {
-            color: #ffcc00;
-        }
-        .social-links a {
-            margin: 0 10px;
-            font-size: 20px;
-            transition: color 0.3s;
-            color: white;
-        }
-        .social-links a:hover {
-            color: #ffcc00;
-        }
-        .footer-bottom {
-            margin-top: 20px;
-            border-top: 1px solid #555;
-            padding-top: 20px;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background: #004080;
-                position: absolute;
-                width: 100%;
-                top: 60px;
-                left: 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links li {
-                margin: 10px 0;
+            .container {
+                margin: 20px auto;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
-    <header>
-        <div class="header-container">
-            <h1>Testro</h1>
-            <nav>
-                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="daily-test.html">Daily Test</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Header will be loaded dynamically here -->
+    <div id="header"></div>
 
     <!-- Privacy Policy Content -->
     <div class="container">
@@ -190,40 +88,71 @@
         <p><a href="mailto:abhishek945786@gmail.com">abhishek945786@gmail.com</a></p>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Testro</h3>
-                <p>Your one-stop destination for free agriculture mock tests.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="daily-test.html">Daily Test</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
-        </div>
-    </footer>
+    <!-- Footer will be loaded dynamically here -->
+    <div id="footer"></div>
 
+    <!-- Dynamic Header/Footer Loading Script -->
     <script>
-        function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
+        // Load Header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .then(() => {
+                setupMobileMenu(); 
+                closeMenuOnLinkClick(); 
+                setActiveNavLink(); 
+            })
+            .catch(error => console.error('Header load error:', error));
+
+        // Load Footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(error => console.error('Footer load error:', error));
+
+        // Mobile Menu Functions
+        function toggleMenu(event) {
+            event.preventDefault();
+            const navLinks = document.getElementById("nav-menu");
+            const menuToggle = document.querySelector(".menu-toggle");
+            if (!navLinks || !menuToggle) return;
+            const isOpen = navLinks.classList.toggle("active");
+            menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            menuToggle.textContent = isOpen ? "✖" : "☰";
+        }
+
+        function setupMobileMenu() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            if (menuToggle) {
+                menuToggle.addEventListener("click", toggleMenu);
+                menuToggle.addEventListener("touchstart", toggleMenu);
+            }
+        }
+
+        function closeMenuOnLinkClick() {
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    const navLinks = document.getElementById("nav-menu");
+                    if (navLinks.classList.contains("active")) {
+                        navLinks.classList.remove("active");
+                        document.querySelector(".menu-toggle").textContent = "☰";
+                    }
+                });
+            });
+        }
+
+        function setActiveNavLink() {
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                const linkPage = link.getAttribute("href");
+                if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
         }
     </script>
 </body>
