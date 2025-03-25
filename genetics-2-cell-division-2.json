@@ -1,0 +1,567 @@
+{
+    "title": "Genetics Test 2 (Cell Division)",
+    "section": "Full Subject Test",
+    "subject": "Genetics and Plant Breeding",
+    "time": 2580,
+    "questions": [
+        {
+            "question": {
+                "hindi": "1. राइबोसोम का मुख्य कार्य क्या है?",
+                "english": "1. What is the main function of ribosomes?"
+            },
+            "options": [
+                { "hindi": "(a) प्रकाश-संश्लेषण", "english": "(a) Photosynthesis" },
+                { "hindi": "(b) श्वसन", "english": "(b) Respiration" },
+                { "hindi": "(c) प्रोटीन-संश्लेषण", "english": "(c) Protein synthesis" },
+                { "hindi": "(d) वसा-संश्लेषण", "english": "(d) Fat synthesis" }
+            ],
+            "answer": { "hindi": "(c) प्रोटीन-संश्लेषण", "english": "(c) Protein synthesis" }
+        },
+        {
+            "question": {
+                "hindi": "2. कोशिका (cell) को सर्वप्रथम सूक्ष्मदर्शी द्वारा किसने देखा?",
+                "english": "2. Who first observed the cell under a microscope?"
+            },
+            "options": [
+                { "hindi": "(a) ल्यूवेनहॉक", "english": "(a) Leeuwenhoek" },
+                { "hindi": "(b) रॉबर्ट हुक", "english": "(b) Robert Hooke" },
+                { "hindi": "(c) परकिंजे", "english": "(c) Purkinje" },
+                { "hindi": "(d) रॉबर्ट ब्राउन", "english": "(d) Robert Brown" }
+            ],
+            "answer": { "hindi": "(b) रॉबर्ट हुक", "english": "(b) Robert Hooke" }
+        },
+        {
+            "question": {
+                "hindi": "3. \"जीवद्रव्य (protoplasm) जीवन का भौतिक आधार है\", यह किसने कहा था?",
+                "english": "3. Who said \"Protoplasm is the physical basis of life\"?"
+            },
+            "options": [
+                { "hindi": "(a) डुजार्डिन", "english": "(a) Dujardin" },
+                { "hindi": "(b) हक्सले", "english": "(b) Huxley" },
+                { "hindi": "(c) परकिंजे", "english": "(c) Purkinje" },
+                { "hindi": "(d) रॉबर्ट हुक", "english": "(d) Robert Hooke" }
+            ],
+            "answer": { "hindi": "(b) हक्सले", "english": "(b) Huxley" }
+        },
+        {
+            "question": {
+                "hindi": "4. जीवद्रव्य (protoplasm) की खोज किसने की?",
+                "english": "4. Who discovered protoplasm?"
+            },
+            "options": [
+                { "hindi": "(a) रॉबर्ट हुक", "english": "(a) Robert Hooke" },
+                { "hindi": "(b) हक्सले", "english": "(b) Huxley" },
+                { "hindi": "(c) डुजार्डिन", "english": "(c) Dujardin" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) डुजार्डिन", "english": "(c) Dujardin" }
+        },
+        {
+            "question": {
+                "hindi": "5. लवक (plastids) की खोज किसने की?",
+                "english": "5. Who discovered plastids?"
+            },
+            "options": [
+                { "hindi": "(a) हेकल", "english": "(a) Haeckel" },
+                { "hindi": "(b) डुजार्डिन", "english": "(b) Dujardin" },
+                { "hindi": "(c) परकिंजे", "english": "(c) Purkinje" },
+                { "hindi": "(d) ल्यूवेनहॉक", "english": "(d) Leeuwenhoek" }
+            ],
+            "answer": { "hindi": "(a) हेकल", "english": "(a) Haeckel" }
+        },
+        {
+            "question": {
+                "hindi": "6. इलेक्ट्रॉन सूक्ष्मदर्शी की खोज किसने की?",
+                "english": "6. Who discovered the electron microscope?"
+            },
+            "options": [
+                { "hindi": "(a) नौल और रस्का", "english": "(a) Knoll and Ruska" },
+                { "hindi": "(b) जेनसेन और जेनसेन", "english": "(b) Janssen and Janssen" },
+                { "hindi": "(c) लेहमान", "english": "(c) Lehmann" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) नौल और रस्का", "english": "(a) Knoll and Ruska" }
+        },
+        {
+            "question": {
+                "hindi": "7. लाइसोसोम (lysosome) की खोज किसने की?",
+                "english": "7. Who discovered lysosomes?"
+            },
+            "options": [
+                { "hindi": "(a) रॉबर्ट हुक", "english": "(a) Robert Hooke" },
+                { "hindi": "(b) विरचोव", "english": "(b) Virchow" },
+                { "hindi": "(c) परकिंजे", "english": "(c) Purkinje" },
+                { "hindi": "(d) डी डुवे", "english": "(d) De Duve" }
+            ],
+            "answer": { "hindi": "(d) डी डुवे", "english": "(d) De Duve" }
+        },
+        {
+            "question": {
+                "hindi": "8. कोशिका सिद्धांत (cell theory) का विचार किसने दिया?",
+                "english": "8. Who proposed the cell theory?"
+            },
+            "options": [
+                { "hindi": "(a) रॉबर्ट हुक", "english": "(a) Robert Hooke" },
+                { "hindi": "(b) ल्यूवेनहॉक", "english": "(b) Leeuwenhoek" },
+                { "hindi": "(c) श्लाइडेन तथा श्वान", "english": "(c) Schleiden and Schwann" },
+                { "hindi": "(d) विरचोव", "english": "(d) Virchow" }
+            ],
+            "answer": { "hindi": "(c) श्लाइडेन तथा श्वान", "english": "(c) Schleiden and Schwann" }
+        },
+        {
+            "question": {
+                "hindi": "9. हरितलवक (chloroplast) की खोज किसने की?",
+                "english": "9. Who discovered chloroplasts?"
+            },
+            "options": [
+                { "hindi": "(a) शिम्पर", "english": "(a) Schimper" },
+                { "hindi": "(b) डी डुवे", "english": "(b) De Duve" },
+                { "hindi": "(c) श्वान", "english": "(c) Schwann" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) शिम्पर", "english": "(a) Schimper" }
+        },
+        {
+            "question": {
+                "hindi": "10. कोशिका में केन्द्रक (nucleus) की खोज किसने की?",
+                "english": "10. Who discovered the nucleus in the cell?"
+            },
+            "options": [
+                { "hindi": "(a) रॉबर्ट हुक", "english": "(a) Robert Hooke" },
+                { "hindi": "(b) डी डुवे", "english": "(b) De Duve" },
+                { "hindi": "(c) श्लाइडेन", "english": "(c) Schleiden" },
+                { "hindi": "(d) रॉबर्ट ब्राउन", "english": "(d) Robert Brown" }
+            ],
+            "answer": { "hindi": "(d) रॉबर्ट ब्राउन", "english": "(d) Robert Brown" }
+        },
+        {
+            "question": {
+                "hindi": "11. अन्तर्द्रव्यी जालिका (endoplasmic reticulum) की खोज किसने की?",
+                "english": "11. Who discovered the endoplasmic reticulum?"
+            },
+            "options": [
+                { "hindi": "(a) बेन्डा", "english": "(a) Benda" },
+                { "hindi": "(b) पोर्टर", "english": "(b) Porter" },
+                { "hindi": "(c) रॉबर्ट हुक", "english": "(c) Robert Hooke" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) पोर्टर", "english": "(b) Porter" }
+        },
+        {
+            "question": {
+                "hindi": "12. डीएनए (DNA) का मॉडल किसने तैयार किया?",
+                "english": "12. Who proposed the DNA model?"
+            },
+            "options": [
+                { "hindi": "(a) वाटसन", "english": "(a) Watson" },
+                { "hindi": "(b) क्रिक", "english": "(b) Crick" },
+                { "hindi": "(c) विल्किंस", "english": "(c) Wilkins" },
+                { "hindi": "(d) उपरोक्त सभी", "english": "(d) All of the above" }
+            ],
+            "answer": { "hindi": "(d) उपरोक्त सभी", "english": "(d) All of the above" }
+        },
+        {
+            "question": {
+                "hindi": "13. जीन (gene) शब्द का प्रयोग सर्वप्रथम किस वैज्ञानिक ने किया?",
+                "english": "13. Which scientist first used the term \"gene\"?"
+            },
+            "options": [
+                { "hindi": "(a) मेण्डल", "english": "(a) Mendel" },
+                { "hindi": "(b) जोहानसन", "english": "(b) Johannsen" },
+                { "hindi": "(c) कैलन और लॉयड", "english": "(c) Kallen and Lloyd" },
+                { "hindi": "(d) वेलिंग", "english": "(d) Welling" }
+            ],
+            "answer": { "hindi": "(b) जोहानसन", "english": "(b) Johannsen" }
+        },
+        {
+            "question": {
+                "hindi": "14. जीवद्रव्य (protoplasm) नाम सर्वप्रथम किसने दिया?",
+                "english": "14. Who first gave the name \"protoplasm\"?"
+            },
+            "options": [
+                { "hindi": "(a) रॉबर्ट हुक", "english": "(a) Robert Hooke" },
+                { "hindi": "(b) परकिंजे", "english": "(b) Purkinje" },
+                { "hindi": "(c) हक्सले", "english": "(c) Huxley" },
+                { "hindi": "(d) रॉबर्ट ब्राउन", "english": "(d) Robert Brown" }
+            ],
+            "answer": { "hindi": "(b) परकिंजे", "english": "(b) Purkinje" }
+        },
+        {
+            "question": {
+                "hindi": "15. डिक्टियोसोम (dictyosome) की खोज किसने की?",
+                "english": "15. Who discovered dictyosomes?"
+            },
+            "options": [
+                { "hindi": "(a) जे. बोनर", "english": "(a) J. Bonner" },
+                { "hindi": "(b) डी ब्रीज", "english": "(b) De Vries" },
+                { "hindi": "(c) सी. पोर्टर", "english": "(c) C. Porter" },
+                { "hindi": "(d) सी. गॉल्जी", "english": "(d) C. Golgi" }
+            ],
+            "answer": { "hindi": "(d) सी. गॉल्जी", "english": "(d) C. Golgi" }
+        },
+        {
+            "question": {
+                "hindi": "16. जन्तु कोशिका में राइबोसोम की खोज किसने की?",
+                "english": "16. Who discovered ribosomes in animal cells?"
+            },
+            "options": [
+                { "hindi": "(a) वाटसन", "english": "(a) Watson" },
+                { "hindi": "(b) पैलाडे", "english": "(b) Palade" },
+                { "hindi": "(c) काउड्री", "english": "(c) Cowdry" },
+                { "hindi": "(d) टेटम", "english": "(d) Tatum" }
+            ],
+            "answer": { "hindi": "(b) पैलाडे", "english": "(b) Palade" }
+        },
+        {
+            "question": {
+                "hindi": "17. गुणसूत्र (chromosome) नाम किसने दिया?",
+                "english": "17. Who gave the name \"chromosome\"?"
+            },
+            "options": [
+                { "hindi": "(a) रॉबर्ट हुक", "english": "(a) Robert Hooke" },
+                { "hindi": "(b) परकिंजे", "english": "(b) Purkinje" },
+                { "hindi": "(c) स्ट्रासबर्गर", "english": "(c) Strasburger" },
+                { "hindi": "(d) वाल्डेयर", "english": "(d) Waldeyer" }
+            ],
+            "answer": { "hindi": "(d) वाल्डेयर", "english": "(d) Waldeyer" }
+        },
+        {
+            "question": {
+                "hindi": "18. केन्द्रिका (nucleolus) की खोज किसने की?",
+                "english": "18. Who discovered the nucleolus?"
+            },
+            "options": [
+                { "hindi": "(a) अल्टमान", "english": "(a) Altman" },
+                { "hindi": "(b) फॉनटाना", "english": "(b) Fontana" },
+                { "hindi": "(c) नीरेनबर्ग", "english": "(c) Nirenberg" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) फॉनटाना", "english": "(b) Fontana" }
+        },
+        {
+            "question": {
+                "hindi": "19. गुणसूत्र सिद्धांत (chromosome theory) सर्वप्रथम किसने दिया?",
+                "english": "19. Who first proposed the chromosome theory?"
+            },
+            "options": [
+                { "hindi": "(a) बोवेरी तथा सटन", "english": "(a) Boveri and Sutton" },
+                { "hindi": "(b) बेटसन", "english": "(b) Bateson" },
+                { "hindi": "(c) मुलर तथा मॉर्गन", "english": "(c) Muller and Morgan" },
+                { "hindi": "(d) बेटसन तथा मेण्डल", "english": "(d) Bateson and Mendel" }
+            ],
+            "answer": { "hindi": "(a) बोवेरी तथा सटन", "english": "(a) Boveri and Sutton" }
+        },
+        {
+            "question": {
+                "hindi": "20. जम्पिंग जीन (transposable elements) की खोज किसने की?",
+                "english": "20. Who discovered jumping genes (transposable elements)?"
+            },
+            "options": [
+                { "hindi": "(a) जैकोब और मोनॉड", "english": "(a) Jacob and Monod" },
+                { "hindi": "(b) मैक क्लिंटॉक", "english": "(b) McClintock" },
+                { "hindi": "(c) मैथ्यूज", "english": "(c) Matthews" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) मैक क्लिंटॉक", "english": "(b) McClintock" }
+        },
+        {
+            "question": {
+                "hindi": "21. माइटोकॉन्ड्रिया नाम किसने दिया?",
+                "english": "21. Who gave the name \"mitochondria\"?"
+            },
+            "options": [
+                { "hindi": "(a) अल्टमान", "english": "(a) Altmann" },
+                { "hindi": "(b) सी. बेन्डा", "english": "(b) C. Benda" },
+                { "hindi": "(c) कोलिकर", "english": "(c) Kolliker" },
+                { "hindi": "(d) उपरोक्त सभी", "english": "(d) All of the above" }
+            ],
+            "answer": { "hindi": "(b) सी. बेन्डा", "english": "(b) C. Benda" }
+        },
+        {
+            "question": {
+                "hindi": "22. आण्विक जीव-विज्ञान का प्रधान सिद्धांत (Central Dogma of Molecular Biology) किसने दिया?",
+                "english": "22. Who proposed the Central Dogma of Molecular Biology?"
+            },
+            "options": [
+                { "hindi": "(a) क्रिक 1968", "english": "(a) Crick, 1968" },
+                { "hindi": "(b) हेमरलिंग 1950", "english": "(b) Hammerling, 1950" },
+                { "hindi": "(c) रॉबर्ट ब्राउन 1931", "english": "(c) Robert Brown, 1931" },
+                { "hindi": "(d) खुराना 1967", "english": "(d) Khorana, 1967" }
+            ],
+            "answer": { "hindi": "(a) क्रिक 1968", "english": "(a) Crick, 1968" }
+        },
+        {
+            "question": {
+                "hindi": "23. टेमिन तथा बाल्टीमोर (Temin and Baltimore) किस खोज के लिए प्रसिद्ध हैं?",
+                "english": "23. Temin and Baltimore are famous for discovering what?"
+            },
+            "options": [
+                { "hindi": "(a) स्थानांतरण", "english": "(a) Translation" },
+                { "hindi": "(b) अनुलेखन (ट्रांसक्रिप्शन)", "english": "(b) Transcription" },
+                { "hindi": "(c) उत्क्रम अनुलेखन (रिवर्स ट्रांसक्रिप्शन)", "english": "(c) Reverse Transcription" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) उत्क्रम अनुलेखन (रिवर्स ट्रांसक्रिप्शन)", "english": "(c) Reverse Transcription" }
+        },
+        {
+            "question": {
+                "hindi": "24. वाटसन तथा क्रिक 1953 द्वारा दिया गया DNA मॉडल क्या है?",
+                "english": "24. What type of DNA model was proposed by Watson and Crick in 1953?"
+            },
+            "options": [
+                { "hindi": "(a) B-DNA", "english": "(a) B-DNA" },
+                { "hindi": "(b) Z-DNA", "english": "(b) Z-DNA" },
+                { "hindi": "(c) C-DNA", "english": "(c) C-DNA" },
+                { "hindi": "(d) D-DNA", "english": "(d) D-DNA" }
+            ],
+            "answer": { "hindi": "(a) B-DNA", "english": "(a) B-DNA" }
+        },
+        {
+            "question": {
+                "hindi": "25. भारत में जन्मे डॉ० हरगोविन्द खुराना तथा उनके सहयोगियों द्वारा एशरिकिया कोली (Escherichia coli) में संश्लेषित टायरोसीन t-RNA में न्यूक्लियोटाइड्स की संख्या कितनी थी?",
+                "english": "25. How many nucleotides were there in the synthetic tyrosine t-RNA of Escherichia coli, synthesized by Dr. Hargobind Khorana and his colleagues?"
+            },
+            "options": [
+                { "hindi": "(a) 126 जोड़े", "english": "(a) 126 pairs" },
+                { "hindi": "(b) 100 जोड़े", "english": "(b) 100 pairs" },
+                { "hindi": "(c) 77 जोड़े", "english": "(c) 77 pairs" },
+                { "hindi": "(d) 70 जोड़े", "english": "(d) 70 pairs" }
+            ],
+            "answer": { "hindi": "(c) 77 जोड़े", "english": "(c) 77 pairs" }
+        },
+        {
+            "question": {
+                "hindi": "26. यीस्ट एलेनीन t-RNA में न्यूक्लियोटाइड्स की पूर्ण श्रृंखला क्रम किसने ज्ञात किया?",
+                "english": "26. Who determined the complete nucleotide sequence in yeast alanine t-RNA?"
+            },
+            "options": [
+                { "hindi": "(a) रॉबर्ट डब्ल्यू होले", "english": "(a) Robert W. Holley" },
+                { "hindi": "(b) वाटसन एवं क्रिक", "english": "(b) Watson and Crick" },
+                { "hindi": "(c) रॉबर्ट कोच", "english": "(c) Robert Koch" },
+                { "hindi": "(d) कैरी मुलिस", "english": "(d) Kary Mullis" }
+            ],
+            "answer": { "hindi": "(a) रॉबर्ट डब्ल्यू होले", "english": "(a) Robert W. Holley" }
+        },
+        {
+            "question": {
+                "hindi": "27. डी एनए (DNA) बहुलक (polymer) है",
+                "english": "27. DNA is a polymer of:"
+            },
+            "options": [
+                { "hindi": "(a) न्यूक्लियोटाइड्स", "english": "(a) Nucleotides" },
+                { "hindi": "(b) ग्लूकोस", "english": "(b) Glucose" },
+                { "hindi": "(c) ऐमीनो अम्ल", "english": "(c) Amino acids" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) न्यूक्लियोटाइड्स", "english": "(a) Nucleotides" }
+        },
+        {
+            "question": {
+                "hindi": "28. निम्नलिखित में से कौन-सा पदार्थ RNA तथा DNA दोनों में पाया जाता है?",
+                "english": "28. Which of the following is found in both RNA and DNA?"
+            },
+            "options": [
+                { "hindi": "(a) एडीनीन", "english": "(a) Adenine" },
+                { "hindi": "(b) थायमीन", "english": "(b) Thymine" },
+                { "hindi": "(c) यूरेसिल", "english": "(c) Uracil" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(a) एडीनीन", "english": "(a) Adenine" }
+        },
+        {
+            "question": {
+                "hindi": "29. निम्नलिखित में से कौन-सा पदार्थ DNA में नहीं पाया जाता?",
+                "english": "29. Which of the following is not found in DNA?"
+            },
+            "options": [
+                { "hindi": "(a) एडीनीन", "english": "(a) Adenine" },
+                { "hindi": "(b) ग्वानीन", "english": "(b) Guanine" },
+                { "hindi": "(c) यूरेसिल", "english": "(c) Uracil" },
+                { "hindi": "(d) साइटोसीन", "english": "(d) Cytosine" }
+            ],
+            "answer": { "hindi": "(c) यूरेसिल", "english": "(c) Uracil" }
+        },
+        {
+            "question": {
+                "hindi": "30. निम्नलिखित में से कौन-सा पदार्थ RNA में नहीं होता है?",
+                "english": "30. Which of the following is not found in RNA?"
+            },
+            "options": [
+                { "hindi": "(a) साइटोसीन", "english": "(a) Cytosine" },
+                { "hindi": "(b) थायमीन", "english": "(b) Thymine" },
+                { "hindi": "(c) एडीनीन", "english": "(c) Adenine" },
+                { "hindi": "(d) यूरेसिल", "english": "(d) Uracil" }
+            ],
+            "answer": { "hindi": "(b) थायमीन", "english": "(b) Thymine" }
+        },
+        {
+            "question": {
+                "hindi": "31. साइटोसीन पाया जाता है",
+                "english": "31. Cytosine is found in:"
+            },
+            "options": [
+                { "hindi": "(a) केवल डी एनए में", "english": "(a) Only in DNA" },
+                { "hindi": "(b) केवल आरएनए में", "english": "(b) Only in RNA" },
+                { "hindi": "(c) आरएनए तथा डी एनए दोनों में", "english": "(c) In both RNA and DNA" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) आरएनए तथा डी एनए दोनों में", "english": "(c) In both RNA and DNA" }
+        },
+        {
+            "question": {
+                "hindi": "32. कोशाओं के कुल डी एनए (DNA) में, कितने प्रतिशत भाग कोशा द्रव्य डी एनए (Cytoplasmic DNA) का होता है?",
+                "english": "32. What percentage of total DNA in cells is cytoplasmic DNA?"
+            },
+            "options": [
+                { "hindi": "(a) 70-80%", "english": "(a) 70-80%" },
+                { "hindi": "(b) 1-5%", "english": "(b) 1-5%" },
+                { "hindi": "(c) 80-90%", "english": "(c) 80-90%" },
+                { "hindi": "(d) 10-20%", "english": "(d) 10-20%" }
+            ],
+            "answer": { "hindi": "(b) 1-5%", "english": "(b) 1-5%" }
+        },
+        {
+            "question": {
+                "hindi": "33. डी एनए (DNA) की श्रृंखला एँ बँधी होती हैं",
+                "english": "33. The strands of DNA are held together by:"
+            },
+            "options": [
+                { "hindi": "(a) कार्बन बन्ध", "english": "(a) Carbon bonds" },
+                { "hindi": "(b) ऑक्सीजन बन्ध", "english": "(b) Oxygen bonds" },
+                { "hindi": "(c) नाइट्रोजन बन्ध", "english": "(c) Nitrogen bonds" },
+                { "hindi": "(d) हाइड्रोजन बन्ध", "english": "(d) Hydrogen bonds" }
+            ],
+            "answer": { "hindi": "(d) हाइड्रोजन बन्ध", "english": "(d) Hydrogen bonds" }
+        },
+        {
+            "question": {
+                "hindi": "34. डी एनए (DNA) केन्द्रक के अतिरिक्त निम्न किस कोशिकांग में पाया जाता है?",
+                "english": "34. Apart from the nucleus, DNA is also found in:"
+            },
+            "options": [
+                { "hindi": "(a) लाइसोसोम", "english": "(a) Lysosome" },
+                { "hindi": "(b) राइबोसोम", "english": "(b) Ribosome" },
+                { "hindi": "(c) गॉल्जी काय", "english": "(c) Golgi body" },
+                { "hindi": "(d) माइटोकॉण्ड्रिया", "english": "(d) Mitochondria" }
+            ],
+            "answer": { "hindi": "(d) माइटोकॉण्ड्रिया", "english": "(d) Mitochondria" }
+        },
+        {
+            "question": {
+                "hindi": "35. लिंकर डी एनए (Linker DNA) का कार्य है",
+                "english": "35. The function of linker DNA is:"
+            },
+            "options": [
+                { "hindi": "(a) दो केन्द्रिका (Nucleolus) को जोड़ना", "english": "(a) To link two nucleoli" },
+                { "hindi": "(b) दो केन्द्रिका भों (Nucleosomes) को जोड़ना", "english": "(b) To link two nucleosomes" },
+                { "hindi": "(c) दो अर्ध-गुणसूत्रों (Chromatids) को जोड़ना", "english": "(c) To link two chromatids" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) दो केन्द्रिका भों (Nucleosomes) को जोड़ना", "english": "(b) To link two nucleosomes" }
+        },
+        {
+            "question": {
+                "hindi": "36. उत्क्रम अनुलेनुलेखन (Reverse Transcription) की क्रिया है",
+                "english": "36. Reverse transcription is the process of:"
+            },
+            "options": [
+                { "hindi": "(a) RNA से RNA का निर्माण", "english": "(a) Formation of RNA from RNA" },
+                { "hindi": "(b) DNA से DNA का निर्माण", "english": "(b) Formation of DNA from DNA" },
+                { "hindi": "(c) DNA से RNA का निर्माण", "english": "(c) Formation of RNA from DNA" },
+                { "hindi": "(d) RNA से DNA का निर्माण", "english": "(d) Formation of DNA from RNA" }
+            ],
+            "answer": { "hindi": "(d) RNA से DNA का निर्माण", "english": "(d) Formation of DNA from RNA" }
+        },
+        {
+            "question": {
+                "hindi": "37. मानवों में केवल एक उपापचयी अभिक्रिया की गड़बड़ी से होने वाले किस रोग का पता सबसे पहले लगा?",
+                "english": "37. Which disease caused by a single metabolic reaction disorder was first identified in humans?"
+            },
+            "options": [
+                { "hindi": "(a) फीनाइलकीटोनूरिया", "english": "(a) Phenylketonuria" },
+                { "hindi": "(b) ऐल्कैप्टोनूरिया", "english": "(b) Alkaptonuria" },
+                { "hindi": "(c) हँसिया कोर रुधिराणु ऐनीमिया", "english": "(c) Sickle cell anemia" },
+                { "hindi": "(d) रंजकहीनता", "english": "(d) Albinism" }
+            ],
+            "answer": { "hindi": "(b) ऐल्कैप्टोनूरिया", "english": "(b) Alkaptonuria" }
+        },
+        {
+            "question": {
+                "hindi": "38. मानवों में उपापचय की जन्मजात त्रुटियों से उत्पन्न रोगों के बारे में प्रथम योगदान किस वैज्ञानिक का था?",
+                "english": "38. Who first contributed to the understanding of inborn errors of metabolism in humans?"
+            },
+            "options": [
+                { "hindi": "(a) जॉन मेन्डल", "english": "(a) John Mendel" },
+                { "hindi": "(b) आर्किबोल्ड गैरोड", "english": "(b) Archibald Garrod" },
+                { "hindi": "(c) मॉर्गन", "english": "(c) Morgan" },
+                { "hindi": "(d) सटन", "english": "(d) Sutton" }
+            ],
+            "answer": { "hindi": "(b) आर्किबोल्ड गैरोड", "english": "(b) Archibald Garrod" }
+        },
+        {
+            "question": {
+                "hindi": "39. वंशागति का गुणसूत्र मत किस वैज्ञानिक ने प्रस्तुत किया?",
+                "english": "39. Who proposed the chromosomal theory of inheritance?"
+            },
+            "options": [
+                { "hindi": "(a) गैरोड", "english": "(a) Garrod" },
+                { "hindi": "(b) मॉर्गन", "english": "(b) Morgan" },
+                { "hindi": "(c) सटन", "english": "(c) Sutton" },
+                { "hindi": "(d) जॉन्सन", "english": "(d) Johnson" }
+            ],
+            "answer": { "hindi": "(c) सटन", "english": "(c) Sutton" }
+        },
+        {
+            "question": {
+                "hindi": "40. वंशागति के जीन मत का आधार क्या था?",
+                "english": "40. What was the basis of the gene theory of inheritance?"
+            },
+            "options": [
+                { "hindi": "(a) जीन्स की संख्या गुणसूत्रों की संख्या जितनी होती है", "english": "(a) The number of genes equals the number of chromosomes" },
+                { "hindi": "(b) जीन्स की संख्या गुणसूत्रों की संख्या से कम होती है", "english": "(b) The number of genes is less than the number of chromosomes" },
+                { "hindi": "(c) जीन्स की संख्या गुणसूत्रों की संख्या से बहुत अधिक होती है", "english": "(c) The number of genes is much higher than the number of chromosomes" },
+                { "hindi": "(d) इनमें से कोई भी नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(c) जीन्स की संख्या गुणसूत्रों की संख्या से बहुत अधिक होती है", "english": "(c) The number of genes is much higher than the number of chromosomes" }
+        },
+        {
+            "question": {
+                "hindi": "41. RNA अणु में क्या होता है जो DNA अणु में नहीं होता?",
+                "english": "41. What is present in RNA but not in DNA?"
+            },
+            "options": [
+                { "hindi": "(a) यूरैसिल", "english": "(a) Uracil" },
+                { "hindi": "(b) थाइमीन", "english": "(b) Thymine" },
+                { "hindi": "(c) ऐडेनिन", "english": "(c) Adenine" },
+                { "hindi": "(d) ग्वानीन", "english": "(d) Guanine" }
+            ],
+            "answer": { "hindi": "(a) यूरैसिल", "english": "(a) Uracil" }
+        },
+        {
+            "question": {
+                "hindi": "42. सिस्ट्रॉन (cistron), म्यूटॉन (muton) तथा रिकॉन (recon) शब्द किसने दिए?",
+                "english": "42. Who coined the terms cistron, muton, and recon?"
+            },
+            "options": [
+                { "hindi": "(a) बेटसन", "english": "(a) Bateson" },
+                { "hindi": "(b) बेन्जर", "english": "(b) Benzer" },
+                { "hindi": "(c) लेडरबर्ग", "english": "(c) Lederberg" },
+                { "hindi": "(d) रॉबर्ट हुक", "english": "(d) Robert Hooke" }
+            ],
+            "answer": { "hindi": "(b) बेन्जर", "english": "(b) Benzer" }
+        },
+        {
+            "question": {
+                "hindi": "43. \"Omnis cellula e cellula\" किसने कहा था?",
+                "english": "43. Who said \"Omnis cellula e cellula\"?"
+            },
+            "options": [
+                { "hindi": "(a) परकिंजे", "english": "(a) Purkinje" },
+                { "hindi": "(b) रॉबर्ट हुक", "english": "(b) Robert Hooke" },
+                { "hindi": "(c) विरचोव", "english": "(c) Virchow" },
+                { "hindi": "(d) रॉबर्ट ब्राउन", "english": "(d) Robert Brown" }
+            ],
+            "answer": { "hindi": "(c) विरचोव", "english": "(c) Virchow" }
+        }
+    ]
+}
