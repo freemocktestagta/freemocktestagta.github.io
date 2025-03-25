@@ -31,7 +31,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://www.testro.com/favicon.ico">
 
-    <!-- Additional Meta Tags for Competitive Exams and Agriculture -->
+    <!-- Additional Meta Tags -->
     <meta name="subject" content="Free Agriculture Mock Tests for Competitive Exams">
     <meta name="classification" content="Education, Competitive Exams, Agriculture, Mock Tests">
     <meta name="topic" content="Free Mock Tests for Agriculture Competitive Exams">
@@ -67,7 +67,6 @@
     <meta name="spiders" content="all">
     <meta name="robots" content="all">
     <meta name="document-state" content="Dynamic">
-    <meta name="distribution" content="Global">
     <meta name="content-language" content="en, hi">
     <meta name="author-email" content="support@testro.com">
     <meta name="reply-to" content="support@testro.com">
@@ -91,23 +90,8 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- Header with Navigation -->
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <span class="logo-icon">📚</span>
-                <h1>Testro</h1>
-            </div>
-            <nav>
-                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
-                <ul class="nav-links" id="nav-menu" role="menu">
-                    <li role="none"><a href="index.html" role="menuitem" class="active">Home</a></li>
-                    <li role="none"><a href="UpssscAGTA.html" role="menuitem">UPSSSC AG TA</a></li>
-                    <li role="none"><a href="progres-page.html" role="menuitem">Check Your Progress</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Header will be loaded dynamically here -->
+    <div id="header"></div>
 
     <!-- Notification Bar -->
     <div class="notification-bar">
@@ -140,186 +124,75 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Testro</h3>
-                <p>Your one-stop destination for free agriculture mock tests.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="UpssscAGTA.html">UPSSSC AG TA</a></li>
-                    <li><a href="privacy-policy.html">Progress Check</a></li>
-                    <li><a href="contact.html">contact us</a></li>
-                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="https://facebook.com/testro" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://twitter.com/testro" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com/testro" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com/testro" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Testro - Free Agriculture Mock Tests</p>
-        </div>
-    </footer>
+    <!-- Footer will be loaded dynamically here -->
+    <div id="footer"></div>
 
+    <!-- Dynamic Header/Footer Loading Script -->
     <script>
-        // Function to toggle the mobile menu
+        // Load Header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .then(() => {
+                setupMobileMenu(); 
+                closeMenuOnLinkClick(); 
+                setActiveNavLink(); 
+            })
+            .catch(error => console.error('Header load error:', error));
+
+        // Load Footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(error => console.error('Footer load error:', error));
+
+        // Mobile Menu Functions
         function toggleMenu(event) {
-            if (event) event.stopPropagation(); // Prevent the event from bubbling up
+            event.preventDefault();
             const navLinks = document.getElementById("nav-menu");
             const menuToggle = document.querySelector(".menu-toggle");
+            if (!navLinks || !menuToggle) return;
             const isOpen = navLinks.classList.toggle("active");
-
-            // Update aria-expanded and button text
             menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
             menuToggle.textContent = isOpen ? "✖" : "☰";
         }
 
-        // Attach event listener to menu toggle button
-        document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
-
-        // Close the mobile menu when a link is clicked
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            link.addEventListener("click", () => {
-                const navLinks = document.getElementById("nav-menu");
-                const menuToggle = document.querySelector(".menu-toggle");
-                navLinks.classList.remove("active");
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.textContent = "☰";
-            });
-        });
-
-        // Close the mobile menu when clicking outside
-        document.addEventListener("click", (event) => {
-            const navLinks = document.getElementById("nav-menu");
+        function setupMobileMenu() {
             const menuToggle = document.querySelector(".menu-toggle");
-
-            if (navLinks.classList.contains("active") && 
-                !navLinks.contains(event.target) && 
-                !menuToggle.contains(event.target)) {
-                navLinks.classList.remove("active");
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.textContent = "☰";
+            if (menuToggle) {
+                menuToggle.addEventListener("click", toggleMenu);
+                menuToggle.addEventListener("touchstart", toggleMenu);
             }
-        });
+        }
 
-        // Set active nav link based on current page
-        document.addEventListener("DOMContentLoaded", () => {
+        function closeMenuOnLinkClick() {
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    const navLinks = document.getElementById("nav-menu");
+                    if (navLinks.classList.contains("active")) {
+                        navLinks.classList.remove("active");
+                        document.querySelector(".menu-toggle").textContent = "☰";
+                    }
+                });
+            });
+        }
+
+        function setActiveNavLink() {
             const currentPage = window.location.pathname.split("/").pop();
             document.querySelectorAll(".nav-links a").forEach(link => {
-                if (link.getAttribute("href") === currentPage) {
-                    link.classList.add("active");
-                } else if (currentPage === "" && link.getAttribute("href") === "index.html") {
+                const linkPage = link.getAttribute("href");
+                if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
                     link.classList.add("active");
                 } else {
                     link.classList.remove("active");
                 }
             });
-        });
+        }
     </script>
 
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background: #f4f4f4;
-            color: #333;
-            scroll-behavior: smooth; /* Enable smooth scrolling */
-            line-height: 1.6;
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #004080, #002040);
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        .logo-icon {
-            margin-right: 10px;
-            font-size: 24px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 24px;
-            color: white;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #ffcc00;
-        }
-        .nav-links a:focus {
-            outline: 2px solid #ffcc00;
-            outline-offset: 2px;
-        }
-        .nav-links a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #ffcc00;
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
-            padding: 8px;
-            border-radius: 4px;
-        }
-        .menu-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .menu-toggle:focus {
-            outline: 2px solid #ffcc00;
-            outline-offset: 2px;
-        }
-
         /* Notification Bar */
         .notification-bar {
             background: #ffcc00; /* Bright yellow background */
@@ -337,14 +210,14 @@
             background: #004080; /* Dark blue background */
             color: #ffcc00; /* Bright yellow text */
             border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Added shadow for highlight */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             animation: scrollRightToLeft 10s linear infinite;
             position: relative;
         }
         .notification-bar .highlight {
-            font-size: 20px; /* Larger font size */
+            font-size: 20px;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Text shadow for better visibility */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         @keyframes scrollRightToLeft {
             0% {
@@ -358,7 +231,7 @@
         /* Hero Section */
         .hero {
             padding: 100px 20px;
-            background: #f4f4f4; /* Removed background image */
+            background: #f4f4f4;
             color: #004080;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
         }
@@ -372,7 +245,7 @@
             color: #004080;
         }
         .hero p {
-            font-size: 1.5em; /* Larger font size for Hindi intro */
+            font-size: 1.5em;
             margin: 20px 0;
             color: #004080;
         }
@@ -440,90 +313,21 @@
             background: #f0f0f0;
         }
 
-        /* Footer */
-        footer {
-            background: #004080;
-            padding: 40px 20px;
-            color: white;
-        }
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 800px; /* Reduced from 1200px to 800px */
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer-section h3 {
-            margin-bottom: 20px;
-        }
-        .footer-section a {
-            text-decoration: none;
-            transition: color 0.3s;
-            color: white;
-        }
-        .footer-section a:hover {
-            color: #ffcc00;
-        }
-        .social-links a {
-            margin: 0 10px;
-            font-size: 20px;
-            transition: color 0.3s;
-            color: white;
-        }
-        .social-links a:hover {
-            color: #ffcc00;
-        }
-        .footer-bottom {
-            margin-top: 20px;
-            border-top: 1px solid #555;
-            padding-top: 20px;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
+            .hero {
+                padding: 60px 20px;
             }
-            .nav-links {
-                flex-direction: column;
-                background: linear-gradient(135deg, #004080, #002040);
-                position: absolute;
-                width: 100%;
-                top: 60px;
-                left: 0;
-                z-index: 1001;
-                transform: translateY(-150%); /* Start off-screen */
-                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-                opacity: 0;
-                pointer-events: none;
-                visibility: hidden;
-                height: 0;
-                overflow: hidden;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            .hero h2 {
+                font-size: 2em;
             }
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: auto;
-                visibility: visible;
-                height: auto;
-                padding: 10px 0;
+            .hero p {
+                font-size: 1.2em;
             }
-            .nav-links li {
-                margin: 0;
-                width: 100%;
-            }
-            .nav-links a {
-                display: block;
-                padding: 12px 20px;
-                border-radius: 0;
-            }
-            .footer-container {
-                flex-direction: column;
-                gap: 30px;
+            .notification-bar .highlight {
+                font-size: 16px;
             }
         }
     </style>
 </body>
 </html>
-
