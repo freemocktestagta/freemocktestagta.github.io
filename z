@@ -3,7 +3,59 @@
 <script>
     fetch('header.html')
         .then(response => response.text())
-        .then(data => document.getElementById('header').innerHTML = data);
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        // 🔥 ADD THESE LINES TO REINITIALIZE THE MENU 🔥
+        .then(() => {
+            setupMobileMenu(); 
+            closeMenuOnLinkClick(); 
+            setActiveNavLink(); 
+        })
+        .catch(error => console.error('Header load error:', error));
+
+    // 🛠️ Recreate functions from header.html's script here
+    function toggleMenu(event) {
+        event.preventDefault();
+        const navLinks = document.getElementById("nav-menu");
+        const menuToggle = document.querySelector(".menu-toggle");
+        if (!navLinks || !menuToggle) return;
+        const isOpen = navLinks.classList.toggle("active");
+        menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        menuToggle.textContent = isOpen ? "✖" : "☰";
+    }
+
+    function setupMobileMenu() {
+        const menuToggle = document.querySelector(".menu-toggle");
+        if (menuToggle) {
+            menuToggle.addEventListener("click", toggleMenu);
+            menuToggle.addEventListener("touchstart", toggleMenu);
+        }
+    }
+
+    function closeMenuOnLinkClick() {
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                const navLinks = document.getElementById("nav-menu");
+                if (navLinks.classList.contains("active")) {
+                    navLinks.classList.remove("active");
+                    document.querySelector(".menu-toggle").textContent = "☰";
+                }
+            });
+        });
+    }
+
+    function setActiveNavLink() {
+        const currentPage = window.location.pathname.split("/").pop();
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            const linkPage = link.getAttribute("href");
+            if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+        });
+    }
 </script>
 
 <!-- Your Page Content Here -->
@@ -13,5 +65,6 @@
 <script>
     fetch('footer.html')
         .then(response => response.text())
-        .then(data => document.getElementById('footer').innerHTML = data);
+        .then(data => document.getElementById('footer').innerHTML = data)
+        .catch(error => console.error('Footer load error:', error));
 </script>
