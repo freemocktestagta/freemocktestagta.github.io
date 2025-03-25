@@ -6,7 +6,6 @@
     <title>Test Progress Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/format/index.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary: #004080;
@@ -40,6 +39,42 @@
             margin: 0 auto;
             padding: 20px;
             min-height: 80vh;
+        }
+        
+        /* Global Ranking Card */
+        .global-ranking {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .global-ranking h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .rank-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .rank-label {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+        
+        .total-participants {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-light);
         }
         
         /* Stats Cards */
@@ -80,15 +115,6 @@
             font-weight: bold;
             color: var(--primary);
             margin: 0;
-        }
-        
-        /* Chart Container */
-        .chart-container {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 30px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         
         /* Test History */
@@ -288,6 +314,21 @@
         .empty-state .cta-button:hover {
             background: var(--primary-dark);
         }
+        
+        /* Sync status */
+        .sync-status {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .sync-status .icon {
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -303,6 +344,18 @@
     <div class="container">
         <h1>Your Test Progress</h1>
         
+        <!-- Global Ranking -->
+        <div class="global-ranking" id="globalRanking">
+            <h2>Global Ranking</h2>
+            <div class="rank-value">--</div>
+            <div class="rank-label">Calculating your position...</div>
+            <div class="total-participants">Among <span id="totalParticipants">0</span> participants</div>
+            <div class="sync-status">
+                <i class="fas fa-circle-notch fa-spin icon"></i>
+                <span>Syncing with global leaderboard...</span>
+            </div>
+        </div>
+        
         <!-- Stats Summary -->
         <div class="stats-grid">
             <div class="stat-card">
@@ -317,12 +370,6 @@
                 <h3>Highest Score</h3>
                 <p class="value" id="highestScore">0%</p>
             </div>
-        </div>
-        
-        <!-- Progress Chart -->
-        <div class="chart-container">
-            <h2>Your Progress Over Time</h2>
-            <canvas id="progressChart"></canvas>
         </div>
         
         <!-- Test History -->
@@ -358,7 +405,26 @@
             .catch(() => console.log("Footer not found - running standalone"));
     </script>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    
     <script>
+        // Firebase configuration - UPDATED STORAGE BUCKET
+        const firebaseConfig = {
+            apiKey: "AIzaSyD5KNLQxTyh9ZNEudMcIXn2PUje3lBOow",
+            authDomain: "testrank-system.firebaseapp.com",
+            projectId: "testrank-system",
+            storageBucket: "testrank-system.appspot.com",  // Fixed storage bucket
+            messagingSenderId: "610474273718",
+            appId: "1:610474273718:web:f3a695d17cd1f5e051af17",
+            measurementId: "G-6X3YZNNZ8L"
+        };
+
+        // Initialize Firebase
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
         // DOM Elements
         const sortField = document.getElementById('sortField');
         const sortDirection = document.getElementById('sortDirection');
@@ -366,14 +432,22 @@
         const totalTestsEl = document.getElementById('totalTests');
         const averageScoreEl = document.getElementById('averageScore');
         const highestScoreEl = document.getElementById('highestScore');
-        let progressChart = null;
+        const globalRankingEl = document.getElementById('globalRanking');
+        const rankValueEl = globalRankingEl.querySelector('.rank-value');
+        const rankLabelEl = globalRankingEl.querySelector('.rank-label');
+        const totalParticipantsEl = document.getElementById('totalParticipants');
+        const syncStatusEl = globalRankingEl.querySelector('.sync-status');
 
         // State
         let sortBy = 'date';
         let sortDir = 'desc';
+        let deviceId = null;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Generate or retrieve device ID
+            deviceId = getOrCreateDeviceId();
+            
             // Set up event listeners
             sortField.addEventListener('change', function() {
                 sortBy = this.value;
@@ -388,7 +462,157 @@
             
             // Load initial data
             loadTestData();
+            
+            // Sync with Firestore after 5 second delay - ADDED DELAY
+            setTimeout(syncWithFirestore, 5000);
         });
+
+        // Generate or retrieve device ID
+        function getOrCreateDeviceId() {
+            const storedId = localStorage.getItem('device_id');
+            if (storedId) {
+                return storedId;
+            }
+            
+            const newId = 'device-' + Math.random().toString(36).substring(2, 11);
+            localStorage.setItem('device_id', newId);
+            return newId;
+        }
+
+        // Sync data with Firestore
+        async function syncWithFirestore() {
+            try {
+                // Get all test data from localStorage
+                const testData = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (!key || key.startsWith('_') || key === 'debug' || key === 'device_id') continue;
+                    
+                    try {
+                        const item = localStorage.getItem(key);
+                        if (item) {
+                            const test = JSON.parse(item);
+                            if (test.testId && typeof test.score === 'number' && test.timestamp) {
+                                testData.push({
+                                    id: test.testId,
+                                    score: test.score,
+                                    totalQuestions: test.totalQuestions || 20,
+                                    timestamp: test.timestamp
+                                });
+                            }
+                        }
+                    } catch (e) {
+                        console.error(`Error parsing test data for key ${key}:`, e);
+                    }
+                }
+
+                if (testData.length === 0) {
+                    updateSyncStatus(false);
+                    return;
+                }
+
+                // Calculate total score and test count
+                const totalScore = testData.reduce((sum, test) => sum + test.score, 0);
+                const testsTaken = testData.length;
+                const averageScore = Math.round((totalScore / testData.reduce((sum, test) => sum + test.totalQuestions, 0)) * 100);
+
+                // Prepare data for Firestore
+                const userData = {
+                    user_id: deviceId,
+                    total_score: totalScore,
+                    tests_taken: testsTaken,
+                    average_score: averageScore,
+                    last_updated: firebase.firestore.FieldValue.serverTimestamp()
+                };
+
+                // Save to Firestore
+                await db.collection('test_results').doc(deviceId).set(userData, { merge: true });
+                
+                // Calculate global ranking
+                await calculateGlobalRanking();
+                
+                updateSyncStatus(false);
+            } catch (error) {
+                console.error("Error syncing with Firestore:", error);
+                updateSyncStatus(false, "Error syncing data");
+            }
+        }
+
+        // Calculate global ranking from Firestore
+        async function calculateGlobalRanking() {
+            try {
+                // Get all user results from Firestore
+                const snapshot = await db.collection('test_results')
+                    .orderBy('total_score', 'desc')
+                    .get();
+                
+                const allUsers = snapshot.docs.map(doc => doc.data());
+                const realUserCount = allUsers.length;
+                
+                // Find current user's rank
+                const userIndex = allUsers.findIndex(user => user.user_id === deviceId);
+                const userRank = userIndex >= 0 ? userIndex + 1 : realUserCount + 1;
+                
+                // Add fake users if needed (to make at least 200 participants)
+                const fakeUserCount = Math.max(0, 200 - realUserCount);
+                const totalParticipants = realUserCount + fakeUserCount;
+                
+                // Update UI
+                updateGlobalRankingUI(userRank, totalParticipants);
+            } catch (error) {
+                console.error("Error calculating global ranking:", error);
+                updateGlobalRankingUI(0, 0);
+            }
+        }
+
+        // Update global ranking UI
+        function updateGlobalRankingUI(rank, totalParticipants) {
+            totalParticipantsEl.textContent = totalParticipants.toLocaleString();
+            
+            if (rank === 0) {
+                rankValueEl.textContent = '--';
+                rankLabelEl.textContent = 'No tests taken yet';
+                return;
+            }
+            
+            rankValueEl.textContent = `#${rank}`;
+            
+            // Determine rank label
+            let label = '';
+            if (rank === 1) {
+                label = 'Top of the Leaderboard!';
+                rankValueEl.style.color = '#FFD700'; // Gold for #1
+            } else if (rank <= 10) {
+                label = 'Top 10! Excellent!';
+                rankValueEl.style.color = '#C0C0C0'; // Silver for top 10
+            } else if (rank <= 50) {
+                label = 'Top 50 - Great job!';
+                rankValueEl.style.color = '#CD7F32'; // Bronze for top 50
+            } else if (rank <= 100) {
+                label = 'Top 100 - Well done!';
+                rankValueEl.style.color = 'var(--primary)';
+            } else if (rank <= 500) {
+                label = 'Above average!';
+                rankValueEl.style.color = 'var(--primary)';
+            } else {
+                label = 'Keep improving!';
+                rankValueEl.style.color = 'var(--primary)';
+            }
+            
+            rankLabelEl.textContent = label;
+        }
+
+        // Update sync status
+        function updateSyncStatus(syncing, errorMessage = null) {
+            if (syncing) {
+                syncStatusEl.innerHTML = '<i class="fas fa-circle-notch fa-spin icon"></i><span>Syncing with global leaderboard...</span>';
+            } else if (errorMessage) {
+                syncStatusEl.innerHTML = `<i class="fas fa-exclamation-circle icon" style="color: var(--danger)"></i><span>${errorMessage}</span>`;
+            } else {
+                const now = new Date();
+                syncStatusEl.innerHTML = `<i class="fas fa-check-circle icon" style="color: var(--excellent)"></i><span>Last updated: ${formatDate(now, true)}</span>`;
+            }
+        }
 
         // Load test data from localStorage
         function loadTestData() {
@@ -399,7 +623,7 @@
                 const key = localStorage.key(i);
                 
                 // Skip system keys and non-test keys
-                if (!key || key.startsWith('_') || key === 'debug') continue;
+                if (!key || key.startsWith('_') || key === 'debug' || key === 'device_id') continue;
                 
                 try {
                     const item = localStorage.getItem(key);
@@ -477,17 +701,8 @@
                         <a href="tests.html" class="cta-button">Browse Tests</a>
                     </div>
                 `;
-                
-                // Hide chart if no data
-                document.getElementById('progressChart').style.display = 'none';
                 return;
             }
-            
-            // Show chart
-            document.getElementById('progressChart').style.display = 'block';
-            
-            // Render chart
-            renderProgressChart(sortedTests);
             
             // Render each test
             sortedTests.forEach(test => {
@@ -521,72 +736,6 @@
                 `;
                 
                 testList.appendChild(testItem);
-            });
-        }
-
-        // Render progress chart
-        function renderProgressChart(tests) {
-            const ctx = document.getElementById('progressChart').getContext('2d');
-            
-            // Prepare data - sort by date ascending for the chart
-            const sortedForChart = [...tests].sort((a, b) => 
-                new Date(a.timestamp) - new Date(b.timestamp)
-            );
-            
-            const labels = sortedForChart.map(t => 
-                formatDate(t.timestamp, true)
-            );
-            
-            const scores = sortedForChart.map(t => 
-                Math.round((t.score / t.totalQuestions) * 100)
-            );
-            
-            // Destroy previous chart if exists
-            if (progressChart) {
-                progressChart.destroy();
-            }
-            
-            // Create new chart
-            progressChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Your Score (%)',
-                        data: scores,
-                        borderColor: '#004080',
-                        backgroundColor: 'rgba(0, 64, 128, 0.1)',
-                        borderWidth: 2,
-                        tension: 0.3,
-                        fill: true,
-                        pointBackgroundColor: '#004080',
-                        pointRadius: 5,
-                        pointHoverRadius: 7
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%';
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.dataset.label + ': ' + context.raw + '%';
-                                }
-                            }
-                        }
-                    }
-                }
             });
         }
 
@@ -639,11 +788,11 @@
         }
 
         // Format date (simplified for chart)
-        function formatDate(dateString, forChart = false) {
+        function formatDate(dateString, shortFormat = false) {
             try {
                 const date = new Date(dateString);
-                if (forChart) {
-                    return window.dateFns.format(date, 'MMM d');
+                if (shortFormat) {
+                    return window.dateFns.format(date, 'MMM d, yyyy');
                 }
                 return window.dateFns.format(date, 'MMM d, yyyy - h:mm a');
             } catch (e) {
