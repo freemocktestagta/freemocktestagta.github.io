@@ -1,0 +1,268 @@
+{
+    "title": "UP GK Test 1",
+    "section": "Uttar Pradesh General Knowledge",
+    "subject": "उत्तर प्रदेश का भूगोल (Static)",
+    "time": 1200,
+    "questions": [
+        {
+            "question": {
+                "hindi": "1. उत्तर प्रदेश की राजधानी कहाँ स्थित है?",
+                "english": "1. Where is the capital of Uttar Pradesh located?"
+            },
+            "options": [
+                { "hindi": "(a) कानपुर", "english": "(a) Kanpur" },
+                { "hindi": "(b) लखनऊ", "english": "(b) Lucknow" },
+                { "hindi": "(c) आगरा", "english": "(c) Agra" },
+                { "hindi": "(d) वाराणसी", "english": "(d) Varanasi" }
+            ],
+            "answer": { "hindi": "(b) लखनऊ", "english": "(b) Lucknow" }
+        },
+        {
+            "question": {
+                "hindi": "2. उत्तर प्रदेश में सबसे लंबी नदी कौन-सी है?",
+                "english": "2. Which is the longest river in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) गंगा", "english": "(a) Ganga" },
+                { "hindi": "(b) यमुना", "english": "(b) Yamuna" },
+                { "hindi": "(c) गोमती", "english": "(c) Gomti" },
+                { "hindi": "(d) सरयू", "english": "(d) Sarayu" }
+            ],
+            "answer": { "hindi": "(a) गंगा", "english": "(a) Ganga" }
+        },
+        {
+            "question": {
+                "hindi": "3. उत्तर प्रदेश का सबसे बड़ा जिला कौन-सा है?",
+                "english": "3. Which is the largest district in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) लखीमपुर खीरी", "english": "(a) Lakhimpur Kheri" },
+                { "hindi": "(b) इलाहाबाद", "english": "(b) Prayagraj" },
+                { "hindi": "(c) मेरठ", "english": "(c) Meerut" },
+                { "hindi": "(d) गोरखपुर", "english": "(d) Gorakhpur" }
+            ],
+            "answer": { "hindi": "(a) लखीमपुर खीरी", "english": "(a) Lakhimpur Kheri" }
+        },
+        {
+            "question": {
+                "hindi": "4. उत्तर प्रदेश की सीमा कितने राज्यों से लगती है?",
+                "english": "4. How many states share a border with Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) 6", "english": "(a) 6" },
+                { "hindi": "(b) 8", "english": "(b) 8" },
+                { "hindi": "(c) 9", "english": "(c) 9" },
+                { "hindi": "(d) 10", "english": "(d) 10" }
+            ],
+            "answer": { "hindi": "(b) 8", "english": "(b) 8" }
+        },
+        {
+            "question": {
+                "hindi": "5. उत्तर प्रदेश का सबसे ऊँचा बाँध कौन-सा है?",
+                "english": "5. Which is the highest dam in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) रिहंद बाँध", "english": "(a) Rihand Dam" },
+                { "hindi": "(b) माताटीला बाँध", "english": "(b) Matatila Dam" },
+                { "hindi": "(c) पारीछा बाँध", "english": "(c) Parichha Dam" },
+                { "hindi": "(d) राजघाट बाँध", "english": "(d) Rajghat Dam" }
+            ],
+            "answer": { "hindi": "(a) रिहंद बाँध", "english": "(a) Rihand Dam" }
+        },
+        {
+            "question": {
+                "hindi": "6. उत्तर प्रदेश में सबसे अधिक वर्षा वाला स्थान कौन-सा है?",
+                "english": "6. Which place receives the highest rainfall in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) गोरखपुर", "english": "(a) Gorakhpur" },
+                { "hindi": "(b) सहारनपुर", "english": "(b) Saharanpur" },
+                { "hindi": "(c) झाँसी", "english": "(c) Jhansi" },
+                { "hindi": "(d) बरेली", "english": "(d) Bareilly" }
+            ],
+            "answer": { "hindi": "(b) सहारनपुर", "english": "(b) Saharanpur" }
+        },
+        {
+            "question": {
+                "hindi": "7. उत्तर प्रदेश का सबसे बड़ा जंगल कौन-सा है?",
+                "english": "7. Which is the largest forest in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) दुधवा राष्ट्रीय उद्यान", "english": "(a) Dudhwa National Park" },
+                { "hindi": "(b) चंद्रप्रभा वन्यजीव अभयारण्य", "english": "(b) Chandra Prabha Wildlife Sanctuary" },
+                { "hindi": "(c) कतर्नियाघाट वन्यजीव अभयारण्य", "english": "(c) Katarniaghat Wildlife Sanctuary" },
+                { "hindi": "(d) हस्तिनापुर अभयारण्य", "english": "(d) Hastinapur Sanctuary" }
+            ],
+            "answer": { "hindi": "(a) दुधवा राष्ट्रीय उद्यान", "english": "(a) Dudhwa National Park" }
+        },
+        {
+            "question": {
+                "hindi": "8. उत्तर प्रदेश में कौन-सा पर्वत स्थित है?",
+                "english": "8. Which mountain is located in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) नीलगिरि", "english": "(a) Nilgiri" },
+                { "hindi": "(b) विंध्याचल", "english": "(b) Vindhyachal" },
+                { "hindi": "(c) अरावली", "english": "(c) Aravalli" },
+                { "hindi": "(d) हिमालय", "english": "(d) Himalayas" }
+            ],
+            "answer": { "hindi": "(b) विंध्याचल", "english": "(b) Vindhyachal" }
+        },
+        {
+            "question": {
+                "hindi": "9. उत्तर प्रदेश का सबसे बड़ा झील कौन-सा है?",
+                "english": "9. Which is the largest lake in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) बेलासागर झील", "english": "(a) Belasagar Lake" },
+                { "hindi": "(b) बखिरा झील", "english": "(b) Bakhira Lake" },
+                { "hindi": "(c) सूरज कुंड", "english": "(c) Suraj Kund" },
+                { "hindi": "(d) रामगढ़ ताल", "english": "(d) Ramgarh Tal" }
+            ],
+            "answer": { "hindi": "(b) बखिरा झील", "english": "(b) Bakhira Lake" }
+        },
+        {
+            "question": {
+                "hindi": "10. उत्तर प्रदेश में कौन-सा राष्ट्रीय उद्यान है?",
+                "english": "10. Which national park is in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) कॉर्बेट", "english": "(a) Corbett" },
+                { "hindi": "(b) दुधवा", "english": "(b) Dudhwa" },
+                { "hindi": "(c) काजीरंगा", "english": "(c) Kaziranga" },
+                { "hindi": "(d) गिर", "english": "(d) Gir" }
+            ],
+            "answer": { "hindi": "(b) दुधवा", "english": "(b) Dudhwa" }
+        },
+        {
+            "question": {
+                "hindi": "11. उत्तर प्रदेश का सबसे बड़ा बांध कौन-सा है?",
+                "english": "11. Which is the largest dam in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) माताटीला बांध", "english": "(a) Matatila Dam" },
+                { "hindi": "(b) रिहंद बांध", "english": "(b) Rihand Dam" },
+                { "hindi": "(c) पारीछा बांध", "english": "(c) Parichha Dam" },
+                { "hindi": "(d) राजघाट बांध", "english": "(d) Rajghat Dam" }
+            ],
+            "answer": { "hindi": "(b) रिहंद बांध", "english": "(b) Rihand Dam" }
+        },
+        {
+            "question": {
+                "hindi": "12. उत्तर प्रदेश में कितने जिले हैं?",
+                "english": "12. How many districts are in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) 70", "english": "(a) 70" },
+                { "hindi": "(b) 75", "english": "(b) 75" },
+                { "hindi": "(c) 80", "english": "(c) 80" },
+                { "hindi": "(d) 85", "english": "(d) 85" }
+            ],
+            "answer": { "hindi": "(b) 75", "english": "(b) 75" }
+        },
+        {
+            "question": {
+                "hindi": "13. उत्तर प्रदेश का सबसे बड़ा रेलवे जंक्शन कौन-सा है?",
+                "english": "13. Which is the largest railway junction in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) लखनऊ", "english": "(a) Lucknow" },
+                { "hindi": "(b) कानपुर", "english": "(b) Kanpur" },
+                { "hindi": "(c) इलाहाबाद", "english": "(c) Prayagraj" },
+                { "hindi": "(d) आगरा", "english": "(d) Agra" }
+            ],
+            "answer": { "hindi": "(a) लखनऊ", "english": "(a) Lucknow" }
+        },
+        {
+            "question": {
+                "hindi": "14. उत्तर प्रदेश का सबसे बड़ा हवाई अड्डा कहाँ है?",
+                "english": "14. Where is the largest airport in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) लखनऊ", "english": "(a) Lucknow" },
+                { "hindi": "(b) वाराणसी", "english": "(b) Varanasi" },
+                { "hindi": "(c) कुशीनगर", "english": "(c) Kushinagar" },
+                { "hindi": "(d) दिल्ली (निकट)", "english": "(d) Delhi (Nearby)" }
+            ],
+            "answer": { "hindi": "(d) दिल्ली (निकट)", "english": "(d) Delhi (Nearby)" }
+        },
+        {
+            "question": {
+                "hindi": "15. उत्तर प्रदेश का सबसे बड़ा बंदरगाह कौन-सा है?",
+                "english": "15. Which is the largest port in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) हल्दिया", "english": "(a) Haldia" },
+                { "hindi": "(b) इलाहाबाद", "english": "(b) Prayagraj" },
+                { "hindi": "(c) कोलकाता", "english": "(c) Kolkata" },
+                { "hindi": "(d) मुंबई", "english": "(d) Mumbai" }
+            ],
+            "answer": { "hindi": "(b) इलाहाबाद", "english": "(b) Prayagraj" }
+        },
+        {
+            "question": {
+                "hindi": "16. उत्तर प्रदेश का सबसे बड़ा जलप्रपात कौन-सा है?",
+                "english": "16. Which is the largest waterfall in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) पांडव जलप्रपात", "english": "(a) Pandav Falls" },
+                { "hindi": "(b) कुंआकरी जलप्रपात", "english": "(b) Kuaakri Falls" },
+                { "hindi": "(c) रानीपुर जलप्रपात", "english": "(c) Ranipur Falls" },
+                { "hindi": "(d) देवदारी जलप्रपात", "english": "(d) Devdari Falls" }
+            ],
+            "answer": { "hindi": "(a) पांडव जलप्रपात", "english": "(a) Pandav Falls" }
+        },
+        {
+            "question": {
+                "hindi": "17. उत्तर प्रदेश में कौन-सा रेगिस्तान है?",
+                "english": "17. Which desert is in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) थार", "english": "(a) Thar" },
+                { "hindi": "(b) कच्छ", "english": "(b) Kutch" },
+                { "hindi": "(c) कोई नहीं", "english": "(c) None" },
+                { "hindi": "(d) सहारा", "english": "(d) Sahara" }
+            ],
+            "answer": { "hindi": "(c) कोई नहीं", "english": "(c) None" }
+        },
+        {
+            "question": {
+                "hindi": "18. उत्तर प्रदेश का सबसे बड़ा बाजार कौन-सा है?",
+                "english": "18. Which is the largest market in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) सदर बाजार, लखनऊ", "english": "(a) Sadar Bazaar, Lucknow" },
+                { "hindi": "(b) चौक, वाराणसी", "english": "(b) Chowk, Varanasi" },
+                { "hindi": "(c) नाका हिंदुआ, कानपुर", "english": "(c) Naka Hindua, Kanpur" },
+                { "hindi": "(d) सर्राफा बाजार, आगरा", "english": "(d) Sarafa Bazaar, Agra" }
+            ],
+            "answer": { "hindi": "(b) चौक, वाराणसी", "english": "(b) Chowk, Varanasi" }
+        },
+        {
+            "question": {
+                "hindi": "19. उत्तर प्रदेश का सबसे बड़ा स्टेडियम कौन-सा है?",
+                "english": "19. Which is the largest stadium in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) ग्रीन पार्क, कानपुर", "english": "(a) Green Park, Kanpur" },
+                { "hindi": "(b) एकाना, लखनऊ", "english": "(b) Ekana, Lucknow" },
+                { "hindi": "(c) मोहम्मद अली जौहर, अलीगढ़", "english": "(c) Mohammad Ali Jauhar, Aligarh" },
+                { "hindi": "(d) नेहरू, गोरखपुर", "english": "(d) Nehru, Gorakhpur" }
+            ],
+            "answer": { "hindi": "(b) एकाना, लखनऊ", "english": "(b) Ekana, Lucknow" }
+        },
+        {
+            "question": {
+                "hindi": "20. उत्तर प्रदेश का सबसे बड़ा विश्वविद्यालय कौन-सा है?",
+                "english": "20. Which is the largest university in Uttar Pradesh?"
+            },
+            "options": [
+                { "hindi": "(a) बनारस हिंदू विश्वविद्यालय (BHU)", "english": "(a) Banaras Hindu University (BHU)" },
+                { "hindi": "(b) अलीगढ़ मुस्लिम विश्वविद्यालय (AMU)", "english": "(b) Aligarh Muslim University (AMU)" },
+                { "hindi": "(c) लखनऊ विश्वविद्यालय", "english": "(c) Lucknow University" },
+                { "hindi": "(d) कानपुर विश्वविद्यालय", "english": "(d) Kanpur University" }
+            ],
+            "answer": { "hindi": "(a) बनारस हिंदू विश्वविद्यालय (BHU)", "english": "(a) Banaras Hindu University (BHU)" }
+        }
+    ]
+}
