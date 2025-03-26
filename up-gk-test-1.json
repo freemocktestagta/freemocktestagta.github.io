@@ -80,7 +80,7 @@
                 { "hindi": "(c) झाँसी", "english": "(c) Jhansi" },
                 { "hindi": "(d) बरेली", "english": "(d) Bareilly" }
             ],
-            "answer": { "hindi": "(b) सहारनपुर", "english": "(b) Saharanpur" }
+            "answer": { "hindi": "(a) गोरखपुर", "english": "(a) Gorakhpur" }
         },
         {
             "question": {
@@ -184,7 +184,7 @@
                 { "hindi": "(c) कुशीनगर", "english": "(c) Kushinagar" },
                 { "hindi": "(d) दिल्ली (निकट)", "english": "(d) Delhi (Nearby)" }
             ],
-            "answer": { "hindi": "(d) दिल्ली (निकट)", "english": "(d) Delhi (Nearby)" }
+            "answer": { "hindi": "(a) लखनऊ", "english": "(a) Lucknow" }
         },
         {
             "question": {
