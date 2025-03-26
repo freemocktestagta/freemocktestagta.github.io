@@ -1,0 +1,268 @@
+{
+    "title": "UP GK Test 4",
+    "section": "Uttar Pradesh General Knowledge",
+    "subject": "उत्तर प्रदेश के खनिज (Minerals of Uttar Pradesh)",
+    "time": 1200,
+    "questions": [
+        {
+            "question": {
+                "hindi": "1. भारत से सॉफ्टवेयर निर्यात में उत्तर प्रदेश का कौन-सा स्थान है?",
+                "english": "1. Which position does Uttar Pradesh hold in software exports from India?"
+            },
+            "options": [
+                { "hindi": "(a) पहला", "english": "(a) First" },
+                { "hindi": "(b) दूसरा", "english": "(b) Second" },
+                { "hindi": "(c) तीसरा", "english": "(c) Third" },
+                { "hindi": "(d) चौथा", "english": "(d) Fourth" }
+            ],
+            "answer": { "hindi": "(d) चौथा", "english": "(d) Fourth" }
+        },
+        {
+            "question": {
+                "hindi": "2. उत्तर प्रदेश में चमड़ा उद्योग का प्रमुख केंद्र कौन-सा है?",
+                "english": "2. Which city is the major center for leather industry in UP?"
+            },
+            "options": [
+                { "hindi": "(a) कानपुर", "english": "(a) Kanpur" },
+                { "hindi": "(b) लखनऊ", "english": "(b) Lucknow" },
+                { "hindi": "(c) गाजियाबाद", "english": "(c) Ghaziabad" },
+                { "hindi": "(d) वाराणसी", "english": "(d) Varanasi" }
+            ],
+            "answer": { "hindi": "(a) कानपुर", "english": "(a) Kanpur" }
+        },
+        {
+            "question": {
+                "hindi": "3. फर्रुखाबाद किस कला के लिए प्रसिद्ध है?",
+                "english": "3. Farrukhabad is famous for which art form?"
+            },
+            "options": [
+                { "hindi": "(a) हाथ छपाई", "english": "(a) Hand Printing" },
+                { "hindi": "(b) चूड़ियाँ", "english": "(b) Bangles" },
+                { "hindi": "(c) मिट्टी के बर्तन", "english": "(c) Pottery" },
+                { "hindi": "(d) चित्रकला", "english": "(d) Painting" }
+            ],
+            "answer": { "hindi": "(a) हाथ छपाई", "english": "(a) Hand Printing" }
+        },
+        {
+            "question": {
+                "hindi": "4. उत्तर प्रदेश का प्रमुख आभूषण बाजार कहाँ स्थित है?",
+                "english": "4. Where is UP's major jewelry market located?"
+            },
+            "options": [
+                { "hindi": "(a) मेरठ", "english": "(a) Meerut" },
+                { "hindi": "(b) कानपुर", "english": "(b) Kanpur" },
+                { "hindi": "(c) आगरा", "english": "(c) Agra" },
+                { "hindi": "(d) इनमें से कोई नहीं", "english": "(d) None of these" }
+            ],
+            "answer": { "hindi": "(b) कानपुर", "english": "(b) Kanpur" }
+        },
+        {
+            "question": {
+                "hindi": "5. निम्न में कौन-सा युग्म असंगत है?",
+                "english": "5. Which pair is mismatched?"
+            },
+            "options": [
+                { "hindi": "(a) कृत्रिम अंग निर्माण - कानपुर", "english": "(a) Artificial Limb - Kanpur" },
+                { "hindi": "(b) काँच उद्योग - फिरोजाबाद", "english": "(b) Glass Industry - Firozabad" },
+                { "hindi": "(c) परमाणु संयंत्र - लखनऊ", "english": "(c) Nuclear Plant - Lucknow" },
+                { "hindi": "(d) डीजल लोकोमोटिव - वाराणसी", "english": "(d) Diesel Locomotive - Varanasi" }
+            ],
+            "answer": { "hindi": "(c) परमाणु संयंत्र - लखनऊ", "english": "(c) Nuclear Plant - Lucknow" }
+        },
+        {
+            "question": {
+                "hindi": "6. एसोचैम (UP) की स्थापना कब हुई?",
+                "english": "6. When was ASSOCHAM (UP) established?"
+            },
+            "options": [
+                { "hindi": "(a) 1991", "english": "(a) 1991" },
+                { "hindi": "(b) 1994", "english": "(b) 1994" },
+                { "hindi": "(c) 1999", "english": "(c) 1999" },
+                { "hindi": "(d) 2002", "english": "(d) 2002" }
+            ],
+            "answer": { "hindi": "(b) 1994", "english": "(b) 1994" }
+        },
+        {
+            "question": {
+                "hindi": "7. UPSIDA का पूर्ण रूप क्या है?",
+                "english": "7. What is the full form of UPSIDA?"
+            },
+            "options": [
+                { "hindi": "(a) उत्तर प्रदेश राज्य औद्योगिक विकास प्राधिकरण", "english": "(a) UP State Industrial Development Authority" },
+                { "hindi": "(b) उत्तर प्रदेश राज्य औद्योगिक विकास एजेंसी", "english": "(b) UP State Industrial Development Agency" },
+                { "hindi": "(c) उत्तर प्रदेश राज्य बुनियादी ढाँचा विकास प्राधिकरण", "english": "(c) UP State Infrastructure Development Authority" },
+                { "hindi": "(d) उत्तर प्रदेश राज्य सूचना विज्ञान विकास प्राधिकरण", "english": "(d) UP State Information Technology Development Authority" }
+            ],
+            "answer": { "hindi": "(a) उत्तर प्रदेश राज्य औद्योगिक विकास प्राधिकरण", "english": "(a) UP State Industrial Development Authority" }
+        },
+        {
+            "question": {
+                "hindi": "8. नरौरा परमाणु संयंत्र किस जिले में है?",
+                "english": "8. In which district is Narora Nuclear Plant located?"
+            },
+            "options": [
+                { "hindi": "(a) हाथरस", "english": "(a) Hathras" },
+                { "hindi": "(b) हमीरपुर", "english": "(b) Hamirpur" },
+                { "hindi": "(c) बुलंदशहर", "english": "(c) Bulandshahr" },
+                { "hindi": "(d) हरदोई", "english": "(d) Hardoi" }
+            ],
+            "answer": { "hindi": "(c) बुलंदशहर", "english": "(c) Bulandshahr" }
+        },
+        {
+            "question": {
+                "hindi": "9. भारत का सबसे बड़ा इलेक्ट्रिकल सिटी कहाँ बन रहा है?",
+                "english": "9. Where is India's largest electrical city being built?"
+            },
+            "options": [
+                { "hindi": "(a) मेरठ", "english": "(a) Meerut" },
+                { "hindi": "(b) लखनऊ", "english": "(b) Lucknow" },
+                { "hindi": "(c) कानपुर", "english": "(c) Kanpur" },
+                { "hindi": "(d) ग्रेटर नोएडा", "english": "(d) Greater Noida" }
+            ],
+            "answer": { "hindi": "(d) ग्रेटर नोएडा", "english": "(d) Greater Noida" }
+        },
+        {
+            "question": {
+                "hindi": "10. डोलोमाइट का उत्पादन किस जिले में होता है?",
+                "english": "10. In which district is dolomite produced?"
+            },
+            "options": [
+                { "hindi": "(a) इलाहाबाद", "english": "(a) Allahabad" },
+                { "hindi": "(b) सोनभद्र", "english": "(b) Sonbhadra" },
+                { "hindi": "(c) बांदा", "english": "(c) Banda" },
+                { "hindi": "(d) ललितपुर", "english": "(d) Lalitpur" }
+            ],
+            "answer": { "hindi": "(d) ललितपुर", "english": "(d) Lalitpur" }
+        },
+        {
+            "question": {
+                "hindi": "11. इलाहाबाद की करछना तहसील में कौन-सा खनिज मिलता है?",
+                "english": "11. Which mineral is found in Karchana tehsil of Allahabad?"
+            },
+            "options": [
+                { "hindi": "(a) ग्लास-रेत", "english": "(a) Glass Sand" },
+                { "hindi": "(b) संगमरमर", "english": "(b) Marble" },
+                { "hindi": "(c) बॉक्साइट", "english": "(c) Bauxite" },
+                { "hindi": "(d) यूरेनियम", "english": "(d) Uranium" }
+            ],
+            "answer": { "hindi": "(a) ग्लास-रेत", "english": "(a) Glass Sand" }
+        },
+        {
+            "question": {
+                "hindi": "12. अनोला ताप विद्युत संयंत्र कहाँ है?",
+                "english": "12. Where is Anola Thermal Power Plant located?"
+            },
+            "options": [
+                { "hindi": "(a) औरैया", "english": "(a) Auraiya" },
+                { "hindi": "(b) बरेली", "english": "(b) Bareilly" },
+                { "hindi": "(c) झाँसी", "english": "(c) Jhansi" },
+                { "hindi": "(d) रणपुर", "english": "(d) Ranpur" }
+            ],
+            "answer": { "hindi": "(a) औरैया", "english": "(a) Auraiya" }
+        },
+        {
+            "question": {
+                "hindi": "13. बांदा जिला किसके लिए प्रसिद्ध है?",
+                "english": "13. What is Banda district famous for?"
+            },
+            "options": [
+                { "hindi": "(a) किले", "english": "(a) Forts" },
+                { "hindi": "(b) उद्योग", "english": "(b) Industries" },
+                { "hindi": "(c) कोयला खाने", "english": "(c) Coal Mines" },
+                { "hindi": "(d) शाजर पत्थर", "english": "(d) Shazar Stone" }
+            ],
+            "answer": { "hindi": "(d) शाजर पत्थर", "english": "(d) Shazar Stone" }
+        },
+        {
+            "question": {
+                "hindi": "14. उत्तर प्रदेश का प्रमुख परमाणु संयंत्र कहाँ है?",
+                "english": "14. Where is UP's major nuclear plant located?"
+            },
+            "options": [
+                { "hindi": "(a) नरौरा, बुलंदशहर", "english": "(a) Narora, Bulandshahr" },
+                { "hindi": "(b) गौतम बुद्ध नगर", "english": "(b) Gautam Buddha Nagar" },
+                { "hindi": "(c) सोनभद्र", "english": "(c) Sonbhadra" },
+                { "hindi": "(d) झाँसी", "english": "(d) Jhansi" }
+            ],
+            "answer": { "hindi": "(a) नरौरा, बुलंदशहर", "english": "(a) Narora, Bulandshahr" }
+        },
+        {
+            "question": {
+                "hindi": "15. निम्न में कौन-सा युग्म सही नहीं है?",
+                "english": "15. Which pair is incorrectly matched?"
+            },
+            "options": [
+                { "hindi": "(a) कोयला - सोनभद्र", "english": "(a) Coal - Sonbhadra" },
+                { "hindi": "(b) बालू पत्थर - मिर्जापुर", "english": "(b) Sandstone - Mirzapur" },
+                { "hindi": "(c) सिलिका बालू-प्रयागराज", "english": "(c) Silica Sand-Prayagraj" },
+                { "hindi": "(d) यूरेनियम - झाँसी", "english": "(d) Uranium - Jhansi" }
+            ],
+            "answer": { "hindi": "(d) यूरेनियम - झाँसी", "english": "(d) Uranium - Jhansi" }
+        },
+        {
+            "question": {
+                "hindi": "16. उत्तर प्रदेश में मुख्य रूप से कौन-सा पदार्थ पाया जाता है?",
+                "english": "16. Which is the main mineral found in UP?"
+            },
+            "options": [
+                { "hindi": "(a) ताँबा और ग्रेफाइट", "english": "(a) Copper & Graphite" },
+                { "hindi": "(b) चूना पत्थर और डोलोमाइट", "english": "(b) Limestone & Dolomite" },
+                { "hindi": "(c) रॉक फॉस्फेट और डोलोमाइट", "english": "(c) Rock Phosphate & Dolomite" },
+                { "hindi": "(d) रॉक फॉस्फेट और ग्रेफाइट", "english": "(d) Rock Phosphate & Graphite" }
+            ],
+            "answer": { "hindi": "(b) चूना पत्थर और डोलोमाइट", "english": "(b) Limestone & Dolomite" }
+        },
+        {
+            "question": {
+                "hindi": "17. उत्तर प्रदेश में कौन-सा खनिज नहीं मिलता?",
+                "english": "17. Which mineral is not found in UP?"
+            },
+            "options": [
+                { "hindi": "(a) चूना पत्थर", "english": "(a) Limestone" },
+                { "hindi": "(b) जिप्सम", "english": "(b) Gypsum" },
+                { "hindi": "(c) अभ्रक", "english": "(c) Mica" },
+                { "hindi": "(d) बॉक्साइट", "english": "(d) Bauxite" }
+            ],
+            "answer": { "hindi": "(c) अभ्रक", "english": "(c) Mica" }
+        },
+        {
+            "question": {
+                "hindi": "18. घाटमपुर ताप विद्युत संयंत्र कहाँ है?",
+                "english": "18. Where is Ghatampur Thermal Plant located?"
+            },
+            "options": [
+                { "hindi": "(a) कानपुर", "english": "(a) Kanpur" },
+                { "hindi": "(b) झाँसी", "english": "(b) Jhansi" },
+                { "hindi": "(c) बरेली", "english": "(c) Bareilly" },
+                { "hindi": "(d) औरैया", "english": "(d) Auraiya" }
+            ],
+            "answer": { "hindi": "(a) कानपुर", "english": "(a) Kanpur" }
+        },
+        {
+            "question": {
+                "hindi": "19. उत्तर प्रदेश में चीनी मिट्टी कहाँ मिलती है?",
+                "english": "19. Where is China Clay found in UP?"
+            },
+            "options": [
+                { "hindi": "(a) बांदा", "english": "(a) Banda" },
+                { "hindi": "(b) हमीरपुर", "english": "(b) Hamirpur" },
+                { "hindi": "(c) नरौरा", "english": "(c) Narora" },
+                { "hindi": "(d) सोनभद्र", "english": "(d) Sonbhadra" }
+            ],
+            "answer": { "hindi": "(a) बांदा", "english": "(a) Banda" }
+        },
+        {
+            "question": {
+                "hindi": "20. मिर्जापुर जिले में कौन-से खनिज मिलते हैं?",
+                "english": "20. Which minerals are found in Mirzapur district?"
+            },
+            "options": [
+                { "hindi": "(a) बॉक्साइट, काँच-रेत, चूना पत्थर", "english": "(a) Bauxite, Glass Sand, Limestone" },
+                { "hindi": "(b) काँच-रेत, संगमरमर, डोलोमाइट", "english": "(b) Glass Sand, Marble, Dolomite" },
+                { "hindi": "(c) चूना पत्थर, डोलोमाइट, संगमरमर", "english": "(c) Limestone, Dolomite, Marble" },
+                { "hindi": "(d) बॉक्साइट, काँच-रेत, चूना पत्थर", "english": "(d) Bauxite, Glass Sand, Limestone" }
+            ],
+            "answer": { "hindi": "(a) बॉक्साइट, काँच-रेत, चूना पत्थर", "english": "(a) Bauxite, Glass Sand, Limestone" }
+        }
+    ]
+}
